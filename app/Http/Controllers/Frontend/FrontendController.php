@@ -59,6 +59,10 @@ class FrontendController extends Controller
         return view('pages.app_elerning.course');
     }
 
+    public function courseDetail() {
+        return view('pages.app_elerning.course_detail');
+    }
+
     public function cartPage() {
         return view('pages.app_cart.cart');
     }

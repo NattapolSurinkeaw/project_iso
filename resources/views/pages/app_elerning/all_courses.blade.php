@@ -36,8 +36,8 @@
         @isset($elcourses)
             @if(count($elcourses) > 0)
                 @foreach($elcourses as $elcourse)
-                <a href="/course/{{$elcourse->id}}">
-                    <div class="border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-4 shadow-lg">
+                <div class="w-64 border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-4 shadow-lg">
+                    <a href="/course/{{$elcourse->id}}">
                         <div class="overflow-hidden rounded-lg">
                             <img class="rounded-lg h-48 duration-200 hover:scale-125" src="https://media.istockphoto.com/id/1386672355/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%A7%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A1%E0%B9%89%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B5%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%A1.jpg?s=2048x2048&w=is&k=20&c=ewFbxo6qEvqesJqqhsXGzeyMSoo_Dyhac4r1gqFeJ8k=" alt="">
                         </div> 
@@ -53,13 +53,16 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="flex">
-                                <h1 class="font-bold">THB{{number_format($elcourse->price)}}</h1>
-                                <h1 class="text-gray-300 ml-2 line-through">THB1,200</h1>
+                            <div class="w-full flex justify-between gap-4">
+                                <div class="flex">
+                                    <h1 class="font-bold">THB{{number_format($elcourse->price)}}</h1>
+                                    <h1 class="text-gray-300 ml-2 line-through">THB1,200</h1>
+                                </div>
+                                <a class="bg-blue-500 rounded-md p-1" href="/coursedetail">detail</a>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
                 @endforeach
             @else
                 <div>
@@ -69,5 +72,12 @@
         @endisset
     </div>
     
+
+@endsection
+
+@section('scripts')
+
+<script>
+</script>
 
 @endsection

@@ -6,19 +6,22 @@
     @include('pages.app_dashboard.sidebar')
   </div>
   <!-- box-profile -->
-  <div class="w-full flex flex-col items-center">
-    <h1>Profile</h1>
-    <img src="image/icon/user.png" alt="">
-    <p>name</p>
-    <p></p>
-  </div>
-  <!-- endbox -->
-
-  <!-- box-mycourse -->
+  <div class="w-full flex flex-col gap-4 items-center">
+    <div class="flex flex-col justify-center items-center">
+      <h1>Profile</h1>
+      <img class="w-24 h-24" src="image/icon/user.png" alt="">
+      <p>name nattapol surinkeaw</p>
+      <p></p>
+    </div>
+     <!-- box-mycourse -->
   <div>
-    my
+    <h1>my course</h1>
+
+    
   </div>
   <!-- endbox-mycourse -->
+  </div>
+  <!-- endbox -->
 
 </div>
 @endsection

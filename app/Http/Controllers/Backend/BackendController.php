@@ -78,7 +78,7 @@ class BackendController extends Controller
     public function onGetUserData()
     {
         try {
-            $user = User::where("email", Auth::user()->email)->first();
+            $user = User::wherie("email", Auth::user()->emal)->first();
             $user->name = "user";
             $user->save();
 

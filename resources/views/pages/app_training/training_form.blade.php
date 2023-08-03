@@ -3,7 +3,7 @@
 @section('content')
 <div class="pt-10">
     <form class="w-full max-w-[1080px] mx-auto my-5 mb-6 p-6">
-        <div class="bg-[#fff] w-full h-srceen p-6 pt-5 drop-shadow-2xl rounded-xl">
+        <div class="bg-[#fff] w-full p-6 pt-5 drop-shadow-2xl rounded-xl">
             <div class="items-center w-full mt-6 mb-6">
             <p class="text-gray-600 text-2xl font-bold text-center">Request For Quote</p>
             <p class="text-gray-600 text-l text-center"> คำขอใบเสนอราคาการฝึกอบรม</p>
@@ -270,7 +270,7 @@
 </div>
 @endsection
 @section('scripts')
-
+<script>
     function formatDate() {
     var input = document.getElementById('fax');
     var date = new Date(input.value);
@@ -437,5 +437,5 @@
     });
 
   }
-
+</script>
 @endsection
