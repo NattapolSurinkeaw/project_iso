@@ -47,8 +47,18 @@ class FrontendController extends Controller
         return view('pages.app_iso.contact');
     }
 
+    public function calendarReserve($course_id) {
+        return view('pages.app_training.calendar_reserve', compact('course_id'));
+    } 
+    
     public function trainingForm () {
-        return view('pages.app_training.training_form');
+
+        $courses = Course::all(); // เรียก courses ทั้งหมดไปแสดงใน select
+        
+        $course_id = request('course_id');
+        $course = Course::find($course_id);
+
+        return view('pages.app_training.training_form', compact('course','courses'));
     }
 
     public function emailForm() {

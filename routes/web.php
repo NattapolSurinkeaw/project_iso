@@ -29,6 +29,7 @@ use App\Http\Controllers\Frontend\DashboardController;
 
   Route::get('/elerning',[FrontendController::class,'elerningPage']);
   Route::get('/training',[FrontendController::class,'tainingPage']);
+  Route::get('/reserveday/{course_id}',[FrontendController::class,'calendarReserve']);
   Route::get('/trainingform',[FrontendController::class,'trainingForm']);
   Route::get('/newsandevent',[FrontendController::class,'newsAndEventPage']);
   Route::get('/newsdetails',[FrontendController::class,'newsDetail']);

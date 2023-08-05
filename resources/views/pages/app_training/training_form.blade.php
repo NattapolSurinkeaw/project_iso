@@ -2,6 +2,7 @@
 @section('title') TrainingForm @endsection
 @section('content')
 <div class="pt-10">
+    @dd($courses)
     <form class="w-full max-w-[1080px] mx-auto my-5 mb-6 p-6">
         <div class="bg-[#fff] w-full p-6 pt-5 drop-shadow-2xl rounded-xl">
             <div class="items-center w-full mt-6 mb-6">
@@ -155,7 +156,7 @@
             <p class="text-gray-600 text-xl font-bold mt-5">Request for traning coure : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
             <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="rep-address" type="text"></textarea>
+                id="rep-address" type="text">{{$course->name}}</textarea>
             <div class="flex flex-wrap -mx-3 mb-4 mt-4">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -172,9 +173,11 @@
                         for="position">
                         Requires date of traning
                     </label>
+                    @if(request('date'))
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="position" type="date">
+                        id="position" type="date" value="{{ request('date') }}">
+                    @endif
                 </div>
             </div>
             <h1 class="text-gray-600 text-xl font-bold mt-5">Request for other courses : </h1>

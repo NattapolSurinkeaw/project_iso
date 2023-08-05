@@ -29,7 +29,7 @@
                         <td class="whitespace-nowrap px-6 py-4">{{ number_format($course->fee) }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{$course->date}}</td>
                         <td class="whitespace-nowrap px-6 py-4">
-                          <a href="/trainingform" class="p-3 bg-green-600 text-white rounded-xl">สมัคร</a>
+                          <a href="{{ url('/reserveday', ['course_id' => $course->id]) }}" class="p-3 bg-green-600 text-white rounded-xl">จองเวลา</a>
                         </td>
                       </tr>
                     @endforeach
