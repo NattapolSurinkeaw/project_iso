@@ -31,11 +31,11 @@
 </swiper-container>
 
 <!-- menu -->
-<div id="menu" class="grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-1 gap-10 place-items-center p-4">
+<div id="menu" class="grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-1 gap-10 place-items-center p-4 mt-10">
   <a href="#signBoard">
-    <div class="flex gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-24 h-24" src="image/icon/book.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/book.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">ป้ายประชาสัมพันธ์</h1>
         <p class="font-medium">45,00</p>
       </div>
@@ -43,9 +43,9 @@
   </a>
 
   <a href="#ourVideo">
-    <div class="flex gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-24 h-24" src="image/icon/book.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/book.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">วิดีโอแนะนำ</h1>
         <p class="font-medium">45,00</p>
       </div>
@@ -53,9 +53,9 @@
   </a>
 
   <a href="#ourCourse">
-    <div class="flex gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-24 h-24" src="image/icon/book.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/book.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">หลักสูตรของเรา</h1>
         <p class="font-medium">45,00</p>
       </div>
@@ -63,9 +63,9 @@
   </a>
 
   <a href="#news">
-    <div class="flex gap-4 border px-6 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-24 h-24" src="image/icon/audio.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-6 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/audio.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">ข่าวประชาสัมพันธ์</h1>
         <p class="font-medium">45,00</p>
       </div>
@@ -73,9 +73,9 @@
   </a>
 
   <a href="#documents">
-    <div class="flex gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-20 h-24" src="image/icon/magazine.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/magazine.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">เอกสารที่เผยแพร่</h1>
         <p class="font-medium">45,00</p>
       </div>
@@ -83,9 +83,9 @@
   </a>
 
   <a href="#">
-    <div class="flex gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-28 h-24" src="image/icon/video.png" alt="">
-      <div class="flex gap-4 flex-col justify-center">
+    <div class="flex items-center  gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-2xl">
+      <img class="w-14 h-14" src="image/icon/video.png" alt="">
+      <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">หน่วยงานที่เกี่ยวข้อง</h1>
         <p class="font-medium">45,00</p>
       </div>

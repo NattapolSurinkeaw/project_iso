@@ -2,7 +2,7 @@
 @section('title') TrainingForm @endsection
 @section('content')
 <div class="pt-10">
-    @dd($courses)
+    {{-- @dd($courses) --}}
     <form class="w-full max-w-[1080px] mx-auto my-5 mb-6 p-6">
         <div class="bg-[#fff] w-full p-6 pt-5 drop-shadow-2xl rounded-xl">
             <div class="items-center w-full mt-6 mb-6">
@@ -275,7 +275,7 @@
 @section('scripts')
 <script>
     function formatDate() {
-    var input = document.getElementById('fax');
+    var input = document.getElementById('position');
     var date = new Date(input.value);
     var day = date.getDate();
     var month = date.getMonth() + 1;

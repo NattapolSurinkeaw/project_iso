@@ -3,7 +3,8 @@
 @section('content')
 <div class="bg-gray-100 py-20">
   <div class="w-11/12 mx-auto">
-    <h1 class="text-3xl text-center">Course : ISO9001</h1>
+    <h1 class="text-3xl text-center">Course : {{$course->course_name}}</h1>
+    <h1 class="text-3xl text-center">Teacher : {{$course->user_name}}</h1>
 
     <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
       <div class="animate__animated animate__bounce flex justify-between ">

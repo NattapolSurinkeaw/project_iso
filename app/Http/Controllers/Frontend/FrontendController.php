@@ -27,6 +27,17 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function coursePage($id) {
+        
+        $course = Elerningcourse::find($id);
+
+        return view('pages.app_elerning.course',compact('course'));
+    }
+
+    public function courseDetail() {
+        return view('pages.app_elerning.course_detail');
+    }
+
     public function tainingPage() {
         $courses = Course::all();
 
@@ -63,14 +74,6 @@ class FrontendController extends Controller
 
     public function emailForm() {
         return view('emails.welcome');
-    }
-
-    public function coursePage() {
-        return view('pages.app_elerning.course');
-    }
-
-    public function courseDetail() {
-        return view('pages.app_elerning.course_detail');
     }
 
     public function cartPage() {

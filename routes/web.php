@@ -35,7 +35,7 @@ use App\Http\Controllers\Frontend\DashboardController;
   Route::get('/newsdetails',[FrontendController::class,'newsDetail']);
   Route::get('/contact',[FrontendController::class,'contactPage']);
   Route::get('/elerning',[FrontendController::class,'elerningPage']);
-  Route::get('/course',[FrontendController::class,'coursePage']);
+  Route::get('/course/{id}',[FrontendController::class,'coursePage']);
   Route::get('/coursedetail',[FrontendController::class,'courseDetail']);
   Route::get('/quiz',[FrontendController::class,'startQuiz']);
   Route::get('/allquiz',[FrontendController::class,'all_quiz']);

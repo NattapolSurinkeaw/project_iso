@@ -60,7 +60,7 @@
                                 </div>
                                 <a class="bg-blue-500 rounded-md p-1" href="/coursedetail">detail</a>
                             </div>
-                        </div>
+                        </div>/*
                     </a>
                 </div>
                 @endforeach
