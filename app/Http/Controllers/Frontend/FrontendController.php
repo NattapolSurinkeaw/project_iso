@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
-use App\Models\Elerningcourse;
 
 class FrontendController extends Controller
 {
@@ -19,25 +18,6 @@ class FrontendController extends Controller
     //     ]);
     // }
 
-    public function elerningPage() {
-        $elcourses = Elerningcourse::all();
-
-        return view('pages.app_elerning.all_courses',[
-            "elcourses" => $elcourses
-        ]);
-    }
-
-    public function coursePage($id) {
-        
-        $course = Elerningcourse::find($id);
-
-        return view('pages.app_elerning.course',compact('course'));
-    }
-
-    public function courseDetail() {
-        return view('pages.app_elerning.course_detail');
-    }
-
     public function tainingPage() {
         $courses = Course::all();
 
@@ -46,20 +26,13 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function newsAndEventPage() {
-        return view('pages.app_NewsAndEvent.newsAndEvent');
-    }
-
-    public function newsDetail() {
-        return view('pages.app_NewsAndEvent.newsDetail');
-    }
-
     public function contactPage() {
         return view('pages.app_iso.contact');
     }
 
     public function calendarReserve($course_id) {
-        return view('pages.app_training.calendar_reserve', compact('course_id'));
+        $course = Course::find($course_id);
+        return view('pages.app_training.calendar_reserve', compact('course_id', 'course'));
     } 
     
     public function trainingForm () {

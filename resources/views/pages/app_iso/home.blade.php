@@ -44,7 +44,7 @@
 
   <a href="#ourVideo">
     <div class="flex items-center  gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-2xl">
-      <img class="w-14 h-14" src="image/icon/book.png" alt="">
+      <img class="w-14 h-14" src="image/icon/video.png" alt="">
       <div class="flex gap-2 flex-col justify-center">
         <h1 class="text-lg font-medium">วิดีโอแนะนำ</h1>
         <p class="font-medium">45,00</p>
@@ -114,13 +114,37 @@
 
 <!-- วิดีโอของเรา -->
 <div id="ourVideo"></div>
-<div class="w-10/12 bg-red-400 mx-auto p-14 h-40">
-  <h1 class="text-center text-3xl">Video</h1>
+<div class="w-10/12 bg-red-400 mx-auto p-14">
+  <h1 class="text-center text-3xl">Our Video</h1>
+  <div class="flex justify-center my-10 gap-5">
+
+    @php 
+      $embed1 = \Embed::make('https://www.youtube.com/watch?v=qedG8ugiyFc')->parseUrl();
+    @endphp
+
+    <div class="">
+      @php
+        if ($embed1) {
+          // Display the embed HTML in a div
+          echo "<div class='video'>" . $embed1->getHtml() . "</div>";
+      } else {
+          // If provider is not found
+          echo "Video not found.";
+      }
+      @endphp
+    </div>
+    <div>
+      <iframe src="https://drive.google.com/file/d/1kJiC7agiB23YQtIbVEhHW4eew-hcGCL9/preview" width="300" height="300" allow="autoplay"></iframe>
+    </div>
+    <div>
+        <iframe src="https://drive.google.com/file/d/1_GcCKEaFWJXwoDA3gmTVM4dkvefsI67B/preview" width="300" height="300" allow="autoplay"></iframe>
+    </div>
+  </div>
 </div>
 
 <!-- หลักสูตรของเรา  -->
 <div id="ourCourse"></div>
-<div  class="flex flex-col gap-5 w-10/12 mx-auto mb-4">
+<div  class="flex flex-col gap-5 w-10/12 mx-auto mt-10 mb-4">
   <h1 class="text-center text-2xl font-medium">CHECK OUT THE HOT RELEASES</h1>
   <div class="flex justify-start items-center gap-10">
     <img class="w-72 rounded-xl" src="https://media.istockphoto.com/id/1425406857/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4.jpg?s=1024x1024&w=is&k=20&c=mS8Ml7NhgFzRvTr1L7c-Rqfr2009YhBEdLgnz7xLrZo=" alt="">

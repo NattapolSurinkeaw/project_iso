@@ -58,9 +58,9 @@
                                     <h1 class="font-bold">THB{{number_format($elcourse->price)}}</h1>
                                     <h1 class="text-gray-300 ml-2 line-through">THB1,200</h1>
                                 </div>
-                                <a class="bg-blue-500 rounded-md p-1" href="/coursedetail">detail</a>
+                                <a class="bg-blue-500 rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
                             </div>
-                        </div>/*
+                        </div>
                     </a>
                 </div>
                 @endforeach
