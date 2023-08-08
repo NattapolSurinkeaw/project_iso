@@ -45,21 +45,21 @@
 
 <nav id="myNav" class="fixed left-0 top-0 w-full duration-300 bg-inherit shadow z-[999]">
   <div class="container m-auto flex items-center justify-between text-gray-700">
-    <a href="/" class="flex items-center">
+    <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
     </a>
     <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-semibold md:flex text-gray-200">
-      <a href="/"><li class="px-6 py-4 hover:bg-gray-200">Home</li></a>
-      <a href="/elerning"><li class="px-6 py-4 hover:bg-gray-200">Elerning</li></a>
-      <a href="/newsandevent"><li class="px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
-      <a href="/training"><li class="px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
-      <a href="/contact"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
+      <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">Home</li></a>
+      <a href="{{url('/elerning')}}"><li class="px-6 py-4 hover:bg-gray-200">Elerning</li></a>
+      <a href="{{url('/newsandevent')}}"><li class="px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
+      <a href="{{url('/training')}}"><li class="px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
+      <a href="{{url('/contact')}}"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
     </ul>
     @if($user)
       <div class="text-base hidden cursor-pointer items-center pr-10 font-semibold md:flex gap-3">
-        <a href="/dashboard"><box-icon name='user-circle' type='solid' color='#a00101' ></box-icon></a>
-        <a href="/dashboard"><h1 id="navUser" class="text-inherit">{{$user->name}}</h1></a>
-        <a href="/cart"><box-icon name='cart' color='#a00101' ></box-icon></a>
+        <a href="{{url('/dashboard')}}"><box-icon name='user-circle' type='solid' color='#a00101' ></box-icon></a>
+        <a href="{{url('/dashboard')}}"><h1 id="navUser" class="text-inherit">{{$user->name}}</h1></a>
+        <a href="{{url('/cart')}}"><box-icon name='cart' color='#a00101' ></box-icon></a>
         <button onclick="onLogout()" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Logout</button>
       </div>
     @else
