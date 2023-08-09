@@ -22,20 +22,39 @@
     @endforeach
   </swiper-container>
 
-  @foreach($newsEvents as $news)
-  <a href="/newsdetails/{{$news->id}}">
-    <div class="flex mb-4 overflow-hidden">
-      <div class="h-76 w-80 overflow-hidden">
-        <img class="border duration-300 hover:brightness-[0.7] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
-      </div>
-      <div class="px-10 w-[600px]">
-        <h1 class="text-2xl mb-4">{{$news->name}}</h1>
-        <p>{{$news->content}}</p>
-      </div>
+  <div class="flex gap-4">
+    <div class="w-full">
+      @foreach($newsEvents as $news)
+      <a href="/newsdetails/{{$news->id}}">
+        <div class="flex mb-4 overflow-hidden">
+          <div class="h-76 w-80 overflow-hidden">
+            <img class="border duration-300 hover:brightness-[0.7] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
+          </div>
+          <div class="px-10 w-[600px]">
+            <h1 class="text-2xl mb-4">{{$news->name}}</h1>
+            <p>{{$news->content}}</p>
+          </div>
+        </div>
+      </a>
+      @endforeach
     </div>
-  </a>
-  @endforeach
-</div>
+
+    <div class="w-full">
+      <h1>เนื้อหาแนะนำ</h1>
+      <a href="">
+        <div>
+          <div class="h-40 w-40 overflow-hidden">
+            <img class="border duration-300 hover:brightness-[0.7] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
+          </div>
+          <div class="px-10 w-[600px]">
+            <h1 class="text-2xl mb-4">{{$news->name}}</h1>
+            <p>{{$news->content}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  </div>
 
 
 
