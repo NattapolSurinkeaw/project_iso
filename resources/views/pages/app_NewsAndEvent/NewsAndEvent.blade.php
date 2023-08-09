@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') News & Event @endsection
 @section('content')
-<h1 class="text-2xl text-center pt-20">News And Events </h1>
+<h1 class="text-2xl text-center font-bold pt-20">News And Events </h1>
 <div class="w-11/12 mx-auto">
   <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" loop="true" slides-per-view="3"
     space-between="20" free-mode="true">
@@ -23,38 +23,28 @@
   </swiper-container>
 
   <div class="flex gap-4">
-    <div class="w-full">
+    <div class="w-full pl-2 py-2 rounded-lg bg-gray-200">
       @foreach($newsEvents as $news)
       <a href="/newsdetails/{{$news->id}}">
-        <div class="flex mb-4 overflow-hidden">
-          <div class="h-76 w-80 overflow-hidden">
-            <img class="border duration-300 hover:brightness-[0.7] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
+        <div class="flex relative overflow-hidden">
+          <div class="h-76 w-80  overflow-hidden">
+            <img class="border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
           </div>
-          <div class="px-10 w-[600px]">
-            <h1 class="text-2xl mb-4">{{$news->name}}</h1>
-            <p>{{$news->content}}</p>
+          <div class="px-10 w-[600px] flex flex-col justify-center">
+            <h1 class="text-2xl text-white p-2 pl-10 mb-4 underline absolute top-5 left-0 bg-gray-400 w-full">{{$news->name}}</h1>
+            <p >{{$news->content}}</p>
           </div>
         </div>
+        <hr class="border border-red-200 my-4">
       </a>
       @endforeach
     </div>
 
-    <div class="w-full">
-      <h1>เนื้อหาแนะนำ</h1>
-      <a href="">
-        <div>
-          <div class="h-40 w-40 overflow-hidden">
-            <img class="border duration-300 hover:brightness-[0.7] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
-          </div>
-          <div class="px-10 w-[600px]">
-            <h1 class="text-2xl mb-4">{{$news->name}}</h1>
-            <p>{{$news->content}}</p>
-          </div>
-        </div>
-      </a>
+    <div class="w-full p-2 rounded-lg bg-gray-200">
+      <h1 class="text-center text-xl font-bold">ข่าวที่น่าสนใจ</h1>
     </div>
   </div>
-  </div>
+</div>
 
 
 

@@ -37,7 +37,7 @@
       <p class="my-5">ไฟล์สำหรับทำความเข้าใจควบคู่กับการเกี่ยวกับมาตรฐาน iso</p>
       <p class="my-4 text-blue-400 cursor-pointer">
         <video class="w-96" controls>
-          <source src="https://www.youtube.com/watch?v=C0DPdy98e4c" type="video/mp4">
+          <source src="https://drive.google.com/file/d/1kJiC7agiB23YQtIbVEhHW4eew-hcGCL9/preview" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </p>
