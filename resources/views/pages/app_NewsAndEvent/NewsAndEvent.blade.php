@@ -32,7 +32,14 @@
           </div>
           <div class="px-10 w-[600px] flex flex-col justify-center">
             <h1 class="text-2xl text-white p-2 pl-10 mb-4 underline absolute top-5 left-0 bg-gray-400 w-full">{{$news->name}}</h1>
-            <p >{{$news->content}}</p>
+            <p >{{$news->description}}</p>
+            <div class="flex gap-2">
+              <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show' color='#a2a2a2' ></box-icon></span>
+              <span>/</span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' color='#a2a2a2' ></box-icon></span>
+              <span>/</span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' color='#a2a2a2' ></box-icon></span>
+            </div>
           </div>
         </div>
         <hr class="border border-red-200 my-4">
