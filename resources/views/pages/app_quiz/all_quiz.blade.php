@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') QuizPage @endsection
 @section('content')
-  <div class="bg-gray-200 w-full p-10 pt-20 flex justify-center">
+  <div class="bg-gray-200 w-full p-10 pt-20 flex justify-center"> @dd($quizzes)
     <div for="box-quiz" class="w-full flex flex-col items-center gap-10">
         <div class="text-xl w-full flex justify-end">
             timer : <span id="counting-time" class="ml-2"> 0.0</span> 

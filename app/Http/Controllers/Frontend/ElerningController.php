@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Elerningcourse;
 
 class ElerningController extends Controller
 {
@@ -20,6 +19,8 @@ class ElerningController extends Controller
     public function coursePage($id) {
         
         $course = Elerningcourse::find($id);
+
+        session(['id' => $id]);
 
         return view('pages.app_elerning.course',compact('course'));
     }

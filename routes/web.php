@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\DashboardController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\ElerningController;
 use App\Http\Controllers\Frontend\NewsAndEventController;
+use App\Http\Controllers\Frontend\TrainingController;
+use App\Http\Controllers\Frontend\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +33,9 @@ use App\Http\Controllers\Frontend\NewsAndEventController;
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
 
-  Route::get('/training',[FrontendController::class,'tainingPage']);
-  Route::get('/reserveday/{course_id}',[FrontendController::class,'calendarReserve']);
-  Route::get('/trainingform',[FrontendController::class,'trainingForm']);
+  Route::get('/training',[TrainingController::class,'tainingPage']);
+  Route::get('/reserveday/{course_id}',[TrainingController::class,'calendarReserve']);
+  Route::get('/trainingform',[TrainingController::class,'trainingForm']);
 
   Route::get('/newsandevent',[NewsAndEventController::class,'newsAndEventPage']);
   Route::get('/newsdetails/{id}',[NewsAndEventController::class,'newsDetail']);
@@ -42,9 +44,9 @@ use App\Http\Controllers\Frontend\NewsAndEventController;
   Route::get('/course/{id}',[ElerningController::class,'coursePage']);
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);
   
-  Route::get('/quiz',[FrontendController::class,'startQuiz']);
-  Route::get('/allquiz',[FrontendController::class,'all_quiz']);
-  Route::get('/scoresumary',[FrontendController::class,'score_sumary']);
+  Route::get('/quiz/{id}',[QuizController::class,'quizPage']);
+  Route::get('/allquiz/{id}',[QuizController::class,'all_quiz']);
+  Route::get('/scoresumary',[QuizController::class,'score_sumary']);
 
   Route::get('/cart',[FrontendController::class,'cartPage']);
   Route::get('/payment',[FrontendController::class,'paymentForm']);

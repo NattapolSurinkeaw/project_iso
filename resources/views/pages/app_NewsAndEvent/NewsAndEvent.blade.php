@@ -34,11 +34,11 @@
             <h1 class="text-2xl text-white p-2 pl-10 mb-4 underline absolute top-5 left-0 bg-gray-400 w-full">{{$news->name}}</h1>
             <p >{{$news->description}}</p>
             <div class="flex gap-2">
-              <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show' color='#a2a2a2' ></box-icon></span>
+              <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show'></box-icon></span>
               <span>/</span>
-              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' color='#a2a2a2' ></box-icon></span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
               <span>/</span>
-              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' color='#a2a2a2' ></box-icon></span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span>
             </div>
           </div>
         </div>
@@ -47,8 +47,26 @@
       @endforeach
     </div>
 
-    <div class="w-full p-2 rounded-lg bg-gray-200">
-      <h1 class="text-center text-xl font-bold">ข่าวที่น่าสนใจ</h1>
+    <div class="w-full max-w-[400px] p-2 rounded-lg bg-gray-200">
+      <h1 class="text-center text-xl font-bold mb-2">ข่าวที่น่าสนใจ</h1>
+      @foreach($newsEvents as $news)
+      <a href="/newsdetails/{{$news->id}}">
+        <div class="w-full rounded-lg bg-gray-400 my-5 flex flex-col gap-2 items-center justify-center">
+          <h1 class="text-lg text-blue-800">{{$news->name}}</h1>
+          <div class="overflow-hidden w-11/12 rounded-lg">
+            <img class="border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="">
+          </div>
+          <h1>{{$news->description}}</h1>
+          <div class="p-2 flex gap-2">
+            <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show'></box-icon></span>
+            <span>/</span>
+            <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
+            <span>/</span>
+            <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span>
+          </div>
+        </div>
+      </a>
+      @endforeach
     </div>
   </div>
 </div>
