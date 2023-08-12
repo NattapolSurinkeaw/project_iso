@@ -12,10 +12,6 @@ class DashboardController extends Controller
         return view('pages.app_dashboard.dashboard');
     }
 
-    public function profile() {
-        return view('pages.app_dashboard.profile');
-    }
-
     public function myCourse() {
         return view('pages.app_dashboard.mycourse');
     }

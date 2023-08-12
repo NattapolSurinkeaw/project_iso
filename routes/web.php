@@ -54,7 +54,6 @@ use App\Http\Controllers\Frontend\QuestionController;
   Route::get('/payment',[FrontendController::class,'paymentForm'])->middleware('checklogin');
 
   Route::get('/dashboard',[DashboardController::class,'dashboard_user'])->middleware('checklogin');
-  Route::get('/profile',[DashboardController::class,'profile'])->middleware('checklogin');
   Route::get('/mycourse',[DashboardController::class,'myCourse'])->middleware('checklogin');
   Route::get('/purchasehistory',[DashboardController::class,'purchasePage'])->middleware('checklogin');
   Route::get('/reservationhistory',[DashboardController::class,'reservationPage'])->middleware('checklogin');

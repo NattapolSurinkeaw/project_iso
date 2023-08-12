@@ -95,15 +95,20 @@
     if (result.isConfirmed) {
             // ในส่วนนี้เรามีความมั่นใจว่าผู้ใช้กดปุ่ม "Submit"
             const response = await axios.put(`api/dashboard/edituser/${user.id}`, result.value);
-
+            const swal = await Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'User has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                      })
             console.log(response);
+            // location.reload();
         }
     } catch (error) {
         console.error(error);
   }
 }
-
-
 
 </script>
 @endsection
