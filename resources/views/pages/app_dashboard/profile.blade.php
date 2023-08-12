@@ -57,7 +57,8 @@
   console.log(param)
 
   function saveData() {
-    // axios.put('')
+    axios.put(`api/dashboard/edituser/${user.id}`,param).
+    then(function (response) {console.log(response.data)})
     console.log("saveData")
   }
 </script>

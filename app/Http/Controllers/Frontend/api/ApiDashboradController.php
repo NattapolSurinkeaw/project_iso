@@ -8,4 +8,17 @@ use Illuminate\Http\Request;
 class ApiDashboradController extends Controller
 {
     //
+    public function editUser(Request $request, $user_id ) {
+
+        // dd($request);
+        
+
+        return response([
+            'status' => 200,
+            'message' => 'success'
+        ], 200);
+
+
+
+    }
 }

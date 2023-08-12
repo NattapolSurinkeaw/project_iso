@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/auth/register', [BackendController::class, 'onRegister']);
 Route::post('/auth/login', [BackendController::class, 'onLogin']);
 Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
+
+Route::put('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
 
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
 Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
