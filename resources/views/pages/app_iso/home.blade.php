@@ -92,8 +92,17 @@
     </div>
   </a>
 </div>
+{{-- @if (session('user'))
+    <p>User: {{ session('user') }}</p>
+@else
+  <p>nodata</p>
+@endif --}}
 {{-- {{Auth::user()->name}} --}}
 {{-- @dd($user) --}}
+{{-- @dd($allSessions) --}}
+{{-- @foreach ($allSessions as $key => $value)
+    <p>{{ $key }}: {{ $value }}</p>
+@endforeach --}}
 {{-- @if($user)
   <h1>Mr => {{$user->email}}</h1>
 @else 

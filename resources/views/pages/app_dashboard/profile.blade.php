@@ -26,6 +26,9 @@
       </div>
   
     </div>
+    <div>
+      <button onclick="saveData()" class="bg-green-500 text-white py-2 px-4 rounded-xl">save</button>
+    </div>
   </div>
   <!-- endbox -->
 
@@ -52,6 +55,11 @@
 
   }
   console.log(param)
+
+  function saveData() {
+    // axios.put('')
+    console.log("saveData")
+  }
 </script>
 
 @endsection

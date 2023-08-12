@@ -97,7 +97,7 @@
 <script>
   
   function onLogout() {
-    axios.get('api/auth/logout').then((response) => {
+    axios.get('/api/auth/logout').then((response) => {
       console.log(response);
       location.href ='/login';
     });

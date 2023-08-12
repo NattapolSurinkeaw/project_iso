@@ -30,7 +30,8 @@ use App\Http\Controllers\Frontend\QuestionController;
 // Route::middleware('web')->group(function () {
   Route::get('/', [Controller::class, 'homePage']);
   Route::get('/register', [Controller::class, 'registerPage']);
-  Route::get('/login', [Controller::class, 'loginPage']);
+  Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
+
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
 
@@ -42,25 +43,23 @@ use App\Http\Controllers\Frontend\QuestionController;
   Route::get('/newsdetails/{id}',[NewsAndEventController::class,'newsDetail']);
   
   Route::get('/elerning',[ElerningController::class,'elerningPage']);
-  Route::get('/course/{id}',[ElerningController::class,'coursePage']);
+  Route::get('/course/{id}',[ElerningController::class,'coursePage'])->middleware('checklogin');
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);
   
-  Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart']);
-  Route::get('/all_question/{id}',[QuestionController::class,'all_question']);
-  Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary']);
+  Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart'])->middleware('checklogin');
+  Route::get('/all_question/{id}',[QuestionController::class,'all_question'])->middleware('checklogin');
+  Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
-  Route::get('/cart',[FrontendController::class,'cartPage']);
-  Route::get('/payment',[FrontendController::class,'paymentForm']);
+  Route::get('/cart',[FrontendController::class,'cartPage'])->middleware('checklogin');
+  Route::get('/payment',[FrontendController::class,'paymentForm'])->middleware('checklogin');
 
-  Route::get('/dashboard',[DashboardController::class,'dashboard_user']);
-  Route::get('/profile',[DashboardController::class,'profile']);
-  Route::get('/mycourse',[DashboardController::class,'myCourse']);
-  Route::get('/purchasehistory',[DashboardController::class,'purchasePage']);
-  Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
+  Route::get('/dashboard',[DashboardController::class,'dashboard_user'])->middleware('checklogin');
+  Route::get('/profile',[DashboardController::class,'profile'])->middleware('checklogin');
+  Route::get('/mycourse',[DashboardController::class,'myCourse'])->middleware('checklogin');
+  Route::get('/purchasehistory',[DashboardController::class,'purchasePage'])->middleware('checklogin');
+  Route::get('/reservationhistory',[DashboardController::class,'reservationPage'])->middleware('checklogin');
 
 // });
-
-
 
 
 // Route::get('/home', [FrontendController::class, 'index']);

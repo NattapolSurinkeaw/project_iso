@@ -18,6 +18,6 @@ class ShareUser
     {
         $user = Auth::user();
         view()->share('user', $user);
-        return $next($request); 
+        return $next($request);  // คืนค่า Response จาก $next
     }
 }

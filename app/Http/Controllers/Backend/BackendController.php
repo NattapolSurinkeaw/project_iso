@@ -23,8 +23,7 @@ class BackendController extends Controller
 {
     use HasApiTokens;
     
-    public function onRegister(Request $request)
-    {
+    public function onRegister(Request $request) {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users',
             'password' => 'required',
@@ -56,8 +55,7 @@ class BackendController extends Controller
         }
     }
 
-    public function onGetAdminData()
-    {
+    public function onGetAdminData() {
         try {
             $user = User::where("email", Auth::user()->email)->first();
             $user->name = "admin";
@@ -75,8 +73,7 @@ class BackendController extends Controller
         }
     }
 
-    public function onGetUserData()
-    {
+    public function onGetUserData() {
         try {
             $user = User::wherie("email", Auth::user()->emal)->first();
             $user->name = "user";
@@ -94,8 +91,7 @@ class BackendController extends Controller
         }
     }
 
-    public function onLogin(Request $request)
-    {
+    public function onLogin(Request $request) {
         try {
             $data = [
                 'email' => $request->email,
@@ -108,10 +104,12 @@ class BackendController extends Controller
                 $token = $user->createToken($data['email'], ['admin']); // add Abilities => admin and user
                 $accessToken = $token->plainTextToken; // เพิ่มบรรทัดนี้เพื่อเก็บ Token ที่สร้างขึ้น
 
+                // session(['user' => $user]); // ตั้งค่า Session 'user'
+
                 return response([
                     'message' => 'ok',
                     'description' => 'Login Success',
-                    'access_token' => $accessToken, // เพิ่มค่า access_token ใน response
+                    'access_token' => $accessToken,
                     'data' => Auth::user()
                 ]);
             } else {
@@ -129,8 +127,7 @@ class BackendController extends Controller
         }
     }
 
-    public function onLogout()
-    {
+    public function onLogout() {
         try {
             // if (Auth::check()) {
             //     // ลบ token ที่ถูกสร้างขึ้นโดยผู้ใช้ปัจจุบัน

@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/auth/register', [BackendController::class, 'onRegister']);
 Route::post('/auth/login', [BackendController::class, 'onLogin']);
-Route::get('/auth/logout', [BackendController::class, 'onLogout']);
+Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
 
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
 Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
