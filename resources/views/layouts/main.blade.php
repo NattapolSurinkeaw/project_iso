@@ -29,11 +29,6 @@
   
   @vite('resources/js/main.js')
   @yield('scripts')
-  <script>
-    AOS.init({
-      once: true
-    });
-  </script>
   
 </body>
 </html>

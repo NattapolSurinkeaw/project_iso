@@ -13,16 +13,13 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('elerningcoruse_id')->unsigned();
-            $table->string('question');
-            $table->string('choice1');
-            $table->string('choice2');
-            $table->string('choice3');
-            $table->string('choice4');
-            $table->string('answer')->nullable();
+            $table->string('quiz_name');
+            $table->unsignedBigInteger('elerningcourse_id')->unsigned();
+            $table->string('quiz_type');
+            //เพิ่มฟิล์ด เวลา $table->integer('timer');
             $table->timestamps();
 
-            $table->foreign('elerningcoruse_id')->references('id')->on('elerningcourses')->onDe;
+            $table->foreign('elerningcourse_id')->references('id')->on('elerningcourses')->onDelete('cascade');
         });
     }
 

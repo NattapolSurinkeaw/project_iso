@@ -10,4 +10,9 @@ class Elerningcourse extends Model
     use HasFactory;
 
     protected $fillable = ['course_name', 'user_name', 'price', 'description'];
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class, 'elerningcourse_id');
+    }
 }

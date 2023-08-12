@@ -16,4 +16,16 @@ class DashboardController extends Controller
         return view('pages.app_dashboard.profile');
     }
 
+    public function myCourse() {
+        return view('pages.app_dashboard.mycourse');
+    }
+
+    public function purchasePage() {
+        return view('pages.app_dashboard.purchase_history');
+    }
+
+    public function reservationPage() {
+        return view('pages.app_dashboard.reservation_history');
+    }
+
 }

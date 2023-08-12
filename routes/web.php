@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\ElerningController;
 use App\Http\Controllers\Frontend\NewsAndEventController;
 use App\Http\Controllers\Frontend\TrainingController;
 use App\Http\Controllers\Frontend\QuizController;
+use App\Http\Controllers\Frontend\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,15 +45,18 @@ use App\Http\Controllers\Frontend\QuizController;
   Route::get('/course/{id}',[ElerningController::class,'coursePage']);
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);
   
-  Route::get('/quiz/{id}',[QuizController::class,'quizPage']);
-  Route::get('/allquiz/{id}',[QuizController::class,'all_quiz']);
-  Route::get('/scoresumary',[QuizController::class,'score_sumary']);
+  Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart']);
+  Route::get('/all_question/{id}',[QuestionController::class,'all_question']);
+  Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary']);
 
   Route::get('/cart',[FrontendController::class,'cartPage']);
   Route::get('/payment',[FrontendController::class,'paymentForm']);
 
   Route::get('/dashboard',[DashboardController::class,'dashboard_user']);
   Route::get('/profile',[DashboardController::class,'profile']);
+  Route::get('/mycourse',[DashboardController::class,'myCourse']);
+  Route::get('/purchasehistory',[DashboardController::class,'purchasePage']);
+  Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
 
 // });
 

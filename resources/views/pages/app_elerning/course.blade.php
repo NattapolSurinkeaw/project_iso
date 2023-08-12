@@ -53,8 +53,9 @@
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 
-      <p class="my-4 text-green-500 cursor-pointer"><a href="/quiz/{{$course->id}}">แบบทดสอบก่อนเรียน</a></p>
-      <p class="my-4 text-red-500 cursor-pointer">แบบทดสอบหลังเรียน</p>
+      @foreach($quizzes as $quiz)
+      <p class="my-4 text-green-500 cursor-pointer"><a href="/quizstart/{{$course->id}}/{{$quiz->id}}" data-type="{{$quiz->quiz_type}}">{{$quiz->quiz_name}}</a></p>
+      @endforeach
       <p>07-feb-23, 08.02 Am</p>
       <hr>
     </div>
