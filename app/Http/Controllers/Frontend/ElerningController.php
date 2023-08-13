@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Elerningcourse;
 use App\Models\Quiz;
+use App\Models\Annoucement;
 
 class ElerningController extends Controller
 {
@@ -22,10 +23,11 @@ class ElerningController extends Controller
         session(['course_id' => $course_id]);
         $sessionCourseId = session('course_id');
         
-        $course = Elerningcourse::find($course_id);
+        $course = Elerningcourse::find($sessionCourseId);
         $quizzes = Quiz::where('elerningcourse_id', $course_id)->get();
-
-        return view('pages.app_elerning.course',compact('course', 'quizzes'));
+        $announcements = Annoucement::where('elerningcourse_id', $course_id)->get();
+        
+        return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes'));
     }
 
     public function courseDetail($id) {

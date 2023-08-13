@@ -13,13 +13,11 @@
         <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
-
-      <p class="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam optio maxime libero incidunt voluptates doloribus consectetur? Nemo adipisci maiores eos, eum, quas, laborum consequuntur iste minima suscipit corrupti dolor voluptas!</p>
-      <p>07-feb-23, 08.02 Am</p>
+      @foreach($announcements as $announcement)
+      <p class="my-4">{{$announcement->content}}</p>
+      <p>{{$announcement->updated_at->format('d-M-Y')}}</p>
       <hr>
-      <p class="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam optio maxime libero incidunt voluptates doloribus consectetur? Nemo adipisci maiores eos, eum, quas, laborum consequuntur...</p>
-      <p>07-feb-30, 09.10 Am</p>
-      <hr>
+      @endforeach
     </div>
 
     <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">

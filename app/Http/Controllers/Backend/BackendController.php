@@ -170,4 +170,10 @@ class BackendController extends Controller
             'data' => $courses
         ]);
     }
+
+
+    //เรียก Page
+    public function homePage() {
+        return view('backend.pages.index');
+    }
 }

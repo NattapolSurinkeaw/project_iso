@@ -51,7 +51,7 @@
             title: 'Login Success',
             showConfirmButton: false,
             timer: 1000
-        }).then(() => location.href = '/');
+        }).then(() => history.back());
     })
     .catch((error) => {
         console.log(error);

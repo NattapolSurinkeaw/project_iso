@@ -15,4 +15,9 @@ class Elerningcourse extends Model
     {
         return $this->hasMany(Quiz::class, 'elerningcourse_id');
     }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class, 'elerningcourse_id');
+    }
 }

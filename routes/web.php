@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\TrainingController;
 use App\Http\Controllers\Frontend\QuizController;
 use App\Http\Controllers\Frontend\QuestionController;
 
+use App\Http\Controllers\Backend\BackendController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,8 +38,7 @@ use App\Http\Controllers\Frontend\QuestionController;
   Route::get('/contact',[FrontendController::class,'contactPage']);
 
   Route::get('/training',[TrainingController::class,'tainingPage']);
-  Route::get('/reserveday/{course_id}',[TrainingController::class,'calendarReserve']);
-  Route::get('/trainingform',[TrainingController::class,'trainingForm']);
+  
 
   Route::get('/newsandevent',[NewsAndEventController::class,'newsAndEventPage']);
   Route::get('/newsdetails/{id}',[NewsAndEventController::class,'newsDetail']);
@@ -53,12 +54,21 @@ use App\Http\Controllers\Frontend\QuestionController;
   Route::get('/cart',[FrontendController::class,'cartPage'])->middleware('checklogin');
   Route::get('/payment',[FrontendController::class,'paymentForm'])->middleware('checklogin');
 
-  Route::get('/dashboard',[DashboardController::class,'dashboard_user'])->middleware('checklogin');
-  Route::get('/mycourse',[DashboardController::class,'myCourse'])->middleware('checklogin');
-  Route::get('/purchasehistory',[DashboardController::class,'purchasePage'])->middleware('checklogin');
-  Route::get('/reservationhistory',[DashboardController::class,'reservationPage'])->middleware('checklogin');
+  
 
+Route::middleware('checklogin')->group(function () { 
+  Route::get('/reserveday/{course_id}',[TrainingController::class,'calendarReserve']);
+  Route::get('/trainingform',[TrainingController::class,'trainingForm']);
+
+  Route::get('/dashboard',[DashboardController::class,'dashboard_user']);
+  Route::get('/mycourse',[DashboardController::class,'myCourse']);
+  Route::get('/purchasehistory',[DashboardController::class,'purchasePage']);
+  Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
+});  
 // });
+Route::prefix('backend')->middleware('checklogin')->group(function () { 
+  Route::get('/',[BackendController::class,'homePage']);
+});
 
 
 // Route::get('/home', [FrontendController::class, 'index']);

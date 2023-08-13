@@ -27,7 +27,7 @@
                         <td class="whitespace-nowrap px-6 py-4">{{$course->name}}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{$course->day}}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ number_format($course->fee) }}</td>
-                        <td class="whitespace-nowrap px-6 py-4">{{$course->date}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{ \Carbon\Carbon::parse($course->date)->format('d-M-Y') }}</td>
                         <td class="whitespace-nowrap px-6 py-4">
                           <a href="{{ url('/reserveday', ['course_id' => $course->id]) }}" class="p-3 bg-green-600 text-white rounded-xl">จองเวลา</a>
                         </td>
