@@ -44,6 +44,10 @@
 @endsection
 
 <script>
+// เก็บ session หน้า register
+document.addEventListener("DOMContentLoaded", function() {
+    sessionStorage.setItem('fromRegister', 'true');
+});
 
 function onRegister() {
     let name = document.querySelector('#fname').value;
@@ -116,7 +120,5 @@ function onRegister() {
         });
     }
 }
-
-
 
 </script>

@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('trainingcourses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('module_id')->unsigned();
             $table->string('code');
             $table->string('name');
             $table->integer('day');
             $table->decimal('fee',8,2);
+            $table->string('img_training'); // เพิ่มคอลัมน์ img_training ในตาราง
             $table->date('date');
             $table->timestamps();
 

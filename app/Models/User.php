@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function elerningcourses()
+    {
+        return $this->belongsToMany(Elerningcourse::class, 'my_courses', 'user_id', 'elerningcourse_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

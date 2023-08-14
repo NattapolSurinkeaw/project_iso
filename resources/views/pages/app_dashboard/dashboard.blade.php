@@ -1,32 +1,44 @@
 @extends('layouts.main')
 @section('title') Dashboard @endsection
 @section('content')
-<div class="py-20 px-1 h-screen gap-4 flex ">
+<div class="pt-20 px-1 h-screen gap-4 flex ">
   <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
     @include('pages.app_dashboard.components.sidebar')
   </div>
   <!-- box-profile -->
-  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col gap-4 items-center">
-    <div class="flex flex-col justify-center items-center gap-4">
-      <h1 class="text-xl font-bold">Profile</h1>
+  <div class="w-full h-full overflow-hidden overflow-y-scroll bg-gray-100 rounded-lg p-4 flex flex-col gap-4">
+    <div class="flex flex-col justify-center gap-4">
+      <h1 class="text-xl text-center font-bold">Profile</h1>
 
-      @if (isset($user->img_profile))
-      <img class="w-80 h-96 bg-gray-300 rounded-lg" src="{{$user->img_profile}}" id="Opt" alt="">
-      @else
-      <img class="w-80 h-96 bg-gray-300 rounded-lg" src="image/icon/user.png" id="Opt" alt="">
-      @endif
+      <div class="flex justify-center">
+        @if (isset($user->img_profile))
+        <img class="w-80 h-96 bg-gray-300 rounded-lg" src="{{$user->img_profile}}" id="Opt" alt="">
+        @else
+        <img class="w-80 h-96 bg-gray-300 rounded-lg" src="image/icon/user.png" id="Opt" alt="">
+        @endif
+      </div>
 
-      <div class="flex gap-4">
+      <div class="w-full flex justify-center gap-4">
         <p>name</p> 
         <p>{{$user->name}}</p>
       </div>
-      <button onclick="editUser()" class="bg-orange-500 p-1 px-2 rounded-lg text-white">แก้ไข</button>
+      <button onclick="editUser()" class="bg-orange-500 p-1 px-2 mx-auto rounded-lg text-white">แก้ไข</button>
     </div>
      <!-- box-mycourse -->
-    <div>
-      <h1 class="text-xl font-bold">my course</h1>
+    <div >
+      <h1 class="text-xl font-bold text-center">my course</h1>
+      <div class="flex gap-2 ">
+      @foreach ($elerningcourses as $elerningcourse)
+        <a href="/course/{{$elerningcourse->id}}">
+          <div class=" mx-4 flex flex-col bg-red-400 ">
+            <h1>{{$elerningcourse->course_name}}</h1>
+            <h1>{{$elerningcourse->user_name}}</h1>
+            <p>{{$elerningcourse->description}}</p>
+          </div>
+        </a>
+        @endforeach
+      </div>
 
-      
     </div>
   <!-- endbox-mycourse -->
   </div>

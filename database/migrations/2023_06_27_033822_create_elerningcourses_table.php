@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('user_name');
             $table->decimal('price', 8, 2);
             $table->text('description');
+            $table->string('img_course'); // เพิ่มคอลัมน์ img_course ในตาราง
             $table->timestamps();
         });
     }

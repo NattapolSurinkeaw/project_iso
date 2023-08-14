@@ -44,6 +44,7 @@
 
     axios.post('api/auth/login', data)
     .then((response) => {
+        const fromRegister = sessionStorage.getItem('fromRegister');
         console.log(response.data);
         Swal.fire({
             position: 'center',
@@ -51,7 +52,17 @@
             title: 'Login Success',
             showConfirmButton: false,
             timer: 1000
-        }).then(() => history.back());
+        }).then(() => {
+            if (fromRegister) {
+                // ลบข้อมูลที่บันทึกไว้
+                sessionStorage.removeItem('fromRegister');
+                // ไปที่หน้า home
+                window.location.href = '/';
+            } else {
+                // กลับไปที่หน้าก่อนหน้า
+                history.back();
+            }
+        });
     })
     .catch((error) => {
         console.log(error);

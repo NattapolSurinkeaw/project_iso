@@ -21,12 +21,15 @@ class Controller extends BaseController
     }
 
     public function registerPage() {
+        if (Auth::user()) {
+            return redirect('/');
+        }
         return view('pages.authen.register');
     }
 
     public function loginPage() {
         if (Auth::user()) {
-            return redirect()->back();
+            return redirect('/');
         }
         return view('pages.authen.login');
     }

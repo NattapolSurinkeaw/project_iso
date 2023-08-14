@@ -31,7 +31,7 @@ use App\Http\Controllers\Backend\BackendController;
 // Route::get('/login',[Controller::class,'loginPage']);
 // Route::middleware('web')->group(function () {
   Route::get('/', [Controller::class, 'homePage']);
-  Route::get('/register', [Controller::class, 'registerPage']);
+  Route::get('/register', [Controller::class, 'registerPage'])->name('register');
   Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
 
 

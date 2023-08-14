@@ -4,12 +4,25 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\MyCourse;
+use App\Models\Elerningcourse;
+
 
 class DashboardController extends Controller
 {
     //
     public function dashboard_user() {
-        return view('pages.app_dashboard.dashboard');
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $elerningcourses = Elerningcourse::whereIn('id', function ($query) use ($user_id) {
+            $query->select('elerningcourse_id')
+                ->from('my_courses')
+                ->where('user_id', $user_id);
+        })->get();
+        // dd($elerningcourses);
+        return view('pages.app_dashboard.dashboard', compact('elerningcourses'));
     }
 
     public function myCourse() {

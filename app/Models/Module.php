@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Course;
+use App\Models\Trainingcourse;
 
 
 class Module extends Model
@@ -15,6 +15,6 @@ class Module extends Model
 
     public function courses()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Trainingcourse::class);
     }
 }

@@ -20,4 +20,9 @@ class Elerningcourse extends Model
     {
         return $this->hasMany(Announcement::class, 'elerningcourse_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'my_courses', 'elerningcourse_id', 'user_id');
+    }
 }
