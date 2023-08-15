@@ -9,28 +9,28 @@
             timer : <span id="counting-time" class="ml-2"> 0.0</span> 
         </div>
         @foreach($questions as $question)
-        <div class="w-3/4 bg-white rounded-xl p-9">
-            <label for="" data="{{$question->answer}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
-            <hr class="border-2 border-[#B6B2B2]">
-            <div class="p-4 flex flex-col gap-4 ">
-                <div class="flex gap-3 text-gray-400 hover:text-black">
-                    <input type="radio" name="{{$question->id}}">
-                    <label for="choich1" name="choich1">{{$question->choice1}}</label>
-                </div>
-                <div class="flex gap-3 text-gray-400 hover:text-black">
-                    <input type="radio" name="{{$question->id}}">
-                    <label for="choich2" name="choich2">{{$question->choice2}}</label>
-                </div>
-                <div class="flex gap-3 text-gray-400 hover:text-black">
-                    <input type="radio" name="{{$question->id}}">
-                    <label for="choich3" name="choich3">{{$question->choice3}}</label>
-                </div>
-                <div class="flex gap-3 text-gray-400 hover:text-black">
-                    <input type="radio" name="{{$question->id}}">
-                    <label for="choich4" name="choich4">{{$question->choice4}}</label>
+            <div class="w-3/4 bg-white rounded-xl p-9">
+                <label for="" data="{{$question->answer}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
+                <hr class="border-2 border-[#B6B2B2]">
+                <div class="p-4 flex flex-col gap-4 ">
+                    <div class="flex gap-3 text-gray-400 hover:text-black">
+                        <input type="radio" name="{{$question->id}}">
+                        <label for="choich1" name="choich1">{{$question->choice1}}</label>
+                    </div>
+                    <div class="flex gap-3 text-gray-400 hover:text-black">
+                        <input type="radio" name="{{$question->id}}">
+                        <label for="choich2" name="choich2">{{$question->choice2}}</label>
+                    </div>
+                    <div class="flex gap-3 text-gray-400 hover:text-black">
+                        <input type="radio" name="{{$question->id}}">
+                        <label for="choich3" name="choich3">{{$question->choice3}}</label>
+                    </div>
+                    <div class="flex gap-3 text-gray-400 hover:text-black">
+                        <input type="radio" name="{{$question->id}}">
+                        <label for="choich4" name="choich4">{{$question->choice4}}</label>
+                    </div>
                 </div>
             </div>
-        </div>
         @endforeach
        {{-- @dd($quiz) --}}
         <div class="w-full flex justify-between px-10 p-2 bg-gray-600 rounded-xl">

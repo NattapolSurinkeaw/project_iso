@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
         });
     }
 

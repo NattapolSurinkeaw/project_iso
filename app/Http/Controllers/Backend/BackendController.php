@@ -97,15 +97,17 @@ class BackendController extends Controller
                 'email' => $request->email,
                 'password' => $request->password
             ];
-
+    
             if (Auth::attempt($data)) {
                 $user = Auth::user();
                 $user->tokens()->delete();
-                $token = $user->createToken($data['email'], ['admin']); // add Abilities => admin and user
-                $accessToken = $token->plainTextToken; // เพิ่มบรรทัดนี้เพื่อเก็บ Token ที่สร้างขึ้น
-
-                // session(['user' => $user]); // ตั้งค่า Session 'user'
-
+                
+                // สร้าง Abilities จาก role
+                $abilities = [$user->role];
+                
+                $token = $user->createToken($data['email'], $abilities);
+                $accessToken = $token->plainTextToken;
+    
                 return response([
                     'message' => 'ok',
                     'description' => 'Login Success',
@@ -126,26 +128,23 @@ class BackendController extends Controller
             ], 500);
         }
     }
-
+    
     public function onLogout() {
         try {
-            // if (Auth::check()) {
-            //     // ลบ token ที่ถูกสร้างขึ้นโดยผู้ใช้ปัจจุบัน
-            //     Auth::user()->currentAccessToken()->delete();
-            // }
-                
-            Auth::logout(); // logout user
+            if (Auth::check()) {
+                $currentAccessToken = Auth::user()->currentAccessToken();
 
-            if (!Auth::check()) {
-                return response([
-                    'message' => 'ok',
-                    'description' => 'Logout Success.'
-                ], 200);
-            } else {
-                return response([
-                    'message' => 'error'
-                ], 500);
+                if ($currentAccessToken) {
+                    $currentAccessToken->delete();
+                }
             }
+
+            Auth::logout();
+
+            return response([
+                'message' => 'ok',
+                'description' => 'Logout Success.'
+            ], 200);
         } catch (Exception $e) {
             return response([
                 'message' => 'error',

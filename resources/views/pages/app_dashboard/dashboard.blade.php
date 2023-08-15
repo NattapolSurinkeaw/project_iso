@@ -28,15 +28,19 @@
     <div >
       <h1 class="text-xl font-bold text-center">my course</h1>
       <div class="flex gap-2 ">
-      @foreach ($elerningcourses as $elerningcourse)
-        <a href="/course/{{$elerningcourse->id}}">
-          <div class=" mx-4 flex flex-col bg-red-400 ">
-            <h1>{{$elerningcourse->course_name}}</h1>
-            <h1>{{$elerningcourse->user_name}}</h1>
-            <p>{{$elerningcourse->description}}</p>
-          </div>
-        </a>
-        @endforeach
+        @if(count($elerningcourses) > 0)
+          @foreach ($elerningcourses as $elerningcourse)
+              <a href="/course/{{$elerningcourse->id}}">
+                  <div class="mx-4 flex flex-col bg-red-400">
+                      <h1>{{$elerningcourse->course_name}}</h1>
+                      <h1>{{$elerningcourse->user_name}}</h1>
+                      <p>{{$elerningcourse->description}}</p>
+                  </div>
+              </a>
+          @endforeach
+        @else
+            <p>nodata</p>
+        @endif
       </div>
 
     </div>
