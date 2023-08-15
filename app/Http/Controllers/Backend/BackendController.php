@@ -132,11 +132,8 @@ class BackendController extends Controller
     public function onLogout() {
         try {
             if (Auth::check()) {
-                $currentAccessToken = Auth::user()->currentAccessToken();
-
-                if ($currentAccessToken) {
-                    $currentAccessToken->delete();
-                }
+                $user = Auth::user();
+                $user->tokens()->delete();
             }
 
             Auth::logout();
