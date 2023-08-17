@@ -12,8 +12,31 @@
       <h1 class="text-center">total Mark : {{$totalScore}}</h1>
       <h1 class="text-center">Duration : 30 min</h1>
       <h1 class="text-center text-3xl text-green-600 font-medium">Started!</h1>
-      <a href="/all_question/{{$quiz->id}}" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Attempt now</a>
+      <button onclick="startQuiz()" id="btnaction" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Attempt now</button>
     </div>
     
   </div>
+@endsection
+
+@section('scripts')
+<script>
+  
+
+  let questionCount = {!! json_encode($questionCount) !!};
+  // console.log(questionCount);
+
+  if(questionCount > 0) {
+    document.querySelector('#btnaction').classList.add("bg-green-700", "hover:bg-green-500");
+  } else {
+    document.querySelector('#btnaction').classList.add("bg-green-200", "hover:bg-green-200");
+  }
+  function startQuiz() {
+    if(questionCount > 0) {
+      window.location.href = "/all_question/{{$quiz->id}}";
+      document.querySelector('#btnaction').addClasslist("bg-green-700")
+    } else {
+      console.log("No Question")
+    }
+  }
+</script>
 @endsection
