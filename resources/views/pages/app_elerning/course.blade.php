@@ -15,7 +15,11 @@
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
       @foreach($announcements as $announcement)
       <p class="my-4">{{$announcement->content}}</p>
-      <p>{{$announcement->updated_at->format('d-M-Y')}}</p>
+      @if ($announcement && $announcement->updated_at)
+        <p>{{$announcement->updated_at->format('d-M-Y')}}</p>
+      @else
+        <p>date</p>
+      @endif
       <hr>
       @endforeach
     </div>

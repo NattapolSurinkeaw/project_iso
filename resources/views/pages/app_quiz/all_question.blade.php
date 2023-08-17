@@ -10,7 +10,7 @@
         </div>
         @foreach($questions as $question)
             <div class="w-3/4 bg-white rounded-xl p-9">
-                <label for="" data="{{$question->answer}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
+                <label for="" data-id="question{{$question->id}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
                 <hr class="border-2 border-[#B6B2B2]">
                 <div class="p-4 flex flex-col gap-4 ">
                     <div class="flex gap-3 text-gray-400 hover:text-black">
@@ -41,12 +41,13 @@
   </div>
 
 @endsection
-
+{{-- @dd($questions) --}}
 @section('scripts')
 <script>
     let timer = document.querySelector('#counting-time').innerText;
     console.log(timer)
 
+    console.log($)
 
 </script>
 
