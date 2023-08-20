@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\QuizController;
 use App\Http\Controllers\Frontend\QuestionController;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::middleware('checklogin')->group(function () {
 // });
 Route::prefix('backend')->middleware('checklogin')->group(function () { 
   Route::get('/',[BackendController::class,'homePage']);
+  Route::get('/member',[MemberController::class,'backendMember']);
 });
 
 

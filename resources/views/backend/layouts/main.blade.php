@@ -14,13 +14,18 @@
 </head>
 <body>
 
-  <div class="flex gap-10">
-    <div class="w-full bg-gray-400 max-w-[240px]">
+  <div class="flex gap-10 h-screen overflow-hidden">
+    <div id="navbar" class="w-full bg-gray-400 max-w-[240px] duration-300">
         @include('backend.layouts.sidebar')
     </div>
   
-    <div class="w-full bg-gray-400" >
-        @yield('container')
+    <div class="w-full flex flex-col gap-4">
+        <div class="bg-gray-400 p-2">
+          <button id="btn-close" onclick="">close</button>
+        </div>
+        <div class="bg-gray-400 h-full">
+          @yield('container')
+        </div>
     </div>
   </div>
  
@@ -33,7 +38,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
   @vite('resources/js/backend.js')
-  @yield('scripts')
+  @yield('be-scripts')
   
 </body>
 </html>
