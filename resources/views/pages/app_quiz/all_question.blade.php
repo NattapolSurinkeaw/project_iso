@@ -57,16 +57,18 @@
 
     // เพิ่มการตรวจจับเหตุการณ์เมื่อมีการเลือก radio input
     document.addEventListener("DOMContentLoaded", function() {
-        var radioInputs = document.querySelectorAll("input[type=radio]");
+    var radioInputs = document.querySelectorAll("input[type=radio]");
 
-        radioInputs.forEach(function(radio) {
-            radio.addEventListener("change", function(event) {
-                var questionId = questionLabel.getAttribute("data-id");
-                var selectedChoice = radio.getAttribute("name");
-                updateUserAnswer(questionId, selectedChoice);
-            });
+    radioInputs.forEach(function(radio) {
+        radio.addEventListener("change", function(event) {
+            var questionId = radio.getAttribute("name");
+            var labelElement = radio.parentElement.querySelector("label"); // ค้นหา label ใน parent element
+            var selectedChoice = labelElement.textContent;
+            updateUserAnswer(questionId, selectedChoice);
         });
     });
+});
+
 
     // ฟังก์ชันสำหรับอัพเดตข้อมูลการเลือกของผู้ใช้ในอาร์เรย์
     function updateUserAnswer(questionId, choice) {

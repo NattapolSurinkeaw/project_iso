@@ -196,6 +196,11 @@
   </div>
 </div>
 
+<div id="news"></div>
+<div>
+  <h1>News and Event</h1>
+</div>
+
 @endsection
 
 @section('scripts')
