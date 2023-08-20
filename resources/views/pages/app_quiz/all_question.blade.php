@@ -10,7 +10,7 @@
         </div>
         @foreach($questions as $question)
             <div class="w-3/4 bg-white rounded-xl p-9">
-                <label for="" data-id="question{{$question->id}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
+                <label for="" data-id="{{$question->id}}">ข้อที่ {{$question->id}} {{$question->question}}</label>
                 <hr class="border-2 border-[#B6B2B2]">
                 <div class="p-4 flex flex-col gap-4 ">
                     <div class="flex gap-3 text-gray-400 hover:text-black">
@@ -47,7 +47,44 @@
     let timer = document.querySelector('#counting-time').innerText;
     console.log(timer)
 
-    console.log($)
+    let data = {!! json_encode($questions) !!};
+    console.log(data)
+
+
+
+    // สร้างอาร์เรย์เพื่อเก็บคำถามและคำตอบที่ผู้ใช้เลือก
+    var userAnswers = [];
+
+    // เพิ่มการตรวจจับเหตุการณ์เมื่อมีการเลือก radio input
+    document.addEventListener("DOMContentLoaded", function() {
+        var radioInputs = document.querySelectorAll("input[type=radio]");
+
+        radioInputs.forEach(function(radio) {
+            radio.addEventListener("change", function(event) {
+                var questionId = questionLabel.getAttribute("data-id");
+                var selectedChoice = radio.getAttribute("name");
+                updateUserAnswer(questionId, selectedChoice);
+            });
+        });
+    });
+
+    // ฟังก์ชันสำหรับอัพเดตข้อมูลการเลือกของผู้ใช้ในอาร์เรย์
+    function updateUserAnswer(questionId, choice) {
+        // ค้นหาว่าคำถามมีการเก็บคำตอบจากผู้ใช้แล้วหรือยัง
+        var existingAnswerIndex = userAnswers.findIndex(function(answer) {
+            return answer.questionId === questionId;
+        });
+
+        // ถ้าคำถามมีการเก็บคำตอบแล้วให้อัพเดตคำตอบ
+        if (existingAnswerIndex !== -1) {
+            userAnswers[existingAnswerIndex].choice = choice;
+        } else {
+            // ถ้ายังไม่มีการเก็บคำตอบให้เพิ่มข้อมูลใหม่เข้าไป
+            userAnswers.push({ questionId: questionId, choice: choice });
+        }
+
+        console.log(userAnswers); // แสดงผลข้อมูลที่ผู้ใช้เลือกในคอนโซล
+    }
 
 </script>
 
