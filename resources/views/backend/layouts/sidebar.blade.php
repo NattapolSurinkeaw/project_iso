@@ -4,10 +4,10 @@
         <h1 class="my-4 text-white font-bold text-xl">main content</h1>
         <ul class="flex flex-col items-center gap-4">
             <a href="/backend/member"><li>MEMBER</li>                 
-            <a href="/backend/coruse"><li>Course/li></a>
-            <li>Training</li>
-            <li>News And Event</li>
-            <li>HOME</li>
+            <a href="/backend/coruse"><li>Course</li></a>
+            <a href="#/backend/coruse"><li>Training</li></a>
+            <a href="#/backend/coruse"><li>News And Event</li></a>
+            <a href="#/backend/coruse"><li>HOME</li></a>
         </ul>
 
         <h1 class="my-4 text-white font-bold text-xl">pending approval</h1>
