@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\ElerningController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\NewsAndEventController;
 use App\Http\Controllers\Frontend\TrainingController;
 use App\Http\Controllers\Frontend\QuizController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Frontend\QuestionController;
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\MemberController;
+use App\Http\Controllers\Backend\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +54,10 @@ use App\Http\Controllers\Backend\MemberController;
   Route::get('/all_question/{id}',[QuestionController::class,'all_question'])->middleware('checklogin');
   Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
-  Route::get('/cart',[FrontendController::class,'cartPage'])->middleware('checklogin');
+  Route::get('/cart',[CartController::class,'cartPage'])->middleware('checklogin');
   Route::get('/payment',[FrontendController::class,'paymentForm'])->middleware('checklogin');
+  Route::post('/add-to-cart',[CartController::class,'addToCart'])->middleware('checklogin');
+  Route::post('/remove-cart',[CartController::class,'removeCart'])->middleware('checklogin');
 
   
 
@@ -70,6 +74,7 @@ Route::middleware('checklogin')->group(function () {
 Route::prefix('backend')->middleware('checklogin')->group(function () { 
   Route::get('/',[BackendController::class,'homePage']);
   Route::get('/member',[MemberController::class,'backendMember']);
+  Route::get('/coruse',[CourseController::class,'backendCourse']);
 });
 
 

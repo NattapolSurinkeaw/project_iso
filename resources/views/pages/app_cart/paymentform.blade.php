@@ -48,10 +48,12 @@
 @endsection
 
 @section('scripts')
+<script>
 imgInp.onchange = evt => {
   const [file] = imgInp.files
   if (file) {
     output.src = URL.createObjectURL(file)
   }
 }
+</script>
 @endsection

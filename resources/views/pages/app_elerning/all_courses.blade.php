@@ -38,8 +38,8 @@
                 @foreach($elcourses as $elcourse)
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                     <a class="w-full" href="/course/{{$elcourse->id}}">
-                        <div class="overflow-hidden rounded-lg">
-                            <img class="rounded-lg h-48 duration-200 hover:scale-125" src="https://media.istockphoto.com/id/1386672355/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%A7%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A1%E0%B9%89%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B5%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%A1.jpg?s=2048x2048&w=is&k=20&c=ewFbxo6qEvqesJqqhsXGzeyMSoo_Dyhac4r1gqFeJ8k=" alt="">
+                        <div class="overflow-hidden rounded-lg h-45 w-full">
+                            <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
                         </div> 
                     </a>
                     <a class="w-full" href="/course/{{$elcourse->id}}">
@@ -69,7 +69,7 @@
                                     <h1 class="text-lg text-gray-400">{{$elcourse->user_name}}</h1>
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
-                                    <a class="bg-red-500 text-white rounded-md p-1" href="#payment">add cart</a>
+                                    <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
                                     <a class="bg-blue-500 text-white rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
                                 </div>
                             </div>
@@ -93,6 +93,35 @@ function addPayment() {
     console.log('addPayment')
 }
 
+    document.addEventListener('DOMContentLoaded', function () {
+        const addToCartButtons = document.querySelectorAll('#add-to-cart');
 
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const courseId = button.getAttribute('data-id');
+                addToCart(courseId);
+            });
+        });
+
+        function addToCart(courseId) {
+            axios.post('/add-to-cart', {
+                course_id: courseId
+            })
+            .then(response => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: response.data.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                console.log(response.data.message);
+                // คุณสามารถทำอะไรก็ได้หลังจากเพิ่มคอร์สลงใน Session แล้ว
+            })
+            .catch(error => {
+                console.error('An error occurred:', error);
+            });
+        }
+    });
 </script>
 @endsection

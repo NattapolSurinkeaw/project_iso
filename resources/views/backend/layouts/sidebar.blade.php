@@ -3,8 +3,8 @@
         <a href="/backend/"><img src="/image/icon/isologo.png"></a>
         <h1 class="my-4 text-white font-bold text-xl">main content</h1>
         <ul class="flex flex-col items-center gap-4">
-            <a href="/backend/member"><li>MEMBER</li></a>
-            <li>Course</li>
+            <a href="/backend/member"><li>MEMBER</li>                 
+            <a href="/backend/coruse"><li>Course/li></a>
             <li>Training</li>
             <li>News And Event</li>
             <li>HOME</li>
