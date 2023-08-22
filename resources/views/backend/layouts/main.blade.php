@@ -20,10 +20,13 @@
     </div>
   
     <div class="w-full flex flex-col gap-4">
-        <div class="bg-gray-400 p-2">
+        <div class="bg-gray-400 p-2 flex justify-between">
           <button id="btn-close" onclick="">close</button>
+          <div>
+            
+          </div>
         </div>
-        <div class="bg-gray-400 h-full">
+        <div class="bg-gray-300 h-full">
           @yield('container')
         </div>
     </div>

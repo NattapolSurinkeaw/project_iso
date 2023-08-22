@@ -18,19 +18,6 @@
     </div>
     <div class="flex flex-col gap-4">
         <a href="/" class="bg-blue-500 p-3 text-center rounded-lg text-lg text-white">User View</a>
-        <button onclick="onLogout()" class="bg-red-500 p-3 rounded-lg text-lg text-white">Logout</button>
+        <button  id="btnLogout" class="bg-red-500 p-3 rounded-lg text-lg text-white">Logout</button>
     </div>
 </nav>
-
-@section('be-scripts')
-<script>
-
-function onLogout() {
-    axios.get('/api/auth/logout').then((response) => {
-        console.log(response);
-        location.href ='/login';
-    });
-}
-
-</script>
-@endsection

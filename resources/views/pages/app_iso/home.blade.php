@@ -5,7 +5,7 @@
 
 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" centered-slides="true" loop="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
   <swiper-slide>
-    <img class="brightness-50 h-[941px] w-full" src="https://isoconsult.org/images/header-slider/home-v1/header-slide.jpg" alt="">
+    <img class="brightness-50 h-[941px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">In-house & On-line Learning!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ISO CONSULTING & TRAINING</h1>
@@ -13,7 +13,7 @@
     </div>
   </swiper-slide>
   <swiper-slide>
-    <img class="brightness-50 h-[941px] w-full" src="https://isoconsult.org/images/header-slider/home-v1/header-slide.jpg" alt="">
+    <img class="brightness-50 h-[941px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">ISO/QSEH consulting services!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ISO DOCUMENTATION</h1>
@@ -21,7 +21,7 @@
     </div>
   </swiper-slide>
   <swiper-slide>
-    <img class="brightness-50 h-[941px] w-full" src="https://isoconsult.org/images/header-slider/home-v1/header-slide.jpg" alt="">
+    <img class="brightness-50 h-[941px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">Online Learning Anytime, Anywhere!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ELEARNING & ECONSULTING SERVICES</h1>
@@ -82,7 +82,7 @@
     </div>
   </a>
 
-  <a href="#">
+  <a href="#agencies">
     <div class="flex items-center  gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-2xl">
       <img class="w-14 h-14" src="image/icon/video.png" alt="">
       <div class="flex gap-2 flex-col justify-center">
@@ -197,8 +197,18 @@
 </div>
 
 <div id="news"></div>
-<div>
+<div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
   <h1>News and Event</h1>
+</div>
+
+<div id="documents"></div>
+<div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
+  <h1>เอกสารที่เผยแพร่</h1>
+</div>
+
+<div id="agencies"></div>
+<div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
+  <h1>หน่วยงานที่เกี่ยวข้อง</h1>
 </div>
 
 @endsection
