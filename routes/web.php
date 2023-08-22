@@ -14,6 +14,10 @@ use App\Http\Controllers\Frontend\QuestionController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\BackendTrainingController;
+use App\Http\Controllers\Backend\BackendNewsEventController;
+use App\Http\Controllers\Backend\PendingCourseController;
+use App\Http\Controllers\Backend\PendingTrainingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +59,7 @@ use App\Http\Controllers\Backend\CourseController;
   Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
   Route::get('/cart',[CartController::class,'cartPage'])->middleware('checklogin');
-  Route::get('/payment',[FrontendController::class,'paymentForm'])->middleware('checklogin');
+  Route::get('/payment',[CartController::class,'paymentForm'])->middleware('checklogin');
   Route::post('/add-to-cart',[CartController::class,'addToCart'])->middleware('checklogin');
   Route::post('/remove-cart',[CartController::class,'removeCart'])->middleware('checklogin');
 
@@ -75,6 +79,11 @@ Route::prefix('backend')->middleware('checklogin')->group(function () {
   Route::get('/',[BackendController::class,'homePage']);
   Route::get('/member',[MemberController::class,'backendMember']);
   Route::get('/coruse',[CourseController::class,'backendCourse']);
+  Route::get('/coursedetail',[CourseController::class,'detailCourse']);
+  Route::get('/training',[BackendTrainingController::class,'backendTraining']);
+  Route::get('/newsevent',[BackendNewsEventController::class,'backendNewsEvent']);
+  Route::get('/pendingcourse',[PendingCourseController::class,'pendingCourse']);
+  Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
 });
 
 

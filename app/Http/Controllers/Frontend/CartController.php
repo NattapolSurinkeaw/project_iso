@@ -41,4 +41,13 @@ class CartController extends Controller
         // dd($cartList);
         return view('pages.app_cart.cart', compact('cartCourses','cartList'));
     }
+
+    public function paymentForm() {
+
+        $cartList = session('cart_list', []);
+        $cartCourses = Elerningcourse::whereIn('id', $cartList)->get();
+
+        return view('pages.app_cart.paymentform', compact('cartCourses','cartList'));
+    }
+
 }

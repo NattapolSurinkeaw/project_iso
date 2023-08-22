@@ -9,10 +9,12 @@ btn.addEventListener('click', () => {
     console.log(toggleNav);
 
     if(toggleNav === true) {
+        btn.innerHTML = "<box-icon name='chevrons-right' ></box-icon>"
         navbar.classList.add("max-w-[100px]");
         navbar.classList.remove("max-w-[240px]");
         toggleNav = false;
     } else {
+        btn.innerHTML = "<box-icon name='chevrons-left' ></box-icon>"
         navbar.classList.add("max-w-[240px]");
         navbar.classList.remove("max-w-[100px]");
         toggleNav = true;

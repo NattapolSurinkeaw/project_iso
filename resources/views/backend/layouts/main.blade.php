@@ -21,9 +21,11 @@
   
     <div class="w-full flex flex-col gap-4">
         <div class="bg-gray-400 p-2 flex justify-between">
-          <button id="btn-close" onclick="">close</button>
-          <div>
-            
+          <button id="btn-close" class="flex justify-center items-center"><box-icon name='chevrons-left'></box-icon></button>
+          <div class="mr-4 flex items-center gap-2">
+            {{-- <img src="" alt=""> --}}
+            <box-icon name='user-circle' type='solid' ></box-icon>
+            <p>{{$user->name}}</p>
           </div>
         </div>
         <div class="bg-gray-300 h-full">

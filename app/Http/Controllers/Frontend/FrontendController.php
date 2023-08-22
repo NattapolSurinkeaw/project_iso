@@ -25,12 +25,5 @@ class FrontendController extends Controller
         return view('emails.welcome');
     }
 
-    public function cartPage() {
-        return view('pages.app_cart.cart');
-    }
-
-    public function paymentForm() {
-        return view('pages.app_cart.paymentform');
-    }
 
 }

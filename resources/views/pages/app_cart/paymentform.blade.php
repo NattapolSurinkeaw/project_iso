@@ -2,26 +2,37 @@
 @section('title') CartPage @endsection
 @section('content')
   <div class="pt-32">
-    <div class="m-10 p-10 border rounded-xl shadow-md">
+    <div class="w-10/12 mx-auto p-10 border rounded-xl shadow-md">
       <h1 class="text-3xl text-center font-bold mb-4">รายละเอียดคำสั่งซื้อ</h1>
       <hr class="border">
 
       <div class="p-10">
+        @if(count($cartCourses) > 0)
+        @foreach ($cartCourses as $course)
         <div class="flex justify-around p-5">
-          <h1>React JS 20 Workshop</h1>
-          <h1>THB349</h1>
+          <h1>{{$course->course_name}}</h1>
+          <h1>{{$course->price}}</h1>
         </div>
-        <div class="flex justify-around p-5">
-          <h1>React JS 20 Workshop</h1>
-          <h1>THB349</h1>
-        </div>
-        <div class="flex justify-around p-5">
-          <h1>React JS 20 Workshop</h1>
-          <h1>THB349</h1>
-        </div>
+        @endforeach
+        @else
+
+        @endif
       </div>
       <hr class="border">
-      <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ 1,047.00 THB</h1>
+      @if(count($cartCourses) > 0)
+        @php
+          $totalPrice = 0; // เก็บราคาทั้งหมด
+        @endphp
+        @foreach($cartCourses as $course)
+        @php
+          $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
+        @endphp
+          <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ {{ number_format($totalPrice, 2) }} THB</h1>
+          {{-- @else --}}
+          @endforeach
+          @else
+          <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ 0.00 THB</h1>
+        @endif
       <h1 class="text-xl text-center my-10">ชื่อ บริษัท ISOconsult.org</h1>
       <div class="flex flex-col items-center gap-5">
         <div class="flex items-center bg-gray-300 rounded-full drop-shadow-lg">
@@ -35,14 +46,20 @@
       </div>
     </div>
 
-    <div class="m-10 p-10 flex flex-col items-center gap-10 justify-center border rounded-xl shadow-md">
+    <div class="w-10/12 mx-auto my-10 p-10 flex flex-col items-center gap-10 justify-center border rounded-xl shadow-md">
       <h1 class="text-xl">กรุณาแนบสลิป</h1>
-      <img class="h-96 w-64 border" id="output" src="https://png.pngtree.com/png-vector/20191021/ourlarge/pngtree-upload-vector-icon-with-transparent-background-png-image_1836029.jpg" alt="payment"/>
-      <input class="text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" accept="image/*" type='file' id="imgInp" />
-    </div>
+      <div>
+        <label for=""></label>
+        <input class="border" type="text">
+      </div>
+      <div>
+        <img class="h-96 w-64 border" id="output" src="https://png.pngtree.com/png-vector/20191021/ourlarge/pngtree-upload-vector-icon-with-transparent-background-png-image_1836029.jpg" alt="payment"/>
+        <input class="text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" accept="image/*" type='file' id="imgInp" />
+      </div>
 
-    <div class="flex justify-center mb-3">
-      <button class="py-2 px-5 bg-red-700 text-white rounded-3xl hover:bg-red-600">ยืนยัน</button>
+      <div class="flex justify-center mb-3">
+        <button id="submit" class="py-2 px-5 bg-red-700 text-white rounded-3xl hover:bg-red-600">ยืนยัน</button>
+      </div>
     </div>
   </div>
 @endsection
@@ -55,5 +72,10 @@ imgInp.onchange = evt => {
     output.src = URL.createObjectURL(file)
   }
 }
+
+let btnsubmut = document.querySelector('#submit');
+btnsubmut.addEventListener('click', () => {
+  console.log('submit')
+})
 </script>
 @endsection

@@ -14,4 +14,16 @@ class CourseController extends Controller
         $courses = Elerningcourse::all();
         return view('backend.pages.backend_course', compact('courses'));
     }
+
+    public function detailCourse() {
+        return view('backend.pages.backend_coursedetail');
+    }
+
+    public function createCourse(Request $request) {
+
+        return response([
+            'status' => '200',
+            'tt' => $request
+        ],200);
+    }
 }

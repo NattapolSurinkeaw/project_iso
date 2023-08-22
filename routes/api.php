@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Backend\BackendController;
-use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Frontend\api\ApiDashboradController;
+use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,7 @@ Route::put('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
 Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
 Route::get('/courses',[BackendController::class, 'getAllCourse']);
+
+
+//backend
+Route::post('/backend/course',[CourseController::class,'createCourse']);
