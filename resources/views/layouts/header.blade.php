@@ -27,7 +27,7 @@
       <div class="mb-1 h-1 w-5 bg-gray-600"></div>
       <div class="mb-1 h-1 w-5 bg-gray-600"></div>
       <div class="h-1 w-5 bg-gray-600"></div>
-      <div class="absolute -right-full top-0 h-screen w-6/12 border bg-white opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
+      <div class="absolute -right-full top-12 h-screen w-6/12 border bg-white opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
         <ul class="flex w-full cursor-pointer flex-col items-center pt-10 text-base">
           <a class="" href="/"><li class="w-full px-6 py-4 hover:bg-gray-200">Home</li></a>
           <a href="/elerning"><li class="w-full px-6 py-4 hover:bg-gray-200">Elerning</li></a>

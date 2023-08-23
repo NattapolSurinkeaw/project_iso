@@ -14,8 +14,8 @@
 </head>
 <body>
 
-  <div class="flex gap-10 h-screen overflow-hidden">
-    <div id="navbar" class="w-full bg-gray-400 max-w-[240px] duration-300">
+  <div class="flex gap-5 h-screen overflow-hidden">
+    <div id="navbar" class="w-full bg-[#74788A] max-w-[240px] duration-300">
         @include('backend.layouts.sidebar')
     </div>
   
@@ -28,7 +28,7 @@
             <p>{{$user->name}}</p>
           </div>
         </div>
-        <div class="bg-gray-300 h-full">
+        <div class="bg-gray-100 h-full">
           @yield('container')
         </div>
     </div>

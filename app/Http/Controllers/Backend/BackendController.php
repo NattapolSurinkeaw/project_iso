@@ -170,6 +170,6 @@ class BackendController extends Controller
 
     //เรียก Page
     public function homePage() {
-        return view('backend.pages.index');
+        return view('backend.pages.home');
     }
 }

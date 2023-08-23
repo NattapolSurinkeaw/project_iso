@@ -97,7 +97,7 @@
         })
         .then(response => {
             console.log(response.data.message);
-            location.reload(); // รีโหลดหน้าเว็บเพื่อแสดงการเปลี่ยนแปลงทันที
+            location.reload();
         })
         .catch(error => {
             console.error('An error occurred:', error);

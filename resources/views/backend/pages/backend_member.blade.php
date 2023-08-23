@@ -4,11 +4,11 @@
 
 <div class="overflow-hidden">
     <h1 class="text-center text-2xl font-bold">Member</h1>
-    <div class="mx-10 mt-5 flex justify-between text-lg">
+    <div class="mx-10 my-5 flex justify-between text-lg">
         <h1>Name</h1>
         <h1>Actions</h1>
     </div>
-    <div class="h-[960px] mx-10 p-4 bg-gray-100 rounded-lg overflow-scroll">
+    <div class="h-[780px] mx-10 p-4 bg-gray-300 rounded-lg overflow-y-scroll shadow-2xl">
         <ul role="list" class="divide-y divide-gray-100">
             @foreach($users as $member)
                 <li class="flex justify-between gap-x-6 py-5">
@@ -26,7 +26,6 @@
                 </div>
                 </li>
             @endforeach
-            
           </ul>
     </div>
 </div>

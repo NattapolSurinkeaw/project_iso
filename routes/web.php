@@ -79,7 +79,7 @@ Route::prefix('backend')->middleware('checklogin')->group(function () {
   Route::get('/',[BackendController::class,'homePage']);
   Route::get('/member',[MemberController::class,'backendMember']);
   Route::get('/coruse',[CourseController::class,'backendCourse']);
-  Route::get('/coursedetail',[CourseController::class,'detailCourse']);
+  Route::get('/coursedetail/{id}',[CourseController::class,'detailCourse']);
   Route::get('/training',[BackendTrainingController::class,'backendTraining']);
   Route::get('/newsevent',[BackendNewsEventController::class,'backendNewsEvent']);
   Route::get('/pendingcourse',[PendingCourseController::class,'pendingCourse']);
