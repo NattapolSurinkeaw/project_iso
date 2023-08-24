@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
-use App\Models\Course;
+
+use App\Models\Elerningcourse;
+use App\Models\Trainingcourse;
+use App\Models\NewsEvent;
 
 class BackendController extends Controller
 {
@@ -152,7 +155,16 @@ class BackendController extends Controller
     }
 
     public function getAllCourse() {
-        $courses = Course::all();
+        $courses = Elerningcourse::all();
+        $training = Trainingcourse::all();
+
+
+        $data = [
+            'course' => $courses,
+            'training' => $training
+        ];
+
+        // dd($data);
 
         if($courses === null) {
             return response([
@@ -163,13 +175,25 @@ class BackendController extends Controller
 
         return response([
            'message' => 'ok',
-            'data' => $courses
+            'data' => $data
         ]);
     }
 
 
     //เรียก Page
     public function homePage() {
-        return view('backend.pages.home');
+        $count_user = User::count(); 
+        $count_course = Elerningcourse::count();
+        $count_training = Trainingcourse::count();
+        $count_news = NewsEvent::count();
+
+        $data = [
+            "user" => $count_user,
+            "course" => $count_course,
+            "training" => $count_training,
+            "news" => $count_news
+        ];
+
+        return view('backend.pages.home', compact('data'));
     }
 }

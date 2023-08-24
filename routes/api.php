@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\api\ApiBackendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::put('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
 Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
 Route::get('/courses',[BackendController::class, 'getAllCourse']);
+Route::get('/course/{id}', [ApiBackendController::class, 'getCourseById']);
 
 
 //backend
