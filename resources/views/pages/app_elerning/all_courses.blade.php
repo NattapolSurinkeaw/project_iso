@@ -39,7 +39,11 @@
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                     <a class="w-full" href="/course/{{$elcourse->id}}">
                         <div class="overflow-hidden rounded-lg h-45 w-full">
-                            <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                            @if(isset($elcourse->img_course))
+                                <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                            @else
+                                <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                            @endif
                         </div> 
                     </a>
                     <a class="w-full" href="/course/{{$elcourse->id}}">
@@ -57,9 +61,9 @@
                                 </div>
                             </div>
                             <div class="w-full flex justify-between gap-4">
-                                <div class="flex">
-                                    <h1 class="text-gray-300 ml-2 line-through">THB1,200</h1>
-                                    <h1 class="font-bold">THB{{number_format($elcourse->price)}}</h1>
+                                <div class="flex gap-2">
+                                    <h1 class="font-bold text-gray-400">Price</h1>
+                                    <h1 class="font-bold">{{number_format($elcourse->price)}} THB</h1>
                                 </div>
                             </div>
                     </a>

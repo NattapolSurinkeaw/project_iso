@@ -11,7 +11,7 @@ class BackendTrainingController extends Controller
 {
     //
     public function backendTraining() {
-        $trainingcourse = Trainingcourse::all();
-        return view('backend.pages.backend_training', compact('trainingcourse'));
+        $trainingcourses = Trainingcourse::all();
+        return view('backend.pages.backend_training', compact('trainingcourses'));
     }
 }

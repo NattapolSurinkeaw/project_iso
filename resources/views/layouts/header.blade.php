@@ -1,4 +1,4 @@
-<nav id="myNav" class="fixed left-0 top-0 w-full duration-300 bg-inherit shadow z-[999]">
+<nav id="myNav" class="fixed left-0 top-0 w-full duration-300 bg-inherit shadow z-[10]">
   <div class="container m-auto flex items-center justify-between text-gray-700">
     <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />

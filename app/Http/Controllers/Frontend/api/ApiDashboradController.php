@@ -5,12 +5,31 @@ namespace App\Http\Controllers\Frontend\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\HomeVideo;
 
 use Illuminate\Support\Str;
 
 class ApiDashboradController extends Controller
 {
     //
+
+    public function getHomeVideo($id) {
+        $urlvdo = HomeVideo::find($id);
+
+        if (empty($urlvdo)) {
+            return response([
+               "status" => "404",
+               "message" => "Data Not Found", 
+            ], 404);
+        } else {
+            return response([
+               "status" => "200",
+               "data" => $urlvdo, 
+            ], 200);
+        }
+
+    }
+
     public function editUser(Request $request, $user_id) {
         // ดึงข้อมูลจาก $request
         $name = $request->input('name');

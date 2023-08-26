@@ -267,27 +267,16 @@
 
         </div> {{-- endbox --}}
 
-        <button type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
+        {{-- <button id="btnSubmit" type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button> --}}
+        <a href="/sendmail" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</a>
     </form>
+    <button id="btnSubmit" type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
 
 </div>
 @endsection
 @section('scripts')
 <script>
-    function formatDate() {
-    var input = document.getElementById('position');
-    var date = new Date(input.value);
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-
-    // แปลงเป็นรูปแบบ dd/mm/yyyy
-    var formattedDate = ('0' + day).slice(-2) + '/' + ('0' + month).slice(-2) + '/' + year;
-
-    console.log(formattedDate); // แสดงผลลัพธ์ในคอนโซล
     
-    input.value = formattedDate;
-    }
 
     function addOtherCourses(){
         console.log("addcourse")
@@ -326,9 +315,9 @@
         select.classList.add('block', 'appearance-none', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
         select.id = 'grid-state';
         select.innerHTML = `
-            <option>New Mexico</option>
-            <option>Missouri</option>
-            <option>Texas</option>
+                <option>New Mexico</option>
+                <option>Missouri</option>
+                <option>Texas</option>
         `;
 
         // สร้าง element ของ div ที่บรรจุ icon ของ select

@@ -12,9 +12,7 @@ class TrainingController extends Controller
     public function tainingPage() {
         $courses = Trainingcourse::all();
         
-        return view('pages.app_training.all_course_training',[
-            "courses" => $courses
-        ]);
+        return view('pages.app_training.all_course_training', compact('courses'));
     }
 
     public function calendarReserve($course_id) {

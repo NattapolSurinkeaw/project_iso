@@ -2,7 +2,7 @@
 @section('title') Coursedetail @endsection
 @section('container')
 
-<div class="mx-10 my-4 h-screen h-[90%] overflow-y-scroll">
+<div class="mx-10 my-4 h-screen h-[750px] overflow-y-scroll">
     <h1 class="w-full text-xl font-bold text-center">Detail Course : {{$course->course_name}}</h1>
     <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
         <div class="animate__animated animate__bounce flex justify-between ">

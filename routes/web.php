@@ -88,5 +88,6 @@ Route::prefix('backend')->middleware('checklogin')->group(function () {
 
 
 // Route::get('/home', [FrontendController::class, 'index']);
+// Route::get('/sendmail',[Controller::class,'sendEmail']);
 Route::get('/sendmail',[Controller::class,'sendEmail']);
 Route::get('/emailform',[FrontendController::class, 'emailForm']);
