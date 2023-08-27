@@ -3,7 +3,7 @@
 @section('content')
 <div class="pt-10">
     {{-- @dd($courses) --}}
-    <div class="w-full max-w-[1080px] mx-auto my-5 mb-6 p-6">
+    <div class="w-full max-w-[1080px] mx-auto mt-5 px-6 pt-6">
         <div class="bg-[#fff] w-full p-6 pt-5 drop-shadow-2xl rounded-xl">
             <div class="items-center w-full mt-6 mb-6">
                 <p class="text-gray-600 text-2xl font-bold text-center">Request For Quote</p>
@@ -140,7 +140,7 @@
             <p class="text-gray-600 text-xl font-bold mt-5">Request for training course : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
             <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="rep-address" type="text">{{$course->name}}</textarea>
+                id="req-training" type="text">{{$course->name}}</textarea>
             <div class="flex gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">
@@ -157,7 +157,7 @@
                     @if(request('date'))
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="position" type="date" value="{{ request('date') }}">
+                        id="date-training" type="date" value="{{ request('date') }}">
                     @endif
                 </div>
             </div>
@@ -179,9 +179,9 @@
                     </label>
                     <div class="relative">
                         <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                            <option>New Mexico</option>
-                            <option>Missouri</option>
-                            <option>Texas</option>
+                            <option>ISO 9001:2015 Quality Management Systems</option>
+                            <option>ISO 9001:2015 Quality Management Systems</option>
+                            <option>ISO 9001:2015 Quality Management Systems</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -246,8 +246,9 @@
         {{-- <button id="btnSubmit" type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button> --}}
         {{-- <a href="/sendmail" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</a> --}}
     </div>
-    <button id="btnSubmit" type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
-
+    <div class="flex justify-center mb-4">
+        <button id="btnSubmit" type="summit" class="mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
+    </div>
 </div>
 @endsection
 @section('scripts')
@@ -255,8 +256,21 @@
 
     let btnSubmit = document.querySelector('#btnSubmit');
     btnSubmit.addEventListener('click', () => {
-        location.href = "/sendmail"
+        reserveTraining()
     })
+
+    function reserveTraining() {
+        let reqTraining = document.querySelector('#req-training').value;
+        let dateTraining = document.querySelector('#date-training').value;
+        let email = document.querySelector('#email').value;
+        param = {
+            reqTraining : reqTraining,
+            dateTraining : dateTraining 
+        }
+        // console.log(typeof(param))
+        location.href = `/sendmail/${email}`
+    }
+
 
     function addOtherCourses(){
         console.log("addcourse")
@@ -295,9 +309,9 @@
         select.classList.add('block', 'appearance-none', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
         select.id = 'grid-state';
         select.innerHTML = `
-                <option>New Mexico</option>
-                <option>Missouri</option>
-                <option>Texas</option>
+                <option>ISO 9001:2015 Quality Management Systems</option>
+                <option>ISO 9001:2015 Quality Management Systems</option>
+                <option>ISO 9001:2015 Quality Management Systems</option>
         `;
 
         // สร้าง element ของ div ที่บรรจุ icon ของ select
@@ -367,9 +381,6 @@
             console.log('Selected date:', selectedDate);
         });
     }
-
-
-
 
 
     function coppy(){

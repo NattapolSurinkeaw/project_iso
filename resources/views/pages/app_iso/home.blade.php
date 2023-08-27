@@ -221,7 +221,11 @@
     <a href="{{url('/newsdetails')}}/{{$news->id}}">
       <div class="w-64 flex flex-col justify-center items-center p-2 border rounded-lg">
         <div class="w-60 h-40 overflow-hidden rounded-lg">
+          @if(!empty($news->img_news_events))
           <img class="w-60 h-40 hover:scale-125 duration-300 rounded-lg" src="{{$news->img_news_events}}" alt="">
+          @else
+          <img class="w-60 h-40 hover:scale-125 duration-300 rounded-lg" src="/image/icon/isologo.png" alt="">
+          @endif
         </div>
         <h1 class="font-bold">{{$news->name}}</h1>
         <p>{{$news->description}}</p>

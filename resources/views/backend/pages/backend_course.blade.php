@@ -8,7 +8,7 @@
         <button type="button" id="create-course" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
     </div>
     
-    <div class="relative h-screen h-[700px] my-10 overflow-y-scroll mx-10">
+    <div class="relative h-screen h-[690px] my-10 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -61,9 +61,9 @@
                         {{$course->updated_at}}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="/backend/coursedetail/{{$course->id}}">ลายละเอียด</a>
-                        <button data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
-                        <button>ลบ</button>
+                        <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">ลายละเอียด</a>
+                        <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
+                        <button class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
                     </td>
                 </tr>
                 @endforeach
@@ -107,7 +107,7 @@
                 const description = Swal.getPopup().querySelector("#description").value;
                 const img_course = Swal.getPopup().querySelector("#img_course").value;
 
-                if (!course_name || !user_name || !price || !description || !img_course) {
+                if (!course_name || !user_name || !price || !description) {
                     Swal.showValidationMessage(`Please enter your data.`);
                 }
 

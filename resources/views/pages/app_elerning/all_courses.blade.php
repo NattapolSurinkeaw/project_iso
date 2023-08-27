@@ -39,10 +39,10 @@
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                     <a class="w-full" href="/course/{{$elcourse->id}}">
                         <div class="overflow-hidden rounded-lg h-45 w-full">
-                            @if(isset($elcourse->img_course))
-                                <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                            @if(!empty($elcourse->img_course))
+                                <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
                             @else
-                                <img class="rounded-lg w-full h-full duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                                <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
                             @endif
                         </div> 
                     </a>

@@ -28,7 +28,7 @@ class CourseController extends Controller
             'price' => 'required',
             'description' => 'required',
             // 'imgcourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
-            'img_course' => 'required',
+            // 'img_course' => 'required',
         ]);
     
         // อัปโหลดไฟล์รูปภาพและเก็บลงในโฟลเดอร์ที่กำหนด

@@ -6,8 +6,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\WelcomeEmail;
-use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\HomeVideo;
 use App\Models\NewsEvent;
@@ -39,10 +37,6 @@ class Controller extends BaseController
         return view('pages.authen.login');
     }
 
-    public function sendEmail()
-    {
-        Mail::to('nattapol.surinkeaw@gmail.com')->send(new WelcomeEmail());
-        return redirect('/trainingform');
-    }
+    
 
 }
