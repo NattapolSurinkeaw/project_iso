@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('title') HomePage @endsection
 @section('content')
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 
 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" centered-slides="true" loop="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
   <swiper-slide>
@@ -126,8 +125,23 @@
 <div class="w-10/12 shadow-lg rounded-lg mx-auto p-14">
   <h1 class="text-center text-3xl">Our Video</h1>
   <div class="flex justify-center my-10 gap-5">
-
-    @php 
+    @if(count($homeVideos) > 0)
+    @foreach($homeVideos as $homeVideo)
+      <div id="getVideo" video-id="{{$homeVideo->id}}" class="w-72 h-52">
+        <img class="w-72 h-52 rounded-lg" src="{{$homeVideo->thumbnail}}" alt="">
+        <!-- The Modal -->
+        <div id="videoModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[11]">
+          <div class="modal-content bg-white p-4 rounded-lg shadow-lg">
+            <span class="close flex absolute top-2 right-2 text-center text-5xl text-gray-400 hover:text-black cursor-pointer">&times;</span>
+            <iframe id="videoFrame" width="1200" height="700" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    @endforeach
+    @else
+      no video
+    @endif
+    {{-- @php 
       $embed1 = \Embed::make('https://www.youtube.com/watch?v=qedG8ugiyFc')->parseUrl();
     @endphp
 
@@ -147,7 +161,7 @@
     </div>
     <div>
         <iframe src="https://drive.google.com/file/d/1_GcCKEaFWJXwoDA3gmTVM4dkvefsI67B/preview" width="300" height="300" allow="autoplay"></iframe>
-    </div>
+    </div> --}}
   </div>
 </div>
 
@@ -198,7 +212,23 @@
 
 <div id="news"></div>
 <div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
-  <h1>News and Event</h1>
+  <div class="flex justify-between">
+    <h1 class="text-center text-xl">News and Event</h1>
+    <a href="{{url('/newsandevent')}}" class="text-center text-blue-600 text-xl underline">more</a>
+  </div>
+  <div class="flex justify-around gap-4">
+    @foreach($homeNews as $news)
+    <a href="{{url('/newsdetails')}}/{{$news->id}}">
+      <div class="w-64 flex flex-col justify-center items-center p-2 border rounded-lg">
+        <div class="w-60 h-40 overflow-hidden rounded-lg">
+          <img class="w-60 h-40 hover:scale-125 duration-300 rounded-lg" src="{{$news->img_news_events}}" alt="">
+        </div>
+        <h1 class="font-bold">{{$news->name}}</h1>
+        <p>{{$news->description}}</p>
+      </div>
+    </a>
+    @endforeach
+  </div>
 </div>
 
 <div id="documents"></div>
@@ -232,5 +262,52 @@
     });
   });
 });
+
+  const btnVideo = document.querySelectorAll('#getVideo')
+
+  btnVideo.forEach(btnVideo => {
+    btnVideo.addEventListener('click', () => {
+      const videoId = btnVideo.getAttribute('video-id');
+      getVideo(videoId)
+    });
+  });
+  
+  function getVideo(videoId) {
+    // console.log(videoId)
+    const modal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+
+    try {
+      axios.get(`{{url('/')}}/api/getvideo/${videoId}`)
+        .then(response => {
+          // console.log(response.data.data['url']);
+          const url = response.data.data['url'];
+          videoFrame.src = url;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    // Show the modal
+    modal.classList.remove('hidden');
+
+    // Close the modal when the "close" button is clicked
+    const closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', function() {
+      modal.classList.add('hidden');
+      videoFrame.src = ''; // Clear the iframe source
+    });
+
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.classList.add('hidden');
+        videoFrame.src = ''; // Clear the iframe source
+      }
+    });
+  }
 </script>
 @endsection

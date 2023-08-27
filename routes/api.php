@@ -27,6 +27,7 @@ Route::post('/auth/register', [BackendController::class, 'onRegister']);
 Route::post('/auth/login', [BackendController::class, 'onLogin']);
 Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
 
+Route::get('/getvideo/{id}', [ApiDashboradController::class, 'getHomeVideo']);
 Route::put('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
 
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);

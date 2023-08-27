@@ -20,9 +20,9 @@
                     <p class="text-sm leading-6 text-gray-900">{{$member->role}}</p>
                     </div>
                 </div>
-                <div class=" flex">
-                    <button>แก้ไข</button>
-                    <button>ลบ</button>
+                <div class="flex gap-4">
+                    <button class="px-2 bg-orange-400 text-white rounded-lg">แก้ไข</button>
+                    <button class="px-4 bg-red-500 text-white rounded-lg">ลบ</button>
                 </div>
                 </li>
             @endforeach

@@ -26,9 +26,14 @@ class WelcomeEmail extends Mailable
      *
      * @return $this
      */
+    // public function build()
+    // {
+    //     return $this->view('emails.welcome')
+    //         ->subject('Welcome Email');
+    // }
     public function build()
     {
         return $this->view('emails.welcome')
-            ->subject('Welcome Email');
+            ->subject('Reserve Success');
     }
 }

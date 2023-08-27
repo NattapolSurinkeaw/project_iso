@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
+use App\Models\HomeVideo;
+use App\Models\NewsEvent;
 
 class Controller extends BaseController
 {
@@ -17,7 +19,10 @@ class Controller extends BaseController
     public function homePage() {
         $allSessions = session()->all();
         // dd($allSessions);
-        return view('pages.app_iso.home', compact('allSessions'));
+        $homeVideos = HomeVideo::select('id', 'thumbnail')->get();
+        $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
+
+        return view('pages.app_iso.home', compact('allSessions', 'homeVideos', 'homeNews'));
     }
 
     public function registerPage() {
@@ -37,6 +42,7 @@ class Controller extends BaseController
     public function sendEmail()
     {
         Mail::to('nattapol.surinkeaw@gmail.com')->send(new WelcomeEmail());
+        return redirect('/trainingform');
     }
 
 }

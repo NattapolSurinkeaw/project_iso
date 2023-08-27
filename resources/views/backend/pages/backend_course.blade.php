@@ -8,7 +8,7 @@
         <button type="button" id="create-course" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
     </div>
     
-    <div class="relative h-screen h-[750px] my-10 overflow-y-scroll mx-10">
+    <div class="relative h-screen h-[700px] my-10 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -26,6 +26,9 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         img
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        updated_at
                     </th>
                     <th scope="col" class="px-6 py-3 rounded-tr-lg">
                         actions
@@ -48,7 +51,14 @@
                         {{$course->description}}
                     </td>
                     <td class="px-6 py-4">
+                        @if(!empty($course->img_course))
                         <img class="w-20 h-20" src="{{$course->img_course}}" alt="">
+                        @else
+                        <img class="w-20 h-20" src="/image/icon/isologo.png" alt="">
+                        @endif
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$course->updated_at}}
                     </td>
                     <td class="px-6 py-4">
                         <a href="/backend/coursedetail/{{$course->id}}">ลายละเอียด</a>

@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Email</title>
+    <title>Confirm reserve</title>
     @vite('resources/css/app.css')
 </head>
 <body>
-  {{-- style="background-color: red;"style="text-align: center; --}}
-    <div class="bg-red-200">
-      <h1 ">Welcome to our application!</h1>
-      <p>This is a welcome email from Laravel.</p>
-
-      <a href="/sendmail">send</a>
-    </div>
+  <center>
+    <h1 >Reserve training Success!</h1>
+    <p>your reservation training is success click here <a href="" style="color: blue">see more</a> for see more</p>
+  </center>
 </body>
 </html>
