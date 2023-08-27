@@ -33,7 +33,7 @@ class WelcomeEmail extends Mailable
     // }
     public function build()
     {
-        return $this->view('pages.app_training.training_form')
-            ->subject('Welcome Email');
+        return $this->view('emails.welcome')
+            ->subject('Reserve Success');
     }
 }

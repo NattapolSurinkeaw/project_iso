@@ -42,7 +42,7 @@ class Controller extends BaseController
     public function sendEmail()
     {
         Mail::to('nattapol.surinkeaw@gmail.com')->send(new WelcomeEmail());
-        return redirect('/');
+        return redirect('/trainingform');
     }
 
 }
