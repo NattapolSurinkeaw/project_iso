@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Elerningcourse;
+use App\Models\Annoucement;
+use App\Models\Quiz;
 
 class CourseController extends Controller
 {
@@ -15,9 +17,11 @@ class CourseController extends Controller
         return view('backend.pages.backend_course', compact('courses'));
     }
 
-    public function detailCourse($id) {
-        $course = Elerningcourse::find($id);
-        return view('backend.pages.backend_coursedetail', compact('course'));
+    public function detailCourse($id_course) {
+        $course = Elerningcourse::find($id_course);
+        $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
+        $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
+        return view('backend.pages.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
     }
 
     //  API Methods

@@ -9,14 +9,19 @@
           <div class="animate__animated animate__bounce flex justify-between ">
             <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
             <h1 class="text-xl">Anoucement</h1>
-            <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+            <button id="addAnnouce">เพิ่ม</button>
           </div>
           <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
-          
-          <p class="my-4">fdfdfs</p>
-
-            <p>date</p>
+          @if(count($announcements) > 0)
+          @foreach($announcements as $announcement)
+          <p class="my-4">{{$announcement->content}}</p>
+          <p>{{$announcement->update_at}}</p>
           <hr>
+          @endforeach
+          @else
+          <p class="my-4">no announcement</p>
+          <p>null</p>
+          @endif
         </div>
     
         <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">
@@ -46,15 +51,21 @@
           <div class="animate__animated animate__bounce flex justify-between ">
             <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
             <h1 class="text-xl">Asssignment</h1>
-            <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+            <button id="addQuiz">เพิ่ม</button>
           </div>
           <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
-    
-          <p class="my-4 text-green-500 cursor-pointer">dd</p>
-
-          <p>07-feb-23, 08.02 Am</p>
+          @if(count($quizzes) > 0)
+          @foreach($quizzes as $quiz)
+          <p class="my-4 text-green-500 cursor-pointer">{{$quiz->quiz_name}}</p>
+          <p>{{$quiz->update_at}}</p>
           <hr>
+          @endforeach
+          @else
+          <p class="my-4">no announcement</p>
+          <p>null</p>
+          @endif
         </div>
+
       </div>
     </div>
 </div>
