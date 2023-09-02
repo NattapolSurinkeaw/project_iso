@@ -38,3 +38,4 @@ Route::get('/course/{id}', [ApiBackendController::class, 'getCourseById']);
 
 //backend
 Route::post('/backend/course',[CourseController::class,'createCourse']);
+Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);

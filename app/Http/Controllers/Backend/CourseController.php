@@ -52,4 +52,27 @@ class CourseController extends Controller
             'message' => 'Course created successfully.',
         ], 200);
     }
+
+
+    public function createAnnouce(Request $request) {
+
+        // รับข้อมูลจาก Request
+        $data = $request->all();
+
+        // สร้าง Announcement ใหม่
+        $announcement = new Annoucement([
+            'content' => $data['content'],
+            'elerningcourse_id' => $data['courseId']
+        ]);
+
+        // บันทึกข้อมูลลงฐานข้อมูล
+        $announcement->save();
+
+        // ส่ง response กลับไปหา Client
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Announcement created successfully.',
+            'data' => $announcement, // ส่งข้อมูล Announcement ที่ถูกสร้างให้กับ Client ถ้าต้องการ
+        ], 200);
+    }
 }

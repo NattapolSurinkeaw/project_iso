@@ -9,13 +9,13 @@
           <div class="animate__animated animate__bounce flex justify-between ">
             <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
             <h1 class="text-xl">Anoucement</h1>
-            <button id="addAnnouce">เพิ่ม</button>
+            <button onclick="addAnnouce()">เพิ่ม</button>
           </div>
           <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
           @if(count($announcements) > 0)
           @foreach($announcements as $announcement)
           <p class="my-4">{{$announcement->content}}</p>
-          <p>{{$announcement->update_at}}</p>
+          <p>{{$announcement->updated_at}}</p>
           <hr>
           @endforeach
           @else
@@ -51,7 +51,7 @@
           <div class="animate__animated animate__bounce flex justify-between ">
             <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
             <h1 class="text-xl">Asssignment</h1>
-            <button id="addQuiz">เพิ่ม</button>
+            <button onclick="addQuiz()">เพิ่ม</button>
           </div>
           <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
           @if(count($quizzes) > 0)
@@ -74,7 +74,58 @@
 
 @section('be-scripts')
 <script>
-   
-</script>
 
+  let courseId = {!! json_encode($course->id) !!}
+
+  function addAnnouce() {
+    console.log('addAnnouce')
+    Swal.fire({
+        title: "Edit",
+        html: ` <input type="textarea" id="content-annouce" class="swal2-input" placeholder="Name" value="">`,
+        confirmButtonText: "Submit",
+        focusConfirm: false,
+        preConfirm: () => {
+            const content = Swal.getPopup().querySelector("#content-annouce").value;
+
+            if (!content) {
+                Swal.showValidationMessage(`Please enter your data.`);
+                return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
+            }
+
+            param = {
+              content : content,
+              courseId: courseId
+            }
+
+            return param;
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const content = result.value;
+            console.log(content);
+            axios.post('/api/backend/createannouce', content)
+            .then((response) => {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              }).then( () => {
+                location.reload()
+              });
+            })
+            .catch((error) => {
+                console.error('API Error:', error);
+                // จัดการข้อผิดพลาด
+            });
+        }
+    });
+}
+
+
+  function addQuiz() {
+  console.log('addQuiz');
+  }
+</script>
 @endsection
