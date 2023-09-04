@@ -51,7 +51,7 @@
                         {{$course->description}}
                     </td>
                     <td class="px-6 py-4">
-                        @if(!empty($course->img_course))
+                        @if(!empty($course->img_course) && $course->img_course !== 'null')
                         <img class="w-20 h-20" src="{{$course->img_course}}" alt="">
                         @else
                         <img class="w-20 h-20" src="/image/icon/isologo.png" alt="">
@@ -61,7 +61,7 @@
                         {{$course->updated_at}}
                     </td>
                     <td class="px-6 py-4">
-                        <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">ลายละเอียด</a>
+                        <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">รายละเอียด</a>
                         <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
                         <button class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
                     </td>
@@ -91,7 +91,7 @@
     async function create() {
     try {
         const result = await Swal.fire({
-        title: "Edit",
+        title: "Add Course",
         html: ` <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="">
                 <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="">
                 <input type="number" id="price" class="swal2-input" placeholder="price" value="">
@@ -138,9 +138,8 @@
         try {
             const response = await axios.get(`/api/course/${courseId}`);
             let data = response.data.data
-            console.log(data);
             const result = await Swal.fire({
-            title: "Edit",
+            title: "Edit Course",
             html: ` <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="${data.course_name}">
                     <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="${data.user_name}">
                     <input type="number" id="price" class="swal2-input" placeholder="price" value="${data.price}">
@@ -163,19 +162,19 @@
                     param = {
                         course_name: course_name,
                         user_name: user_name,
-                    price: price,
-                    description: description,
-                    img_course: img_course
+                        price: price,
+                        description: description,
+                        img_course: img_course
                     }
 
-                    console.log(param);
                     return param;
                 },
         });
         if (result.isConfirmed) {
-                // const response = await axios.post(`/api/backend/course`, result.value);
-                // console.log("Response:", response);
-                // location.reload();
+                console.log(data.id);
+                const response = await axios.put(`/api/backend/editcourse/${data.id}`, result.value);
+                console.log("Response:", response);
+                location.reload();
             }
         } catch (error) {
             console.error(error);

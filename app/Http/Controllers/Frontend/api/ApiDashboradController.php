@@ -30,14 +30,15 @@ class ApiDashboradController extends Controller
     }
 
     public function editUser(Request $request, $user_id) {
+        $data = $request->all();
         // ใช้ $request เพื่อเข้าถึงข้อมูลที่ถูกส่งมา
+        dd($data);
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
         $profileFile = $request->file('profile'); // ใช้ file() เพื่อรับไฟล์
     
         // ตรวจสอบค่าข้อมูลที่ได้รับ
-        dd($name, $email, $password, $profileFile);
 
     // ดูข้อมูลในรูปแบบของ Array
 

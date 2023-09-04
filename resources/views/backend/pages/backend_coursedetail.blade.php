@@ -11,11 +11,19 @@
             <h1 class="text-xl">Anoucement</h1>
             <button onclick="addAnnouce()">เพิ่ม</button>
           </div>
-          <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
+          <hr class="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700">
           @if(count($announcements) > 0)
           @foreach($announcements as $announcement)
-          <p class="my-4">{{$announcement->content}}</p>
-          <p>{{$announcement->updated_at}}</p>
+          <div class="flex p-4 justify-between items-center">
+            <div class="w-full">
+              <p class="">{{$announcement->content}}</p>
+              <p>{{$announcement->updated_at}}</p>
+            </div>
+            <div class="w-40">
+              <button onclick="editAnnounce({{$announcement->id}})" class="w-16 p-4 bg-yellow-400 text-white text-center rounded-lg">แก้ไข</button>
+              <button onclick="deleteAnnounce({{$announcement->id}})" class="w-16 p-4 bg-red-500 text-white text-center rounded-lg">ลบ</button>
+            </div>
+          </div>
           <hr>
           @endforeach
           @else
@@ -80,8 +88,8 @@
   function addAnnouce() {
     console.log('addAnnouce')
     Swal.fire({
-        title: "Edit",
-        html: ` <input type="textarea" id="content-annouce" class="swal2-input" placeholder="Name" value="">`,
+        title: "Create announcement",
+        html: ` <input type="textarea" id="content-annouce" name="addAnn" class="swal2-input" placeholder="Name" value="">`,
         confirmButtonText: "Submit",
         focusConfirm: false,
         preConfirm: () => {
@@ -121,7 +129,90 @@
             });
         }
     });
-}
+  }
+
+  function editAnnounce(Ann_id) {
+      axios.get(`/api/backend/getann/${Ann_id}`).then((response) => {
+          let returnAnn = response.data.data;
+
+          Swal.fire({
+              title: "Edit announcement",
+              html: `
+                  <input type="textarea" id="content-annouce" class="swal2-input" placeholder="Name" value="${returnAnn.content}">
+              `,
+              confirmButtonText: "Submit",
+              focusConfirm: false,
+              preConfirm: () => {
+                  const content = Swal.getPopup().querySelector("#content-annouce").value;
+
+                  if (!content) {
+                      Swal.showValidationMessage(`Please enter your data.`);
+                      return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
+                  }
+
+                  param = {
+
+                    content: content
+                  }
+
+                  return param;
+              },
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  const content = result.value;
+                  console.log(content);
+                  axios.put(`/api/backend/editann/${Ann_id}`, content)
+                  .then((response) => {
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Your work has been saved',
+                      showConfirmButton: false,
+                      timer: 1500
+                    }).then( () => {
+                      location.reload()
+                    });
+                  })
+                  .catch((error) => {
+                      console.error('API Error:', error);
+                      // จัดการข้อผิดพลาด
+                  });
+              }
+          });
+      });
+  }
+
+  function deleteAnnounce(ann_id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`/api/backend/delann/${ann_id}`).then((response) => {
+          console.log(response.status);
+          if(response.status = 200) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {location.reload()})
+          } else {
+            Swal.fire(
+              'Error!',
+              'Delete failed some think wrong.',
+              'error'
+            )
+          }
+        })
+      }
+    })
+  }
+
 
 
   function addQuiz() {

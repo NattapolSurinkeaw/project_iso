@@ -68,7 +68,7 @@
             html: ` <input type="text" id="name" class="swal2-input" placeholder="Name" value="${user.name}">
             <input type="email" id="email" class="swal2-input" placeholder="Email" value="${user.email}">
             <input type="text" id="password" class="swal2-input" placeholder="New Password" >
-            <input type="file" id="profile" class="swal2-input">
+            <input type="file" id="profile" class="swal2">
             `,
             confirmButtonText: "Submit",
             focusConfirm: false,

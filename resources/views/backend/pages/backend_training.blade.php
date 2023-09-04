@@ -8,7 +8,11 @@
         <button type="button" id="createtraining" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
     </div>
     
-    <div class="relative h-4/5 my-10 overflow-y-scroll mx-10">
+    <div class="mx-10 mb-2">
+        <button class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
+        <button class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
+    </div>
+    <div class="relative h-4/5 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>

@@ -38,4 +38,9 @@ Route::get('/course/{id}', [ApiBackendController::class, 'getCourseById']);
 
 //backend
 Route::post('/backend/course',[CourseController::class,'createCourse']);
+Route::put('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
+
 Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);
+Route::get('/backend/getann/{id}',[CourseController::class,'getAnnouce']);
+Route::put('/backend/editann/{id}',[CourseController::class,'editAnnouncement']);
+Route::delete('/backend/delann/{id}',[CourseController::class,'deleteAnnouncement']);
