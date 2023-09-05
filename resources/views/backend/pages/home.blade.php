@@ -35,6 +35,12 @@
             </div>
         </div>
     </div>
+
 </div>
 
+@endsection
+@section('be-scripts')
+<script>
+
+</script>
 @endsection

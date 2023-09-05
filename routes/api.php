@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\api\ApiBackendController;
+use App\Http\Controllers\Backend\BackendNewsEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,11 @@ Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);
 Route::get('/backend/getann/{id}',[CourseController::class,'getAnnouce']);
 Route::put('/backend/editann/{id}',[CourseController::class,'editAnnouncement']);
 Route::delete('/backend/delann/{id}',[CourseController::class,'deleteAnnouncement']);
+
+
+Route::get('/backend/quiz/{id}',[CourseController::class,'getQuiz']);
+Route::post('/backend/createquiz',[CourseController::class,'createQuiz']);
+Route::put('/backend/editquiz/{id}',[CourseController::class,'editQuiz']);
+Route::delete('/backend/delquiz/{id}',[CourseController::class,'delQuiz']);
+
+Route::post('/backend/createnews',[BackendNewsEventController::class,'createNews']);

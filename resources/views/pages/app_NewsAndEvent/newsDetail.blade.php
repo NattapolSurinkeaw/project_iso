@@ -7,6 +7,8 @@
   <h1 class="text-center text-2xl mb-4">{{$getNews->name}}</h1>
   <img src="{{$getNews->img_news_events}}" alt="">
   <p>{{$getNews->created_at}}</p>
-  <p>{{$getNews->content}}</p>
+  <div>
+    {!! $getNews->content !!}
+  </div>
 </div>
 @endsection

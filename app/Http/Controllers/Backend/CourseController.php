@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Elerningcourse;
 use App\Models\Annoucement;
@@ -23,6 +24,8 @@ class CourseController extends Controller
         $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
         return view('backend.pages.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
     }
+
+
 
     //  API Methods
     public function createCourse(Request $request) {
@@ -172,5 +175,101 @@ class CourseController extends Controller
                 'message' => 'เกิดข้อผิดพลาดในการลบประกาศ: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    public function createQuiz(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'courseId' => 'required',
+            'quiz_name' => 'required',
+            'quiz_type' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        Quiz::create([
+            'elerningcourse_id' => $request->input('courseId'),
+            'quiz_name' => $request->input('quiz_name'),
+            'quiz_type' => $request->input('quiz_type'),
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'บันทึกข้อมูล Quiz สำเร็จ'
+        ], 200);
+
+    }
+
+    public function getQuiz($id_quiz) {
+        $quiz = Quiz::find($id_quiz);
+
+        if (!$quiz) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'not found Quiz',
+            ], 400);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data'  => $quiz,
+        ], 200);
+    }
+
+    public function editQuiz(Request $request, $id_quiz) {
+        $quiz = Quiz::find($id_quiz);
+
+        if (!$quiz) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'not found Quiz',
+            ], 400);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'quiz_name' => 'required',
+            'quiz_type' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        $quiz->quiz_name = $request->input('quiz_name');
+        $quiz->quiz_type = $request->input('quiz_type');
+
+        $quiz->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'แก้ไขข้อมูล Quiz สำเร็จ',
+        ], 200);
+    }
+
+    public function delQuiz($id_quiz) {
+        $quiz = Quiz::find($id_quiz);
+
+        if (!$quiz) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'not found Quiz',
+            ], 400);
+        }
+
+        $quiz->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'delete quiz successfully',
+        ], 200);
+
     }
 }

@@ -57,35 +57,32 @@
 
 @section('scripts')
 <script>
-  let user = {!! json_encode($user) !!};
+    let user = {!! json_encode($user) !!};
 
-  // let formData = nullFormData ;
-
-  async function editUser() {
-    try {
-        const result = await Swal.fire({
+    function editUser() {
+        Swal.fire({
             title: "Edit",
             html: ` <input type="text" id="name" class="swal2-input" placeholder="Name" value="${user.name}">
-            <input type="email" id="email" class="swal2-input" placeholder="Email" value="${user.email}">
-            <input type="text" id="password" class="swal2-input" placeholder="New Password" >
-            <input type="file" id="profile" class="swal2">
-            `,
+                    <input type="email" id="email" class="swal2-input" placeholder="Email" value="${user.email}">
+                    <input type="text" id="password" class="swal2-input" placeholder="New Password" >
+                    <input type="file" id="profile" class="swal2">
+                    `,
             confirmButtonText: "Submit",
             focusConfirm: false,
             preConfirm: () => {
-                const name = Swal.getPopup().querySelector("#name").value;
-                const email = Swal.getPopup().querySelector("#email").value;
-                const password = Swal.getPopup().querySelector("#password").value;
+                let name = Swal.getPopup().querySelector("#name").value;
+                let email = Swal.getPopup().querySelector("#email").value;
+                let password = Swal.getPopup().querySelector("#password").value;
 
                 if (!name || !email) {
                     Swal.showValidationMessage(`Please enter your data.`);
                     return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
                 }
 
-                const profileInput = Swal.getPopup().querySelector("#profile");
-                const profileFile = profileInput.files[0];
+                let profileInput = Swal.getPopup().querySelector("#profile");
+                let profileFile = profileInput.files[0];
 
-                const formData = new FormData();
+                let formData = new FormData();
                 formData.append('name', name);
                 formData.append('email', email);
                 formData.append('password', password);
@@ -93,19 +90,32 @@
 
                 return formData;
             },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formData = result.value;
+
+                formData.forEach((value, key) => {
+                    console.log(key + ': ' + value);
+                });
+
+                axios.put(`/api/dashboard/edituser/${user.id}`, formData)
+                .then((response) => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1000
+                }).then( () => {
+                    location.reload()
+                });
+                })
+                .catch((error) => {
+                    console.error('API Error:', error);
+                    // จัดการข้อผิดพลาด
+                });
+            }
         });
-        if (result.isConfirmed) {
-            const formData = result.value; // ดึงข้อมูล formData จาก result.value
-            const response = await axios.put(`api/dashboard/edituser/${user.id}`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            console.log("Response:", response);
-        }
-    } catch (error) {
-        console.error(error);
     }
-  }
 </script>
 @endsection
