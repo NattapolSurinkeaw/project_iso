@@ -29,7 +29,7 @@ Route::post('/auth/login', [BackendController::class, 'onLogin']);
 Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
 
 Route::get('/getvideo/{id}', [ApiDashboradController::class, 'getHomeVideo']);
-Route::put('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
+Route::post('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
 
 Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
 Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
@@ -39,7 +39,7 @@ Route::get('/course/{id}', [ApiBackendController::class, 'getCourseById']);
 
 //backend
 Route::post('/backend/course',[CourseController::class,'createCourse']);
-Route::put('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
+Route::post('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
 
 Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);
 Route::get('/backend/getann/{id}',[CourseController::class,'getAnnouce']);
@@ -53,3 +53,5 @@ Route::put('/backend/editquiz/{id}',[CourseController::class,'editQuiz']);
 Route::delete('/backend/delquiz/{id}',[CourseController::class,'delQuiz']);
 
 Route::post('/backend/createnews',[BackendNewsEventController::class,'createNews']);
+Route::post('/backend/editnews/{id}',[BackendNewsEventController::class,'editNews']);
+Route::delete('/backend/delnews/{id}',[BackendNewsEventController::class,'deleteNews']);

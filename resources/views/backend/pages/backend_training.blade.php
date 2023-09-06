@@ -5,7 +5,7 @@
 <div class="h-screen">
     <div class="mx-10 my-4 flex justify-between items-center">
         <h1 class="text-xl font-bold">Course</h1>
-        <button type="button" id="createtraining" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+        <button type="button" id="createtraining" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
     </div>
     
     <div class="mx-10 mb-2">

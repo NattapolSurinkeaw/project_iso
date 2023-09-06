@@ -6,7 +6,7 @@
   <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" loop="true" slides-per-view="3"
     space-between="20" free-mode="true">
     <!-- เอาเมาส์ไปชี้แล้วมีกล่องข้อความขึ้นมาจากด้านล่าง ที่บอกหัวข้อ  -->
-    @foreach($newsEvents as $news)
+    @foreach($new_news as $news)
       <swiper-slide class="my-10 text-center">
         <a href="/newsdetails/{{$news->id}}">
           <img class="relative" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="">
@@ -15,7 +15,7 @@
           </div>
           <div class="slide-details absolute bottom-0 text-center text-white w-full">
             <h2 class="text-2xl">{{$news->name}}</h2>
-            <p>{{$news->content}}</p>
+            <p>{{$news->description}}</p>
           </div>
         </a>
       </swiper-slide>
@@ -34,7 +34,7 @@
             <h1 class="text-2xl text-gray-400 border-r-8 border-gray-100 p-2 underline w-full">{{$news->name}}</h1>
             <p >{{$news->description}}</p>
             <div class="flex gap-2">
-              <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show'></box-icon></span>
+              <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
               <span>/</span>
               <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
               <span>/</span>
@@ -49,7 +49,7 @@
 
     <div class="w-full max-w-[400px] p-2 rounded-lg bg-gray-100">
       <h1 class="text-center text-xl font-bold mb-2">ข่าวที่น่าสนใจ</h1>
-      @foreach($newsEvents as $news)
+      @foreach($topnews as $news)
       <a href="/newsdetails/{{$news->id}}">
         <div class="w-full rounded-lg bg-white my-5 flex flex-col gap-2 items-center justify-center">
           <h1 class="text-lg text-blue-800">{{$news->name}}</h1>
@@ -58,7 +58,7 @@
           </div>
           <h1>{{$news->description}}</h1>
           <div class="p-2 flex gap-2">
-            <span class="flex gap-1 item-certer text-gray-500">0 <box-icon name='show'></box-icon></span>
+            <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
             <span>/</span>
             <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
             <span>/</span>

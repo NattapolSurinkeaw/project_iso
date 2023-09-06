@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->integer('day');
+            //สร้างฟิล์ด description บอกรายละเอียดของ training
             $table->decimal('fee',8,2);
-            $table->string('img_training'); // เพิ่มคอลัมน์ img_training ในตาราง
+            $table->string('img_training')->nullable(); // เพิ่มคอลัมน์ img_training ในตาราง
             $table->date('date');
             $table->timestamps();
 

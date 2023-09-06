@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('annoucements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('elerningcourse_id')->constrained('elerningcourses')->onDelete('cascade');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
         });
     }

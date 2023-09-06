@@ -34,12 +34,12 @@ class CourseController extends Controller
             'user_name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            // 'imgcourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
-            // 'img_course' => 'required',
+            'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
         ]);
     
-        // อัปโหลดไฟล์รูปภาพและเก็บลงในโฟลเดอร์ที่กำหนด
-        // $imgPath = $request->file('imgcourse')->store('course_images', 'public');
+        $image = $request->file('imgCourse');
+        $imgName = '/upload/images/course/'.time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/images/course'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
     
         // สร้างคอร์ส Elerningcourse ใหม่
         Elerningcourse::create([
@@ -47,7 +47,7 @@ class CourseController extends Controller
             'user_name' => $request->input('user_name'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
-            'img_course' => $request->input('img_course'),
+            'img_course' => $imgName,
         ]);
     
         return response([
@@ -57,6 +57,7 @@ class CourseController extends Controller
     }
 
     public function editCourse(Request $request, $id_course) {
+        // dd($request->all());exit();
         $course = Elerningcourse::find($id_course);
         
         if(!$course){
@@ -71,14 +72,22 @@ class CourseController extends Controller
             'user_name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'img_course' => 'required',
+            'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
         ]);
 
+    
         $course->course_name = $request->input('course_name');
         $course->user_name = $request->input('user_name');
         $course->price = $request->input('price');
         $course->description = $request->input('description');
-        $course->img_course = $request->input('img_course');
+
+        if ($request->hasFile('imgCourse') && $request->file('imgCourse')->isValid()) {
+            $image = $request->file('imgCourse');
+            $imgName = '/upload/images/course/' . time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/course'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+            $course->img_course = $imgName;
+        }
+
         $course->save();
 
         return response()->json([

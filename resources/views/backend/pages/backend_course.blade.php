@@ -64,7 +64,7 @@
                         <a class="bg-green-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">สมาชิก</a>
                         <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">รายละเอียด</a>
                         <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
-                        <button class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
+                        <button class="bg-red-600 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="delCourse">ลบ</button>
                     </td>
                 </tr>
                 @endforeach
@@ -79,6 +79,7 @@
 <script>
     let btncreate = document.querySelector('#create-course');
     let editCourse = document.querySelectorAll('#editCourse');
+    let delCourseButtons = document.querySelectorAll('#delCourse');
     btncreate.addEventListener('click', () => {
         create()
     })
@@ -89,6 +90,14 @@
         });
     });
 
+    delCourseButtons.forEach(delCourseButton => {
+        delCourseButton.addEventListener('click', (event) => {
+            let courseId = event.target.getAttribute('data-id');
+            delCourse(courseId);
+        });
+    });
+
+
     async function create() {
     try {
         const result = await Swal.fire({
@@ -97,7 +106,7 @@
                 <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="">
                 <input type="number" id="price" class="swal2-input" placeholder="price" value="">
                 <input type="text" id="description" class="swal2-input" placeholder="description" >
-                <input type="text" id="img_course" class="swal2-input" placeholder="img_course" >
+                <input type="file" id="img_course" class="swal2 mt-4">
               `,
         confirmButtonText: "Submit",
         focusConfirm: false,
@@ -106,26 +115,26 @@
                 const user_name = Swal.getPopup().querySelector("#user_name").value;
                 const price = Swal.getPopup().querySelector("#price").value;
                 const description = Swal.getPopup().querySelector("#description").value;
-                const img_course = Swal.getPopup().querySelector("#img_course").value;
+                const img_course = Swal.getPopup().querySelector("#img_course");
+                const imgCourse = img_course.files[0];
 
-                if (!course_name || !user_name || !price || !description) {
+                if (!course_name || !user_name || !price || !description || !imgCourse) {
                     Swal.showValidationMessage(`Please enter your data.`);
                 }
 
-                param = {
-                    course_name: course_name,
-                    user_name: user_name,
-                  price: price,
-                  description: description,
-                  img_course: img_course
-                }
+                formData = new FormData();
+                formData.append('course_name' , course_name)
+                formData.append('user_name' , user_name)
+                formData.append('price' , price)
+                formData.append('description' , description)
+                formData.append('imgCourse' , imgCourse)
 
-                console.log(param);
-                return param;
+                return formData;
             },
     });
     if (result.isConfirmed) {
-            const response = await axios.post(`/api/backend/course`, result.value);
+            let formData = result.value;
+            const response = await axios.post(`/api/backend/course`, formData);
             console.log("Response:", response);
             location.reload();
         }
@@ -145,7 +154,7 @@
                     <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="${data.user_name}">
                     <input type="number" id="price" class="swal2-input" placeholder="price" value="${data.price}">
                     <input type="text" id="description" class="swal2-input" placeholder="description" value="${data.description}">
-                    <input type="text" id="img_course" class="swal2-input" placeholder="img_course" value="${data.img_course}">
+                    <input type="file" id="img_course" class="swal2 mt-4">
                 `,
             confirmButtonText: "Submit",
             focusConfirm: false,
@@ -154,32 +163,41 @@
                     const user_name = Swal.getPopup().querySelector("#user_name").value;
                     const price = Swal.getPopup().querySelector("#price").value;
                     const description = Swal.getPopup().querySelector("#description").value;
-                    const img_course = Swal.getPopup().querySelector("#img_course").value;
+                    const img_course = Swal.getPopup().querySelector("#img_course");
+                    const imgCourse = img_course.files[0];
 
-                    if (!course_name || !user_name || !price || !description || !img_course) {
+                    if (!course_name || !user_name || !price || !description) {
                         Swal.showValidationMessage(`Please enter your data.`);
                     }
 
-                    param = {
-                        course_name: course_name,
-                        user_name: user_name,
-                        price: price,
-                        description: description,
-                        img_course: img_course
-                    }
+                    formData = new FormData();
+                    formData.append('course_name' , course_name)
+                    formData.append('user_name' , user_name)
+                    formData.append('price' , price)
+                    formData.append('description' , description)
+                    formData.append('imgCourse' , imgCourse)
 
-                    return param;
+                    return formData;
                 },
         });
         if (result.isConfirmed) {
                 console.log(data.id);
-                const response = await axios.put(`/api/backend/editcourse/${data.id}`, result.value);
+                // formData.forEach((value, key) => {
+                //     console.log(key + ': ' + value);
+                // });
+                // return;
+                const response = await axios.post(`/api/backend/editcourse/${data.id}`, result.value);
                 console.log("Response:", response);
                 location.reload();
             }
         } catch (error) {
             console.error(error);
     }
+    }
+
+    function delCourse(courseId) {
+        console.log(courseId);
+        // ทำสิ่งที่คุณต้องการกับ courseId ที่ได้รับ
     }
 
 </script>

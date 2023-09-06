@@ -98,7 +98,7 @@
                     console.log(key + ': ' + value);
                 });
 
-                axios.put(`/api/dashboard/edituser/${user.id}`, formData)
+                axios.post(`/api/dashboard/edituser/${user.id}`, formData)
                 .then((response) => {
                 Swal.fire({
                     position: 'center',

@@ -84,6 +84,7 @@ Route::prefix('backend')->middleware('checklogin')->group(function () {
   Route::get('/training',[BackendTrainingController::class,'backendTraining']);
   Route::get('/newsevent',[BackendNewsEventController::class,'backendNewsEvent']);
   Route::get('/createnews',[BackendNewsEventController::class,'backendCreateNews']);
+  Route::get('/editnews/{id}',[BackendNewsEventController::class,'backendEditNews']);
   Route::get('/pendingcourse',[PendingCourseController::class,'pendingCourse']);
   Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
 });

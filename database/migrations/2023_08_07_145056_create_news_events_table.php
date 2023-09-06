@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('content');
+            $table->text('content');
+            $table->unsignedInteger('view')->default(0);
             $table->string('img_news_events')->nullable();
             $table->timestamps();
         });
