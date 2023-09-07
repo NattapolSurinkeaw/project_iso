@@ -6,13 +6,15 @@
     <h1 class="text-2xl font-bold">Dashboard</h1>
 
     <div class="my-4 grid grid-cols-4 gap-10">
-        <div class="h-30 p-4 bg-red-300 rounded-lg">
-            <h1>Member</h1>
-            <div class="flex justify-between items-center">
-                <h1 class="text-4xl">{{$data['user']}}</h1>
-                <div><img class="w-20 h-20" src="/image/icon/member.png" alt=""></div>
+        <a href="{{url('backend/member')}}">
+            <div class="h-30 p-4 bg-red-300 rounded-lg">
+                <h1>Member</h1>
+                <div class="flex justify-between items-center">
+                    <h1 class="text-4xl">{{$data['user']}}</h1>
+                    <div><img class="w-20 h-20" src="/image/icon/member.png" alt=""></div>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="h-30 p-4 bg-green-300 rounded-lg">
             <h1>Course</h1>
             <div class="flex justify-between items-center">

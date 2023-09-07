@@ -8,24 +8,28 @@
     </div>
   
     <div class="mx-10">
-      <div class="flex gap-10 mb-4">
-        <div class="flex flex-col gap-2">
-          <label for="namenews">Name</label>
-          <input name="namenews" id="namenews" type="text">
-        </div>
-        <div class="flex flex-col gap-2">
-          <label for="description">Description ไม่เกิน (120 ตัวอักษร)</label>
-          <input name="description" id="description" type="text">
-        </div>
-        <div class="flex flex-col gap-2">
-          <label for="img_news_event">รูปภาพขนาดไม่เกิน (2MB) </label>
-          <input id="img_news_event" name="img_news_event" type="file">
-        </div>
+      <div class="flex justify-between gap-10 mb-4">
+          <div class="w-full flex flex-col gap-2">
+            <label for="namenews">Name</label>
+            <input name="namenews" class="w-full" id="namenews" type="text">
+          </div>
+          <div class="w-full flex flex-col gap-2">
+            <label for="description">Description ไม่เกิน (120 ตัวอักษร)</label>
+            <input name="description" class="w-full" id="description" type="text">
+          </div>
+          <div class="w-full flex flex-col gap-2">
+            <label for="img_news_event">รูปภาพขนาดไม่เกิน (2MB) </label>
+            <input id="img_news_event" name="img_news_event" type="file">
+          </div>
       </div>
 
-      <textarea id="editor"></textarea>
+      <div>
+        <label for="content">Content News</label>
+        <textarea name="content" id="editor"></textarea>
+      </div>
+
       <div class="flex justify-end my-4">
-        <button onclick="createNews()" class="px-4 py-2 text-white bg-green-500 rounded-lg">save</button>
+        <button onclick="createNews()" class="px-5 py-2 text-white bg-green-500 rounded-lg">save</button>
       </div>
     </div>
 </div>
@@ -40,6 +44,10 @@
     .create( document.querySelector( '#editor' ) )
     .then(instance => {
         editor = instance; // เก็บอินสแตนซ์ของ CKEditor ในตัวแปร editor
+        instance.editing.view.change(writer => {
+            writer.setStyle('min-height', '600px', instance.editing.view.document.getRoot());
+            writer.setStyle('max-height', '600px', instance.editing.view.document.getRoot());
+        });
     })
     .catch( error => {
         console.error( error );

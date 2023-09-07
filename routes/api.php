@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\api\ApiBackendController;
 use App\Http\Controllers\Backend\BackendNewsEventController;
+use App\Http\Controllers\Backend\BackendTrainingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,10 @@ Route::delete('/backend/delquiz/{id}',[CourseController::class,'delQuiz']);
 Route::post('/backend/createnews',[BackendNewsEventController::class,'createNews']);
 Route::post('/backend/editnews/{id}',[BackendNewsEventController::class,'editNews']);
 Route::delete('/backend/delnews/{id}',[BackendNewsEventController::class,'deleteNews']);
+
+Route::get('/backend/module/{id}', [BackendTrainingController::class,'getModuleId']);
+Route::post('/backend/createmodule', [BackendTrainingController::class,'createModule']);
+Route::put('/backend/editmodule/{id}', [BackendTrainingController::class,'editModule']);
+Route::delete('/backend/delmodule/{id}', [BackendTrainingController::class,'delModule']);
+
+Route::post('/backend/createtrain', [BackendTrainingController::class,'cretaTraining']);

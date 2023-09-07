@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\HomeVideo;
 
@@ -42,11 +43,23 @@ class ApiDashboradController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
         ]);
 
+        $oldpass = $request->input('old-password');
+        $newpass = $request->input('password');
+
+        if (!is_null($oldpass) && !is_null($newpass)) {
+            if (Hash::check($oldpass, $user->password)) {
+                $user->password = Hash::make($newpass);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Password is incorrect'
+                ], 400);
+            }
+        }
+
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
 
         if ($request->hasFile('profile') && $request->file('profile')->isValid()) {
             $image = $request->file('profile');

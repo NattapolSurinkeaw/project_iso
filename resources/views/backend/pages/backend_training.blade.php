@@ -5,14 +5,14 @@
 <div class="h-screen">
     <div class="mx-10 my-4 flex justify-between items-center">
         <h1 class="text-xl font-bold">Course</h1>
-        <button type="button" id="createtraining" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+        <a href="{{url('/backend/createtraining')}}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
     </div>
     
     <div class="mx-10 mb-2">
         <button class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
         <button class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
     </div>
-    <div class="relative h-4/5 overflow-y-scroll mx-10">
+    <div class="relative h-4/6 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -88,7 +88,7 @@
                     </td>
                     <td class="px-6 py-4">
                         <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/">ลายละเอียด</a>
-                        <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="" id="editCourse">แก้ไข</button>
+                        <a href="{{url('/backend/edittraining')}}/{{$trainingcourse->id}}" class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="" id="editCourse">แก้ไข</a>
                         <button  class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
                     </td>
                 </tr>
@@ -104,14 +104,14 @@
 @section('be-scripts')
 <script>
 
-createtraining.onclick = env => {
-        Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'The function has not yet been activated.',
-        cancelButtonColor: '#d33',
-        })
-    }
+// createtraining.onclick = env => {
+//     Swal.fire({
+//     position: 'center',
+//     icon: 'warning',
+//     title: 'The function has not yet been activated.',
+//     cancelButtonColor: '#d33',
+//     })
+// }
 
 </script>
 

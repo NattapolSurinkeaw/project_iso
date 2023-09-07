@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('module_id')->unsigned();
             $table->string('code');
             $table->string('name');
+            $table->text('training_detail');
             $table->integer('day');
-            //สร้างฟิล์ด description บอกรายละเอียดของ training
             $table->decimal('fee',8,2);
             $table->string('img_training')->nullable(); // เพิ่มคอลัมน์ img_training ในตาราง
             $table->date('date');

@@ -16,7 +16,7 @@
   </div>
 
   <div class="mx-20 my-10">
-    <p>เผยแพร่เมื่อ {{$getNews->created_at}}</p>
+    <p>เผยแพร่เมื่อ {{$getNews->created_at->format('d-M-Y')}}</p>
     <div class="flex">
       <p>แบ่งปัน :</p>
       <div>

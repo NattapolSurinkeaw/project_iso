@@ -30,11 +30,13 @@
   margin: 20px auto;
 }
 .ck-editor__editable[role="textbox"] {
-  /* editing area */
-  min-height: 400px;
+  /* min-height: 600px;
+  max-height: 600px; เพิ่มความสูงสูงสุด */
+  overflow-y: auto; /* เพิ่มการสก็อล */
 }
+
+/* สไตล์สำหรับรูปภาพใน CKEditor */
 .ck-content .image {
-  /* block images */
   max-width: 80%;
   margin: 20px auto;
 }

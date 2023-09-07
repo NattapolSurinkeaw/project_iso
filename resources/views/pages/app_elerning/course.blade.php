@@ -13,15 +13,21 @@
         <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
-      @foreach($announcements as $announcement)
-      <p class="my-4">{{$announcement->content}}</p>
-      @if ($announcement && $announcement->updated_at)
-        <p>{{$announcement->updated_at->format('d-M-Y')}}</p>
-      @else
-        <p>date</p>
-      @endif
+      @if(count($announcements) > 0)
+        @foreach($announcements as $announcement)
+        <p class="my-4">{!! $announcement->content !!}</p>
+        @if ($announcement && $announcement->updated_at)
+          <p>{{$announcement->updated_at->format('d-M-Y')}}</p>
+        @else
+          <p>date</p>
+        @endif
+        <hr>
+        @endforeach
+      @else 
+      <p class="my-4">null</p>
+      <p>null</p>
       <hr>
-      @endforeach
+      @endif
     </div>
 
     <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">
@@ -55,11 +61,17 @@
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 
+      @if(count($quizzes) > 0)
       @foreach($quizzes as $quiz)
       <p class="my-4 text-green-500 cursor-pointer"><a href="/quizstart/{{$course->id}}/{{$quiz->id}}" data-type="{{$quiz->quiz_type}}">{{$quiz->quiz_name}}</a></p>
-      @endforeach
-      <p>07-feb-23, 08.02 Am</p>
+      <p>{{$quiz->updated_at->format('d-M-Y')}}</p>
       <hr>
+      @endforeach
+      @else
+      <p class="my-4 text-gray-400">No quiz</p>
+      <p>null</p>
+      <hr>
+      @endif
     </div>
   </div>
 </div>

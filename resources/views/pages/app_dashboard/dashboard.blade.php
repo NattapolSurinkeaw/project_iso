@@ -62,16 +62,21 @@
     function editUser() {
         Swal.fire({
             title: "Edit",
-            html: ` <input type="text" id="name" class="swal2-input" placeholder="Name" value="${user.name}">
-                    <input type="email" id="email" class="swal2-input" placeholder="Email" value="${user.email}">
+            html: `
+                    <img class="w-60 h-72 mx-auto mb-4" src="/image/icon/upload.png" id="ImgOpt" >
+                    <label for="profile" class="block bg-green-600 text-white px-4 py-1 w-28 mx-auto rounded-lg">อัปโหลด</label>
+                    <input type="file" name="profile" id="profile" class="swal2 hidden">
+                    <input type="email" id="email" class="swal2-input w-4/5" placeholder="Email" value="${user.email}" disabled>
+                    <input type="text" id="name" class="swal2-input" placeholder="Name" value="${user.name}">
+
+                    <input type="text" id="old-password" class="swal2-input mt-10" placeholder="Old Password" >
                     <input type="text" id="password" class="swal2-input" placeholder="New Password" >
-                    <input type="file" id="profile" class="swal2">
                     `,
             confirmButtonText: "Submit",
             focusConfirm: false,
             preConfirm: () => {
                 let name = Swal.getPopup().querySelector("#name").value;
-                let email = Swal.getPopup().querySelector("#email").value;
+                let oldPassword = Swal.getPopup().querySelector("#old-password").value;
                 let password = Swal.getPopup().querySelector("#password").value;
 
                 if (!name || !email) {
@@ -84,7 +89,7 @@
 
                 let formData = new FormData();
                 formData.append('name', name);
-                formData.append('email', email);
+                formData.append('old-password', oldPassword);
                 formData.append('password', password);
                 formData.append('profile', profileFile);
 
@@ -116,6 +121,12 @@
                 });
             }
         });
+        profile.onchange = evt => {
+        const [file] = profile.files
+        if (file) {
+            ImgOpt.src = URL.createObjectURL(file)
+        }
+        }
     }
 </script>
 @endsection

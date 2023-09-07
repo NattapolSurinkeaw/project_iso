@@ -76,10 +76,10 @@
                             </td>
                             <td class="px-6 py-4 flex gap-2">
                                 <a href="/backend/editnews/{{ $news->id }}"
-                                    class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id=""
+                                    class="bg-yellow-500 p-2 w-14 rounded-lg text-white text-center" data-id=""
                                     id="editCourse">แก้ไข</a>
                                 <button onclick="delNews({{ $news->id }})"
-                                    class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
+                                    class="bg-red-600 p-2 w-14 rounded-lg text-white text-center">ลบ</button>
                             </td>
                         </tr>
                     @endforeach
