@@ -50,6 +50,7 @@
         instance.editing.view.change(writer => {
             writer.setStyle('min-height', '600px', instance.editing.view.document.getRoot());
             writer.setStyle('max-height', '600px', instance.editing.view.document.getRoot());
+            writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
         });
     })
     .catch(error => {

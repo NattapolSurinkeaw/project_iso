@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\api\ApiBackendController;
 use App\Http\Controllers\Backend\BackendNewsEventController;
 use App\Http\Controllers\Backend\BackendTrainingController;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,9 @@ Route::get('/auth/userData', [BackendController::class, 'onGetUserData']);
 Route::get('/courses',[BackendController::class, 'getAllCourse']);
 Route::get('/course/{id}', [ApiBackendController::class, 'getCourseById']);
 
+Route::post('/payment',[CartController::class, 'pendingPayment']);
+Route::get('/delallcart',[CartController::class, 'removeAllCart']);
+
 
 //backend
 Route::post('/backend/course',[CourseController::class,'createCourse']);
@@ -63,3 +67,5 @@ Route::put('/backend/editmodule/{id}', [BackendTrainingController::class,'editMo
 Route::delete('/backend/delmodule/{id}', [BackendTrainingController::class,'delModule']);
 
 Route::post('/backend/createtrain', [BackendTrainingController::class,'cretaTraining']);
+Route::post('/backend/edittrain/{id}', [BackendTrainingController::class,'backend_editTraining']);
+Route::delete('/backend/deltrain/{id}', [BackendTrainingController::class,'delTraining']);

@@ -9,10 +9,10 @@
     </div>
     
     <div class="mx-10 mb-2">
-        <button class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
-        <button class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
+        <button id="toggleTable" class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
+        <button id="toggleCalendar" class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
     </div>
-    <div class="relative h-4/6 overflow-y-scroll mx-10">
+    <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -89,12 +89,16 @@
                     <td class="px-6 py-4">
                         <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/">ลายละเอียด</a>
                         <a href="{{url('/backend/edittraining')}}/{{$trainingcourse->id}}" class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="" id="editCourse">แก้ไข</a>
-                        <button  class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
+                        <button onclick="delTraining({{$trainingcourse->id}})"  class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div id="calendar-train" class="relative h-4/6 overflow-y-scroll mx-10" style="display: none">
+        <div id='calendar'></div>
     </div>
 </div>
 
@@ -104,14 +108,54 @@
 @section('be-scripts')
 <script>
 
-// createtraining.onclick = env => {
-//     Swal.fire({
-//     position: 'center',
-//     icon: 'warning',
-//     title: 'The function has not yet been activated.',
-//     cancelButtonColor: '#d33',
-//     })
-// }
+document.getElementById('toggleTable').addEventListener('click', function() {
+    var tableDiv = document.getElementById('table-train');
+    var calendarDiv = document.getElementById('calendar-train');
+    if (tableDiv.style.display === 'none' || tableDiv.style.display === '') {
+        tableDiv.style.display = 'block';
+        calendarDiv.style.display = 'none';
+    }
+});
+
+document.getElementById('toggleCalendar').addEventListener('click', function() {
+    var calendarDiv = document.getElementById('calendar-train');
+    var tableDiv = document.getElementById('table-train');
+    if (calendarDiv.style.display === 'none' || calendarDiv.style.display === '') {
+        calendarDiv.style.display = 'block';
+        tableDiv.style.display = 'none';
+    }
+    let calendarEl = document.querySelector('#calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        // กำหนดค่าต่าง ๆ ของปฏิทินที่นี่
+    });
+    calendar.render();
+});
+
+
+function delTraining(train_id) {
+    Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+    if (result.isConfirmed) {
+        axios.delete(`/api/backend/deltrain/${train_id}`).then((result) => {
+            console.log(result.status);
+            if(result.status = 'success') {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                ).then(() => { location.reload();})
+            }
+        })
+    }
+    })
+}
 
 </script>
 

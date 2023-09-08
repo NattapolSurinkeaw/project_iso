@@ -72,7 +72,7 @@
 @section('be-scripts')
 <script>
 
-  let modules = {!! json_encode($modules) !!};
+  // let modules = {!! json_encode($modules) !!};
   // console.log(modules)
   
   function addModule() {
@@ -99,20 +99,29 @@
           }).then((result) => {
               if (result.isConfirmed) {
                   axios.post(`/api/backend/createmodule`, result.value)
-                      .then((response) => {
-                          Swal.fire({
-                              position: 'center',
-                              icon: 'success',
-                              title: 'Your work has been saved',
-                              showConfirmButton: false,
-                              timer: 1000
-                          }).then(() => {
-                              location.reload()
-                          });
-                      })
-                      .catch((error) => {
-                          console.error('API Error:', error);
-                      });
+                    .then((response) => {
+                      console.log(response);
+                      if(response.status = 'success') {
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Your work has been saved',
+                          showConfirmButton: false,
+                          timer: 1000
+                        }).then(() => {
+                            location.reload()
+                        });
+                      } else {
+                        Swal.fire(
+                          'something worng!',
+                          error,
+                          'warning'
+                        )
+                      }
+                    })
+                    .catch((error) => {
+                      console.error('API Error:', error);
+                  });
               }
           });
   }
@@ -200,6 +209,7 @@
         instance.editing.view.change(writer => {
             writer.setStyle('min-height', '400px', instance.editing.view.document.getRoot());
             writer.setStyle('max-height', '400px', instance.editing.view.document.getRoot());
+            writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
         });
     })
     .catch( error => {
@@ -224,6 +234,7 @@
         title: 'Please fill in the information correctly.',
         showConfirmButton: true,
       })
+      return;
     }
 
     let formData = new FormData();
@@ -251,7 +262,7 @@
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            location.href = "/backend/newsevent"
+            location.href = "/backend/training"
           })
         }
       })

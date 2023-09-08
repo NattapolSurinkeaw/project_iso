@@ -132,7 +132,7 @@ class BackendTrainingController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Module already exists.',
+                'message' => 'validator data failed check input data.',
             ], 400);
         }
 
@@ -154,6 +154,67 @@ class BackendTrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Training was saved successfully',
+        ], 200);
+    }
+
+    public function backend_editTraining(Request $request, $train_id) {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'module' => 'required',
+            'code' => 'required',
+            'name' => 'required',
+            'training_detail' => 'required',
+            'day' => 'required',
+            'fee' => 'required',
+            'date' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'edit training failed.',
+            ], 400);
+        }
+        
+        $training = Trainingcourse::find($train_id);
+
+        $training->module_id = $request->input('module');
+        $training->code = $request->input('code');
+        $training->name = $request->input('name');
+        $training->training_detail = $request->input('training_detail');
+        $training->day = $request->input('day');
+        $training->fee = $request->input('fee');
+        $training->date = $request->input('date');
+
+        if ($request->hasFile('img_training') && $request->file('img_training')->isValid()) {
+            $image = $request->file('img_training');
+            $imgName = '/upload/images/training/'.time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/training'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+            $training->img_training = $imgName;
+        }
+
+        $training->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Training was saved successfully',
+        ], 200);
+
+    }
+
+    public function delTraining($train_id) {
+        $training = Trainingcourse::find($train_id);
+
+        if(!$training) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Training could not be deleted'
+            ], 404);
+        }
+
+        $training->delete();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'training was deleted successfully'
         ], 200);
     }
 }

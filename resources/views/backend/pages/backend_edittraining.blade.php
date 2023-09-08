@@ -64,7 +64,7 @@
       </div>
 
       <div class="flex justify-end my-4">
-        <button onclick="createTraining()" class="px-5 py-2 text-white bg-green-500 rounded-lg">save</button>
+        <button onclick="editTraining({{$training->id}})" class="px-5 py-2 text-white bg-green-500 rounded-lg">save</button>
       </div>
     </div>
 </div>
@@ -74,7 +74,7 @@
 @section('be-scripts')
 <script>
 
-  let modules = {!! json_encode($modules) !!};
+  // let modules = {!! json_encode($modules) !!};
   // console.log(modules)
   
   function addModule() {
@@ -202,13 +202,14 @@
         instance.editing.view.change(writer => {
             writer.setStyle('min-height', '400px', instance.editing.view.document.getRoot());
             writer.setStyle('max-height', '400px', instance.editing.view.document.getRoot());
+            writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
         });
     })
     .catch( error => {
         console.error( error );
     });
 
-  function createTraining() {
+  function editTraining(train_id) {
     const numModule = document.querySelector('#moduletrain').value;
     let detail = editor.getData();
     let code = document.querySelector('#codetrain').value;
@@ -219,13 +220,14 @@
     let inputElement = document.querySelector('#img_training');
     let imgTraining = inputElement.files[0];
 
-    if (!numModule || !code ||!nametrain || !day || !fee || !date || !imgTraining ) {
+    if (!numModule || !code ||!nametrain || !day || !fee || !date ) {
       Swal.fire({
         position: 'center',
         icon: 'warning',
         title: 'Please fill in the information correctly.',
         showConfirmButton: true,
       })
+      return;
     }
 
     let formData = new FormData();
@@ -243,7 +245,7 @@
     //   console.log(key + ': ' + value);
     // });
     try {
-      axios.post(`/api/backend/createtrain`, formData).then((response) => {
+      axios.post(`/api/backend/edittrain/${train_id}`, formData).then((response) => {
         console.log(response);
         if(response.status = "success"){
           Swal.fire({
@@ -253,7 +255,7 @@
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            location.href = "/backend/newsevent"
+            location.href = "/backend/training"
           })
         }
       })

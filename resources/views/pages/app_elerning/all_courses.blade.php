@@ -37,7 +37,6 @@
             @if(count($elcourses) > 0)
                 @foreach($elcourses as $elcourse)
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
-                    <a class="w-full" href="/course/{{$elcourse->id}}">
                         <div class="overflow-hidden rounded-lg h-45 w-full">
                             @if(!empty($elcourse->img_course))
                                 <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
@@ -45,8 +44,6 @@
                                 <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
                             @endif
                         </div> 
-                    </a>
-                    <a class="w-full" href="/course/{{$elcourse->id}}">
                         <div class="w-full flex flex-col items-start gap-2">
                             <div class="flex justify-between items-center">
                                 <h1 class="text-2xl font-bold w-full truncate">{{$elcourse->course_name}}</h1>
@@ -66,7 +63,6 @@
                                     <h1 class="font-bold">{{number_format($elcourse->price)}} THB</h1>
                                 </div>
                             </div>
-                    </a>
 
                             <div class="w-full flex justify-between items-center">
                                 <div class="flex justify-between">

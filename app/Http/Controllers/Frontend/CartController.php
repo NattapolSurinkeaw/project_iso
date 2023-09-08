@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Elerningcourse;
+use App\Models\PendingCourse;
 
 class CartController extends Controller
 {
@@ -48,6 +50,61 @@ class CartController extends Controller
         $cartCourses = Elerningcourse::whereIn('id', $cartList)->get();
 
         return view('pages.app_cart.paymentform', compact('cartCourses','cartList'));
+    }
+
+
+    // API Methods
+    public function pendingPayment(Request $request) {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'totalcourse' => 'required',
+            'totalprice' => 'required',
+            'banknumber' => 'required',
+            'totalmoney' => 'required',
+            'customertel' => 'required',
+            'bankcustomer' => 'required',
+            'bankcompany' => 'required',
+            'slippayment' => 'required|image',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'validator data failed check input data.',
+            ], 400);
+        }
+
+        $pendingCourse = new PendingCourse;
+        $pendingCourse->name = $request->input('name');
+        $pendingCourse->total_courses = $request->input('totalcourse');
+        $pendingCourse->total_price = $request->input('totalprice');
+        $pendingCourse->customer_banknumber = $request->input('banknumber');
+        $pendingCourse->totalmoney = $request->input('totalmoney');
+        $pendingCourse->customer_tel = $request->input('customertel');
+        $pendingCourse->bankcustomer = $request->input('bankcustomer');
+        $pendingCourse->bankcompany = $request->input('bankcompany');
+        $pendingCourse->status = "pending";
+
+        $image = $request->file('slippayment');
+        $imgName = '/upload/images/payments/'.time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/images/payments'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+        $pendingCourse->payment_slip = $imgName;
+
+        $pendingCourse->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => ''
+        ], 200);
+
+    }
+
+    public function removeAllCart() {
+        Session::forget('cart_list');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'All items removed from the cart'
+        ], 200);
     }
 
 }

@@ -148,6 +148,7 @@
           .create(document.querySelector('#content-annouce'))
           .then(instance => {
               editor = instance; // เก็บอินสแตนซ์ของ CKEditor ในตัวแปร editor
+              writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
           })
           .catch(error => {
               console.error(error);
@@ -206,6 +207,7 @@
               .create(document.querySelector('#content-annouce'))
               .then(instance => {
                   editor = instance; // เก็บอินสแตนซ์ของ CKEditor ในตัวแปร editor
+                  writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
               })
               .catch(error => {
                   console.error(error);
