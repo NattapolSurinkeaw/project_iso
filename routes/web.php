@@ -41,15 +41,16 @@ use App\Http\Controllers\Backend\PendingTrainingController;
   Route::get('/register', [Controller::class, 'registerPage'])->name('register');
   Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
 
+  Route::post('/api/auth/login', [BackendController::class, 'onLogin']);
+  Route::get('/api/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
+
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
-
   Route::get('/training',[TrainingController::class,'tainingPage']);
   
-
   Route::get('/newsandevent',[NewsAndEventController::class,'newsAndEventPage']);
   Route::get('/newsdetails/{id}',[NewsAndEventController::class,'newsDetail']);
-  
+
   Route::get('/elerning',[ElerningController::class,'elerningPage']);
   Route::get('/course/{id}',[ElerningController::class,'coursePage'])->middleware('checklogin');
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);

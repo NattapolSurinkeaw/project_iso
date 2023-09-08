@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MyCourse;
 use App\Models\Elerningcourse;
+use App\Models\PendingCourse;
 
 
 class DashboardController extends Controller
@@ -30,10 +31,14 @@ class DashboardController extends Controller
     }
 
     public function purchasePage() {
+        $user = Auth::user();
+        dd($user->id);exit();
+        $pendingcourse = PendingCourse::all();
         return view('pages.app_dashboard.purchase_history');
     }
 
     public function reservationPage() {
+
         return view('pages.app_dashboard.reservation_history');
     }
 

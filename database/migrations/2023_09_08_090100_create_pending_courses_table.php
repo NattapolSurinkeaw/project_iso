@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('bankcustomer', 100);
             $table->string('bankcompany', 100);
             $table->string('payment_slip');
+            $table->string('user_id', 10);
             $table->string('status', 55);
             $table->timestamps();
         });
