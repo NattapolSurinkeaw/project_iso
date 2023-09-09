@@ -74,6 +74,7 @@ Route::middleware('checklogin')->group(function () {
   Route::get('/dashboard',[DashboardController::class,'dashboard_user']);
   Route::get('/mycourse',[DashboardController::class,'myCourse']);
   Route::get('/purchasehistory',[DashboardController::class,'purchasePage']);
+  Route::get('/purchasedetail/{id}',[DashboardController::class,'purchaseDetail']);
   Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
 });  
 // });
@@ -92,6 +93,7 @@ Route::prefix('backend')->middleware('checklogin')->group(function () {
   Route::get('/editnews/{id}',[BackendNewsEventController::class,'backendEditNews']);
 
   Route::get('/pendingcourse',[PendingCourseController::class,'pendingCourse']);
+  Route::get('/pendingcourse-detail/{id}',[PendingCourseController::class,'pendingCourseDetail']);
   Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
 });
 

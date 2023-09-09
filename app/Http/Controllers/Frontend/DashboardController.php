@@ -32,11 +32,27 @@ class DashboardController extends Controller
 
     public function purchasePage() {
         $user = Auth::user();
-        dd($user->id);exit();
-        $pendingcourse = PendingCourse::all();
-        return view('pages.app_dashboard.purchase_history');
+        $pendingCourses = PendingCourse::where('user_id', $user->id)->get();
+        
+        $courses = Elerningcourse::all();
+        return view('pages.app_dashboard.purchase_history', compact('pendingCourses', 'courses'));
     }
 
+    public function purchaseDetail($pen_id) {
+        $pendingCourse = PendingCourse::find($pen_id);
+    
+        $totalCoursesData = explode(',', $pendingCourse->total_courses);
+    
+        $courses = [];
+        foreach ($totalCoursesData as $courseId) {
+            $course = Elerningcourse::find($courseId);
+            if ($course) {
+                $courses[] = $course;
+            }
+        }
+        return view('pages.app_dashboard.purchase_detail', compact('pendingCourse', 'courses'));
+    }
+    
     public function reservationPage() {
 
         return view('pages.app_dashboard.reservation_history');

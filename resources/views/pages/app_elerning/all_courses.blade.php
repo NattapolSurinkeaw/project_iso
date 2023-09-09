@@ -69,7 +69,11 @@
                                     <h1 class="text-lg text-gray-400">{{$elcourse->user_name}}</h1>
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
+                                    @if($user)
                                     <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
+                                    @else
+                                    <a href="/login" class="bg-red-500 text-white rounded-md p-1">add cart</a>
+                                    @endif
                                     <a class="bg-blue-500 text-white rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
                                 </div>
                             </div>
@@ -113,7 +117,7 @@ function addPayment() {
                     icon: 'success',
                     title: response.data.message,
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                 })
                 console.log(response.data.message);
                 // คุณสามารถทำอะไรก็ได้หลังจากเพิ่มคอร์สลงใน Session แล้ว

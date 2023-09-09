@@ -20,6 +20,8 @@ class PendingCourse extends Model
         'bankcompany',
         'payment_slip',
         'user_id',
+        'reading',
+        'comment',
         'status'
     ];
 }

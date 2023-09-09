@@ -66,6 +66,7 @@ class CartController extends Controller
             'bankcustomer' => 'required',
             'bankcompany' => 'required',
             'slippayment' => 'required|image',
+            'user_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -84,6 +85,8 @@ class CartController extends Controller
         $pendingCourse->customer_tel = $request->input('customertel');
         $pendingCourse->bankcustomer = $request->input('bankcustomer');
         $pendingCourse->bankcompany = $request->input('bankcompany');
+        $pendingCourse->user_id = $request->input('user_id');
+        $pendingCourse->reading = "no";
         $pendingCourse->status = "pending";
 
         $image = $request->file('slippayment');

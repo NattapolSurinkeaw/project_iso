@@ -57,15 +57,11 @@
         @php
           $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
         @endphp
+        @endforeach
           <h1 class="text-3xl font-medium" id="total-price">THB : {{ number_format($totalPrice, 2) }}</h1>
-          {{-- @else --}}
-          @endforeach
-          @else
+        @else
           <h1 class="text-3xl font-medium" id="total-price">THB : 0</h1>
         @endif
-          {{-- @endif --}}
-          {{-- <h1 class="line-through text-xl text-gray-300" id="total-discount">TBH 2,553</h1> --}}
-          {{-- <h1 class="text-2xl font-bold mb-5">ส่วนลด 70%</h1> --}}
         <hr>
         <div class="flex flex-col gap-3 my-2">
           {{-- <h1 class="text-xl">โปรโมชั่น</h1> --}}

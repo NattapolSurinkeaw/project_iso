@@ -131,25 +131,25 @@ imgInp.onchange = evt => {
 }
 
 let btnsubmut = document.querySelector('#submit');
-let dataCourse = {!! json_encode($cartCourses) !!}
+let user = {!! json_encode($user) !!};
+const userId = user.id;
 
+let dataCourse = {!! json_encode($cartCourses) !!}
+console.log(userId);
 let idCourse = [];
 let totalPrice = 0;
 
 for (let i = 0; i < dataCourse.length; i++) {
-    // ดึงค่า id และ price จากแต่ละอ็อบเจ็กต์ใน array
     let id = dataCourse[i].id;
-    let price = parseFloat(dataCourse[i].price); // แปลง price เป็นตัวเลข
+    let price = parseFloat(dataCourse[i].price);
 
-    // เพิ่ม id ใน idCourse
     idCourse.push(id);
 
-    // บวกค่า price เข้ากับ totalPrice
     totalPrice += price;
 }
 
-console.log('idCourse:', idCourse); // รายการ id ทั้งหมด
-console.log('totalPrice:', totalPrice); // รวมราคารายการทั้งหมด
+// console.log('idCourse:', idCourse); // รายการ id ทั้งหมด
+// console.log('totalPrice:', totalPrice); // รวมราคารายการทั้งหมด
 
 
 btnsubmut.addEventListener('click', () => {
@@ -182,10 +182,11 @@ btnsubmut.addEventListener('click', () => {
   formData.append('bankcustomer', bankcustomer);
   formData.append('bankcompany', bankcompany);
   formData.append('slippayment', imageFile);
+  formData.append('user_id', userId);
 
-  formData.forEach((value, key) => {
-      console.log(key + ': ' + value);
-    });
+  // formData.forEach((value, key) => {
+  //     console.log(key + ': ' + value);
+  //   });
 
   try {
     Swal.fire({

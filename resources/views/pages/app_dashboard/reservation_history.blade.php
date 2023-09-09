@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Dashboard @endsection
 @section('content')
-<div class="py-20 px-1 h-screen gap-4 flex ">
+<div class="pt-20 px-1 h-screen gap-4 flex ">
   <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
     @include('pages.app_dashboard.components.sidebar')
   </div>

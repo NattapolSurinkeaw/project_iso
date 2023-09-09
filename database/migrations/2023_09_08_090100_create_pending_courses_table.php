@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('bankcompany', 100);
             $table->string('payment_slip');
             $table->string('user_id', 10);
+            $table->string('reading', 4);
+            $table->string('comment')->nullable();
             $table->string('status', 55);
             $table->timestamps();
         });
