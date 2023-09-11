@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Elerningcourse;
 use App\Models\Annoucement;
 use App\Models\Quiz;
+use App\Models\Question;
 
 class CourseController extends Controller
 {
@@ -23,6 +24,15 @@ class CourseController extends Controller
         $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
         $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
         return view('backend.pages.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
+    }
+
+    public function allQuestionTable($quiz_id) {
+        $questions = Question::whereHas('quiz', function ($query) use ($quiz_id) {
+            $query->where('id', $quiz_id);
+        })->get();
+        $quiz_name = Quiz::select('id','quiz_name')->find($quiz_id);
+        // dd($quiz_name);
+        return view('backend.pages.backend_tablequestion', compact('questions','quiz_name'));
     }
 
 
@@ -280,4 +290,14 @@ class CourseController extends Controller
         ], 200);
 
     }
+
+    public function createQuestion(Request $request, $quiz_id) {
+        dd($request->all());exit();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'create quiz successfully'
+        ], 200);
+    }
+
+    
 }

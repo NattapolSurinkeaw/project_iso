@@ -75,7 +75,7 @@
                                 <p>{{ $quiz->update_at }}</p>
                             </div>
                             <div class="flex gap-2">
-                                <a href="#detail" class="p-1 bg-blue-500 text-white rounded-lg">รายละเอียด</a>
+                                <a href="{{url('/backend/question-table/'.$quiz->id)}}" class="p-1 bg-blue-500 text-white rounded-lg">รายละเอียด</a>
                                 <button onclick="editQuiz({{ $quiz->id }})"
                                     class="p-1 bg-yellow-400 text-white rounded-lg">แก้ไข</button>
                                 <button onclick="delQuiz({{ $quiz->id }})"
