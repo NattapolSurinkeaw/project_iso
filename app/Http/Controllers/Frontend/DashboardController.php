@@ -27,7 +27,21 @@ class DashboardController extends Controller
     }
 
     public function myCourse() {
-        return view('pages.app_dashboard.mycourse');
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        // $elerningcourses = Elerningcourse::whereIn('id', function ($query) use ($user_id) {
+        //     $query->select('elerningcourse_id')
+        //         ->from('my_courses')
+        //         ->where('user_id', $user_id);
+        // })->get();
+        $elerningcourses = Elerningcourse::join('my_courses', 'elerningcourses.id', '=', 'my_courses.elerningcourse_id')
+        ->where('my_courses.user_id', $user_id)
+        ->select('elerningcourses.*')
+        ->get();
+        // dd($elerningcourses);
+
+        return view('pages.app_dashboard.mycourse', compact('elerningcourses'));
     }
 
     public function purchasePage() {

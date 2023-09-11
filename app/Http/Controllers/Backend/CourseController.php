@@ -71,8 +71,7 @@ class CourseController extends Controller
             'course_name' => 'required',
             'user_name' => 'required',
             'price' => 'required',
-            'description' => 'required',
-            'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
+            'description' => 'required'
         ]);
 
     

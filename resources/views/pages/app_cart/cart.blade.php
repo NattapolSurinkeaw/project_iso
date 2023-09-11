@@ -10,7 +10,7 @@
         @if(count($cartCourses) > 0)
         @foreach($cartCourses as $course)
         <div class="flex">
-          <div class="h-46 w-64">
+          <div class="h-48 w-64">
             <img class="w-full h-full rounded-lg" src="{{ $course->img_course}}" alt="course">
           </div>
           <div class="px-10 w-full flex flex-col justify-between">

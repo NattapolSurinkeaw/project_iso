@@ -45,7 +45,7 @@
                             @endif
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
-                            <div class="flex justify-between items-center">
+                            <div class="w-full flex justify-between items-center">
                                 <h1 class="text-2xl font-bold w-full truncate">{{$elcourse->course_name}}</h1>
                                 <div class="flex">
                                     <h1 class="text-yellow-500">4.9</h1>
@@ -70,9 +70,26 @@
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
                                     @if($user)
-                                    <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
+                                        @php
+                                            $isAddedToCart = false; // สร้างตัวแปรเพื่อตรวจสอบว่ามีการเพิ่มลงในตะกร้าหรือไม่
+                                        @endphp
+                        
+                                        @foreach($mycourse as $mcourse)
+                                            @if($elcourse->id == $mcourse->elerningcourse_id)
+                                                @php
+                                                    $isAddedToCart = true; // ถ้าพบรายการที่ตรงกันในตะกร้า กำหนดให้ $isAddedToCart เป็น true
+                                                    break; // ออกจากลูป
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                        
+                                        @if($isAddedToCart)
+                                            <a href="{{url('/course/'.$elcourse->id)}}" class="bg-green-500 text-white rounded-md p-1">ซื้อแล้ว</a>
+                                        @else
+                                            <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
+                                        @endif
                                     @else
-                                    <a href="/login" class="bg-red-500 text-white rounded-md p-1">add cart</a>
+                                        <a href="/login" class="bg-red-500 text-white rounded-md p-1">add cart</a>
                                     @endif
                                     <a class="bg-blue-500 text-white rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
                                 </div>

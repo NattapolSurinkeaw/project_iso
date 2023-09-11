@@ -75,7 +75,7 @@
     <div class="mx-10 mt-4 bg-white p-4 rounded-lg drop-shadow-lg">
       <div class="flex flex-col">
         <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Comment</label>
-        <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled></textarea>
+        <textarea id="about" name="about" rows="3" class="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled>{{$pendingCourse->comment}}</textarea>
       </div>
     </div>
     <div class="mx-10 mt-4">

@@ -75,7 +75,7 @@
     <div class="mx-10 mt-4 bg-white p-4 rounded-lg drop-shadow-lg">
       <div class="flex flex-col">
         <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">Comment</label>
-        <textarea id="comment" name="comment" rows="3" class="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+        <textarea id="comment" name="comment" rows="3" class="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{$pendingcourse->comment}}</textarea>
       </div>
     </div>
     <div class="mx-10">
@@ -137,13 +137,14 @@ statusSelect.addEventListener('change', function() {
 });
 
 let pending = {!! json_encode($pendingcourse) !!}
-console.log(pending.user_id);
+console.log(pending.id);
 // console.log(pending.total_courses);
 function approvePending() {
   let comment = document.querySelector('#comment').value;
   let status = statusSelect.value
   let course = pending.total_courses
   let userId = pending.user_id
+  let pen_id = pending.id
   param = {
     status: status,
     course: course,
@@ -151,6 +152,41 @@ function approvePending() {
     comment: comment,
   }
   console.log(param);
+  Swal.fire({
+    title: 'Approve Course',
+    text: "ยืนยันการอนุมัติ",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'ยืนยัน',
+    cancelButtonText: 'ยกเลิก',
+
+    preConfirm: () => {
+      param = {
+        status: status,
+        course: course,
+        userId: userId,
+        comment: comment,
+      }
+
+      return param;
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.post(`/api/backend/approvecourse/${pen_id}`, result.value).then((response) => {
+        console.log(response.data.status);
+        if(response.data.status == "success") {
+          Swal.fire(
+            'Approve Course',
+            'อนุมัติคำสั่งซื้อเรียบร้อย',
+            'success'
+          )
+        }
+      })
+      
+    }
+  })
 }
 
 </script>

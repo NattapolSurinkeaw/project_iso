@@ -15,7 +15,7 @@
                     Course
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    จำนวนโอน
+                    user_id
                 </th>
                 <th scope="col" class="px-6 py-3">
                     ราคาทั้งหมด
@@ -25,9 +25,6 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     reading
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    comment
                 </th>
                 <th scope="col" class="px-6 py-3">
                     วันที่ซื้อ
@@ -57,7 +54,7 @@
                     </p>
                 </td>
                 <td class="px-6 py-4">
-                  {{ $pending->totalmoney }}
+                  {{ $pending->user_id }}
                 </td>
                 <td class="px-6 py-4">
                   {{ $pending->total_price }}
@@ -79,9 +76,6 @@
                     @else
                         <p class="font-bold text-yellow-600">ยังไม่อ่าน</p>
                     @endif
-                </td>
-                <td class="px-6 py-4">
-                    {{ $pending->comment}}
                 </td>
                 <td class="px-6 py-4">
                   {{ $pending->created_at->format('d-M-y') }}
