@@ -129,6 +129,8 @@ Route::prefix('api')->group(function (){
   //backend
   Route::post('/backend/course',[CourseController::class,'createCourse']);
   Route::post('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
+  
+  Route::post('/backend/createquestion',[CourseController::class,'createQuestion']);
 
   Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);
   Route::get('/backend/getann/{id}',[CourseController::class,'getAnnouce']);
