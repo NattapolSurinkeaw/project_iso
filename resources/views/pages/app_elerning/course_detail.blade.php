@@ -3,13 +3,12 @@
 @section('content')
 <div class="bg-gray-100 py-20">
   <div class="bg-red-500 flex">
-    <div class="w-full">
+    <div class="w-full flex flex-col items-center justify-center">
       <h1 class="text-3xl text-white">Detail : {{$course->course_name}}</h1>
       <h1 class="text-3xl text-white">description : {{$course->description}}</h1>
     </div>
     <div class="w-full">
-      <img src="" alt="">
-      <h1>1</h1>
+      <img class="w-full h-80" src="{{$course->img_course}}" alt="">
     </div>
   </div>
 

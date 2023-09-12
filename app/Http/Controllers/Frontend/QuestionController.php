@@ -10,13 +10,12 @@ use App\Models\Quiz;
 class QuestionController extends Controller
 {
     //
-    public function all_question($id) {
-        $questions = Question::where('quiz_id', $id)->get();
+    public function all_question($quiz_id) {
+        $questions = Question::where('quiz_id', $quiz_id)->get();
 
         // หรือใช้ความสัมพันธ์ที่กำหนดไว้ใน Model
-        $quiz = Quiz::find($id);
-        $questions = $quiz->question;
-        return view('pages.app_quiz.all_question', compact('questions','quiz'));
+        $quiz_id = Quiz::select('id')->find($quiz_id);
+        return view('pages.app_quiz.all_question', compact('questions','quiz_id'));
     }
 
 }

@@ -29,8 +29,8 @@
             </div>
             <div class="flex flex-row justify-between">
               <div class="flex gap-4">
-                <h1 class="text-xl font-bold" id="price">THB {{ $course->price }}</h1>
-                <h1 class="text-xl text-gray-400 line-through" id="discout">THB 349</h1>
+                <h1 class="text-xl font-bold" id="price">THB {{ number_format($course->price, 2) }}</h1>
+                {{-- <h1 class="text-xl text-gray-400 line-through" id="discout">THB 349</h1> --}}
               </div>
             <button data-id="{{ $course->id}}" id="remove-from-cart"><box-icon name='trash' color='#a80404'></box-icon></button>
             </div>
@@ -103,7 +103,7 @@
 
   // payment
   let cartlist = {!! json_encode($cartCourses) !!};
-  console.log(cartlist.length);
+  console.log(cartlist);
   if(cartlist.length > 0) {
     document.querySelector('#payment').classList.add("bg-red-600", "hover:bg-red-500");
     payment.addEventListener('click', () => {

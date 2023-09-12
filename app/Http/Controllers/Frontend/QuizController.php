@@ -21,12 +21,14 @@ class QuizController extends Controller
         return view('pages.app_quiz.start_quiz', compact('course', 'quiz', 'questionCount', 'totalScore')); // เพิ่ม 'questions'
     }
 
-    public function score_sumary($quiz_id) {
+    public function score_sumary($quiz_id, $score) {
         $sessionCourseId = session('course_id');
 
+        $opt_score = $score;
         $quiz = Quiz::find($quiz_id);
-
-        return view('pages.app_quiz.score_sumary', compact('quiz'));
+        $totalScore = Question::where('quiz_id', $quiz_id)->sum('score');
+        // dd($totalScore);exit();
+        return view('pages.app_quiz.score_sumary', compact('quiz', 'opt_score', 'totalScore'));
     }
     
 }

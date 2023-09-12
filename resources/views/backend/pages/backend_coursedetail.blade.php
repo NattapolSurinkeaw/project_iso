@@ -41,7 +41,7 @@
                 <div class="animate__animated animate__bounce flex justify-between ">
                     <img class="h-8" src="/image/icon/material-icon.png" alt="">
                     <h1 class="text-xl">Course Material</h1>
-                    <button><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
+                    <button onclick="addMaterial()" id="addMaterial"><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
                 </div>
                 <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 
@@ -120,7 +120,9 @@
               }
 
               return param;
-          },
+          }, customClass: {
+                popup: 'custom-popup-annouce', // ปรับแต่งคลาส CSS ของ Popup
+            },
       }).then((result) => {
           if (result.isConfirmed) {
               const content = result.value;
@@ -180,7 +182,9 @@
                   }
 
                   return param;
-              },
+              }, customClass: {
+                popup: 'custom-popup-annouce', // ปรับแต่งคลาส CSS ของ Popup
+            },
           }).then((result) => {
               if (result.isConfirmed) {
                   const content = result.value;
@@ -246,6 +250,60 @@
               })
           }
       })
+  }
+
+  function addMaterial() {
+    Swal.fire({
+          title: "Create Quiz",
+          html: `   <label for="video">video</label>
+                    <input type="file" id="video" class="swal2-input">
+                    <label for="video">document</label>
+                    <input type="file" id="filedoc" class="swal2-input">
+        `,
+          confirmButtonText: "Submit",
+          focusConfirm: false,
+          preConfirm: () => {
+              const video = Swal.getPopup().querySelector("#video");
+              let videoFile = video.files[0];
+              const document = Swal.getPopup().querySelector("#filedoc");
+              let docFile = document.files[0];
+
+            //   if (!video || !document) {
+            //       Swal.showValidationMessage(`Please enter your data.`);
+            //       return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
+            //   }
+
+              formData = new FormData();
+              formData.append('video', videoFile),
+              formData.append('document', docFile)
+
+              return formData;
+          },
+      }).then((result) => {
+          if (result.isConfirmed) {
+              const param = result.value;
+              param.forEach((value, key) => {
+              console.log(key + ': ' + value);
+            });
+              axios.post('/api/backend/creatematerial', param)
+                  .then((response) => {
+                      Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Your work has been saved',
+                          showConfirmButton: false,
+                          timer: 1000
+                      }).then(() => {
+                          location.reload()
+                      });
+                  })
+                  .catch((error) => {
+                      console.error('API Error:', error);
+                      // จัดการข้อผิดพลาด
+                  });
+          }
+      });
+
   }
 
   function addQuiz() {

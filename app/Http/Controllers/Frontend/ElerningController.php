@@ -34,9 +34,9 @@ class ElerningController extends Controller
         return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes'));
     }
 
-    public function courseDetail($id) {
+    public function courseDetail($course_id) {
 
-        $course = Elerningcourse::find($id);
+        $course = Elerningcourse::find($course_id);
         return view('pages.app_elerning.course_detail',compact('course'));
     }
 }

@@ -195,6 +195,10 @@ class CourseController extends Controller
         }
     }
 
+    public function createMeterial(Request $request) {
+        dd($request->all());exit();
+    }
+
     public function createQuiz(Request $request) {
         $validator = Validator::make($request->all(), [
             'courseId' => 'required',
@@ -326,6 +330,85 @@ class CourseController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'create quiz successfully'
+        ], 200);
+    }
+
+    public function getQuestionById($ques_id) {
+        $question = Question::find($ques_id);
+
+        if(!$question) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'question not found'
+            ], 400);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $question,
+        ], 200);
+    }
+
+    public function editQuestion(Request $request, $quest_id) {
+        $question = Question::find($quest_id);
+
+        if(!$question) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'question not found'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'question' => 'required',
+            'quiz_id' => 'required',
+            'choice1' => 'required',
+            'choice2' => 'required',
+            'choice3' => 'required',
+            'choice4' => 'required',
+            'answer' => 'required',
+            'score' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        $question->question = $request->input('question');
+        $question->quiz_id = $request->input('quiz_id');
+        $question->choice1 = $request->input('choice1');
+        $question->choice2 = $request->input('choice2');
+        $question->choice3 = $request->input('choice3');
+        $question->choice4 = $request->input('choice4');
+        $question->answer = $request->input('answer');
+        $question->score = $request->input('score');
+        $question->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'create quiz successfully'
+        ], 200);
+    }
+
+    public function delQuestion($quest_id) {
+        $question = Question::find($quest_id);
+
+        if(!$question) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'question not found',
+            ], 404);
+        }
+
+        $question->delete();
+    
+        return response()->json([
+            'status' => 'success',
+            'message' => 'question deleted successfully',
         ], 200);
     }
 

@@ -13,7 +13,7 @@
             @foreach ($cartCourses as $course)
             <div class="flex justify-around p-5">
               <h1>{{$course->course_name}}</h1>
-              <h1>{{$course->price}}</h1>
+              <h1>{{number_format($course->price, 2)}}</h1>
             </div>
             @endforeach
             @endif

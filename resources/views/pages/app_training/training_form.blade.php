@@ -267,8 +267,8 @@
             reqTraining : reqTraining,
             dateTraining : dateTraining 
         }
-        // console.log(typeof(param))
-        location.href = `/sendmail/${email}`
+        console.log(param)
+        // location.href = `/sendmail/${email}`
     }
 
 
@@ -384,16 +384,27 @@
 
 
     function coppy(){
-        const getInputValue = (id) => document.getElementById(id).value;
-        const setInputValue = (id, value) => document.getElementById(id).value = value;
+        const isChecked = document.getElementById('cop-above').checked;
+  
+        if (isChecked) {
+            const getInputValue = (id) => document.getElementById(id).value;
+            const setInputValue = (id, value) => document.getElementById(id).value = value;
 
-        const elements = ['company', 'address', 'contact', 'phone', 'email', 'fax'];
-        const repElements = ['rep-company', 'rep-address', 'rep-contact', 'rep-phone', 'rep-email', 'rep-fax'];
+            const elements = ['company', 'address', 'contact', 'phone', 'email', 'fax'];
+            const repElements = ['rep-company', 'rep-address', 'rep-contact', 'rep-phone', 'rep-email', 'rep-fax'];
 
-        elements.forEach((element, index) => {
+            elements.forEach((element, index) => {
             const value = getInputValue(element);
             setInputValue(repElements[index], value);
-        });
+            });
+        }
+        //  else {
+        //     // ถ้า checkbox ไม่ถูกติ๊ก ให้เคลียร์ค่าใน input หมายเลข rep
+        //     const repElements = ['rep-company', 'rep-address', 'rep-contact', 'rep-phone', 'rep-email', 'rep-fax'];
+        //     repElements.forEach((element) => {
+        //     setInputValue(element, '');
+        //     });
+        // }
     }
 </script>
 @endsection

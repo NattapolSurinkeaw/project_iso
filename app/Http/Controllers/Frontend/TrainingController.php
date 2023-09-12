@@ -17,9 +17,10 @@ class TrainingController extends Controller
         return view('pages.app_training.all_course_training', compact('courses'));
     }
 
-    public function calendarReserve($course_id) {
-        $course = Trainingcourse::find($course_id);
-        return view('pages.app_training.calendar_reserve', compact('course_id', 'course'));
+    public function calendarReserve($train_id) {
+        $training = Trainingcourse::find($train_id);
+        $trainings = Trainingcourse::all();
+        return view('pages.app_training.calendar_reserve', compact('train_id', 'training', 'trainings'));
     } 
     
     public function trainingForm () {

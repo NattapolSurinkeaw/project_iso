@@ -88,18 +88,24 @@
 @section('be-scripts')
 <script>
     let quiz_id = {!! $quiz_name->id !!}
-    let btneditQuestion = document.querySelector('#editQuestion');
-    let btndelQuestion = document.querySelector('#delQuestion');
-    let dataId = btneditQuestion.getAttribute('data-id')
+    let btneditQuestions = document.querySelectorAll('#editQuestion');
+    let btndelQuestions = document.querySelectorAll('#delQuestion');
 
-    btneditQuestion.addEventListener('click', () => {
-        console.log(dataId);
-        editQuestion(dataId);
-    })
+    btneditQuestions.forEach(btneditQuestion => {
+        btneditQuestion.addEventListener('click', () => {
+            // ดึงค่า data-id จากปุ่มที่ถูกคลิก
+            let questId = btneditQuestion.getAttribute('data-id');
+            editQuestion(questId);
+        });
+    });
 
-    btndelQuestion.addEventListener('click', () => {
-        console.log('delFunction : ' + dataId);
-    })
+    btndelQuestions.forEach(btndelQuestion => {
+        btndelQuestion.addEventListener('click', () => {
+            let questId = btndelQuestion.getAttribute('data-id');
+            delQuestion(questId);
+        });
+    });
+    
 
     function createQuestion() {
         Swal.fire({
@@ -207,40 +213,44 @@
 
     }
 
-    function editQuestion() {
-        Swal.fire({
+    function editQuestion(questId) {
+        axios.get(`/api/backend/getquestion/${questId}`).then((response) => {
+            let data = response.data.data;
+            console.log(data);
+            let selectedAnswer = data.answer;
+            Swal.fire({
             title: "Create announcement",
             html: ` <div class="w-full flex flex-col ">
                         <label for="content-annouce" class="text-start block text-sm font-medium leading-6 text-gray-900">Question</label>
-                        <input type="textarea" id="content-annouce" name="addAnn" class="swal2-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Name" value="">
+                        <textarea id="content-annouce" name="addAnn">${data.question}</textarea>
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="choice1" clas="block text-sm font-medium leading-6 text-gray-900">choice1</label>
-                        <input type="text" id="choice1" name="choice1" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice1" value="">
+                        <input type="text" id="choice1" name="choice1" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice1" value="${data.choice1}">
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="choice2" clas="block text-sm font-medium leading-6 text-gray-900">choice2</label>
-                        <input type="text" id="choice2" name="choice2" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice2" value="">
+                        <input type="text" id="choice2" name="choice2" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice2" value="${data.choice2}">
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="choice3" clas="block text-sm font-medium leading-6 text-gray-900">choice3</label>
-                        <input type="text" id="choice3" name="choice3" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice3" value="">
+                        <input type="text" id="choice3" name="choice3" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice3" value="${data.choice3}">
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="choice4" clas="block text-sm font-medium leading-6 text-gray-900">choice4</label>
-                        <input type="text" id="choice4" name="choice4" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice4" value="">
+                        <input type="text" id="choice4" name="choice4" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Choice4" value="${data.choice4}">
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="score" clas="block text-sm font-medium leading-6 text-gray-900">score</label>
-                        <input type="number" id="score" name="score" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="10" value="">
+                        <input type="number" id="score" name="score" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="10" value="${data.score}">
                     </div>
                     <div class="w-full mt-4 flex flex-col items-start ">
                         <label for="answer" clas="block text-sm font-medium leading-6 text-gray-900">answer</label>
                         <select id="answer" name="answer" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                            <option value="choice1">choice1</option>
-                            <option value="choice2">choice2</option>
-                            <option value="choice3">choice3</option>
-                            <option value="choice4">choice4</option>
+                            <option value="choice1" ${selectedAnswer === 'choice1' ? 'selected' : ''}>choice1</option>
+                            <option value="choice2" ${selectedAnswer === 'choice2' ? 'selected' : ''}>choice2</option>
+                            <option value="choice3" ${selectedAnswer === 'choice3' ? 'selected' : ''}>choice3</option>
+                            <option value="choice4" ${selectedAnswer === 'choice4' ? 'selected' : ''}>choice4</option>
                         </select>
                     </div>
                   `,
@@ -279,8 +289,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 const data = result.value;
-                console.log(data);
-                axios.post(`/api/backend/createquestion`, data)
+                axios.put(`/api/backend/editquestion/${questId}`, data)
                     .then((response) => {
                         if(response.data.status == 'success') {
                             Swal.fire({
@@ -310,7 +319,36 @@
             .catch(error => {
                 console.error(error);
             });
+        })
+    }
 
+    function delQuestion(questId) {
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/api/backend/delquestion/${questId}`)
+                .then((response) => {
+                    let data = response.data.status;
+                    console.log(data);
+                    if(data == 'success') {
+                        Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        ).then(() => {location.reload()})
+                    }
+                })
+                
+            }
+        })
+        console.log(questId);
     }
 </script>
 @endsection

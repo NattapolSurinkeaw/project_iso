@@ -52,3 +52,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .custom-swal-popup {
   width: 50%; /* ปรับความกว้างตามที่คุณต้องการ */
 }
+
+
+.custom-popup-annouce {
+  width: 70%; /* ปรับความกว้างตามที่คุณต้องการ */
+}

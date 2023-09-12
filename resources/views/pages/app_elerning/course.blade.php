@@ -8,9 +8,9 @@
 
     <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
       <div class="animate__animated animate__bounce flex justify-between ">
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+        <img class="h-8" src="/image/icon/annouce.png" alt="">
         <h1 class="text-xl">Anoucement</h1>
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+        <img class="h-8" src="/image/icon/annouce.png" alt="">
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
       @if(count($announcements) > 0)
@@ -31,10 +31,10 @@
     </div>
 
     <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">
-      <div class="animate__animated animate__bounce flex justify-between ">
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+      <div class="animate__animated animate__bounce flex justify-between">
+        <img class="h-8" src="/image/icon/material-icon.png" alt="">
         <h1 class="text-xl">Course Material</h1>
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+        <img class="h-8" src="/image/icon/material-icon.png" alt="">
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 
@@ -44,8 +44,8 @@
       <hr >
       <p class="my-5">ไฟล์สำหรับทำความเข้าใจควบคู่กับการเกี่ยวกับมาตรฐาน iso</p>
       <p class="my-4 text-blue-400 cursor-pointer">
-        <video class="w-96" controls>
-          <source src="" type="video/mp4">
+        <video controlsList="nodownload" class="w-96" controls>
+          <source src="/image/20230827_155118.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </p>
@@ -55,9 +55,9 @@
 
     <div class="bg-white border-l-8 border-l-red-500 rounded-xl p-4 m-10">
       <div class="animate__animated animate__bounce flex justify-between ">
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+        <img class="h-8" src="/image/icon/assignment.png" alt="">
         <h1 class="text-xl">Asssignment</h1>
-        <img class="h-8" src="https://nattapolsu.pythonanywhere.com/static/images/icon/megaphone.png" alt="">
+        <img class="h-8" src="/image/icon/assignment.png" alt="">
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 

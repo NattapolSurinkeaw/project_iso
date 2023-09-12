@@ -58,7 +58,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
   
   Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart'])->middleware('checklogin');
   Route::get('/all_question/{id}',[QuestionController::class,'all_question'])->middleware('checklogin');
-  Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
+  Route::get('/scoresumary/{id}/{score}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
   Route::get('/cart',[CartController::class,'cartPage'])->middleware('checklogin');
   Route::get('/payment',[CartController::class,'paymentForm'])->middleware('checklogin');
@@ -131,12 +131,16 @@ Route::prefix('api')->group(function (){
   Route::post('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
   
   Route::post('/backend/createquestion',[CourseController::class,'createQuestion']);
+  Route::get('/backend/getquestion/{id}',[CourseController::class,'getQuestionById']);
+  Route::put('/backend/editquestion/{id}',[CourseController::class,'editQuestion']);
+  Route::delete('/backend/delquestion/{id}',[CourseController::class,'delQuestion']);
 
   Route::post('/backend/createannouce',[CourseController::class,'createAnnouce']);
   Route::get('/backend/getann/{id}',[CourseController::class,'getAnnouce']);
   Route::put('/backend/editann/{id}',[CourseController::class,'editAnnouncement']);
   Route::delete('/backend/delann/{id}',[CourseController::class,'deleteAnnouncement']);
 
+  Route::post('/backend/creatematerial',[CourseController::class,'createMeterial']);
 
   Route::get('/backend/quiz/{id}',[CourseController::class,'getQuiz']);
   Route::post('/backend/createquiz',[CourseController::class,'createQuiz']);
