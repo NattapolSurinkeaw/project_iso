@@ -107,6 +107,8 @@
 
 @section('be-scripts')
 <script>
+let trains = {!! json_encode($trainingcourses) !!}
+console.log(trains);
 
 document.getElementById('toggleTable').addEventListener('click', function() {
     var tableDiv = document.getElementById('table-train');
@@ -124,9 +126,21 @@ document.getElementById('toggleCalendar').addEventListener('click', function() {
         calendarDiv.style.display = 'block';
         tableDiv.style.display = 'none';
     }
+    
     let calendarEl = document.querySelector('#calendar');
     let calendar = new FullCalendar.Calendar(calendarEl, {
-        // กำหนดค่าต่าง ๆ ของปฏิทินที่นี่
+        events: function(info, successCallback, failureCallback) {
+          let events = [];
+
+          trains.forEach(function(train) {
+            events.push({
+              title: train.name, 
+              start: train.date,
+            });
+          });
+
+          successCallback(events);
+        },
     });
     calendar.render();
 });

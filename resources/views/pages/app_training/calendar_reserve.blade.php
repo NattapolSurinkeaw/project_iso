@@ -20,6 +20,22 @@
       let calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         selectable: true, // เพิ่มค่า selectable: true เพื่อให้สามารถเลือกวันที่ได้
+        events: function(info, successCallback, failureCallback) {
+          let events = [];
+
+          // วนลูปผ่านข้อมูล trains และเพิ่มข้อมูล events ตามความเหมาะสม
+          trains.forEach(function(train) {
+            events.push({
+              title: train.name, // ใช้ชื่อของการฝึกอบรมเป็น title
+              start: train.date, // ใช้วันที่ใน train.date เป็นวันเริ่มต้น
+              // คุณสามารถเพิ่ม properties อื่น ๆ ตามต้องการ เช่น description
+              // description: train.training_detail
+            });
+          });
+
+          // เรียกใช้งาน successCallback เพื่อโหลดข้อมูล events ลงในปฏิทิน
+          successCallback(events);
+        },
         select: function(info) {
           let selectedDate = info.start;
           let formattedDate = selectedDate.toISOString().split('T')[0]; // แปลงวันที่เป็นรูปแบบ 'YYYY-MM-DD'

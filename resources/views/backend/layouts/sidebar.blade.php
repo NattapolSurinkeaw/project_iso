@@ -16,7 +16,7 @@
             <a href="/backend/pendingtraining"><li>Training</li></a>
             <li></li>
         </ul>
-        <a href="#คู่มือ" target="_bank"><h1 class="my-4 text-white font-bold text-xl">คู่มือ</h1></a>
+        <a href="/image/manual.pdf" target="_bank"><h1 class="my-4 text-white font-bold text-xl">คู่มือ</h1></a>
     </div>
     <div class="flex flex-col gap-4">
         <a href="/" class="bg-blue-500 p-3 text-center rounded-lg text-lg text-white">User View</a>

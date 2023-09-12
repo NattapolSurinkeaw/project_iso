@@ -83,7 +83,7 @@
             title: "Edit",
             html: `
                     <img class="w-60 h-72 mx-auto mb-4" src="/image/icon/upload.png" id="ImgOpt" >
-                    <label for="profile" class="block bg-green-600 text-white px-4 py-1 w-28 mx-auto rounded-lg">อัปโหลด</label>
+                    <label for="profile" class="block bg-green-600 text-white px-4 py-1 w-28 mx-auto rounded-lg cursor-pointer">อัปโหลด</label>
                     <input type="file" name="profile" id="profile" class="swal2 hidden">
                     <input type="email" id="email" class="swal2-input w-4/5" placeholder="Email" value="${user.email}" disabled>
                     <input type="text" id="name" class="swal2-input" placeholder="Name" value="${user.name}">

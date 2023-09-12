@@ -42,7 +42,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 // Route::get('/register', [Controller::class,'registerPage']);
 // Route::get('/login',[Controller::class,'loginPage']);
 // Route::middleware('web')->group(function () {
-  Route::get('/', [Controller::class, 'homePage']);
+  Route::get('/', [Controller::class, 'homePage'])->name('home');
   Route::get('/register', [Controller::class, 'registerPage'])->name('register');
   Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
 
@@ -78,7 +78,7 @@ Route::middleware('checklogin')->group(function () {
   Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
 });  
 
-Route::prefix('backend')->middleware('checklogin')->group(function () { 
+Route::prefix('backend')->middleware('checkadmin')->group(function () { 
   Route::get('/',[BackendController::class,'homePage']);
   Route::get('/member',[MemberController::class,'backendMember']);
   Route::get('/coruse',[CourseController::class,'backendCourse']);
