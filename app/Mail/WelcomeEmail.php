@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+
 class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -33,7 +34,8 @@ class WelcomeEmail extends Mailable
     // }
     public function build()
     {
-        return $this->view('emails.welcome')
+        $course = "ISO9001";
+        return $this->view('emails.welcome',compact('course'))
             ->subject('Reserve Success');
     }
 }

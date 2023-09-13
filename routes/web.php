@@ -125,6 +125,8 @@ Route::prefix('api')->group(function (){
   Route::post('/payment',[CartController::class, 'pendingPayment']);
   Route::get('/delallcart',[CartController::class, 'removeAllCart']);
 
+  Route::post('/checkanswer/{id}',[QuestionController::class, 'checkAnswers']);
+
 
   //backend
   Route::post('/backend/course',[CourseController::class,'createCourse']);

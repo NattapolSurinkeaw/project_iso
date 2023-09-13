@@ -98,7 +98,7 @@
     </div>
 
     <div id="calendar-train" class="relative h-4/6 overflow-y-scroll mx-10" style="display: none">
-        <div id='calendar'></div>
+        <div id='calendar-admin'></div>
     </div>
 </div>
 
@@ -127,7 +127,7 @@ document.getElementById('toggleCalendar').addEventListener('click', function() {
         tableDiv.style.display = 'none';
     }
     
-    let calendarEl = document.querySelector('#calendar');
+    let calendarEl = document.querySelector('#calendar-admin');
     let calendar = new FullCalendar.Calendar(calendarEl, {
         events: function(info, successCallback, failureCallback) {
           let events = [];

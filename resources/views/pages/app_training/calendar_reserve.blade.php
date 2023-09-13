@@ -6,7 +6,7 @@
         <h1 class="text-2xl text-center">Reserve Day</h1>
         <h1 class="text-xl text-center">Course : {{$training->name}}</h1>
     </div>
-    <div id='calendar'></div>
+    <div id='calendar-train'></div>
   </div>
 @endsection
 
@@ -16,7 +16,7 @@
   console.log(trains)
 
     document.addEventListener('DOMContentLoaded', function() {
-      let calendarEl = document.querySelector('#calendar');
+      let calendarEl = document.querySelector('#calendar-train');
       let calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         selectable: true, // เพิ่มค่า selectable: true เพื่อให้สามารถเลือกวันที่ได้
@@ -46,6 +46,7 @@
         }
       });
       calendar.render();
+
     });
 
 </script>

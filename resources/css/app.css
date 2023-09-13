@@ -57,3 +57,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .custom-popup-annouce {
   width: 70%; /* ปรับความกว้างตามที่คุณต้องการ */
 }
+
+#calendar-train {
+  width: 100%; /* กำหนดความกว้างของปฏิทิน */
+  height: 800px; /* กำหนดความสูงของปฏิทิน */
+}
+
+
+#calendar-admin {
+  width: 90%; /* กำหนดความกว้างของปฏิทิน */
+  height: 90%; /* กำหนดความสูงของปฏิทิน */
+}

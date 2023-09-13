@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Trainingcourse;
+use App\Models\Module;
 
 class TrainingController extends Controller
 {
     //
     public function tainingPage() {
         $courses = Trainingcourse::all();
-        
-        return view('pages.app_training.all_course_training', compact('courses'));
+        $modules = Module::all();
+        return view('pages.app_training.all_course_training', compact('courses', 'modules'));
     }
 
     public function calendarReserve($train_id) {

@@ -16,12 +16,16 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        $role = $user->role;
-        if($role === 'admin'){
-            return $next($request);
+        if(Auth::check()){
+            $user = Auth::user();
+            $role = $user->role;
+            if($role === 'admin'){
+                return $next($request);
+            } else {
+                return redirect()->route('home');
+            }
         } else {
-            return redirect()->route('home');;
+            return redirect()->route('login');
         }
     }
 }

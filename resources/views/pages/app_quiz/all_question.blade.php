@@ -9,7 +9,7 @@
             timer : <span id="counting-time" class="ml-2"> 0.0</span> 
         </div>
         @php
-            $i = 1;
+            $i = ($questions->currentPage() - 1) * $questions->perPage() + 1;
         @endphp
         @foreach($questions as $question)
             <div class="w-3/4 bg-white rounded-xl p-9">
@@ -39,11 +39,37 @@
             </div>
         @endforeach
 
-        <div class="w-full flex justify-between px-10 p-2 bg-gray-600 rounded-xl">
-            <button class="p-2 px-4 bg-red-400 rounded-xl">Prev</button>
-            <button id="btnSubmit" data-quiz="{{$quiz_id->id}}" class="p-2 px-4 bg-red-400 rounded-xl">submit</button>
-            <button onclick="calculateTotalScore()" class="p-2 px-4 bg-red-400 rounded-xl">ปุ่มเทสคำนวณ</button>
+        <div class="bg-white px-4 py-3 flex items-center justify-between gap-2 border-t border-gray-200 sm:px-6 rounded-lg">
+            <div class="flex-1 flex justify-between sm:hidden">
+                @if ($questions->currentPage() > 1)
+                    <a href="{{ $questions->previousPageUrl() }}"
+                       class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        Previous
+                    </a>
+                @endif
+        
+                @if ($questions->hasMorePages())
+                    <a href="{{ $questions->nextPageUrl() }}"
+                       class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        Next
+                    </a>
+                @endif
+            </div>
+        
+            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                {{ $questions->links() }}
+            </div>
+
+            @if($questions->currentPage() === $questions->lastPage())
+                <button data-quiz="{{$quiz_id->id}}" id="checkanswer" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            @endif
         </div>
+        
+        <button id="btnSubmit" data-quiz="{{$quiz_id->id}}" class="p-2 px-4 bg-red-400 rounded-xl">ไม่ใช้</button>
+        {{-- <div class="w-full flex justify-between px-10 p-2 bg-gray-600 rounded-xl">
+            <button class="p-2 px-4 bg-red-400 rounded-xl">Prev</button>
+            <button onclick="calculateTotalScore()" class="p-2 px-4 bg-red-400 rounded-xl">ปุ่มเทสคำนวณ</button>
+        </div> --}}
     </div>
   </div>
 
@@ -53,21 +79,21 @@
 <script>
     let timer = document.querySelector('#counting-time').innerText;
 
-    let dataAllQues = {!! json_encode($questions) !!};
-    console.log(dataAllQues)
+    // let dataAllQues = {!! json_encode($questions) !!};
+    // console.log(dataAllQues)
 
     // สร้างอาร์เรย์เพื่อเก็บคำถามและคำตอบที่ผู้ใช้เลือก
-    var userAnswers = [];
+    let userAnswers = [];
 
     // เพิ่มการตรวจจับเหตุการณ์เมื่อมีการเลือก radio input
     document.addEventListener("DOMContentLoaded", function() {
-    var radioInputs = document.querySelectorAll("input[type=radio]");
+    let radioInputs = document.querySelectorAll("input[type=radio]");
 
         radioInputs.forEach(function(radio) {
             radio.addEventListener("change", function(event) {
-                var questionId = radio.getAttribute("name");
-                var labelElement = radio.parentElement.querySelector("label"); // ค้นหา label ใน parent element
-                var selectedChoice = labelElement.getAttribute("name");
+                let questionId = radio.getAttribute("name");
+                let labelElement = radio.parentElement.querySelector("label"); // ค้นหา label ใน parent element
+                let selectedChoice = labelElement.getAttribute("name");
                 updateUserAnswer(questionId, selectedChoice);
             });
         });
@@ -75,7 +101,7 @@
 
     function updateUserAnswer(questionId, choice) {
         // ค้นหาว่าคำถามมีการเก็บคำตอบจากผู้ใช้แล้วหรือยัง
-        var existingAnswerIndex = userAnswers.findIndex(function(answer) {
+        let existingAnswerIndex = userAnswers.findIndex(function(answer) {
             return answer.questionId === questionId;
         });
 
@@ -87,8 +113,32 @@
             userAnswers.push({ questionId: questionId, choice: choice });
         }
 
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
         // console.log(userAnswers);
     }
+
+    let btncheckanswer = document.querySelector('#checkanswer');
+    btncheckanswer.addEventListener('click', () => {
+        const quiz_id = btncheckanswer.getAttribute('data-quiz');
+        checkQuestion(quiz_id)
+    })
+
+    function checkQuestion(quiz_id){
+        console.log(quiz_id)
+        const storedUserAnswers = localStorage.getItem('userAnswers');
+        let dataanswer;
+        if (storedUserAnswers) {
+             dataanswer = JSON.parse(storedUserAnswers);
+        }
+        console.log(dataanswer)
+        param = {
+            dataanswer : dataanswer
+        }
+        axios.post(`/api/checkanswer/${quiz_id}`, param)
+    }
+
+
+
 
     let btnSubmit = document.querySelector('#btnSubmit');
     btnSubmit.addEventListener('click', () => {
