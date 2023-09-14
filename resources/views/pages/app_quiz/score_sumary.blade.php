@@ -1,12 +1,12 @@
 @extends('layouts.main')
-@section('title') QuizPage @endsection
+@section('title') Score Sumary @endsection
 @section('content') 
-{{-- @dd($quiz) --}}
+{{-- @dd($userLearning) --}}
   <div class="bg-gray-100 h-screen p-20 flex justify-center ">
     <div class="mx-auto p-10 bg-white w-[970px] border-2 flex flex-col justify-center items-center gap-10 rounded-xl bg-gray-100">
       <h1 class="text-center text-3xl font-medium">สรุปคะแนน</h1>
-      <h1 class="text-center">Total Questions : 10</h1>
-      <h1 class="text-center">คะแนนที่ได้ : {{$opt_score}} / {{$totalScore}}</h1>
+      <h1 class="text-center">Total Questions : {{$questionCount}}</h1>
+      <h1 class="text-center">คะแนนที่ได้ : {{$userLearning->score}} / {{$userLearning->total_score}}</h1>
       <div class="flex gap-2">
         <h1 class="text-center">คำนวณเปอร์เซ็นต์ : </h1>
         <h1 id="percenScore"></h1>
@@ -26,8 +26,8 @@
 @endsection
 @section('scripts')
 <script>
-  const score = {{$opt_score}}
-  const totalScore = {{$totalScore}}
+  const score = {{$userLearning->score}}
+  const totalScore = {{$userLearning->total_score}}
   const percentage = Math.round((score / totalScore) * 100);
   percenScore.innerText = percentage + ' %';
   let btnCertificate = document.querySelector('#downloadCertificate')

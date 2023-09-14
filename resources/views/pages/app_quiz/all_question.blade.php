@@ -130,42 +130,12 @@
         console.log(dataanswer);
         axios.post(`/api/checkanswer/${quiz_id}`, dataanswer).then((response) => {
             console.log(response);
-            localStorage.removeItem('userAnswers');
+            if(response.data.status === 'success') {
+                localStorage.removeItem('userAnswers');
+                location.href = `/scoresumary/${quiz_id}`
+            }
         })
     }
-
-
-
-
-    // let btnSubmit = document.querySelector('#btnSubmit');
-    // btnSubmit.addEventListener('click', () => {
-    //     const quiz_id = btnSubmit.getAttribute('data-quiz');
-    //     submit(quiz_id)
-    // })
-    
-    // function submit(quiz_id) {
-    //     let submitscore = calculateTotalScore()
-    //     console.log(quiz_id);
-    //     console.log("Total Score: " + submitscore);
-    //     location.href = `/scoresumary/${quiz_id}/${submitscore}`
-    // }
-
-    // function calculateTotalScore() {
-    //     let totalScore = 0;
-    //     userAnswers.forEach(function(userAnswer) {
-    //         var matchingQuestion = dataAllQues.find(function(question) {
-    //             return question.id == userAnswer.questionId;
-    //         });
-
-    //         console.log(matchingQuestion);
-            
-    //         if (matchingQuestion && matchingQuestion.answer === userAnswer.choice) {
-    //             totalScore += matchingQuestion.score;
-    //         }
-    //     });
-        
-    //     return totalScore;
-    // }
 
     
 </script>

@@ -58,7 +58,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
   
   Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart'])->middleware('checklogin');
   Route::get('/all_question/{id}',[QuestionController::class,'all_question'])->middleware('checklogin');
-  Route::get('/scoresumary/{id}/{score}',[QuizController::class,'score_sumary'])->middleware('checklogin');
+  Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
   Route::get('/cart',[CartController::class,'cartPage'])->middleware('checklogin');
   Route::get('/payment',[CartController::class,'paymentForm'])->middleware('checklogin');
