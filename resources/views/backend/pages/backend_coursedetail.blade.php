@@ -85,7 +85,7 @@
                         <hr>
                     @endforeach
                 @else
-                    <p class="my-4">no announcement</p>
+                    <p class="my-4">no Asssignment</p>
                     <p>null</p>
                 @endif
             </div>

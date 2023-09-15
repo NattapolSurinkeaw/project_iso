@@ -13,7 +13,7 @@ class NewsAndEventController extends Controller
         $new_news = NewsEvent::orderBy('id', 'desc')->take(8)->get();
         $newsEvents = NewsEvent::all();
         $topnews = NewsEvent::orderBy('view', 'desc')->take(4)->get();
-        return view('pages.app_NewsAndEvent.newsAndEvent', compact('newsEvents', 'topnews', 'new_news'));
+        return view('pages.app_newsandevent.newsandevent', compact('newsEvents', 'topnews', 'new_news'));
     }
 
     public function newsDetail($id) {
@@ -24,7 +24,7 @@ class NewsAndEventController extends Controller
             $getNews->increment('view');
         }
 
-        return view('pages.app_NewsAndEvent.newsDetail', compact('getNews'));
+        return view('pages.app_newsandevent.newsdetail', compact('getNews'));
     }
 
 }

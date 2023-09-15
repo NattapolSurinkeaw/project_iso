@@ -15,12 +15,13 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     public function homePage() {
-        $allSessions = session()->all();
+        // $allSessions = session()->all();
         // dd($allSessions);
         $homeVideos = HomeVideo::select('id', 'thumbnail')->get();
         $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('pages.app_iso.home', compact('allSessions', 'homeVideos', 'homeNews'));
+        // return view('pages.app_iso.home', compact('allSessions', 'homeVideos', 'homeNews'));
+        return view('pages.app_iso.home', compact('homeVideos', 'homeNews'));
     }
 
     public function registerPage() {

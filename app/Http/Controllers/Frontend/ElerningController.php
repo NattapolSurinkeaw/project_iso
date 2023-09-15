@@ -19,7 +19,7 @@ class ElerningController extends Controller
             $user = Auth::user();
             $mycourse = MyCourse::where('user_id', $user->id)->get();
         } else {
-            $mycourse = MyCourse::all();
+            $mycourse = "";
         }
 
         return view('pages.app_elerning.all_courses', compact('elcourses', 'mycourse'));
