@@ -14,9 +14,13 @@ class ElerningController extends Controller
 {
     //
     public function elerningPage() {
-        $user = Auth::user();
         $elcourses = Elerningcourse::all();
-        $mycourse = MyCourse::where('user_id', $user->id)->get();
+        if(Auth::check()){
+            $user = Auth::user();
+            $mycourse = MyCourse::where('user_id', $user->id)->get();
+        } else {
+            $mycourse = "";
+        }
 
         return view('pages.app_elerning.all_courses', compact('elcourses', 'mycourse'));
     }

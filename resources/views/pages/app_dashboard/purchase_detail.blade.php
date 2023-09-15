@@ -17,48 +17,48 @@
       </div>
 
       <div class="flex gap-4">
-        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Course</label>
+        <label for="course" class="block text-sm font-medium leading-6 text-gray-900">Course</label>
         <div class="flex flex-col gap-2 w-full">
         @foreach($courses as $course)
-          <input type="text" value="{{$course->course_name}}"  name="username" id="username" autocomplete="username" class="w-full block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="janesmith" disabled>
+          <input type="text" value="{{$course->course_name}}"  name="course" id="course" class="w-full block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"disabled>
         @endforeach
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">เบอร์โทรผู้ซื้อ</label>
-          <input type="text" value="{{$pendingCourse->customer_tel}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="tel" class="block text-sm font-medium leading-6 text-gray-900">เบอร์โทรผู้ซื้อ</label>
+          <input type="text" value="{{$pendingCourse->customer_tel}}" name="tel" id="tel" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">จำนวนที่โอน</label>
-          <input type="text" value="{{$pendingCourse->totalmoney}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="totalmoney" class="block text-sm font-medium leading-6 text-gray-900">จำนวนที่โอน</label>
+          <input type="text" value="{{$pendingCourse->totalmoney}}" name="totalmoney" id="totalmoney" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">ราคาทั้งหมด</label>
-          <input type="text" value="{{$pendingCourse->total_price}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="total-price" class="block text-sm font-medium leading-6 text-gray-900">ราคาทั้งหมด</label>
+          <input type="text" value="{{$pendingCourse->total_price}}" name="total-price" id="total-price" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">เลขบัญชีผู้ซื้อ</label>
-          <input type="text" value="{{$pendingCourse->customer_banknumber}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="bank-number" class="block text-sm font-medium leading-6 text-gray-900">เลขบัญชีผู้ซื้อ</label>
+          <input type="text" value="{{$pendingCourse->customer_banknumber}}" name="bank-number" id="bank-number" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">ธนาคารผู้ซื้อ</label>
-          <input type="text" value="{{$pendingCourse->bankcustomer}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="customer-bank" class="block text-sm font-medium leading-6 text-gray-900">ธนาคารผู้ซื้อ</label>
+          <input type="text" value="{{$pendingCourse->bankcustomer}}" name="customer-bank" id="customer-bank" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4 items-center">
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">ธนาคารบริษัท</label>
-          <input type="text" value="{{$pendingCourse->bankcompany}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+          <label for="bank-company" class="block text-sm font-medium leading-6 text-gray-900">ธนาคารบริษัท</label>
+          <input type="text" value="{{$pendingCourse->bankcompany}}" name="bank-company" id="bank-company" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
   
         <div class="flex gap-4">
           <label for="country" class="block text-sm font-medium leading-6 text-gray-900">การอนุมัติ</label>
-          <input value="{{$pendingCourse->status}}" id="status" name="status" autocomplete="status" class="h-10 w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:leading-6" disabled>
+          <input value="{{$pendingCourse->status}}" id="status" name="status" class="h-10 w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:leading-6" disabled>
         </div>
         
         <div class="flex gap-4">
@@ -67,9 +67,6 @@
         </div>
       </div>
 
-      
-
-      
     </div>
 
     <div class="mx-10 mt-4 bg-white p-4 rounded-lg drop-shadow-lg">

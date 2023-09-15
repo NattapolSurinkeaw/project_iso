@@ -13,6 +13,7 @@
                   @if(count($courses) > 0)
                     @php
                       $currentModule = null;
+                      $i = 1;
                     @endphp
             
                     @foreach($courses as $course)
@@ -20,7 +21,7 @@
                       <!-- แสดงชื่อ module จาก $modules -->
                       <tr>
                         <td colspan="6" class="whitespace-nowrap px-6 py-4 font-medium bg-yellow-500 text-center">
-                          {{ $modules->where('id', $course->module_id)->first()->name }}
+                          Module {{ $i++ }} {{ $modules->where('id', $course->module_id)->first()->name }}
                         </td>
                       </tr>
                       <!-- แสดงหัวข้อตาราง -->

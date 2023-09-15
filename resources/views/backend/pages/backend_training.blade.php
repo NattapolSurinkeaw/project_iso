@@ -14,7 +14,7 @@
     </div>
     <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
                     <th scope="col" class="px-6 py-3 rounded-tl-lg">
                         id
@@ -136,6 +136,7 @@ document.getElementById('toggleCalendar').addEventListener('click', function() {
             events.push({
               title: train.name, 
               start: train.date,
+              color: 'red', // กำหนดสีเป็นสีแดง
             });
           });
 
