@@ -17,25 +17,25 @@
             
             <div class="w-full">
                 <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-address">Company</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="company" type="text">
             </div>
             <div class="w-full">
                 <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="address">Address</label>
-                <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="address" type="text"></textarea>
             </div>
 
             <div class="flex gap-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">Contact</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
                         id="contact" type="text">
                     {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
                 </div>
                 <div class="w-full md:w-1/2">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="position">Position</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="position" type="text">
                 </div>
             </div>
@@ -45,19 +45,19 @@
             <div class="flex gap-4">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="phone">Phone</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="phone" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="phone" maxlength="10" type="text">
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">E-mail</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="email" type="email">
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="fax">Fax</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="fax" type="text">
                 </div>
             </div>
@@ -75,8 +75,8 @@
             <div class="flex mb-4">
                 <div class="w-full">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-company">Company</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-company" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-company" type="text">
                 </div>
             </div>
             <div class="flex mb-4">
@@ -84,8 +84,8 @@
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-address">
                         Address
                     </label>
-                    <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-address" type="text"></textarea>
+                    <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-address" type="text"></textarea>
                 </div>
             </div>
 
@@ -94,24 +94,24 @@
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">
                         Tax ID
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="tax-id" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="bil-tax-id" type="text">
                     {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
                 </div>
                 <div class="w-full md:w-1/3">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-contact">
                         Contact
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-contact" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-contact" type="text">
                 </div>
                 <div class="w-full md:w-1/3">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"for="title">
                         Title
                     </label>
                     <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="title" type="text">
+                        class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-title" type="text">
                 </div>
             </div>
 
@@ -122,32 +122,32 @@
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-phone">
                         Phone
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-phone" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-phone" type="text" maxlength="10">
                 </div>
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-email">E-mail</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-email" type="email">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-email" type="email">
                 </div>
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-fax">Fax</label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="rep-fax" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-fax" type="text">
                 </div>
             </div>
 
             <p class="text-gray-600 text-xl font-bold mt-5">Request for training course : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
-            <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="req-training" type="text">{{$course->name}}</textarea>
+            <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="training-reserve" type="text">{{$course->name}}</textarea>
             <div class="flex gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">
-                        The number of paticipants
+                        The number of participants
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="tax-id" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="number-participants" type="text">
                     {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
                 </div>
                 <div class="w-full md:w-1/2 ">
@@ -156,8 +156,8 @@
                     </label>
                     @if(request('date'))
                     <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="date-training" type="date" value="{{ request('date') }}">
+                        class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="date-reserve" type="date" value="{{ request('date') }}">
                     @endif
                 </div>
             </div>
@@ -170,42 +170,38 @@
             </div>
             <div class="flex justify-between gap-4 mb-2">
                 <div class="w-full md:w-0 mx-3 mb-6 md:mb-0 mt-5">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                    <input id="check-reserve" type="checkbox" value="" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded">
                 </div>
                 <div class="w-full md:w-3/5 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-state">
+                        for="other-course">
                         course
                     </label>
                     <div class="relative">
-                        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                            <option>ISO 9001:2015 Quality Management Systems</option>
-                            <option>ISO 9001:2015 Quality Management Systems</option>
-                            <option>ISO 9001:2015 Quality Management Systems</option>
+                        <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
+                            @foreach($courses as $rowcourse)
+                            <option value="{{$rowcourse->id}}">{{$rowcourse->name}}</option>
+                            @endforeach
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
                     </div>
                 </div>
                 <div class="w-full md:w-[37%] mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2">
                         required date
                     </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="date">
+                    @if(request('date'))
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="other-date-reserve" value="{{ request('date') }}" type="date">
+                    @endif
                 </div>
             </div>
-            <div id="container"></div>
+            <div id="block-other-train"></div>
 
             <p class="text-gray-600 text-xl font-bold mt-5">Special requisition : </p>
             <p class="text-gray-600 text-l mb-4">ข้อเสนอหรือความต้องการพิเศษใด ๆ </p>
             <textarea
-                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="rep-address" type="text"></textarea>
+                class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="special-request" type="text"></textarea>
 
             <p class="text-gray-600 text-xl font-bold mt-4">ลงนาม : </p>
             <div class="flex gap-4">
@@ -213,62 +209,152 @@
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Name
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="reserve-name" type="text">
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         Position
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="reserve-position" type="text">
                 </div>
                 <div class="w-full md:w-1/2 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Mobile
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="text">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="reserve-tel" type="text">
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         E-mail
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="email">
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="reserve-email" type="email">
                 </div>
             </div>
 
         </div> {{-- endbox --}}
-
-        <button id="btnSubmit" type="summit" class="w-full mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
     </div>
+
     <div class="flex justify-center mb-4">
         <button id="btnSubmit" type="summit" class="mt-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">send</button>
     </div>
 </div>
+
+<div id="loading-modal" class="w-full h-full bg-black opacity-80 fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="flex flex-col justify-center items-center  modal-content bg-white p-4 rounded-lg shadow-lg">
+        <div class="animate-spin loader border-t-4 border-blue-500 rounded-full h-12 w-12"></div>
+        <p class="mt-2">Loading...</p>
+    </div>
+</div>
+
 @endsection
 @section('scripts')
 <script>
 
+    let course = {!! $courses !!}
     let btnSubmit = document.querySelector('#btnSubmit');
+    const loadingModal = document.getElementById('loading-modal');
     btnSubmit.addEventListener('click', () => {
         reserveTraining()
     })
 
     function reserveTraining() {
-        let reqTraining = document.querySelector('#req-training').value;
-        let dateTraining = document.querySelector('#date-training').value;
-        let email = document.querySelector('#email').value;
-        param = {
-            reqTraining : reqTraining,
-            dateTraining : dateTraining 
+        const otherCourses = document.querySelectorAll('#other-course');
+        const otherDates = document.querySelectorAll('#other-date-reserve');
+        const otherReservations = [];
+
+        for (let i = 0; i < otherCourses.length; i++) {
+            const course = otherCourses[i].value;
+            const date = otherDates[i].value;
+            
+            const reservation = {
+                othercourse: course,
+                otherdatereserve: date
+            };
+            
+            otherReservations.push(reservation);
         }
+
+        console.log(otherReservations);
+        
+        function getValueById(id) {
+            return document.querySelector(`#${id}`).value;
+        }
+
+        let reserve_name = getValueById('reserve-name');
+        let reserve_position = getValueById('reserve-position');
+        let reserve_tel = getValueById('reserve-tel');
+        let reserve_email = getValueById('reserve-email');
+
+        let param = {
+            company: getValueById('company'),
+            address: getValueById('address'),
+            contact: getValueById('contact'),
+            position: getValueById('position'),
+            phone: getValueById('phone'),
+            email: getValueById('email'),
+            fax: getValueById('fax'),
+
+            bil_company: getValueById('bil-company'),
+            bil_address: getValueById('bil-address'),
+            bil_tax_id: getValueById('bil-tax-id'),
+            bil_contact: getValueById('bil-contact'),
+            bil_title: getValueById('bil-title'),
+            bil_phone: getValueById('bil-phone'),
+            bil_email: getValueById('bil-email'),
+            bil_fax: getValueById('bil-fax'),
+            
+            training_reserve: getValueById('training-reserve'),
+            number_participants: getValueById('number-participants'),
+            date_reserve: getValueById('date-reserve'),
+
+            otherReservations: otherReservations,
+            
+            special_request : getValueById('special-request'),
+            reserve_name: reserve_name,
+            reserve_position: reserve_position,
+            reserve_tel: reserve_tel,
+            reserve_email: reserve_email
+        };
         console.log(param)
-        console.log(email)
-        location.href = `/sendmail/${email}`
+        loadingModal.classList.remove('hidden');
+
+        axios.post(`/api/reserve-training`, param)
+            .then((response) => {
+                console.log(response.data.status);
+                if (response.data.status === 'success') {
+                    // ซ่อน Modal Loading เมื่อรับ Response สำเร็จ
+                    loadingModal.classList.add('hidden');
+
+                    // แสดง Swal 2 เมื่อซ่อน Modal เสร็จสิ้น
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                    }).then(() => {
+                        location.href = "/reserve_success";
+                    });
+                }
+            })
+        .catch((error) => {
+            console.error(error);
+
+            // ซ่อน Modal Loading ในกรณีที่เกิดข้อผิดพลาด
+            loadingModal.classList.add('hidden');
+
+            // แสดงข้อความหรือการแจ้งเตือนเพิ่มเติมในกรณีที่เกิดข้อผิดพลาด
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'error',
+            //     title: 'An error occurred',
+            //     text: 'Something went wrong!',
+            // });
+        });
     }
 
 
@@ -297,7 +383,7 @@
         // สร้าง element ของ label สำหรับเลือก course
         const selectLabel = document.createElement('label');
         selectLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-xs', 'font-bold', 'mb-2');
-        selectLabel.htmlFor = 'grid-state';
+        selectLabel.htmlFor = 'other-course';
         selectLabel.textContent = 'course';
 
         // สร้าง element ของ div ที่บรรจุ select element
@@ -306,33 +392,17 @@
 
         // สร้าง element ของ select element
         const select = document.createElement('select');
-        select.classList.add('block', 'appearance-none', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
-        select.id = 'grid-state';
-        select.innerHTML = `
-                <option>ISO 9001:2015 Quality Management Systems</option>
-                <option>ISO 9001:2015 Quality Management Systems</option>
-                <option>ISO 9001:2015 Quality Management Systems</option>
-        `;
+        select.classList.add('block', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
+        select.id = 'other-course';
+        select.name = 'other-course';
+        course.forEach(courseItem => {
+            const option = document.createElement('option');
+            option.text = courseItem.name;
+            option.value = courseItem.id;
+            select.appendChild(option);
+        });
 
-        // สร้าง element ของ div ที่บรรจุ icon ของ select
-        const selectIconDiv = document.createElement('div');
-        selectIconDiv.classList.add('pointer-events-none', 'absolute', 'inset-y-0', 'right-0', 'flex', 'items-center', 'px-2', 'text-gray-700');
-
-        // สร้าง element ของ icon ของ select
-        const selectIcon = document.createElement('svg');
-        selectIcon.classList.add('fill-current', 'h-4', 'w-4');
-        selectIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        selectIcon.setAttribute('viewBox', '0 0 20 20');
-        selectIcon.innerHTML = `
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-        `;
-
-        // เพิ่ม selectIcon ใน selectIconDiv
-        selectIconDiv.appendChild(selectIcon);
-
-        // เพิ่ม select และ selectIconDiv ใน selectContainer
         selectContainer.appendChild(select);
-        selectContainer.appendChild(selectIconDiv);
 
         // เพิ่ม selectLabel และ selectContainer ใน selectDiv
         selectDiv.appendChild(selectLabel);
@@ -345,13 +415,15 @@
         // สร้าง element ของ label สำหรับ input date
         const dateLabel = document.createElement('label');
         dateLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-xs', 'font-bold', 'mb-2');
-        dateLabel.htmlFor = 'fax';
+        dateLabel.htmlFor = 'other-date-reserve';
         dateLabel.textContent = 'required date';
 
         // สร้าง element ของ input date
         const dateInput = document.createElement('input');
-        dateInput.classList.add('appearance-none', 'block', 'w-full', 'bg-gray-200', 'text-gray-700', 'border', 'border-gray-200', 'rounded', 'py-2', 'px-2', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
+        dateInput.classList.add('block', 'w-full', 'bg-gray-200', 'text-gray-700', 'border', 'border-gray-200', 'rounded', 'py-2', 'px-2', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
         dateInput.type = 'date';
+        dateInput.id = 'other-date-reserve'
+        dateInput.value = '{{ request('date') }}';
 
         // เพิ่ม dateInput ใน dateDiv
         dateDiv.appendChild(dateLabel);
@@ -363,23 +435,23 @@
         newInputContainer.appendChild(dateDiv);
 
         // เพิ่ม newInputContainer ใน container ที่ต้องการ
-        const container = document.getElementById('container');
+        const container = document.getElementById('block-other-train');
         if (container) {
             container.appendChild(newInputContainer);
         } else {
             console.error("Container element not found.");
         }
 
-        select.addEventListener('change', function() {
-            const selectedValue = select.value;
-            console.log('Selected value:', selectedValue);
-        });
+        // select.addEventListener('change', function() {
+        //     const selectedValue = select.value;
+        //     console.log('Selected value:', selectedValue);
+        // });
 
-        // เพิ่มเหตุการณ์ให้กับ date input
-        dateInput.addEventListener('change', function() {
-            const selectedDate = dateInput.value;
-            console.log('Selected date:', selectedDate);
-        });
+        // // เพิ่มเหตุการณ์ให้กับ date input
+        // dateInput.addEventListener('change', function() {
+        //     const selectedDate = dateInput.value;
+        //     console.log('Selected date:', selectedDate);
+        // });
     }
 
 
@@ -391,7 +463,7 @@
             const setInputValue = (id, value) => document.getElementById(id).value = value;
 
             const elements = ['company', 'address', 'contact', 'phone', 'email', 'fax'];
-            const repElements = ['rep-company', 'rep-address', 'rep-contact', 'rep-phone', 'rep-email', 'rep-fax'];
+            const repElements = ['bil-company', 'bil-address', 'bil-contact', 'bil-phone', 'bil-email', 'bil-fax'];
 
             elements.forEach((element, index) => {
             const value = getInputValue(element);

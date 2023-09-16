@@ -28,8 +28,6 @@
           events.push({
             title: train.name, // ใช้ชื่อของการฝึกอบรมเป็น title
             start: train.date, // ใช้วันที่ใน train.date เป็นวันเริ่มต้น
-            // คุณสามารถเพิ่ม properties อื่น ๆ ตามต้องการ เช่น description
-            // description: train.training_detail
             color: 'red' // กำหนดสีเป็นสีแดง
           });
         });

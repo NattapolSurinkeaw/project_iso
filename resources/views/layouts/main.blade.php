@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ISOConsult elerning - Your Source for Quality Products">
+  <meta name="keywords" content="ISOConsult, elerning, products, quality, online training">
+  <meta name="author" content="ISOConsult Company">
+  <meta name="robots" content="index, follow">
+
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

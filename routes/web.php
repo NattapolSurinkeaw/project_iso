@@ -69,7 +69,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 Route::middleware('checklogin')->group(function () { 
   Route::get('/reserveday/{course_id}',[TrainingController::class,'calendarReserve']);
   Route::get('/trainingform',[TrainingController::class,'trainingForm']);
-  Route::get('/reserve_success',[TrainingController::class,'reservation']);
+  Route::get('/reserve_success',[TrainingController::class,'reserveSuccess']);
 
   Route::get('/dashboard',[DashboardController::class,'dashboard_user']);
   Route::get('/mycourse',[DashboardController::class,'myCourse']);
@@ -101,7 +101,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
 
 // Route::get('/home', [FrontendController::class, 'index']);
 // Route::get('/sendmail',[Controller::class,'sendEmail']);
-Route::get('/sendmail/{email}',[TrainingController::class,'sendEmail']);
+Route::get('/sendmail/{email}/{id}',[TrainingController::class,'sendEmail']);
 Route::get('/emailform',[FrontendController::class, 'emailForm']);
 
 
@@ -126,6 +126,8 @@ Route::prefix('api')->group(function (){
   Route::get('/delallcart',[CartController::class, 'removeAllCart']);
 
   Route::post('/checkanswer/{id}',[QuestionController::class, 'checkAnswers']);
+
+  Route::post('/reserve-training',[TrainingController::class, 'reservation']);
 
 
   //backend

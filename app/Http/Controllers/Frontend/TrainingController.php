@@ -34,14 +34,31 @@ class TrainingController extends Controller
         return view('pages.app_training.training_form', compact('course','courses'));
     }
 
-    public function reservation() {
+    public function reserveSuccess() {
         return view('pages.app_training.reserve_success');
     }
 
-    public function sendEmail($email)
+    public function reservation(Request $request) {
+        // dd($request->all());exit();
+        $email = $request->input('reserve_email');
+        $id = 6;
+        $result = $this->sendEmail($email, $id); // เรียกฟังก์ชันและรับค่าที่ส่งกลับมา
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'save data has been saved successfully',
+        ], 200);
+    }
+
+
+    public function sendEmail($email, $id)
     {
-        Mail::to($email)->send(new WelcomeEmail()); // ต้องส่ง $param เข้าไป
-        return redirect('/reserve_success');
+        $welcomeEmail = new WelcomeEmail();
+        $welcomeEmail->setId($id); // กำหนดค่า $id ในอีเมล
+        Mail::to($email)->send($welcomeEmail); // ส่งอีเมล
+
+        // $emails = [$email, 'admin@example.com']; // อาเรย์ของที่อยู่อีเมล์
+        // Mail::to($emails)->send($welcomeEmail); // ส่งเมลล์ไปยังทุกที่อยู่ในอาเรย์พร้อมกัน
     }
 
 
