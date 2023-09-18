@@ -309,8 +309,13 @@
   function addQuiz() {
       Swal.fire({
           title: "Create Quiz",
-          html: ` <input type="text" id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="">
-          <input type="text" id="quiz_type" class="swal2-input" placeholder="pretest or posttest" value="">
+          html: ` <div class="flex flex-col justify-center items-center gap-4">
+                    <input id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="">
+                    <select id="quiz_type" name="quiz_type" class="block w-full h-14 font-bold px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="pretest">Pre-test</option>
+                        <option value="posttest">Post-Test</option>
+                    </select>
+                  </div>
         `,
           confirmButtonText: "Submit",
           focusConfirm: false,
@@ -358,12 +363,18 @@
   function editQuiz(quiz_id) {
       axios.get(`/api/backend/quiz/${quiz_id}`).then((response) => {
           let data = response.data.data;
-
+            // console.log(data);
           Swal.fire({
               title: "Create Quiz",
-              html: ` <input type="text" id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="${data.quiz_name}">
-          <input type="text" id="quiz_type" class="swal2-input" placeholder="pretest or posttest" value="${data.quiz_type}">
-        `,
+              html: `
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <input id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="">
+                            <select id="quiz_type" name="quiz_type" class="block w-full h-14 font-bold px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <option value="pretest" ${data.quiz_type === 'pretest' ? 'selected' : ''}>Pre-test</option>
+                                <option value="posttest" ${data.quiz_type === 'posttest' ? 'selected' : ''}>Post-Test</option>
+                            </select>
+                        </div>
+                    `,
               confirmButtonText: "Submit",
               focusConfirm: false,
               preConfirm: () => {

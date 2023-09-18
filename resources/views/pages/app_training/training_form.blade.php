@@ -119,21 +119,21 @@
 
             <div class="flex gap-4 mb-4">
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-phone">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-phone">
                         Phone
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-phone" type="text" maxlength="10">
                 </div>
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-email">E-mail</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-email">E-mail</label>
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-email" type="email">
                 </div>
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-fax">Fax</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="bil-fax" type="text">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="bil-fax">Fax</label>
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-fax" name="bil-fax" type="text">
                 </div>
             </div>
 
@@ -143,21 +143,21 @@
                 id="training-reserve" type="text">{{$course->name}}</textarea>
             <div class="flex gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="number-participants">
                         The number of participants
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="number-participants" type="text">
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="number-participants" name="number-participants" type="number">
                     {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
                 </div>
                 <div class="w-full md:w-1/2 ">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="position">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="date-reserve">
                         Requires date of training
                     </label>
                     @if(request('date'))
                     <input
-                        class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="date-reserve" type="date" value="{{ request('date') }}">
+                        class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="date-reserve" name="date-reserve" type="date" value="{{ request('date') }}">
                     @endif
                 </div>
             </div>
@@ -173,7 +173,7 @@
                     <input id="check-reserve" type="checkbox" value="" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded">
                 </div>
                 <div class="w-full md:w-3/5 mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="other-course">
                         course
                     </label>
@@ -190,7 +190,7 @@
                         required date
                     </label>
                     @if(request('date'))
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="other-date-reserve" value="{{ request('date') }}" type="date">
                     @endif
                 </div>
@@ -209,30 +209,30 @@
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Name
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-name" type="text">
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         Position
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-position" type="text">
                 </div>
                 <div class="w-full md:w-1/2 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Mobile
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="reserve-tel" type="text">
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="reserve-tel" maxlength="10" type="text">
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         E-mail
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-email" type="email">
                 </div>
             </div>
@@ -262,6 +262,16 @@
     btnSubmit.addEventListener('click', () => {
         reserveTraining()
     })
+
+    document.getElementById('reserve-tel').addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    document.getElementById('bil-phone').addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    document.getElementById('phone').addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
 
     function reserveTraining() {
         const otherCourses = document.querySelectorAll('#other-course');

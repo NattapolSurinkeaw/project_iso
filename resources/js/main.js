@@ -11,16 +11,18 @@ window.onload = () => {
 
 function navBar() {
   let nav = document.getElementById("myNav");
-  let navLink = document.getElementById("navLink");
-  let navUser = document.getElementById("navUser");
+  let elNav = document.getElementById("elNav");
 
   if (document.documentElement.scrollTop > 50) {
-    nav.classList.remove("bg-inherit");
-    nav.classList.add("bg-white");
-    navLink.classList.remove("text-gray-200");
-  } else {
     nav.classList.remove("bg-white");
-    navLink.classList.add("text-gray-200");
+    nav.classList.add("bg-gray-300");
+    // elNav.classList.remove("text-white");
+    // elNav.classList.add("text-gray-700");
+  } else {
+    nav.classList.remove("bg-gray-300");
+    nav.classList.add("bg-white");
+    // elNav.classList.remove("text-white");
+    // elNav.classList.add("text-black");
   }
 }
 

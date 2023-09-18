@@ -19,7 +19,12 @@ return new class extends Migration
             $table->integer('total_round')->unsigned()->default(0);
             $table->integer('score')->unsigned()->default(0);
             $table->integer('total_score')->unsigned()->default(0);
-            $table->string('certificate')->nullable();
+            //เอาไว้เช็คว่าทำหรือยัง
+            // pretest(yes , no) 
+            //$table->string('pretest', 3)->nullable();
+            // posttest(yes , no) 
+            // $table->string('posttest',3)->nullable();
+            $table->string('certificate')->nullable(); // yes , no เอาไว้เช็คว่าให้โหลด cer ไหม
             $table->timestamps();
         });
     }
