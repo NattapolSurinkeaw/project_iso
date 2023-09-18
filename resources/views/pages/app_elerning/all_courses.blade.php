@@ -104,6 +104,12 @@
             @endif
         @endisset
     </div>
+
+    <div class="mx-20 flex justify-end">
+        <div class="w-96">
+            {{ $elcourses->links() }}
+        </div>
+    </div>
     
 
 @endsection
