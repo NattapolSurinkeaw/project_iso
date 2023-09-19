@@ -179,6 +179,7 @@
                     </label>
                     <div class="relative">
                         <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
+                            <option >other course</option>
                             @foreach($courses as $rowcourse)
                             <option value="{{$rowcourse->id}}">{{$rowcourse->name}}</option>
                             @endforeach
@@ -301,6 +302,8 @@
         let reserve_tel = getValueById('reserve-tel');
         let reserve_email = getValueById('reserve-email');
 
+        let reqCoruse = {!! $course !!}
+        console.log(reqCoruse)
         let param = {
             company: getValueById('company'),
             address: getValueById('address'),
@@ -320,6 +323,8 @@
             bil_fax: getValueById('bil-fax'),
             
             training_reserve: getValueById('training-reserve'),
+            code_train : reqCoruse.code,
+            fee_train : reqCoruse.fee,
             number_participants: getValueById('number-participants'),
             date_reserve: getValueById('date-reserve'),
 
@@ -332,6 +337,7 @@
             reserve_email: reserve_email
         };
         console.log(param)
+        return;
         loadingModal.classList.remove('hidden');
 
         axios.post(`/api/reserve-training`, param)

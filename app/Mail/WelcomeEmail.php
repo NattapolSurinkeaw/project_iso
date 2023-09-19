@@ -6,7 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Trainingcourse;
+use App\Models\PendingTraining;
+use App\Models\OtherTraining;
 
 
 class WelcomeEmail extends Mailable
@@ -43,11 +44,12 @@ class WelcomeEmail extends Mailable
 
     public function build()
     {
-        $course = Trainingcourse::find($this->id);
+        $pendingtrain = PendingTraining::find($this->id);
+        $otherTrainings = OtherTraining::where('pending_id', $pendingtrain->id)->get();
         // $id = $this->id; // เข้าถึงค่า $id จากตัวแปร $this->id
 
-        // dd($course);exit();
-        return $this->view('emails.welcome', compact('course'))
+        // dd($otherTrainings);exit();
+        return $this->view('emails.welcome', compact('pendingtrain', 'otherTrainings'))
             ->subject('Reserve Success');
     }
 }

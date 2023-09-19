@@ -45,8 +45,8 @@ class DashboardController extends Controller
     }
 
     public function purchasePage() {
-        $user = Auth::user();
-        $pendingCourses = PendingCourse::where('user_id', $user->id)->get();
+        $user = Auth::user()->id;
+        $pendingCourses = PendingCourse::where('user_id', $user)->get();
         
         $courses = Elerningcourse::all();
         return view('pages.app_dashboard.purchase_history', compact('pendingCourses', 'courses'));

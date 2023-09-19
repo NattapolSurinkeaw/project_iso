@@ -48,10 +48,12 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
   Route::get('/training',[TrainingController::class,'tainingPage']);
+
+  Route::get('/testmail',[TrainingController::class,'testemail']);
   
   Route::get('/newsandevent',[NewsAndEventController::class,'newsAndEventPage']);
   Route::get('/newsdetails/{id}',[NewsAndEventController::class,'newsDetail']);
-
+  
   Route::get('/elerning',[ElerningController::class,'elerningPage']);
   Route::get('/course/{id}',[ElerningController::class,'coursePage'])->middleware('checklogin');
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);

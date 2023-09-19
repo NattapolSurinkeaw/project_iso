@@ -133,7 +133,7 @@
         <!-- The Modal -->
         <div id="videoModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[11]">
           <div class="modal-content bg-white p-4 rounded-lg shadow-lg">
-            <span class="close flex absolute top-2 right-2 text-center text-5xl text-gray-400 hover:text-black cursor-pointer">&times;</span>
+            <span id="close" class="flex absolute top-2 right-2 text-center text-5xl text-gray-400 hover:text-black cursor-pointer">&times;</span>
             <iframe id="videoFrame" width="1200" height="700" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
@@ -156,8 +156,8 @@
           echo "Video not found.";
       }
       @endphp
-    </div>
-    <div>
+    </div> --}}
+    {{-- <div>
       <iframe src="https://drive.google.com/file/d/1kJiC7agiB23YQtIbVEhHW4eew-hcGCL9/preview" width="300" height="300" allow="autoplay"></iframe>
     </div>
     <div>
@@ -279,8 +279,8 @@
   
   function getVideo(videoId) {
     // console.log(videoId)
-    const modal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('videoFrame');
+    let modal = document.getElementById('videoModal');
+    let videoFrame = document.getElementById('videoFrame');
 
     try {
       axios.get(`{{url('/')}}/api/getvideo/${videoId}`)
@@ -300,8 +300,9 @@
     modal.classList.remove('hidden');
 
     // Close the modal when the "close" button is clicked
-    const closeButton = document.querySelector('.close');
-    closeButton.addEventListener('click', function() {
+    const closeButton = document.querySelector('#close');
+    closeButton.addEventListener('click', function(event) {
+      event.stopPropagation(); // หยุด event propagation
       modal.classList.add('hidden');
       videoFrame.src = ''; // Clear the iframe source
     });

@@ -23,9 +23,11 @@ return new class extends Migration
             $table->string('email');
             $table->string('fax', 10);
             $table->string('training_reserve');
+            $table->string('code_train', 10);
+            $table->decimal('fee', 8, 2);
             $table->integer('number_participants');
             $table->date('date_reserve');
-            $table->string('special_request');
+            $table->string('special_request')->nullable();
             $table->string('reserve_name');
             $table->string('reserve_position');
             $table->string('reserve_tel', 10);
