@@ -14,14 +14,16 @@ class ElerningController extends Controller
 {
     //
     public function elerningPage() {
-        $elcourses = Elerningcourse::all();
+        // เรียกคิวรีและใช้เมธอด paginate()
+        $elcourses = Elerningcourse::paginate(10);
+    
         if(Auth::check()){
             $user = Auth::user();
             $mycourse = MyCourse::where('user_id', $user->id)->get();
         } else {
             $mycourse = "";
         }
-
+    
         return view('pages.app_elerning.all_courses', compact('elcourses', 'mycourse'));
     }
 
