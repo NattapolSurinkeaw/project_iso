@@ -47,7 +47,7 @@ class BackendController extends Controller
             $createUser->name = $request->name; // เพิ่มการกำหนดค่าฟิลด์ 'name'
             $createUser->save();
             return response([
-                'message' => 'ok',
+                'message' => 'success',
                 'description' => 'Create User Success',
             ], 201);
         } else {

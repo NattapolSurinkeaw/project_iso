@@ -51,7 +51,7 @@ class BackendNewsEventController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'บันทึกข้อมูล NewsEvent สำเร็จ',
-        ], 200);
+        ], 201);
     }
 
     public function editNews(Request $request, $news_id) {
@@ -62,7 +62,7 @@ class BackendNewsEventController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'not found news'
-            ], 400);
+            ], 404);
         }
 
         $request->validate([
@@ -87,7 +87,7 @@ class BackendNewsEventController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'บันทึกข้อมูล NewsEvent สำเร็จ',
-        ], 200);
+        ], 201);
     }
 
     public function deleteNews($news_id) {
@@ -97,13 +97,13 @@ class BackendNewsEventController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'news not found'
-            ], 400);
+            ], 404);
         }
 
         $news->delete();
         return response()->json([
             'status' => 'success',
             'message' => 'news deleted successfully'
-        ], 200);
+        ], 204);
     }
 }

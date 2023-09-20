@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') NewsDetail @endsection
 @section('content')
-<div class="w-11/12 mx-auto pt-20">
+<div class="w-11/12 mx-auto my-4">
   {{-- @dd($getNews) --}}
   <div class="flex justify-center my-4">
     <h1 class="text-center text-4xl mb-4">Detail News : </h1>

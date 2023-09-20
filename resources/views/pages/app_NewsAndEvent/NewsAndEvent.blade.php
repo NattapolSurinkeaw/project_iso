@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') News & Event @endsection
 @section('content')
-<h1 class="text-2xl text-center font-bold pt-20">News And Events </h1>
+<h1 class="text-2xl text-center font-bold my-4">News And Events </h1>
 <div class="w-11/12 mx-auto">
   <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" loop="true" slides-per-view="3"
     space-between="20" free-mode="true">

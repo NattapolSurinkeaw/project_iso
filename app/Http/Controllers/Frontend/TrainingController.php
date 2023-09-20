@@ -44,6 +44,7 @@ class TrainingController extends Controller
     }
 
     public function reservation(Request $request) {
+        // dd($request->all());exit();
         $validator = Validator::make($request->all(), [
             'company' => 'required',
             'address' => 'required',
@@ -63,16 +64,23 @@ class TrainingController extends Controller
             'bil_fax' => 'required',
 
             'training_reserve' => 'required',
+            'code_train' => 'required',
+            'fee_train' => 'required',
             'number_participants' => 'required',
             'date_reserve' => 'required',
             
-            'otherReservations' => 'required',
-
             'reserve_name' => 'required',
             'reserve_position' => 'required',
             'reserve_tel' => 'required',
             'reserve_email' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'validation failed please try again'
+            ], 401);
+        }
 
         $billing = new BillingTo;
         $billing->bil_company = $request->input('bil_company');
@@ -97,6 +105,8 @@ class TrainingController extends Controller
         $pendingTrain->email = $request->input('email');
         $pendingTrain->fax = $request->input('fax');
         $pendingTrain->training_reserve = $request->input('training_reserve');
+        $pendingTrain->code_train = $request->input('code_train');
+        $pendingTrain->fee = $request->input('fee_train');
         $pendingTrain->number_participants = $request->input('number_participants');
         $pendingTrain->date_reserve = $request->input('date_reserve');
         $pendingTrain->special_request = $request->input('special_request');
@@ -109,15 +119,16 @@ class TrainingController extends Controller
 
         $otherReservations = $request->input('otherReservations'); // ข้อมูลจาก user
 
-        foreach ($otherReservations as $reservationData) {
-            $othertrain = new OtherTraining;
-            $othertrain->pending_id = $pendingTrain->id; // ใช้ pending_id จาก $pendingTrain ที่คุณมีอยู่แล้ว
-        
-            // กำหนดค่าในฟิลด์ other_course และ other_date จากข้อมูลที่มาจาก user
-            $othertrain->other_course = $reservationData['othercourse'];
-            $othertrain->other_date = $reservationData['otherdatereserve'];
-        
-            $othertrain->save(); // บันทึกข้อมูลในตาราง othertrain
+        if (!is_null($otherReservations) && !empty($otherReservations)) {
+            foreach ($otherReservations as $reservationData) {
+                $othertrain = new OtherTraining;
+                $othertrain->pending_id = $pendingTrain->id;
+            
+                $othertrain->other_course = $reservationData['othercourse'];
+                $othertrain->other_date = $reservationData['otherdatereserve'];
+            
+                $othertrain->save();
+            }
         }
 
         $email = $request->input('reserve_email');
@@ -126,7 +137,7 @@ class TrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'save data has been saved successfully',
-        ], 200);
+        ], 201);
     }
 
 
@@ -141,8 +152,12 @@ class TrainingController extends Controller
     }
 
     public function testemail() {
-        $pendingtrain = PendingTraining::find(1);
-        $otherTrainings = OtherTraining::where('pending_id', $pendingtrain->id)->get();
+        $pendingtrain = PendingTraining::find(5);
+        $otherTrainings = OtherTraining::where('pending_id', $pendingtrain->id)
+        ->join('trainingcourses', 'other_trainings.other_course', '=', 'trainingcourses.id')
+        ->select('other_trainings.*','trainingcourses.code', 'trainingcourses.name', 'trainingcourses.fee')
+        ->get();
+        // dd($otherTrainings);exit();
         return view('emails.welcome', compact('pendingtrain', 'otherTrainings'));
     }
 

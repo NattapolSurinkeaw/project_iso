@@ -3,15 +3,14 @@
     AllCourse
 @endsection
 @section('content')
-    <h1 class="pt-20 text-3xl text-center"> Elerning All Course</h1>
+    <h1 class="my-4 text-3xl text-center"> Elearning All Course</h1>
     {{-- @dd($elcourses) --}}
 
     <div class="container mx-auto flex items-center flex-wrap pt-4 ">
 
         <nav id="store" class="w-full z-30 top-0 px-6 py-1">
             <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-                <h1 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl ">Course
-                </h1>
+                <h1 class="uppercase tracking-wide no-underline hover:no-underline font-nrmal text-gray-800 text-xl">Course</h1>
                 <div class="flex items-center" id="store-nav-content">
                     <div class="relative text-right absolute inset-y-0 right-0">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -46,7 +45,7 @@
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
                             <div class="w-full flex justify-between items-center">
-                                <h1 class="text-2xl font-bold w-full truncate">{{$elcourse->course_name}}</h1>
+                                <h1 class="text-2xl font-medium w-full truncate">{{$elcourse->course_name}}</h1>
                                 <div class="flex">
                                     <h1 class="text-yellow-500">4.9</h1>
                                     <svg aria-hidden="true" class="w-5 h-5 mb-2 text-yellow-500 dark:text-gray-500"
@@ -59,8 +58,8 @@
                             </div>
                             <div class="w-full flex justify-between gap-4">
                                 <div class="flex gap-2">
-                                    <h1 class="font-bold text-gray-400">Price</h1>
-                                    <h1 class="font-bold">{{number_format($elcourse->price)}} THB</h1>
+                                    <h1 class="font-medium text-gray-400">Price</h1>
+                                    <h1 class="font-medium">{{number_format($elcourse->price)}} THB</h1>
                                 </div>
                             </div>
 

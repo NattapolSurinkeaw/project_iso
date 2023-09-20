@@ -3,7 +3,7 @@
     Dashboard
 @endsection
 @section('content')
-    <div class="pt-20 px-1 h-screen gap-4 flex ">
+    <div class="px-1 gap-4 flex ">
         <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
             @include('pages.app_dashboard.components.sidebar')
         </div>
@@ -22,9 +22,15 @@
                     @endif
                 </div>
 
-                <div class="w-full flex justify-center gap-4">
-                    <p>name</p>
-                    <p>{{ $user->name }}</p>
+                <div class="w-full flex flex-col items-center justify-center gap-4">
+                    <div class="flex gap-2">
+                        <p class="font-bold">Email : </p>
+                        <p>{{ $user->email }}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <p class="font-bold">name : </p>
+                        <p>{{ $user->name }}</p>
+                    </div>
                 </div>
                 <button onclick="editUser()" class="bg-orange-500 p-1 px-2 mx-auto rounded-lg text-white">แก้ไข</button>
             </div>

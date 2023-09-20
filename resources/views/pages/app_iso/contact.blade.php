@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') ContactPage @endsection
 @section('content')
-<div class="p-20 bg-gray-100 h-screen">
+<div class="py-4 bg-gray-100 h-screen">
   <h1 class="text-2xl text-center">Contact</h1>
   <div class="m-10 flex justify-center gap-10">
     

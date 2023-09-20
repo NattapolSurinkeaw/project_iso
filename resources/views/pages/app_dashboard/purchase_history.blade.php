@@ -3,12 +3,12 @@
     Dashboard
 @endsection
 @section('content')
-<div class="pt-20 px-1 h-screen gap-4 flex ">
+<div class="px-1 flex gap-4">
   <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
       @include('pages.app_dashboard.components.sidebar')
   </div>
   <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
-    <h1 class="text-xl font-bold">Purchase History</h1>
+    <h1 class="text-xl font-normal">Purchase History</h1>
 
     <div id="table-train" class="relative h-4/5 overflow-y-scroll mx-10">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

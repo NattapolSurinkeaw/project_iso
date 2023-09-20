@@ -56,7 +56,7 @@ class BackendTrainingController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Module already exists.',
-            ], 400);
+            ], 404);
         }
 
         $newModule = new Module();
@@ -66,7 +66,7 @@ class BackendTrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Module added successfully.',
-        ], 200);
+        ], 201);
     }
 
     public function editModule(Request $request, $mod_id) {
@@ -87,7 +87,7 @@ class BackendTrainingController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Module already exists.',
-            ], 400);
+            ], 404);
         }
 
         $module->name = $request->input('module');
@@ -96,7 +96,7 @@ class BackendTrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Module updated successfully.',
-        ], 200);
+        ], 201);
     }
 
     public function delModule($mod_id) {
@@ -106,14 +106,14 @@ class BackendTrainingController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Module not found',
-            ] ,400);
+            ] ,404);
         }
 
         $module->delete();
         return response()->json([
             'status' => 'success',
             'message' => 'training deleted successfully'
-        ], 200);
+        ], 204);
     }
 
     public function cretaTraining(Request $request) {
@@ -133,7 +133,7 @@ class BackendTrainingController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'validator data failed check input data.',
-            ], 400);
+            ], 404);
         }
 
         $training = new Trainingcourse;
@@ -154,7 +154,7 @@ class BackendTrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Training was saved successfully',
-        ], 200);
+        ], 201);
     }
 
     public function backend_editTraining(Request $request, $train_id) {
@@ -173,7 +173,7 @@ class BackendTrainingController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'edit training failed.',
-            ], 400);
+            ], 404);
         }
         
         $training = Trainingcourse::find($train_id);
@@ -197,7 +197,7 @@ class BackendTrainingController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Training was saved successfully',
-        ], 200);
+        ], 201);
 
     }
 

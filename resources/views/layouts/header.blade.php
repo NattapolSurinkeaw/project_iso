@@ -1,17 +1,17 @@
-<nav id="myNav" class="sticky top-0 w-full duration-300 bg-white shadow z-[10]">
-  <div class="container m-auto flex items-center justify-between text-gray-700">
+<nav id="myNav" class="sticky top-0 w-full h-full duration-300 bg-white shadow z-[10]">
+  <div class="md:container m-auto flex items-center justify-between text-gray-700">
     <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
     </a>
-    <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-semibold md:flex text-gray-200">
-      <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">Home</li></a>
-      <a href="{{url('/elerning')}}"><li class="px-6 py-4 hover:bg-gray-200">Elerning</li></a>
+    <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-medium md:flex text-gray-200">
+      <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">HOME</li></a>
+      <a href="{{url('/elerning')}}"><li class="px-6 py-4 hover:bg-gray-200">ELEARNING</li></a>
       <a href="{{url('/newsandevent')}}"><li class="px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
       <a href="{{url('/training')}}"><li class="px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
       <a href="{{url('/contact')}}"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
     </ul>
     @if($user)
-      <div class="text-base hidden cursor-pointer items-center pr-10 font-semibold md:flex gap-3 items-center">
+      <div class="text-base hidden cursor-pointer items-center pr-10 font-medium md:flex gap-3 items-center">
         @if(empty($user->img_profile))
         <a href="{{url('/dashboard')}}"><div><img class="rounded-full w-8 h-8" src="/image/icon/user.png" alt=""></div></a>
         @else
@@ -33,8 +33,8 @@
       <div class="h-1 w-5 bg-gray-600"></div>
       <div class="absolute -right-full top-12 h-screen w-6/12 border bg-white opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
         <ul class="flex w-full cursor-pointer flex-col items-center pt-10 text-base">
-          <a class="" href="/"><li class="w-full px-6 py-4 hover:bg-gray-200">Home</li></a>
-          <a href="/elerning"><li class="w-full px-6 py-4 hover:bg-gray-200">Elerning</li></a>
+          <a class="" href="/"><li class="w-full px-6 py-4 hover:bg-gray-200">HOME</li></a>
+          <a href="/elerning"><li class="w-full px-6 py-4 hover:bg-gray-200">ELEARNING</li></a>
           <a href="/newsandevent"><li class="w-full px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
           <a href="/training"><li class="w-full px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
           <a href="/contact"><li class="w-full px-6 py-4 hover:bg-gray-200">CONTACT</li></a>

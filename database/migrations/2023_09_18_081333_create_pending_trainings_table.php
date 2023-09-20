@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('phone', 10);
             $table->string('email');
-            $table->string('fax', 10);
+            $table->string('fax', 20);
             $table->string('training_reserve');
             $table->string('code_train', 10);
             $table->decimal('fee', 8, 2);

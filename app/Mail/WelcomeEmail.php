@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\PendingTraining;
 use App\Models\OtherTraining;
+use App\Models\Trainingcourse;
 
 
 class WelcomeEmail extends Mailable
@@ -36,19 +37,19 @@ class WelcomeEmail extends Mailable
     //     return $this->view('emails.welcome')
     //         ->subject('Welcome Email');
     // }
-    public function setId($id)
+    public function setId($ped_id)
     {
-        $this->id = $id;
+        $this->id = $ped_id;
         return $this;
     }
 
     public function build()
     {
         $pendingtrain = PendingTraining::find($this->id);
-        $otherTrainings = OtherTraining::where('pending_id', $pendingtrain->id)->get();
-        // $id = $this->id; // เข้าถึงค่า $id จากตัวแปร $this->id
-
-        // dd($otherTrainings);exit();
+        $otherTrainings = OtherTraining::where('pending_id', $pendingtrain->id)
+        ->join('trainingcourses', 'other_trainings.other_course', '=', 'trainingcourses.id')
+        ->select('other_trainings.*','trainingcourses.code', 'trainingcourses.name', 'trainingcourses.fee')
+        ->get();
         return $this->view('emails.welcome', compact('pendingtrain', 'otherTrainings'))
             ->subject('Reserve Success');
     }

@@ -16,14 +16,17 @@
                     <input type="name" name="name" id="fname"
                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="firtname lastname" required="">
+                        <p id="ms-er-name" class="ml-2 hidden text-red-500 text-sm">validate name error</p>
                 </div>
                 <div class="w-10/12">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                     <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                    <p id="ms-er-email" class="ml-2 hidden text-red-500 text-sm">validate email error please fill type email </p>
                 </div>
                 <div class="w-10/12">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                    <input type="password" name="password" id="password" onkeydown="if (event.key === 'Enter') onRegister()" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                    <p id="ms-er-pass" class="ml-2 hidden text-red-500 text-sm">validate password error</p>
                 </div>
                 <button onclick="onRegister()" class="w-1/2 bg-green-600 border-b-4 border-green-600 hover:bg-green-500 hover:border-b-4 hover:border-green-700 font-medium rounded-lg text-md text-white px-5 py-2.5 text-center mt-4 duration-200">register</button>
                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">I have an account 
@@ -40,10 +43,22 @@ document.addEventListener("DOMContentLoaded", function() {
     sessionStorage.setItem('fromRegister', 'true');
 });
 
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.querySelector('#password').addEventListener('keydown', function (event) {
+//         if (event.key === 'Enter') {
+//             // เรียกใช้ฟังก์ชัน onLogin หากปุ่ม Enter ถูกกด
+//             onRegister();
+//         }
+//     });
+// });
+
 function onRegister() {
     let name = document.querySelector('#fname').value;
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
+    let msNameEr = document.querySelector('#ms-er-name');
+    let msEmailEr = document.querySelector('#ms-er-email');
+    let msPassEr = document.querySelector('#ms-er-pass');
 
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -58,17 +73,7 @@ function onRegister() {
             
             axios.post('api/auth/register', data)
             .then((response) => {
-                if (response.data.message === 'error') {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: 'Email fail',
-                        text: 'This email has already been used',
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-                } 
-                else {
+                if (response.data.message === 'success') {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -78,6 +83,19 @@ function onRegister() {
                         timer: 1000
                     }).then(() => {
                         location.href = '/login';
+                    });
+                } 
+                else {
+                    msNameEr.classList.add('hidden');
+                    msPassEr.classList.add('hidden');
+                    msEmailEr.classList.remove('hidden');
+                    msEmailEr.innerHTML = "This email has already been used"
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Email fail',
+                        text: 'This email has already been used',
+                        showConfirmButton: true,
                     });
                 }
             })
@@ -92,23 +110,27 @@ function onRegister() {
             });
         } 
         else {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Registration Email failed',
-                text: 'Please check your fill email',
-                showConfirmButton: true
-            });
+            msEmailEr.classList.remove('hidden');
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'error',
+            //     title: 'Registration Email failed',
+            //     text: 'Please check your fill email',
+            //     showConfirmButton: true
+            // });
         }
     } 
     else {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Registration failed',
-            text: 'Please check your registration details and try again.',
-            showConfirmButton: true
-        });
+        msNameEr.classList.remove('hidden');
+        msEmailEr.classList.remove('hidden');
+        msPassEr.classList.remove('hidden');
+        // Swal.fire({
+        //     position: 'center',
+        //     icon: 'error',
+        //     title: 'Login failed',
+        //     text: 'Please check your credentials and try again.',
+        //     showConfirmButton: true
+        // });
     }
 }
 

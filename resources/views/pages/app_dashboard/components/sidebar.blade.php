@@ -1,4 +1,4 @@
-<div class="">
+<div class="h-screen">
   <a href="{{url('/dashboard')}}"><h1 class="p-5 mt-2 mb-4 font-bold text-center">User Dashboard</h1></a>
   <div class="flex flex-col">
     <ul class="flex flex-col items-center gap-4">

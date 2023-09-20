@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') CoursePage @endsection
 @section('content')
-<div class="bg-gray-100 py-20">
+<div class="bg-gray-100">
   <div class="bg-red-500 flex">
     <div class="w-full flex flex-col items-center justify-center">
       <h1 class="text-3xl text-white">Detail : {{$course->course_name}}</h1>

@@ -140,7 +140,7 @@
             <p class="text-gray-600 text-xl font-bold mt-5">Request for training course : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
             <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="training-reserve" type="text">{{$course->name}}</textarea>
+                id="training-reserve" type="text"  disabled>{{$course->name}}</textarea>
             <div class="flex gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="number-participants">
@@ -179,7 +179,7 @@
                     </label>
                     <div class="relative">
                         <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
-                            <option >other course</option>
+                            <option value="">other course</option>
                             @foreach($courses as $rowcourse)
                             <option value="{{$rowcourse->id}}">{{$rowcourse->name}}</option>
                             @endforeach
@@ -282,13 +282,16 @@
         for (let i = 0; i < otherCourses.length; i++) {
             const course = otherCourses[i].value;
             const date = otherDates[i].value;
-            
-            const reservation = {
-                othercourse: course,
-                otherdatereserve: date
-            };
-            
-            otherReservations.push(reservation);
+
+            // เพิ่มเงื่อนไขเช็คว่า course ไม่เป็นค่าว่าง
+            if (course.trim() !== '') {
+                const reservation = {
+                    othercourse: course,
+                    otherdatereserve: date
+                };
+
+                otherReservations.push(reservation);
+            }
         }
 
         console.log(otherReservations);
@@ -337,17 +340,14 @@
             reserve_email: reserve_email
         };
         console.log(param)
-        return;
         loadingModal.classList.remove('hidden');
-
+        // return false;
         axios.post(`/api/reserve-training`, param)
             .then((response) => {
                 console.log(response.data.status);
                 if (response.data.status === 'success') {
-                    // ซ่อน Modal Loading เมื่อรับ Response สำเร็จ
                     loadingModal.classList.add('hidden');
 
-                    // แสดง Swal 2 เมื่อซ่อน Modal เสร็จสิ้น
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
