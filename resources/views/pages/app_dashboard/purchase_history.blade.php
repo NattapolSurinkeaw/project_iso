@@ -14,36 +14,37 @@
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>
-                <th scope="col" class="px-6 py-3 rounded-tl-lg">
+                <th scope="col" class="px-6 py-3 rounded-tl-lg font-medium">
                   ชื่อที่โอน
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                   Course
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                     price
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                   status
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                   comment
                 </th>
-                <th scope="col" class="px-6 py-3 text-center">
+                <th scope="col" class="px-6 py-3 text-center font-medium">
                   slip
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                   วันที่ซื้อ
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 font-medium">
                   วันที่ตอบกลับ
                 </th>
-                <th scope="col" class="px-6 py-3 rounded-tr-lg">
+                <th scope="col" class="px-6 py-3 rounded-tr-lg font-medium">
                   actions
                 </th>
             </tr>
         </thead>
         <tbody>
+          @if(empty($pendingCourses))
           @foreach ($pendingCourses as $pending)
             <tr class="bg-white dark:bg-gray-800 border-b-2">
               <th scope="row"
@@ -95,6 +96,11 @@
               </td>
             </tr>
           @endforeach
+          @else
+          <tr>
+            <td colspan="9" class="text-center">No data purchase</td>
+          </tr>
+          @endif
         </tbody>
       </table>
     </div>

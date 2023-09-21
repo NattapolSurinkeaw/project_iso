@@ -20,18 +20,18 @@
                 @if ($course->module_id !== $currentModule)
                 <!-- แสดงชื่อ module จาก $modules -->
                 <tr>
-                  <td colspan="6" class="whitespace-nowrap px-6 py-4 font-medium bg-gray-200 text-center">
+                  <td colspan="6" class="whitespace-nowrap px-6 py-4 font-normal bg-gray-200 text-lg text-center">
                     Module {{ $i++ }} {{ $modules->where('id', $course->module_id)->first()->name }}
                   </td>
                 </tr>
                 <!-- แสดงหัวข้อตาราง -->
                 <tr>
-                  <th scope="col" class="px-6 py-4">CODE</th>
-                  <th scope="col" class="px-6 py-4">COURSE</th>
-                  <th scope="col" class="px-6 py-4">DAYS</th>
-                  <th scope="col" class="px-6 py-4">FEE</th>
-                  <th scope="col" class="px-6 py-4">DATE</th>
-                  <th scope="col" class="px-6 py-4">ACTION</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">CODE</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">COURSE</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">DAYS</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">FEE</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">DATE</th>
+                  <th scope="col" class="px-6 py-4 font-semibold">ACTION</th>
                 </tr>
                 @php
                   $currentModule = $course->module_id;

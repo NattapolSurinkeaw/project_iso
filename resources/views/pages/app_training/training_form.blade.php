@@ -1,69 +1,75 @@
 @extends('layouts.main')
 @section('title') TrainingForm @endsection
 @section('content')
-<div class="pt-10">
+<div class="py-4">
     {{-- @dd($courses) --}}
-    <div class="w-full max-w-[1080px] mx-auto mt-5 px-6 pt-6">
+    <div class="w-full max-w-[1080px] mx-auto mt-5 px-6">
         <div class="bg-[#fff] w-full p-6 pt-5 drop-shadow-2xl rounded-xl">
             <div class="items-center w-full mt-6 mb-6">
-                <p class="text-gray-600 text-2xl font-bold text-center">Request For Quote</p>
+                <p class="text-gray-600 text-2xl font-ligth text-center">Request For Quote</p>
                 <p class="text-gray-600 text-l text-center"> คำขอใบเสนอราคาการฝึกอบรม</p>
                 <p class="text-gray-600 text-xl text-center">(In-house training)</p>
             </div>
             <hr class="mb-3">
 
-            <p class="text-gray-600 text-xl font-bold ">Issue to: </p>
+            <p class="text-gray-600 text-xl font-ligth ">Issue to: </p>
             <p class="text-gray-600 text-l mb-4">ออกให้ </p>
             
-            <div class="w-full">
-                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-address">Company</label>
+            <div class="w-full mb-2">
+                <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Company</label>
                 <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="company" type="text">
+                <p class="text-xs text-red-500">กรุณากรอกข้อมูล company</p>
             </div>
-            <div class="w-full">
-                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="address">Address</label>
+            <div class="w-full mb-2">
+                <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="address">Address</label>
                 <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="address" type="text"></textarea>
+                <p class="text-xs text-red-500">กรุณากรอกข้อมูล address</p>
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex gap-4 mb-3">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">Contact</label>
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="tax-id">Contact</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
                         id="contact" type="text">
-                    {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล contact</p>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="position">Position</label>
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="position">Position</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="position" type="text">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล position</p>
                 </div>
             </div>
 
 
 
-            <div class="flex gap-4">
+            <div class="flex gap-4 mb-3">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="phone">Phone</label>
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="phone">Phone</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="phone" maxlength="10" type="text">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล phone</p>
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">E-mail</label>
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="email">E-mail</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="email" type="email">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล E-mail</p>
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="fax">Fax</label>
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="fax">Fax</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="fax" type="text">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล Fax</p>
                 </div>
             </div>
 
-            <div class="flex justify-between mt-6">
-                <p class="text-gray-600 text-xl font-bold ">Billing to: </p>
+            <div class="flex justify-between mt-3">
+                <p class="text-gray-600 text-xl font-ligth ">Billing to: </p>
                 <div class="flex items-center mb-2 mt-2">
                     <input onclick="coppy()" id="cop-above" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
                     <label for="cop-above" class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-500">Same as above address</label>
@@ -72,86 +78,84 @@
             <!-- คัดลอกข้างบน -->
 
             <p class="text-gray-600 text-l mb-4">ออกใบเสร็จรับเงินให้ </p>
-            <div class="flex mb-4">
-                <div class="w-full">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-company">Company</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="bil-company" type="text">
-                </div>
+            <div class="flex flex-col mb-3 w-full">
+                <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Company</label>
+                <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="bil-company" type="text">
+                <p class="text-xs text-red-500">กรุณากรอกข้อมูล Company</p>
             </div>
-            <div class="flex mb-4">
-                <div class="w-full">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-address">
-                        Address
-                    </label>
-                    <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="bil-address" type="text"></textarea>
-                </div>
+            <div class="flex flex-col mb-4 w-full">
+                <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Address</label>
+                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="bil-address" type="text"></textarea>
+                <p class="text-xs text-red-500">กรุณากรอกข้อมูล Address</p>
             </div>
 
-            <div class="flex gap-4 mt-4">
+            <div class="flex gap-4 ">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="tax-id">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="tax-id">
                         Tax ID
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
                         id="bil-tax-id" type="text">
-                    {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล Tex ID</p>
                 </div>
-                <div class="w-full md:w-1/3">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-contact">
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-contact">
                         Contact
                     </label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-contact" type="text">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล Contact</p>
                 </div>
-                <div class="w-full md:w-1/3">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"for="title">
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1"for="title">
                         Title
                     </label>
-                    <input
-                        class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-title" type="text">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล Title</p>
                 </div>
             </div>
 
 
 
-            <div class="flex gap-4 mb-4">
-                <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-phone">
+            <div class="flex gap-4 mb-3">
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-phone">
                         Phone
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-phone" type="text" maxlength="10">
+                    <p class="text-xs text-red-500">กรุณากรอกข้อมูล Tex ID</p>
                 </div>
-                <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="rep-email">E-mail</label>
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-email">E-mail</label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-email" type="email">
                 </div>
-                <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="bil-fax">Fax</label>
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="bil-fax">Fax</label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-fax" name="bil-fax" type="text">
                 </div>
             </div>
 
-            <p class="text-gray-600 text-xl font-bold mt-5">Request for training course : </p>
+            <p class="text-gray-600 text-xl font-ligth mt-5">Request for training course : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
             <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="training-reserve" type="text"  disabled>{{$course->name}}</textarea>
             <div class="flex gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="number-participants">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="number-participants">
                         The number of participants
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="number-participants" name="number-participants" type="number">
-                    {{-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> --}}
+                    {{-- <p class="text-red-500 text-sm italic">Please fill out this field.</p> --}}
                 </div>
                 <div class="w-full md:w-1/2 ">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="date-reserve">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="date-reserve">
                         Requires date of training
                     </label>
                     @if(request('date'))
@@ -162,7 +166,7 @@
                 </div>
             </div>
 
-            <h1 class="text-gray-600 text-xl font-bold mt-5">Request for other courses : </h1>
+            <h1 class="text-gray-600 text-xl font-ligth mt-5">Request for other courses : </h1>
             <div class="flex justify-between">
                 <!-- ปุ่มเพิ่ม course -->
                 <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรอื่น ๆ (หากมี) </p>
@@ -173,7 +177,7 @@
                     <input id="check-reserve" type="checkbox" value="" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded">
                 </div>
                 <div class="w-full md:w-3/5 mb-6 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2"
                         for="other-course">
                         course
                     </label>
@@ -187,7 +191,7 @@
                     </div>
                 </div>
                 <div class="w-full md:w-[37%] mb-6 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2">
                         required date
                     </label>
                     @if(request('date'))
@@ -198,16 +202,16 @@
             </div>
             <div id="block-other-train"></div>
 
-            <p class="text-gray-600 text-xl font-bold mt-5">Special requisition : </p>
+            <p class="text-gray-600 text-xl font-ligth mt-5">Special requisition : </p>
             <p class="text-gray-600 text-l mb-4">ข้อเสนอหรือความต้องการพิเศษใด ๆ </p>
             <textarea
                 class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="special-request" type="text"></textarea>
 
-            <p class="text-gray-600 text-xl font-bold mt-4">ลงนาม : </p>
+            <p class="text-gray-600 text-xl font-ligth mt-4">ลงนาม : </p>
             <div class="flex gap-4">
                 <div class="w-full md:w-1/2 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                         Name
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -215,14 +219,14 @@
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                         Position
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-position" type="text">
                 </div>
                 <div class="w-full md:w-1/2 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                         Mobile
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -230,7 +234,7 @@
                 </div>
 
                 <div class="w-full md:w-1/2 md:mb-0">
-                    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                         E-mail
                     </label>
                     <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -398,7 +402,7 @@
 
         // สร้าง element ของ label สำหรับเลือก course
         const selectLabel = document.createElement('label');
-        selectLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-xs', 'font-bold', 'mb-2');
+        selectLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-sm', 'font-ligth', 'mb-2');
         selectLabel.htmlFor = 'other-course';
         selectLabel.textContent = 'course';
 
@@ -430,7 +434,7 @@
 
         // สร้าง element ของ label สำหรับ input date
         const dateLabel = document.createElement('label');
-        dateLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-xs', 'font-bold', 'mb-2');
+        dateLabel.classList.add('block', 'tracking-wide', 'text-gray-700', 'text-sm', 'font-ligth', 'mb-2');
         dateLabel.htmlFor = 'other-date-reserve';
         dateLabel.textContent = 'required date';
 

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') News & Event @endsection
 @section('content')
-<h1 class="text-2xl text-center font-bold my-4">News And Events </h1>
+<h1 class="text-2xl text-center font-normal my-4">News And Events </h1>
 <div class="w-11/12 mx-auto">
   <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" loop="true" slides-per-view="3"
     space-between="20" free-mode="true">
@@ -48,7 +48,7 @@
     </div>
 
     <div class="w-full max-w-[400px] p-2 rounded-lg bg-gray-100">
-      <h1 class="text-center text-xl font-bold mb-2">ข่าวที่น่าสนใจ</h1>
+      <h1 class="text-center text-xl font-medium mb-2">ข่าวที่น่าสนใจ</h1>
       @foreach($topnews as $news)
       <a href="/newsdetails/{{$news->id}}">
         <div class="w-full rounded-lg bg-white my-5 flex flex-col gap-2 items-center justify-center">

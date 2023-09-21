@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Reserve Day @endsection
 @section('content')
-  <div class="w-10/12 mt-20 mx-auto">
+  <div class="w-10/12 my-4 mx-auto">
     <div class="">
         <h1 class="text-2xl text-center">Reserve Day</h1>
         <h1 class="text-xl text-center">Course : {{$training->name}}</h1>

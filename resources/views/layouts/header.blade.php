@@ -1,4 +1,4 @@
-<nav id="myNav" class="sticky top-0 w-full h-full duration-300 bg-white shadow z-[10]">
+<nav id="myNav" class="sticky top-0 w-full duration-300 bg-white shadow z-[10]">
   <div class="md:container m-auto flex items-center justify-between text-gray-700">
     <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />

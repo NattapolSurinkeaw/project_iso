@@ -129,7 +129,7 @@
         <!-- The Modal -->
         <div id="videoModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[11]">
           <div class="modal-content bg-white p-4 rounded-lg shadow-lg">
-            <span id="close" class="flex absolute top-2 right-2 text-center text-5xl text-gray-400 hover:text-black cursor-pointer">&times;</span>
+            <a id="close" class="flex absolute top-10 right-48 text-center text-4xl text-white hover:text-black cursor-pointer">X</a>
             <iframe id="videoFrame" width="1200" height="700" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
@@ -219,9 +219,11 @@
       <div class="w-64 flex flex-col justify-center items-center p-2 border rounded-lg">
         <div class="w-60 h-40 overflow-hidden rounded-lg">
           @if(!empty($news->img_news_events))
-          <img class="w-60 h-40 hover:scale-125 duration-300 rounded-lg" src="{{$news->img_news_events}}" alt="">
+          <img class="w-60 h-40 duration-300 rounded-lg hover:scale-125 hover:translate-x-2 hover:translate-y-2 transform origin-center"
+              src="{{$news->img_news_events}}" alt="">
           @else
-          <img class="w-60 h-40 hover:scale-125 duration-300 rounded-lg" src="/image/icon/isologo.png" alt="">
+          <img class="w-60 h-40 duration-300 rounded-lg hover:scale-125 hover:translate-x-2 hover:translate-y-2 transform origin-center"
+              src="/image/icon/isologo.png" alt="">
           @endif
         </div>
         <h1 class="font-bold">{{$news->name}}</h1>
