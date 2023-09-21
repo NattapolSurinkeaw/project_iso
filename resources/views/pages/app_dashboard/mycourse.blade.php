@@ -1,13 +1,13 @@
 @extends('layouts.main')
 @section('title') Dashboard @endsection
 @section('content')
-<div class="px-1 flex gap-4">
+<div class="py-4 px-1 flex gap-4">
   <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
     @include('pages.app_dashboard.components.sidebar')
   </div>
   <!-- box-profile -->
   <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
-    <h1 class="text-xl font-bold">My course</h1>
+    <h1 class="text-2xl font-medium">My course</h1>
     <div class="w-full p-5 bg-white flex flex-wrap gap-2 rounded-lg">
       @if(count($elerningcourses) > 0)
       @foreach ($elerningcourses as $elerningcourse)
@@ -22,7 +22,7 @@
           </div> 
           <div class="w-full flex flex-col items-start gap-2">
               <div class="flex justify-between items-center">
-                  <h1 class="text-2xl font-bold w-full truncate">{{$elerningcourse->course_name}}</h1>
+                  <h1 class="text-2xl font-normal w-full truncate">{{$elerningcourse->course_name}}</h1>
               </div>
 
               <div class="flex justify-between items-center">

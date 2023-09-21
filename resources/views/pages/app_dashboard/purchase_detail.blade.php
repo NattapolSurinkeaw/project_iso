@@ -3,12 +3,12 @@
     Dashboard
 @endsection
 @section('content')
-<div class=" px-1 gap-4 flex ">
+<div class="py-4 px-1 flex gap-4">
   <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
       @include('pages.app_dashboard.components.sidebar')
   </div>
   <div class="w-full bg-gray-100 rounded-lg p-4">
-    <h1 class="text-xl font-bold text-center">Purchase Detail</h1>
+    <h1 class="text-2xl font-medium text-center">Purchase Detail</h1>
 
     <div class="flex flex-col gap-4 mx-10 mt-4 p-4  bg-white rounded-lg drop-shadow-lg">
       <div class="flex gap-4 items-center">

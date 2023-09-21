@@ -12,16 +12,16 @@ class BackendNewsEventController extends Controller
     //
     public function backendNewsEvent() {
         $newsevents = NewsEvent::all();
-        return view('backend.pages.backend_newsandevent', compact('newsevents'));
+        return view('backend.pages.news.backend_newsandevent', compact('newsevents'));
     }
 
     public function backendCreateNews() {
-        return view('backend.pages.backend_createnews');
+        return view('backend.pages.news.backend_createnews');
     }
 
     public function backendEditNews($news_id) {
         $news = NewsEvent::find($news_id);
-        return view('backend.pages.backend_editnews', compact('news'));
+        return view('backend.pages.news.backend_editnews', compact('news'));
     }
 
 

@@ -9,6 +9,6 @@ class PendingTrainingController extends Controller
 {
     //
     public function pendingTraining() {
-        return view('backend.pages.pending_training');
+        return view('backend.pages.pen_training.pending_training');
     }
 }

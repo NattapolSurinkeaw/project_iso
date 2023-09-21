@@ -16,14 +16,14 @@ class CourseController extends Controller
     //
     public function backendCourse() {
         $courses = Elerningcourse::all();
-        return view('backend.pages.backend_course', compact('courses'));
+        return view('backend.pages.elearning.backend_course', compact('courses'));
     }
 
     public function detailCourse($id_course) {
         $course = Elerningcourse::find($id_course);
         $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
         $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
-        return view('backend.pages.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
+        return view('backend.pages.elearning.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
     }
 
     public function allQuestionTable($quiz_id) {
@@ -32,7 +32,7 @@ class CourseController extends Controller
         })->get();
         $quiz_name = Quiz::select('id','quiz_name')->find($quiz_id);
         // dd($quiz_name);
-        return view('backend.pages.backend_tablequestion', compact('questions','quiz_name'));
+        return view('backend.pages.quiz.backend_tablequestion', compact('questions','quiz_name'));
     }
 
 

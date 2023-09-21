@@ -4,7 +4,7 @@
 
 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" centered-slides="true" loop="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
   <swiper-slide>
-    <img class="brightness-50 h-[885px] w-full" src="/image/background/background.jpeg" alt="">
+    <img class="brightness-50 h-[910px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">In-house & On-line Learning!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ISO CONSULTING & TRAINING</h1>
@@ -12,7 +12,7 @@
     </div>
   </swiper-slide>
   <swiper-slide>
-    <img class="brightness-50 h-[885px] w-full" src="/image/background/background.jpeg" alt="">
+    <img class="brightness-50 h-[910px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">ISO/QSEH consulting services!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ISO DOCUMENTATION</h1>
@@ -20,7 +20,7 @@
     </div>
   </swiper-slide>
   <swiper-slide>
-    <img class="brightness-50 h-[885px] w-full" src="/image/background/background.jpeg" alt="">
+    <img class="brightness-50 h-[910px] w-full" src="/image/background/background.jpeg" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
       <h1 class="text-[30px]">Online Learning Anytime, Anywhere!</h1>
       <h1 class="text-[60px] text-orange-500 font-bold my-5">ELEARNING & ECONSULTING SERVICES</h1>

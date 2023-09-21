@@ -3,14 +3,14 @@
     Dashboard
 @endsection
 @section('content')
-    <div class="px-1 gap-4 flex ">
+    <div class="py-4 px-1 gap-4 flex ">
         <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
             @include('pages.app_dashboard.components.sidebar')
         </div>
         <!-- box-profile -->
-        <div class="w-full h-full overflow-hidden overflow-y-scroll bg-gray-100 rounded-lg p-4 flex flex-col gap-4">
+        <div class="w-full h-full bg-gray-100 rounded-lg p-4 flex flex-col gap-4">
             <div class="flex flex-col justify-center gap-4">
-                <h1 class="text-xl text-center font-bold">Profile</h1>
+                <h1 class="text-2xl font-medium text-center">Profile</h1>
 
                 <div class="flex justify-center">
                     @if (isset($user->img_profile))

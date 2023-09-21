@@ -18,7 +18,7 @@ class PendingCourseController extends Controller
 
         $courses = Elerningcourse::all();
         
-        return view('backend.pages.pending_course', compact('pendingcourses', 'courses'));
+        return view('backend.pages.pen_elearning.pending_course', compact('pendingcourses', 'courses'));
     }
 
     public function pendingCourseDetail($pen_id) {
@@ -39,7 +39,7 @@ class PendingCourseController extends Controller
             }
         }
 
-        return view('backend.pages.backend_pending_coursedetail', compact('pendingcourse', 'courses'));
+        return view('backend.pages.pen_elearning.backend_pending_coursedetail', compact('pendingcourse', 'courses'));
     }
 
     public function approvePendindCourse(Request $request,$pen_id) {
