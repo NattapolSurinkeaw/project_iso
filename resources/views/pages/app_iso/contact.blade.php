@@ -2,7 +2,7 @@
 @section('title') ContactPage @endsection
 @section('content')
 <div class="py-4 bg-gray-100 h-screen">
-  <h1 class="text-2xl text-center">Contact</h1>
+  <h1 class="text-3xl text-center my-4">Contact</h1>
   <div class="m-10 flex justify-center gap-10">
     
     <div class="group h-96 w-80 [perspective:1000px]">

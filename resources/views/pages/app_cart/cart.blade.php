@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('title') CartPage @endsection
 @section('content')
-  <div class="pt-32">
-    <h1 class="text-3xl text-center font-bold ">หลักสูตรในรถเข็น</h1>
+  <div class="py-4">
+    <h1 class="text-3xl text-center font-medium">หลักสูตรในรถเข็น</h1>
 
     <div class="flex p-10">
       <!-- detail cartProduct -->
@@ -58,14 +58,23 @@
           $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
         @endphp
         @endforeach
-          <h1 class="text-3xl font-medium" id="total-price">THB : {{ number_format($totalPrice, 2) }}</h1>
+          <div class="flex gap-2">
+            <h1 class="text-3xl font-medium">THB : </h1>
+            <h1 class="text-3xl font-medium" id="total-price">{{ number_format($totalPrice, 2) }}</h1>
+          </div>
         @else
-          <h1 class="text-3xl font-medium" id="total-price">THB : 0</h1>
+        <div class="flex gap-2">
+          <h1 class="text-3xl font-medium">THB : </h1>
+          <h1 class="text-3xl font-medium" id="total-price">0</h1>
+        </div>
         @endif
         <hr>
         <div class="flex flex-col gap-3 my-2">
           {{-- <h1 class="text-xl">โปรโมชั่น</h1> --}}
-          <input type="text" class="rounded-lg border-2 w-full py-1 px-4 shadow-md" placeholder="คูปองส่วนลด">
+          <div class="flex gap-2">
+            <input type="text" class="rounded-lg border-2 w-full py-1 px-4 shadow-md" id="inp-discount" placeholder="คูปองส่วนลด">
+            <button class="py-1 px-2 bg-green-500 text-white rounded-lg" onclick="getDiscount()">Apply</button>
+          </div>
           <button id="payment" class="text-center font-medium text-white rounded-xl py-1">ชำระเงิน</button>
         </div>
       </div>
@@ -112,6 +121,31 @@
   } else {
     document.querySelector('#payment').classList.add("bg-red-200");
     document.querySelector('#payment').classList.add("cursor-default");
+  }
+
+  function getDiscount() {
+    let code = {
+      A1 : 50,
+      B2 : 70,
+      C3 : 80
+    }
+    let inpDiscount = document.querySelector('#inp-discount').value;
+    let elprice = document.querySelector('#total-price');
+    
+    if (code.hasOwnProperty(inpDiscount)) {
+        const discountPercentage = code[inpDiscount];
+        const price = parseInt(elprice.textContent);
+        
+        // คำนวณส่วนลดและแสดงผลใน elprice.innerText
+        const discountAmount = (discountPercentage * price )/ 100  ;
+        console.log(discountAmount)
+        const discountedPrice = price - discountAmount;
+        elprice.innerText = discountedPrice.toFixed(2); // แสดงราคาลดเป็นทศนิยม 2 ตำแหน่ง
+    } else {
+        // ถ้ารหัสส่วนลดไม่ตรงกับใน code ให้แสดงข้อความผิดพลาดหรือทำอย่างอื่นตามที่คุณต้องการ
+        // elprice.innerText = "รหัสส่วนลดไม่ถูกต้อง";
+        console.log("code ไม่ถูกต้อง")
+    }
   }
 
 </script>

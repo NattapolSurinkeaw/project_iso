@@ -78,6 +78,7 @@ Route::middleware('checklogin')->group(function () {
   Route::get('/purchasehistory',[DashboardController::class,'purchasePage']);
   Route::get('/purchasedetail/{id}',[DashboardController::class,'purchaseDetail']);
   Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
+  Route::get('/reservedetail/{id}',[DashboardController::class,'reserveDetail']);
 });  
 
 Route::prefix('backend')->middleware('checkadmin')->group(function () { 

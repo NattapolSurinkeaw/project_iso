@@ -120,7 +120,7 @@
 <!-- วิดีโอของเรา -->
 <div id="ourVideo"></div>
 <div class="w-10/12 shadow-lg rounded-lg mx-auto p-14">
-  <h1 class="text-center text-3xl">Our Video</h1>
+  <h1 class="text-center text-2xl font-normal">Our Video</h1>
   <div class="flex justify-center my-10 gap-5">
     @if(count($homeVideos) > 0)
     @foreach($homeVideos as $homeVideo)
@@ -226,8 +226,8 @@
               src="/image/icon/isologo.png" alt="">
           @endif
         </div>
-        <h1 class="font-bold">{{$news->name}}</h1>
-        <p>{{$news->description}}</p>
+        <h1 class="font-normal">{{$news->name}}</h1>
+        <p class="text-sm">{{$news->description}}</p>
       </div>
     </a>
     @endforeach

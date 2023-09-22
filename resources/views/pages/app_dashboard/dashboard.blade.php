@@ -86,7 +86,7 @@
 
     function editUser() {
         Swal.fire({
-            title: "Edit",
+            title: "Profile",
             html: `
                     <img class="w-60 h-72 mx-auto mb-4" src="/image/icon/upload.png" id="ImgOpt" >
                     <label for="profile" class="block bg-green-600 text-white px-4 py-1 w-28 mx-auto rounded-lg cursor-pointer">อัปโหลด</label>

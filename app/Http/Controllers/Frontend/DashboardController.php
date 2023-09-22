@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BillingTo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MyCourse;
 use App\Models\Elerningcourse;
 use App\Models\PendingCourse;
-
+use App\Models\PendingTraining;
 
 class DashboardController extends Controller
 {
@@ -68,8 +69,16 @@ class DashboardController extends Controller
     }
     
     public function reservationPage() {
-
-        return view('pages.app_dashboard.reservation_history');
+        $user = Auth::user()->id;
+        $pendig_train = PendingTraining::where('user_id', $user)->get();
+        // dd($pendig_train);exit();
+        return view('pages.app_dashboard.reservation_history', compact('pendig_train'));
     }
 
+    public function reserveDetail($pen_id) {
+        // $reservetrain = PendingTraining::with('');
+        $pendingTraining = PendingTraining::with('otherTrainings', 'billingTo')->find($pen_id);
+        // dd($pendingTraining);exit();
+        return view('pages.app_dashboard.reserve_detail', compact('pendingTraining'));
+    }
 }

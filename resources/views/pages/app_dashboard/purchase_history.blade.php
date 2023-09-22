@@ -10,7 +10,7 @@
   <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
     <h1 class="text-2xl font-medium">Purchase History</h1>
 
-    <div id="table-train" class="relative h-4/5 overflow-y-scroll mx-10">
+    <div id="table-train" class="relative w-full h-4/5 overflow-y-scroll mx-10">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>
@@ -44,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-          @if(empty($pendingCourses))
+          @if(count($pendingCourses) > 0)
           @foreach ($pendingCourses as $pending)
             <tr class="bg-white dark:bg-gray-800 border-b-2">
               <th scope="row"
@@ -65,13 +65,13 @@
               </td>
               <td class="px-6 py-4">
                 @if ($pending->status === 'pending')
-                <p class="bg-yellow-500 text-white px-3 py-1 rounded-lg">pending</p>
+                <p class="bg-yellow-500 text-white text-center px-3 py-1 rounded-lg">pending</p>
                 @elseif ($pending->status === 'approve')
-                <p class="bg-green-500 text-white px-3 py-1 rounded-lg">approve</p>
+                <p class="bg-green-500 text-white text-center px-3 py-1 rounded-lg">approve</p>
                 @elseif ($pending->status === 'reject')
-                <p class="bg-red-500 text-white px-3 py-1 rounded-lg">reject</p>
+                <p class="bg-red-500 text-white text-center px-3 py-1 rounded-lg">reject</p>
                 @else
-                <p class="bg-gray-500 text-white px-3 py-1 rounded-lg">unknown status</p>
+                <p class="bg-gray-500 text-white text-center px-3 py-1 rounded-lg">unknown status</p>
                 @endif
               </td>
               <td class="px-6 py-4">
@@ -91,8 +91,7 @@
                 @endif
               </td>
               <td class="px-6 py-4">
-                <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center"
-                    href="/purchasedetail/{{$pending->id}}">ลายละเอียด</a>
+                <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/purchasedetail/{{$pending->id}}">ลายละเอียด</a>
               </td>
             </tr>
           @endforeach
