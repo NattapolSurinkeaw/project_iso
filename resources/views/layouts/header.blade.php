@@ -5,9 +5,39 @@
     </a>
     <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-medium md:flex text-gray-200">
       <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">HOME</li></a>
-      <a href="{{url('/elerning')}}"><li class="px-6 py-4 hover:bg-gray-200">ELEARNING</li></a>
+      <a href="{{url('/elerning')}}">
+        <li class="px-6 py-4 relative group">
+          ELEARNING
+          <ul class="absolute top-14 left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 12rem;">
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list1</li>
+            </a>
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list2</li>
+            </a>
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list3</li>
+            </a>
+          </ul>
+        </li>
+      </a>
       <a href="{{url('/newsandevent')}}"><li class="px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
-      <a href="{{url('/training')}}"><li class="px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
+      <a href="{{url('/elerning')}}">
+        <li class="px-6 py-4 relative group">
+          TRAINING
+          <ul class="absolute top-14 left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 12rem;">
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list1</li>
+            </a>
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list2</li>
+            </a>
+            <a href="#">
+              <li class="cursor-pointer hover:bg-gray-200">list3</li>
+            </a>
+          </ul>
+        </li>
+      </a>
       <a href="{{url('/contact')}}"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
     </ul>
     @if($user)
