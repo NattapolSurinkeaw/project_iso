@@ -10,6 +10,7 @@ use App\Models\MyCourse;
 use App\Models\Elerningcourse;
 use App\Models\PendingCourse;
 use App\Models\PendingTraining;
+use App\Models\Trainingcourse;
 
 class DashboardController extends Controller
 {
@@ -78,7 +79,23 @@ class DashboardController extends Controller
     public function reserveDetail($pen_id) {
         // $reservetrain = PendingTraining::with('');
         $pendingTraining = PendingTraining::with('otherTrainings', 'billingTo')->find($pen_id);
-        // dd($pendingTraining);exit();
-        return view('pages.app_dashboard.reserve_detail', compact('pendingTraining'));
+        
+        $trainingCourseNames = [];
+
+    // วนลูปผ่านทุกๆ รายการใน otherTrainings
+        foreach ($pendingTraining->otherTrainings as $otherTraining) {
+            // ดึงค่า ID จาก other_course
+            $otherCourseId = $otherTraining->other_course;
+
+            // ค้นหา Trainingcourse จาก ID ในตาราง Trainingcourse
+            $trainingCourse = Trainingcourse::find($otherCourseId);
+
+            // ถ้าค้นหาเจอ ให้เก็บชื่อลงในอาเรย์
+            if ($trainingCourse) {
+                $trainingCourseNames[] = $trainingCourse->name;
+            }
+        }
+        // dd($trainingCourseNames);exit();
+        return view('pages.app_dashboard.reserve_detail', compact('pendingTraining', 'trainingCourseNames'));
     }
 }

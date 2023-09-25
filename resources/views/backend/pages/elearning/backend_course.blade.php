@@ -47,8 +47,8 @@
                     <td class="px-6 py-4 text-center">
                         {{$course->price}}
                     </td>
-                    <td class="px-6 py-4 text-center">
-                        {{$course->description}}
+                    <td class="w-96 px-6 py-4 text-center">
+                        {{ Str::limit($course->description, 100) }}
                     </td>
                     <td class="px-6 py-4">
                         @if(!empty($course->img_course) && $course->img_course !== 'null')

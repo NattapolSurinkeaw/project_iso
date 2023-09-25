@@ -170,15 +170,7 @@
                   for="other-course">
                   course
               </label>
-              <div class="relative">
-                  {{-- <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
-                      <option value="">other course</option>
-                      @foreach($courses as $rowcourse)
-                      <option value="{{$rowcourse->id}}">{{$rowcourse->name}}</option>
-                      @endforeach
-                  </select> --}}
-                  <input type="text" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="{{$otherTraining->other_course}}">
-              </div>
+                <input type="text"  value="{{ $trainingCourseNames[$loop->index] }}" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
           </div>
           <div class="w-full md:w-[37%] mb-6 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2">

@@ -25,7 +25,6 @@
   @include('layouts.header')
   
 
-  {{-- @yield('dashboard') --}}
   @yield('content')
  
 

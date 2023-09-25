@@ -6,9 +6,9 @@
     <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-medium md:flex text-gray-200">
       <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">HOME</li></a>
       <a href="{{url('/elerning')}}">
-        <li class="px-6 py-4 relative group">
+        <li class="px-6 py-4 hover:bg-gray-200 relative group">
           ELEARNING
-          <ul class="absolute top-14 left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 12rem;">
+          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 9rem;">
             <a href="#">
               <li class="cursor-pointer hover:bg-gray-200">list1</li>
             </a>
@@ -22,10 +22,10 @@
         </li>
       </a>
       <a href="{{url('/newsandevent')}}"><li class="px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
-      <a href="{{url('/elerning')}}">
-        <li class="px-6 py-4 relative group">
+      <a href="{{url('/training')}}" class="group">
+        <li class="px-6 py-4 hover:bg-gray-200 relative group">
           TRAINING
-          <ul class="absolute top-14 left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 12rem;">
+          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 9rem;">
             <a href="#">
               <li class="cursor-pointer hover:bg-gray-200">list1</li>
             </a>
