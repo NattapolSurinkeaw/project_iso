@@ -9,16 +9,19 @@
           <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
               <tr>
                 <th scope="col" class="px-6 py-3 rounded-tl-lg">
-                  ชื่อที่โอน
+                  ลำดับ
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  E-mail
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Company
                 </th>
                 <th scope="col" class="px-6 py-3">
                   Course
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  user_id
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  ราคาทั้งหมด
+                  Name
                 </th>
                 <th scope="col" class="px-6 py-3">
                   status
@@ -27,7 +30,7 @@
                   reading
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  วันที่ซื้อ
+                  วันที่จองอบรม
                 </th>
                 <th scope="col" class="px-6 py-3">
                   วันที่ตอบกลับ
@@ -38,22 +41,26 @@
               </tr>
           </thead>
           <tbody>
+            @php 
+              $i = 1;
+            @endphp
             @foreach ($pendingtraining as $pending)
               <tr class="bg-white dark:bg-gray-800 border-b-2">
                 <th scope="row"
                   class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                  {{ $pending->name }}
+                  {{ $i++ }}
                 </th>
                 <td class="px-6 py-4">
-                    <p class="block">
-                      
-                    </p>
+                  {{$pending->email}}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $pending->user_id }}
+                  {{ $pending->company }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $pending->total_price }}
+                  {{ $pending->training_reserve }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ $pending->reserve_name }}
                 </td>
                 <td class="px-6 py-4">
                   @if ($pending->status === 'pending')
@@ -84,7 +91,7 @@
                   @endif
                 </td>
                 <td class="px-6 py-4">
-                  <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="{{url('/backend/pendingcourse-detail')}}/{{$pending->id}}">ลายละเอียด</a>
+                  <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="{{url('/backend/pendingtraining-detail/'.$pending->id)}}">ลายละเอียด</a>
                 </td>
               </tr>
             @endforeach

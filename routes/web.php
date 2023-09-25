@@ -99,6 +99,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/pendingcourse',[PendingCourseController::class,'pendingCourse']);
   Route::get('/pendingcourse-detail/{id}',[PendingCourseController::class,'pendingCourseDetail']);
   Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
+  Route::get('/pendingtraining-detail/{id}',[PendingTrainingController::class,'pendingTrainingDetail']);
 });
 
 

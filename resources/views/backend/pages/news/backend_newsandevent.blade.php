@@ -55,7 +55,8 @@
                                 {{ $news->description }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ substr($news->content, 0, 500) }}
+                                {{-- {{ substr($news->content, 0, 500) }} --}}
+                                {{ Str::limit($news->content, 100) }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $news->view }}
