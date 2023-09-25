@@ -155,33 +155,35 @@
           </div>
       </div>
   
-      <h1 class="text-gray-600 text-xl font-ligth mt-5">Request for other courses : </h1>
-      <div class="flex justify-between">
-          <!-- ปุ่มเพิ่ม course -->
-          <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรอื่น ๆ (หากมี) </p>
-      </div>
-      @foreach($pendingTraining->otherTrainings as $otherTraining)
-      <div class="flex justify-between gap-4 mb-2">
-          <div class="w-full md:w-0 mx-3 mb-6 md:mb-0 mt-5">
-              <input id="check-reserve" type="checkbox" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded" checked>
-          </div>
-          <div class="w-full md:w-3/5 mb-6 md:mb-0">
-              <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2"
-                  for="other-course">
-                  course
-              </label>
-                <input type="text"  value="{{ $trainingCourseNames[$loop->index] }}" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-          </div>
-          <div class="w-full md:w-[37%] mb-6 md:mb-0">
-              <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2">
-                  required date
-              </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="other-date-reserve" value="{{$otherTraining->other_date}}" type="date">
-          </div>
-      </div>
-      @endforeach
-  
+      @isset($pendingTraining->otherTrainings)
+        @if(!$pendingTraining->otherTrainings->isEmpty())
+            <h1 class="text-gray-600 text-xl font-light mt-5">Request for other courses :</h1>
+            <div class="flex justify-between">
+                <!-- ปุ่มเพิ่ม course -->
+                <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรอื่น ๆ (หากมี) </p>
+            </div>
+            @foreach($pendingTraining->otherTrainings as $otherTraining)
+                <div class="flex justify-between gap-4 mb-2">
+                    <div class="w-full md:w-0 mx-3 mb-6 md:mb-0 mt-5">
+                        <input id="check-reserve" type="checkbox" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded" checked>
+                    </div>
+                    <div class="w-full md:w-3/5 mb-6 md:mb-0">
+                        <label class="block tracking-wide text-gray-700 text-sm font-light mb-2" for="other-course">
+                            course
+                        </label>
+                        <input type="text" value="{{ $trainingCourseNames[$loop->index] }}" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                    </div>
+                    <div class="w-full md:w-[37%] mb-6 md:mb-0">
+                        <label class="block tracking-wide text-gray-700 text-sm font-light mb-2">
+                            required date
+                        </label>
+                        <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="other-date-reserve" value="{{$otherTraining->other_date}}" type="date">
+                    </div>
+                </div>
+            @endforeach
+        @endif
+      @endisset
+
       <p class="text-gray-600 text-xl font-ligth mt-5">Special requisition : </p>
       <p class="text-gray-600 text-l mb-4">ข้อเสนอหรือความต้องการพิเศษใด ๆ </p>
       <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"

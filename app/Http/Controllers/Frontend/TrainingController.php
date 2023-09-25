@@ -17,9 +17,16 @@ use App\Models\OtherTraining;
 class TrainingController extends Controller
 {
     //
-    public function tainingPage() {
-        $courses = Trainingcourse::all();
-        $modules = Module::all();
+    public function tainingPage($mod_id = null) {
+        $modules = null;
+        $courses = null;
+        if($mod_id != null) {
+            $modules = Module::find($mod_id);
+            $courses = Trainingcourse::where('module_id', $mod_id)->get();
+        } else {
+            $courses = Trainingcourse::all();
+            $modules = Module::all();
+        }
         return view('pages.app_training.all_course_training', compact('courses', 'modules'));
     }
 

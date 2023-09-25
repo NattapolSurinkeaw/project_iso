@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Cohensive\Embed\EmbedServiceProvider::class,
+        App\Providers\HeaderServiceProvider::class,
     ])->toArray(),
 
     /*
