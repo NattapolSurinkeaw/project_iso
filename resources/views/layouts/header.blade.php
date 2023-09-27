@@ -9,15 +9,11 @@
         <li class="px-6 py-4 hover:bg-gray-200 relative group">
           ELEARNING
           <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 9rem;">
-            <a href="#">
-              <li class="cursor-pointer hover:bg-gray-200">list1</li>
+            @foreach ($categories as $category)
+            <a href="#{{$category->id}}">
+              <li class="cursor-pointer hover:bg-gray-200">{{$category->category_name}}</li>
             </a>
-            <a href="#">
-              <li class="cursor-pointer hover:bg-gray-200">list2</li>
-            </a>
-            <a href="#">
-              <li class="cursor-pointer hover:bg-gray-200">list3</li>
-            </a>
+            @endforeach
           </ul>
         </li>
       </a>

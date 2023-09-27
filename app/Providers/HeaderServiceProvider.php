@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Module;
 
@@ -22,9 +23,10 @@ class HeaderServiceProvider extends ServiceProvider
     {
         //
         $modules = Module::all();
+        $categories = Category::all();
 
-        view()->composer('layouts.header', function ($view) use ($modules) {
-            $view->with('modules', $modules);
+        view()->composer('layouts.header', function ($view) use ($modules, $categories) {
+            $view->with('modules', $modules)->with('categories', $categories);
         });
     }
 }

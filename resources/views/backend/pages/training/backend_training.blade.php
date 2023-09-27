@@ -4,7 +4,7 @@
 
 <div class="h-screen">
     <div class="mx-10 my-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold">Course</h1>
+        <h1 class="text-xl font-medium">Training Course</h1>
         <a href="{{url('/backend/createtraining')}}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
     </div>
     

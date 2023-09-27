@@ -3,7 +3,7 @@
 @section('container')
 
 <div class="overflow-hidden">
-    <h1 class="my-4 text-center text-2xl font-bold">PendingTraining</h1>
+    <h1 class="my-4 text-center text-2xl font-medium">PendingTraining</h1>
     <div id="table-train" class="h-[750px] overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
