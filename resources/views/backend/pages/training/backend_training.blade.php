@@ -107,8 +107,9 @@
 
 @section('be-scripts')
 <script>
-let trains = {!! json_encode($trainingcourses) !!}
-console.log(trains);
+let trains = {!! $trainingcourses !!}
+let allreserve = {!! $eventreserve !!}
+console.log(allreserve);
 
 document.getElementById('toggleTable').addEventListener('click', function() {
     var tableDiv = document.getElementById('table-train');
@@ -137,6 +138,14 @@ document.getElementById('toggleCalendar').addEventListener('click', function() {
               title: train.name, 
               start: train.date,
               color: 'red', // กำหนดสีเป็นสีแดง
+            });
+          });
+
+          allreserve.forEach(function(reserve) {
+            events.push({
+              title: reserve.reserve_name, 
+              start: reserve.reserve_date,
+              color: 'sky-blue', // กำหนดสีเป็นสีแดง
             });
           });
 

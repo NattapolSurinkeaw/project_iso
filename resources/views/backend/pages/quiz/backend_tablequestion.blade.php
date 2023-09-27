@@ -5,12 +5,12 @@
 @section('container')
     <div class="h-screen">
         <div class="mx-10 my-4 flex justify-between items-center">
+            <a href="/backend/coursedetail/{{$quiz_name->elerningcourse_id}}" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"">BACK</a>
             <h1 class="text-xl font-bold">Table Question of Quiz : {{ $quiz_name->quiz_name }}</h1>
-            <button type="button" id="create-questions" onclick="createQuestion()"
-                class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+            <button type="button" id="create-questions" onclick="createQuestion()" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
         </div>
 
-        <div class="relative h-4/5 my-10 overflow-y-scroll mx-10">
+        <div class="relative h-4/5 overflow-y-scroll mx-10">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                     <tr>

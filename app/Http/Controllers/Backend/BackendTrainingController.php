@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Trainingcourse;
 use App\Models\Module;
+use App\Models\EventReserveTrain;
 
 class BackendTrainingController extends Controller
 {
     //
     public function backendTraining() {
         $trainingcourses = Trainingcourse::all();
-        return view('backend.pages.training.backend_training', compact('trainingcourses'));
+        $eventreserve = EventReserveTrain::all();
+        return view('backend.pages.training.backend_training', compact('trainingcourses', 'eventreserve'));
     }
 
     public function createTraining() {

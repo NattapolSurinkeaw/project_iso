@@ -218,7 +218,59 @@
   })
 
   function editpendind() {
-    console.log("gofo")
+    const pedId = {!! $pendingTraining->id !!}
+
+    param = {
+      status : selectStatus.value
+    }
+    console.log(param)
+    axios.post(`/api/backned/updatependingtrain/${pedId}`, param).then((response) => {
+      console.log(response)
+    })
   }
+
+  window.onload = function() {
+  var selectedOption = selectStatus.options[selectStatus.selectedIndex];
+  var selectedValue = selectedOption.value;
+
+  switch (selectedValue) {
+    case 'pending':
+      selectStatus.classList.remove('bg-green-400', 'bg-red-400');
+      selectStatus.classList.add('bg-yellow-400');
+      break;
+    case 'approve':
+      selectStatus.classList.remove('bg-yellow-400', 'bg-red-400');
+      selectStatus.classList.add('bg-green-400');
+      break;
+    case 'reject':
+      selectStatus.classList.remove('bg-yellow-400', 'bg-green-400');
+      selectStatus.classList.add('bg-red-400');
+      break;
+    default:
+      selectStatus.classList.remove('bg-yellow-400', 'bg-green-400', 'bg-red-400');
+  }
+};
+
+selectStatus.addEventListener('change', function() {
+    let selectedOption = selectStatus.options[selectStatus.selectedIndex];
+    let selectedValue = selectedOption.value;
+
+    switch (selectedValue) {
+        case 'pending':
+        selectStatus.classList.remove('bg-green-400', 'bg-red-400');
+        selectStatus.classList.add('bg-yellow-400');
+            break;
+        case 'approve':
+        selectStatus.classList.remove('bg-yellow-400', 'bg-red-400');
+        selectStatus.classList.add('bg-green-400');
+            break;
+        case 'reject':
+        selectStatus.classList.remove('bg-yellow-400', 'bg-green-400');
+        selectStatus.classList.add('bg-red-400');
+            break;
+        default:
+        selectStatus.classList.remove('bg-yellow-400', 'bg-green-400', 'bg-red-400');
+    }
+});
 </script>
 @endsection

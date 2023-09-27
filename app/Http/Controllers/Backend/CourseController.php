@@ -30,7 +30,7 @@ class CourseController extends Controller
         $questions = Question::whereHas('quiz', function ($query) use ($quiz_id) {
             $query->where('id', $quiz_id);
         })->get();
-        $quiz_name = Quiz::select('id','quiz_name')->find($quiz_id);
+        $quiz_name = Quiz::find($quiz_id);
         // dd($quiz_name);
         return view('backend.pages.quiz.backend_tablequestion', compact('questions','quiz_name'));
     }

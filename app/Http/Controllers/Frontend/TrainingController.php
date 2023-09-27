@@ -12,6 +12,7 @@ use App\Models\Trainingcourse;
 use App\Models\Module;
 use App\Models\PendingTraining;
 use App\Models\BillingTo;
+use App\Models\EventReserveTrain;
 use App\Models\OtherTraining;
 
 class TrainingController extends Controller
@@ -33,7 +34,8 @@ class TrainingController extends Controller
     public function calendarReserve($train_id) {
         $training = Trainingcourse::find($train_id);
         $trainings = Trainingcourse::all();
-        return view('pages.app_training.calendar_reserve', compact('train_id', 'training', 'trainings'));
+        $eventreserve = EventReserveTrain::all();
+        return view('pages.app_training.calendar_reserve', compact('train_id', 'training', 'trainings', 'eventreserve'));
     } 
     
     public function trainingForm () {

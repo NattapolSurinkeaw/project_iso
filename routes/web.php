@@ -170,4 +170,6 @@ Route::prefix('api')->group(function (){
 
   Route::post('/backend/approvecourse/{id}', [PendingCourseController::class,'approvePendindCourse']);
 
+  Route::post('/backned/updatependingtrain/{id}', [PendingTrainingController::class,'updatePendingTrain']);
+
 });

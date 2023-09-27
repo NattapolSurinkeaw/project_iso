@@ -16,4 +16,9 @@ class Trainingcourse extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    public function eventReserveTrain()
+    {
+        return $this->hasOne(EventReserveTrain::class);
+    }
 }

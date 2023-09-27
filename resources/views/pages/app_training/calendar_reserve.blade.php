@@ -13,7 +13,8 @@
 @section('scripts')
 <script>
   let trains = {!! json_encode($trainings) !!}
-  console.log(trains)
+  let allreserve = {!! $eventreserve !!}
+  console.log(allreserve)
 
   document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.querySelector('#calendar-train');
@@ -29,6 +30,14 @@
             title: train.name, // ใช้ชื่อของการฝึกอบรมเป็น title
             start: train.date, // ใช้วันที่ใน train.date เป็นวันเริ่มต้น
             color: 'red' // กำหนดสีเป็นสีแดง
+          });
+        });
+
+        allreserve.forEach(function(reserve) {
+          events.push({
+            title: reserve.reserve_name, // ใช้ชื่อของการฝึกอบรมเป็น title
+            start: reserve.reserve_date, // ใช้วันที่ใน train.date เป็นวันเริ่มต้น
+            color: 'sky-blue' // กำหนดสีเป็นสีแดง
           });
         });
 
