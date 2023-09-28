@@ -114,10 +114,7 @@ Route::get('/emailform',[FrontendController::class, 'emailForm']);
 Route::prefix('api')->group(function (){
   Route::post('/auth/login', [BackendController::class, 'onLogin']);
   Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
-
   Route::post('/auth/register', [BackendController::class, 'onRegister']);
-  // Route::post('/auth/login', [BackendController::class, 'onLogin']);
-  // Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
 
   Route::get('/getvideo/{id}', [ApiDashboradController::class, 'getHomeVideo']);
   Route::post('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
@@ -136,8 +133,11 @@ Route::prefix('api')->group(function (){
 
 
   //backend
+  Route::post('/backend/editmember/{id}',[MemberController::class,'editMember']);
   Route::post('/backend/course',[CourseController::class,'createCourse']);
   Route::post('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
+
+  Route::post('/backend/createcate', [CourseController::class, 'createCate']);
   
   Route::post('/backend/createquestion',[CourseController::class,'createQuestion']);
   Route::get('/backend/getquestion/{id}',[CourseController::class,'getQuestionById']);

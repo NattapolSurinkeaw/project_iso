@@ -104,7 +104,7 @@
                 let oldPassword = Swal.getPopup().querySelector("#old-password").value;
                 let password = Swal.getPopup().querySelector("#password").value;
 
-                if (!name || !email) {
+                if (!name) {
                     Swal.showValidationMessage(`Please enter your data.`);
                     return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
                 }

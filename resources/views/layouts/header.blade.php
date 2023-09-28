@@ -8,7 +8,7 @@
       <a href="{{url('/elerning')}}">
         <li class="px-6 py-4 hover:bg-gray-200 relative group">
           ELEARNING
-          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 9rem;">
+          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 p-4 hidden group-hover:block" style="min-width: 20rem;">
             @foreach ($categories as $category)
             <a href="#{{$category->id}}">
               <li class="cursor-pointer hover:bg-gray-200">{{$category->category_name}}</li>
@@ -21,7 +21,7 @@
       <a href="{{url('/training')}}" class="group">
         <li class="px-6 py-4 hover:bg-gray-200 relative group">
           TRAINING
-          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 w-20 p-4 hidden group-hover:block" style="min-width: 9rem;">
+          <ul class="absolute top-[55px] left-0 bg-white shadow-lg rounded-md text-gray-800 p-4 hidden group-hover:block" style="min-width: 20rem;">
             @foreach ($modules as $module)
             <a href="/training/{{$module->id}}"> 
               <li class="cursor-pointer hover:bg-gray-200">{{$module->name}}</li>

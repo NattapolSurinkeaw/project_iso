@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Elerningcourse;
 use App\Models\Annoucement;
+use App\Models\Category;
 use App\Models\Quiz;
 use App\Models\Question;
 
@@ -93,6 +94,13 @@ class CourseController extends Controller
         if ($request->hasFile('imgCourse') && $request->file('imgCourse')->isValid()) {
             $image = $request->file('imgCourse');
             $imgName = '/upload/images/course/' . time() . '.' . $image->getClientOriginalExtension();
+
+            // ตรวจสอบว่ามีรูปเก่าใน $user->img_profile หรือไม่
+            if (!empty($course->img_course)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($course->img_course));
+            }
+
             $image->move(public_path('upload/images/course'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
             $course->img_course = $imgName;
         }
@@ -410,6 +418,29 @@ class CourseController extends Controller
             'status' => 'success',
             'message' => 'question deleted successfully',
         ], 200);
+    }
+
+    public function createCate(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'category_name' => 'required|unique:categories',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        $cate = new Category;
+        $cate->category_name = $request->input('category_name');
+        $cate->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'created category successfully',
+        ], 201);
     }
 
     

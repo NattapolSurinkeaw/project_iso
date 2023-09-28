@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Trainingcourse;
 use App\Models\Module;
 use App\Models\EventReserveTrain;
@@ -191,6 +191,13 @@ class BackendTrainingController extends Controller
         if ($request->hasFile('img_training') && $request->file('img_training')->isValid()) {
             $image = $request->file('img_training');
             $imgName = '/upload/images/training/'.time() . '.' . $image->getClientOriginalExtension();
+
+            // ตรวจสอบว่ามีรูปเก่าใน $user->img_profile หรือไม่
+            if (!empty($training->img_training)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($training->img_training));
+            }
+
             $image->move(public_path('upload/images/training'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
             $training->img_training = $imgName;
         }

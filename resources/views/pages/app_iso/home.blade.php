@@ -213,7 +213,7 @@
     <h1 class="text-center text-xl">News and Event</h1>
     <a href="{{url('/newsandevent')}}" class="text-center text-blue-600 text-xl underline">more</a>
   </div>
-  <div class="flex justify-around gap-4">
+  <div class="flex sm:flex-col md:flex-row lg:flex-row justify-around gap-4">
     @foreach($homeNews as $news)
     <a href="{{url('/newsdetails')}}/{{$news->id}}">
       <div class="w-64 flex flex-col justify-center items-center p-2 border rounded-lg">

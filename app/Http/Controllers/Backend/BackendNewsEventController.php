@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 use App\Models\NewsEvent;
 
 class BackendNewsEventController extends Controller
@@ -78,6 +78,13 @@ class BackendNewsEventController extends Controller
         if ($request->hasFile('img_news_event') && $request->file('img_news_event')->isValid()) {
             $image = $request->file('img_news_event');
             $imgName = '/upload/images/news/' . time() . '.' . $image->getClientOriginalExtension();
+
+            // ตรวจสอบว่ามีรูปเก่าใน $user->img_profile หรือไม่
+            if (!empty($news->img_news_events)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($news->img_news_events));
+            }   
+
             $image->move(public_path('upload/images/news'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
             $news->img_news_events = $imgName;
         }

@@ -1,12 +1,11 @@
 @extends('backend.layouts.main')
-@section('title') Course @endsection
+@section('title') Manage Elearning @endsection
 @section('container')
 
 <div class="h-screen">
     <div class="mx-10 my-4 flex justify-between items-center">
         <h1 class="text-xl font-medium">Elearning Course</h1>
         <div>
-            <button type="button" id="create-category" class="text-white bg-blue-700 hover:bg-blue-800 font-normal rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Category</button>
             <button type="button" id="create-course" class="text-white bg-green-500 hover:bg-green-600 font-normal rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Course</button>
         </div>
     </div>
@@ -63,9 +62,9 @@
                     <td class="px-6 py-4 text-center">
                         {{$course->updated_at}}
                     </td>
-                    <td class="px-6 py-4">
-                        <a class="bg-green-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">สมาชิก</a>
-                        <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/{{$course->id}}">รายละเอียด</a>
+                    <td class="px-6 py-4 flex gap-2">
+                        <a class="bg-green-600 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}">สมาชิก</a>
+                        <a class="bg-blue-600 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}">รายละเอียด</a>
                         <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
                         <button class="bg-red-600 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="delCourse">ลบ</button>
                     </td>

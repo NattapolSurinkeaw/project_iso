@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\HomeVideo;
 
@@ -64,6 +65,12 @@ class ApiDashboradController extends Controller
         if ($request->hasFile('profile') && $request->file('profile')->isValid()) {
             $image = $request->file('profile');
             $imgName = '/upload/images/profile/' . time() . '.' . $image->getClientOriginalExtension();
+
+            if (!empty($user->img_profile)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($user->img_profile));
+            }
+
             $image->move(public_path('upload/images/profile'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
             $user->img_profile = $imgName;
         }
