@@ -24,7 +24,8 @@ class CourseController extends Controller
         $course = Elerningcourse::find($id_course);
         $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
         $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
-        return view('backend.pages.elearning.backend_coursedetail', compact('course', 'announcements', 'quizzes'));
+        $cates = Category::all();
+        return view('backend.pages.elearning.backend_coursedetail', compact('course', 'announcements', 'quizzes', 'cates'));
     }
 
     public function allQuestionTable($quiz_id) {
@@ -110,6 +111,22 @@ class CourseController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Course updated successfully'
+        ], 200);
+    }
+
+    public function delCourse($id_course) {
+        $course = Elerningcourse::find($id_course);
+        if(!$course) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Course not found'
+            ], 404);
+        }
+
+        $course->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Course deleted successfully'
         ], 200);
     }
 

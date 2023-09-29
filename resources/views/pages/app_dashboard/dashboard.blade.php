@@ -147,10 +147,10 @@
             }
         });
         profile.onchange = evt => {
-        const [file] = profile.files
-        if (file) {
-            ImgOpt.src = URL.createObjectURL(file)
-        }
+            const [file] = profile.files
+            if (file) {
+                ImgOpt.src = URL.createObjectURL(file)
+            }
         }
     }
 </script>

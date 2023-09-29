@@ -63,10 +63,10 @@
                         {{$course->updated_at}}
                     </td>
                     <td class="px-6 py-4 flex gap-2">
-                        <a class="bg-green-600 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}">สมาชิก</a>
-                        <a class="bg-blue-600 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}">รายละเอียด</a>
-                        <button class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse">แก้ไข</button>
-                        <button class="bg-red-600 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="delCourse">ลบ</button>
+                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-10 h-10" alt="สมาชิก"></a>
+                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-10 h-10" alt="รายละเอียด"></a>
+                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-10 h-10" alt="แก้ไข"></button>
+                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-10 h-10" alt="ลบ"></button>
                     </td>
                 </tr>
                 @endforeach
@@ -82,6 +82,7 @@
     let btncreate = document.querySelector('#create-course');
     let editCourse = document.querySelectorAll('#editCourse');
     let delCourseButtons = document.querySelectorAll('#delCourse');
+    
     btncreate.addEventListener('click', () => {
         create()
     })
@@ -100,15 +101,23 @@
     });
 
 
-    async function create() {
-    try {
-        const result = await Swal.fire({
+    function create() {
+        Swal.fire({
         title: "Add Course",
-        html: ` <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="">
+        html: ` <img src="/image/icon/upload.png" alt="" class="w-32 h-40 mx-auto" id="ImgOpt">
+                <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="">
                 <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="">
                 <input type="number" id="price" class="swal2-input" placeholder="price" value="">
                 <input type="text" id="description" class="swal2-input" placeholder="description" >
-                <input type="file" id="img_course" class="swal2 mt-4">
+                <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
+                    <span>
+                        <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
+                        </svg>    
+                    </span>
+                    <span>upload image</span>
+                </label>
+                <input type="file" id="img_course" name="img_course" class="hidden"> 
               `,
         confirmButtonText: "Submit",
         focusConfirm: false,
@@ -133,30 +142,50 @@
 
                 return formData;
             },
-    });
-    if (result.isConfirmed) {
-            let formData = result.value;
-            const response = await axios.post(`/api/backend/course`, formData);
-            console.log("Response:", response);
-            location.reload();
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let formData = result.value;
+                axios.post(`/api/backend/course`, formData).then((response) => {
+                    console.log("Response:", response);
+                    if(response.status == "success") {
+
+                        location.reload();
+                    }
+
+                })
+            }
+
+        })
+
+        img_course.onchange = evt => {
+            const [file] = img_course.files
+            if (file) {
+                ImgOpt.src = URL.createObjectURL(file)
+            }
         }
-    } catch (error) {
-        console.error(error);
-  }
-}
+    } 
+        
 
 
-    async function edit(courseId) {
-        try {
-            const response = await axios.get(`/api/course/${courseId}`);
+    function edit(courseId) {
+        axios.get(`/api/course/${courseId}`).then((response) => {
             let data = response.data.data
-            const result = await Swal.fire({
+            Swal.fire({
             title: "Edit Course",
-            html: ` <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="${data.course_name}">
+            html: ` <img src="/image/icon/upload.png" alt="" class="w-32 h-40 mx-auto" id="ImgOpt">
+                    <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="${data.course_name}">
                     <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="${data.user_name}">
                     <input type="number" id="price" class="swal2-input" placeholder="price" value="${data.price}">
                     <input type="text" id="description" class="swal2-input" placeholder="description" value="${data.description}">
-                    <input type="file" id="img_course" class="swal2 mt-4">
+                    <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
+                        <span>
+                            <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
+                            </svg>    
+                        </span>
+                        <span>upload image</span>
+                    </label>
+                    <input type="file" id="img_course" name="img_course" class="hidden"> 
                 `,
             confirmButtonText: "Submit",
             focusConfirm: false,
@@ -181,25 +210,62 @@
 
                     return formData;
                 },
-        });
-        if (result.isConfirmed) {
-                console.log(data.id);
-                // formData.forEach((value, key) => {
-                //     console.log(key + ': ' + value);
-                // });
-                // return;
-                const response = await axios.post(`/api/backend/editcourse/${data.id}`, result.value);
-                console.log("Response:", response);
-                location.reload();
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log(data.id);
+                    // formData.forEach((value, key) => {
+                    //     console.log(key + ': ' + value);
+                    // });
+                    // return;
+                    axios.post(`/api/backend/editcourse/${data.id}`, result.value).then((response) => {
+                        console.log("Response:", response);
+                        location.reload();
+                    })
+                }
+            })
+
+            img_course.onchange = evt => {
+            const [file] = img_course.files
+            if (file) {
+                ImgOpt.src = URL.createObjectURL(file)
             }
-        } catch (error) {
-            console.error(error);
-    }
+        }
+        })
+            
     }
 
     function delCourse(courseId) {
         console.log(courseId);
-        // ทำสิ่งที่คุณต้องการกับ courseId ที่ได้รับ
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/api/backend/delcourse/${courseId}`).then((response) => {
+                    console.log(response.status);
+                    if (response.status = 200) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'Delete failed some think wrong.',
+                            'error'
+                        )
+                    }
+                })
+            }
+        })
     }
 
 </script>

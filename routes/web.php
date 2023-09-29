@@ -136,6 +136,7 @@ Route::prefix('api')->group(function (){
   Route::post('/backend/editmember/{id}',[MemberController::class,'editMember']);
   Route::post('/backend/course',[CourseController::class,'createCourse']);
   Route::post('/backend/editcourse/{id}',[CourseController::class,'editCourse']);
+  Route::delete('/backend/delcourse/{id}',[CourseController::class,'delCourse']);
 
   Route::post('/backend/createcate', [CourseController::class, 'createCate']);
   

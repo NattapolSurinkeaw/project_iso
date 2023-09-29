@@ -10,6 +10,29 @@
 <div class="mx-10 my-4 h-screen">
     <div class="h-4/5 overflow-y-scroll">
         <h1 class="w-full text-xl font-bold text-center">Detail Course : {{ $course->course_name }}</h1>
+
+        <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
+            <div class="animate__animated animate__bounce flex justify-between ">
+                <img class="h-8" src="/image/icon/category.png" alt="">
+                <h1 class="text-xl">Manage Category</h1>
+                <button onclick="addAnnouce()"><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
+            </div>
+            <hr class="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700">
+            @if (count($cates) > 0)
+            <div class="grid grid-cols-3 gap-3 p-4">
+                @foreach ($cates as $cate)
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" name="category" cate_id = "{{$cate->id}}" id="category">
+                    <label for="category">{{$cate->category_name}}</label>
+                </div>
+                @endforeach
+            </div>
+            @else
+                <p class="my-4">no announcement</p>
+                <p>null</p>
+            @endif
+        </div>
+
         <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
             <div class="animate__animated animate__bounce flex justify-between ">
                 <img class="h-8" src="/image/icon/annouce.png" alt="">
