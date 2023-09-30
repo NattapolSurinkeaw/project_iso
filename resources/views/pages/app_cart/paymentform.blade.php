@@ -170,7 +170,8 @@ btnsubmut.addEventListener('click', () => {
     })
     return;
   }
-
+  console.log(idCourse);
+  return false;
   let formData = new FormData();
   formData.append('name', customername);
   formData.append('totalcourse', idCourse);

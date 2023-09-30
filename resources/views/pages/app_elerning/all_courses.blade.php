@@ -48,17 +48,37 @@
                                 <h1 class="text-2xl font-medium w-full truncate">{{$elcourse->course_name}}</h1>
                                 <a class="text-blue-600 rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
                             </div>
+
                             <div class="flex flex-wrap gap-2">
-                                <div class="bg-gray-400 rounded-full px-2">
-                                    dodpd
-                                </div>
-                                <div class="bg-gray-400 rounded-full px-2">
-                                    dodpd
-                                </div>
-                                <div class="bg-gray-400 rounded-full px-2">
-                                    doddasdaspd
-                                </div>
+                                @php
+                                $categories = $elcourse->category;
+                                @endphp
+                                @if(isset($categories) && (is_array($categories) || is_object($categories)))
+                                    @foreach($categories as $categoryId)
+                                        @foreach($cates as $cate)
+                                            @if($categoryId == $cate->id)
+                                                <div class="bg-gray-400 rounded-full px-2">
+                                                    {{ $cate->category_name }}
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                @elseif(!empty($categories))
+                                    @php
+                                        $categories = json_decode($categories); // แปลง JSON เป็นอาร์เรย์
+                                    @endphp
+                                    @foreach($categories as $categoryId)
+                                        @foreach($cates as $cate)
+                                            @if($categoryId == $cate->id)
+                                                <div class="bg-gray-400 rounded-full px-2">
+                                                    {{ $cate->category_name }}
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                @endif
                             </div>
+
                             <div class="w-full flex justify-between gap-4">
                                 <div class="flex gap-2">
                                     <h1 class="font-medium text-gray-400">Price</h1>
@@ -106,11 +126,26 @@
         @endisset
     </div>
 
-    <div class="mx-20 flex justify-end">
+    {{-- <div class="mx-20 flex justify-end">
         <div class="w-96">
             {{ $elcourses->links() }}
         </div>
-    </div>
+    </div> --}}
+    {{-- @if ($elcourses->lastPage() > 1)
+        <ul class="pagination">
+            <li class="{{ ($elcourses->currentPage() == 1) ? ' disabled' : '' }}">
+                <a href="{{ $elcourses->url(1) }}">Previous</a>
+            </li>
+            @for ($i = 1; $i <= $elcourses->lastPage(); $i++)
+                <li class="{{ ($elcourses->currentPage() == $i) ? ' active' : '' }}">
+                    <a href="{{ $elcourses->url($i) }}">{{ $i }}</a>
+                </li>
+            @endfor
+            <li class="{{ ($elcourses->currentPage() == $elcourses->lastPage()) ? ' disabled' : '' }}">
+                <a href="{{ $elcourses->url($elcourses->currentPage()+1) }}">Next</a>
+            </li>
+        </ul>
+    @endif --}}
     
 
 @endsection

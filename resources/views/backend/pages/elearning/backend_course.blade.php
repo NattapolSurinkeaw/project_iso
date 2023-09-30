@@ -147,7 +147,7 @@
                 let formData = result.value;
                 axios.post(`/api/backend/course`, formData).then((response) => {
                     console.log("Response:", response);
-                    if(response.status == "success") {
+                    if(response.data.status == "success") {
 
                         location.reload();
                     }
@@ -219,7 +219,10 @@
                     // return;
                     axios.post(`/api/backend/editcourse/${data.id}`, result.value).then((response) => {
                         console.log("Response:", response);
-                        location.reload();
+                        if(response.data.status == 'success') {
+                            location.reload();
+
+                        }
                     })
                 }
             })

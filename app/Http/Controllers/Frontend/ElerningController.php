@@ -14,18 +14,47 @@ use App\Models\Category;
 class ElerningController extends Controller
 {
     //
-    public function elerningPage() {
-        // เรียกคิวรีและใช้เมธอด paginate()
-        $elcourses = Elerningcourse::paginate(10);
+    public function elerningPage($cate_id = null) {
         $cates = Category::all();
-        dd($cates);
-        if(Auth::check()){
-            $user = Auth::user();
-            $mycourse = MyCourse::where('user_id', $user->id)->get();
+        $elcourses = null;
+        $mycourse = null;
+
+        if ($cate_id != null) {
+            $elcourses = Elerningcourse::paginate(10);
+        
+            $elcourses = $elcourses->map(function ($elcourse) {
+                $elcourse->category = json_decode($elcourse->category, true);
+                return $elcourse;
+            });
+        
+            $elcourses = $elcourses->filter(function ($elcourse) use ($cate_id) {
+                if (!is_null($elcourse->category) && is_array($elcourse->category)) {
+                    return in_array($cate_id, $elcourse->category);
+                }
+                return false;
+            });
+
+            if (Auth::check()) {
+                $user = Auth::user();
+                $mycourse = MyCourse::where('user_id', $user->id)->get();
+            } else {
+                $mycourse = "";
+            }
+            // $elcourses = $elcourses->toArray();
+            // dd($elcourses);
+            // exit();
         } else {
-            $mycourse = "";
+            $elcourses = Elerningcourse::paginate(10);
+            if (Auth::check()) {
+                $user = Auth::user();
+                $mycourse = MyCourse::where('user_id', $user->id)->get();
+            } else {
+                $mycourse = "";
+            }
         }
     
+        // dd($elcourses);
+            // exit();
         return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse'));
     }
 

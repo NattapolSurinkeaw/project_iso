@@ -22,7 +22,7 @@
             <div class="grid grid-cols-3 gap-3 p-4">
                 @foreach ($cates as $cate)
                 <div class="flex items-center gap-2">
-                    <input type="checkbox" name="category" cate_id="{{$cate->id}}" id="category_{{$cate->id}}"
+                    <input type="checkbox" name="category" cate_id="{{$cate->id}}" id="category"
                         {{ is_array(json_decode($course->category)) && in_array($cate->id, json_decode($course->category)) ? 'checked' : '' }}>
                     <label for="category_{{$cate->id}}">{{$cate->category_name}}</label>
                 </div>
@@ -128,7 +128,6 @@
 
     let chkcate = document.querySelectorAll('#category');
     let actionCate = document.querySelector('#action-cate');
-    let selectedCategories = [];
     // console.log(chkcate)
 
     hiddenaction.onclick = () => {
@@ -139,26 +138,23 @@
         element.addEventListener('change', () => {
             actionCate.classList.remove('hidden');
 
-            // เช็ค checkbox ที่ถูกติกและเก็บ cate_id ไว้ในอาร์เรย์
             selectedCategories = [];
             chkcate.forEach(checkbox => {
                 if (checkbox.checked) {
-                    // แปลงค่า cate_id เป็นตัวเลข
                     const cateId = parseInt(checkbox.getAttribute('cate_id'), 10);
                     selectedCategories.push(cateId);
                 }
             });
 
-            // ตรวจสอบอาร์เรย์ selectedCategories สำหรับการใช้งานต่อไป
         });
     });
 
     function addcategory() {
         // console.log(courseId);
-        // console.log(selectedCategories);
         param = {
             category : selectedCategories
         }
+        console.log(selectedCategories);
 
         axios.post(`/api/backend/addcate/${courseId}`, param).then((response) => {
             console.log(response);
