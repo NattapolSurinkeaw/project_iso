@@ -77,53 +77,53 @@
   
   function addModule() {
     Swal.fire({
-              title: "add Module",
-              html: ` <input type="text" id="module" class="swal2-input" placeholder="Module Name">
-                    `,
-              confirmButtonText: "Submit",
-              focusConfirm: false,
-              preConfirm: () => {
-                const module = Swal.getPopup().querySelector("#module").value;
+      title: "add Module",
+      html: ` <input type="text" id="module" class="swal2-input" placeholder="Module Name">
+            `,
+      confirmButtonText: "Submit",
+      focusConfirm: false,
+      preConfirm: () => {
+        const module = Swal.getPopup().querySelector("#module").value;
 
-                  if (!module) {
-                      Swal.showValidationMessage(`Please enter your data.`);
-                      return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
-                  }
+          if (!module) {
+              Swal.showValidationMessage(`Please enter your data.`);
+              return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
+          }
 
-                  param = {
-                    module: module
-                  }
+          param = {
+            module: module
+          }
 
-                  return param;
-              },
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  axios.post(`/api/backend/createmodule`, result.value)
-                    .then((response) => {
-                      console.log(response);
-                      if(response.status = 'success') {
-                        Swal.fire({
-                          position: 'center',
-                          icon: 'success',
-                          title: 'Your work has been saved',
-                          showConfirmButton: false,
-                          timer: 1000
-                        }).then(() => {
-                            location.reload()
-                        });
-                      } else {
-                        Swal.fire(
-                          'something worng!',
-                          error,
-                          'warning'
-                        )
-                      }
-                    })
-                    .catch((error) => {
-                      console.error('API Error:', error);
-                  });
-              }
-          });
+          return param;
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post(`/api/backend/createmodule`, result.value)
+          .then((response) => {
+            console.log(response);
+            if(response.status = 'success') {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1000
+              }).then(() => {
+                  location.reload()
+              });
+            } else {
+              Swal.fire(
+                'something worng!',
+                error,
+                'warning'
+              )
+            }
+          })
+          .catch((error) => {
+            console.error('API Error:', error);
+        });
+      }
+    });
   }
 
   function editModule() {

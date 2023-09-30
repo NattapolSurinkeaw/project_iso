@@ -130,7 +130,6 @@ class CourseController extends Controller
         ], 200);
     }
 
-
     public function createAnnouce(Request $request) {
 
         // รับข้อมูลจาก Request
@@ -460,5 +459,35 @@ class CourseController extends Controller
         ], 201);
     }
 
+    public function addCategory(Request $request, $id_course) {
+        $course = Elerningcourse::find($id_course);
+
+        if (!$course) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'course not found',
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'category' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        $course->category = $request->input('category');
+        $course->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'add category successfully'
+        ], 201);
+
+    }
     
 }

@@ -139,6 +139,7 @@ Route::prefix('api')->group(function (){
   Route::delete('/backend/delcourse/{id}',[CourseController::class,'delCourse']);
 
   Route::post('/backend/createcate', [CourseController::class, 'createCate']);
+  Route::post('/backend/addcate/{id}', [CourseController::class, 'addCategory']);
   
   Route::post('/backend/createquestion',[CourseController::class,'createQuestion']);
   Route::get('/backend/getquestion/{id}',[CourseController::class,'getQuestionById']);

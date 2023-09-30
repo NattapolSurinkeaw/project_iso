@@ -9,6 +9,7 @@ use App\Models\Elerningcourse;
 use App\Models\Quiz;
 use App\Models\Annoucement;
 use App\Models\MyCourse;
+use App\Models\Category;
 
 class ElerningController extends Controller
 {
@@ -16,7 +17,8 @@ class ElerningController extends Controller
     public function elerningPage() {
         // เรียกคิวรีและใช้เมธอด paginate()
         $elcourses = Elerningcourse::paginate(10);
-    
+        $cates = Category::all();
+        dd($cates);
         if(Auth::check()){
             $user = Auth::user();
             $mycourse = MyCourse::where('user_id', $user->id)->get();
@@ -24,7 +26,7 @@ class ElerningController extends Controller
             $mycourse = "";
         }
     
-        return view('pages.app_elerning.all_courses', compact('elcourses', 'mycourse'));
+        return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse'));
     }
 
     public function coursePage($course_id) {
