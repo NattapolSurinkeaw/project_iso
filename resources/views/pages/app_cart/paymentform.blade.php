@@ -3,8 +3,8 @@
 @section('content')
   <div class="pt-32">
     <div class="w-10/12 mx-auto border rounded-xl shadow-md">
-      <h1 class="text-3xl text-center font-bold mb-4">รายละเอียดคำสั่งซื้อ</h1>
-      <hr >
+      <h1 class="text-3xl text-center font-bold my-4">รายละเอียดคำสั่งซื้อ</h1>
+      <hr>
 
       <div class="flex  p-4 gap-4">
         <div class="w-full max-w-screen-sm p-4">
@@ -65,7 +65,7 @@
     
               <div class="flex flex-col">
                 <label for="" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">จำนวนเงินที่โอน</label>
-                <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="number" placeholder="9,999">
+                <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text" placeholder="9,999">
               </div>
             </div>
 
@@ -130,12 +130,35 @@ imgInp.onchange = evt => {
   }
 }
 
+let totalmoney = document.querySelectorAll('#totalmoney')
+
+  totalmoney.forEach(function(input) {
+    input.addEventListener('keyup', function(event) {
+        let value = this.value.replace(/[^0-9]/g, ''); // ลบทุกอักขระที่ไม่ใช่ 0-9
+        if (value !== '') {
+          const intValue = parseInt(value);
+          this.value = intValue.toLocaleString('en-US', {
+              style: 'decimal',
+              maximumFractionDigits: 0,
+              minimumFractionDigits: 0
+          });
+        } else {
+            // ถ้าค่าไม่ถูกต้อง ให้กลับไปเป็นค่าเดิม
+            this.value = this.dataset.previousValue || '';
+        }
+    });
+
+    // เพิ่ม event listener สำหรับการเก็บค่าเดิมเมื่อ focus
+    input.addEventListener('focus', function() {
+        this.dataset.previousValue = this.value;
+    });
+  });
+
 let btnsubmut = document.querySelector('#submit');
 let user = {!! json_encode($user) !!};
 const userId = user.id;
 
 let dataCourse = {!! json_encode($cartCourses) !!}
-console.log(userId);
 let idCourse = [];
 let totalPrice = 0;
 
@@ -148,12 +171,7 @@ for (let i = 0; i < dataCourse.length; i++) {
     totalPrice += price;
 }
 
-// console.log('idCourse:', idCourse); // รายการ id ทั้งหมด
-// console.log('totalPrice:', totalPrice); // รวมราคารายการทั้งหมด
-
-
 btnsubmut.addEventListener('click', () => {
-
   let customername = document.querySelector('#cumtomer-name').value; 
   let banknumber = document.querySelector('#bank-number').value; 
   let totalmoney = document.querySelector('#totalmoney').value; 

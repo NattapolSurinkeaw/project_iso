@@ -23,9 +23,9 @@
                         <th scope="col" class="px-6 py-3">
                             description
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        {{-- <th scope="col" class="px-6 py-3">
                             content
-                        </th>
+                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             view
                         </th>
@@ -54,10 +54,10 @@
                             <td class="px-6 py-4">
                                 {{ $news->description }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{-- {{ substr($news->content, 0, 500) }} --}}
-                                {{ Str::limit($news->content, 100) }}
-                            </td>
+                            {{-- <td class="w-[100px] px-6 py-4">
+                                {{ substr($news->content, 0, 500) }}
+                                {!! Str::limit($news->content, 100) !!}
+                            </td> --}}
                             <td class="px-6 py-4">
                                 {{ $news->view }}
                             </td>

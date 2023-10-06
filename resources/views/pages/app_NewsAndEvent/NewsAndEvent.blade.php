@@ -45,6 +45,12 @@
         <hr class="border border-red-200 my-4">
       </a>
       @endforeach
+
+      <div class="mx-20 flex justify-end">
+        <div class="w-96">
+            {{ $newsEvents->links() }}
+        </div>
+      </div>
     </div>
 
     <div class="w-full max-w-[400px] p-2 rounded-lg bg-gray-100">

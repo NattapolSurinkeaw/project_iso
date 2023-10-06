@@ -8,7 +8,7 @@
 
     <div class="container mx-auto flex items-center flex-wrap pt-4 ">
 
-        <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+        <nav id="store" class="w-full top-0 px-6 py-1">
             <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
                 <h1 class="uppercase tracking-wide no-underline hover:no-underline font-nrmal text-gray-800 text-xl">Course</h1>
                 <div class="flex items-center" id="store-nav-content">
@@ -57,9 +57,11 @@
                                     @foreach($categories as $categoryId)
                                         @foreach($cates as $cate)
                                             @if($categoryId == $cate->id)
-                                                <div class="bg-gray-400 rounded-full px-2">
-                                                    {{ $cate->category_name }}
-                                                </div>
+                                                <a href="/elerning/{{$cate->id}}">
+                                                    <div class="bg-gray-400 rounded-full px-2">
+                                                        {{ $cate->category_name }}
+                                                    </div>
+                                                </a>
                                             @endif
                                         @endforeach
                                     @endforeach
@@ -70,9 +72,11 @@
                                     @foreach($categories as $categoryId)
                                         @foreach($cates as $cate)
                                             @if($categoryId == $cate->id)
-                                                <div class="bg-gray-400 rounded-full px-2">
-                                                    {{ $cate->category_name }}
-                                                </div>
+                                                <a href="/elerning/{{$cate->id}}">
+                                                    <div class="bg-gray-400 rounded-full px-2">
+                                                        {{ $cate->category_name }}
+                                                    </div>
+                                                </a>
                                             @endif
                                         @endforeach
                                     @endforeach
@@ -126,6 +130,13 @@
         @endisset
     </div>
 
+    <div class="w-10/12 flex justify-end mx-auto my-4">
+        <div>
+            <button id="prevPage" class="bg-blue-500 px-3 py-1 rounded-lg">Prev</button>
+            <button id="nextPage" class="bg-green-500 px-3 py-1 rounded-lg">Next</button>
+        </div>
+    </div>
+
     {{-- <div class="mx-20 flex justify-end">
         <div class="w-96">
             {{ $elcourses->links() }}
@@ -152,9 +163,46 @@
 
 @section('scripts')
 <script>
-function addPayment() {
-    console.log('addPayment')
-}
+    // pagination
+    let countElerning = {!! $countElerning !!}
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(countElerning / itemsPerPage);
+    let prevPage = document.querySelector('#prevPage');
+    let nextPage = document.querySelector('#nextPage');
+
+    const currentURL = window.location.href;
+    const url = new URL(currentURL);
+    const currentPage = parseInt(url.searchParams.get('page') || 1);
+
+    window.addEventListener('load', function() {
+        // console.log(currentPage);
+        if (currentPage <= 1) {
+        // ถ้าหน้าปัจจุบันเป็นหน้าแรก ปิดปุ่ม "กลับ"
+        console.log("ปิดปุ่มกัลบ")
+        document.getElementById('prevPage').disabled = true; // ปิดปุ่ม "กลับ"
+        }
+
+        if (currentPage >= totalPages) {
+            // ถ้าหน้าปัจจุบันเป็นหน้าสุดท้าย หรือหน้าเดียว
+            document.getElementById('nextPage').disabled = true; // ปิดปุ่ม "ถัดไป"
+            console.log("ปิดปุ่มทัดไป")
+        }
+    });
+    
+    prevPage.addEventListener('click', function() {
+        const prevPageValue = currentPage - 1;
+        if (prevPageValue >= 1) { // ตรวจสอบว่าหน้าก่อนหน้ามีค่ามากกว่าหน้าแรก
+            location.href = `/elerning?page=${prevPageValue}`;
+        }
+    })
+    
+    nextPage.addEventListener('click', function() {
+        const nextPageValue = currentPage + 1;
+        if (nextPageValue <= totalPages) { // ตรวจสอบว่าหน้าถัดไปมีค่าน้อยกว่าหรือเท่ากับหน้าสุดท้าย
+            location.href = `/elerning?page=${nextPageValue}`;
+        }
+    })
+
 
     document.addEventListener('DOMContentLoaded', function () {
         const addToCartButtons = document.querySelectorAll('#add-to-cart');
@@ -186,5 +234,6 @@ function addPayment() {
             });
         }
     });
+
 </script>
 @endsection

@@ -11,7 +11,7 @@ class NewsAndEventController extends Controller
     //
     public function newsAndEventPage() {
         $new_news = NewsEvent::orderBy('id', 'desc')->take(8)->get();
-        $newsEvents = NewsEvent::all();
+        $newsEvents = NewsEvent::paginate(8);
         $topnews = NewsEvent::orderBy('view', 'desc')->take(4)->get();
         return view('pages.app_newsandevent.newsandevent', compact('newsEvents', 'topnews', 'new_news'));
     }

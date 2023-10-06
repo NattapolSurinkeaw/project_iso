@@ -18,6 +18,7 @@ class ElerningController extends Controller
         $cates = Category::all();
         $elcourses = null;
         $mycourse = null;
+        $countElerning = 0;
 
         if ($cate_id != null) {
             $elcourses = Elerningcourse::paginate(10);
@@ -27,9 +28,12 @@ class ElerningController extends Controller
                 return $elcourse;
             });
         
-            $elcourses = $elcourses->filter(function ($elcourse) use ($cate_id) {
+            $elcourses = $elcourses->filter(function ($elcourse) use ($cate_id, &$countElerning) {
                 if (!is_null($elcourse->category) && is_array($elcourse->category)) {
-                    return in_array($cate_id, $elcourse->category);
+                    if (in_array($cate_id, $elcourse->category)) {
+                        $countElerning++; // เพิ่มจำนวนคอร์สที่เจอ
+                        return true;
+                    }
                 }
                 return false;
             });
@@ -40,11 +44,10 @@ class ElerningController extends Controller
             } else {
                 $mycourse = "";
             }
-            // $elcourses = $elcourses->toArray();
-            // dd($elcourses);
-            // exit();
+            
         } else {
             $elcourses = Elerningcourse::paginate(10);
+            $countElerning = $elcourses->total();
             if (Auth::check()) {
                 $user = Auth::user();
                 $mycourse = MyCourse::where('user_id', $user->id)->get();
@@ -52,10 +55,7 @@ class ElerningController extends Controller
                 $mycourse = "";
             }
         }
-    
-        // dd($elcourses);
-            // exit();
-        return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse'));
+        return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse', 'countElerning'));
     }
 
     public function coursePage($course_id) {
