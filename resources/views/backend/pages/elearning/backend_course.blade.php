@@ -38,10 +38,13 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $i = 1;
+                @endphp
                 @foreach($courses as $course)
                 <tr class="bg-white dark:bg-gray-800 border-b-2">
                     <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                        {{$course->id}}
+                        {{$i++}}
                     </th>
                     <td class="px-6 py-4 text-center">
                         {{$course->course_name}}
