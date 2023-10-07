@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('category', 100)->nullable();
             $table->decimal('price', 8, 2);
-            $table->text('description');
+            $table->string('description');
+            $table->text('details');
             $table->string('img_course')->nullable(); // เพิ่มคอลัมน์ img_course ในตาราง
             $table->timestamps();
         });

@@ -111,7 +111,8 @@
                 <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="">
                 <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="">
                 <input type="number" id="price" class="swal2-input" placeholder="price" value="">
-                <input type="text" id="description" class="swal2-input" placeholder="description" >
+                <input type="text" id="description" class="swal2-input mb-4" placeholder="description" >
+                <textarea id="details"></textarea>
                 <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
                     <span>
                         <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
@@ -129,9 +130,9 @@
                 const user_name = Swal.getPopup().querySelector("#user_name").value;
                 const price = Swal.getPopup().querySelector("#price").value;
                 const description = Swal.getPopup().querySelector("#description").value;
+                let details = editor.getData();
                 const img_course = Swal.getPopup().querySelector("#img_course");
                 const imgCourse = img_course.files[0];
-
                 if (!course_name || !user_name || !price || !description || !imgCourse) {
                     Swal.showValidationMessage(`Please enter your data.`);
                 }
@@ -141,6 +142,7 @@
                 formData.append('user_name' , user_name)
                 formData.append('price' , price)
                 formData.append('description' , description)
+                formData.append('details' , details)
                 formData.append('imgCourse' , imgCourse)
 
                 return formData;
@@ -166,6 +168,16 @@
                 ImgOpt.src = URL.createObjectURL(file)
             }
         }
+
+        ClassicEditor
+            .create(document.querySelector('#details'))
+            .then(instance => {
+                editor = instance; // เก็บอินสแตนซ์ของ CKEditor ในตัวแปร editor
+                writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
+            })
+            .catch(error => {
+                console.log(error);
+            });
     } 
         
 
@@ -179,7 +191,8 @@
                     <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="${data.course_name}">
                     <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="${data.user_name}">
                     <input type="number" id="price" class="swal2-input" placeholder="price" value="${data.price}">
-                    <input type="text" id="description" class="swal2-input" placeholder="description" value="${data.description}">
+                    <input type="text" id="description" class="swal2-input mb-4" placeholder="description" value="${data.description}">
+                    <textarea id="details">${data.details}</textarea>
                     <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
                         <span>
                             <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
@@ -197,6 +210,7 @@
                     const user_name = Swal.getPopup().querySelector("#user_name").value;
                     const price = Swal.getPopup().querySelector("#price").value;
                     const description = Swal.getPopup().querySelector("#description").value;
+                    let details = editor.getData();
                     const img_course = Swal.getPopup().querySelector("#img_course");
                     const imgCourse = img_course.files[0];
 
@@ -209,6 +223,7 @@
                     formData.append('user_name' , user_name)
                     formData.append('price' , price)
                     formData.append('description' , description)
+                    formData.append('details' , details)
                     formData.append('imgCourse' , imgCourse)
 
                     return formData;
@@ -231,11 +246,21 @@
             })
 
             img_course.onchange = evt => {
-            const [file] = img_course.files
-            if (file) {
-                ImgOpt.src = URL.createObjectURL(file)
+                const [file] = img_course.files
+                if (file) {
+                    ImgOpt.src = URL.createObjectURL(file)
+                }
             }
-        }
+
+            ClassicEditor
+                .create(document.querySelector('#details'))
+                .then(instance => {
+                    editor = instance; // เก็บอินสแตนซ์ของ CKEditor ในตัวแปร editor
+                    writer.setStyle('max-width', '100%', instance.editing.view.document.getRoot());
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         })
             
     }

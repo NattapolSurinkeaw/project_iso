@@ -46,6 +46,7 @@ class CourseController extends Controller
             'user_name' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'details' => 'required',
             'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
         ]);
     
@@ -59,6 +60,7 @@ class CourseController extends Controller
             'user_name' => $request->input('user_name'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
+            'details' => $request->input('details'),
             'img_course' => $imgName,
         ]);
     
@@ -83,7 +85,8 @@ class CourseController extends Controller
             'course_name' => 'required',
             'user_name' => 'required',
             'price' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'details' => 'required'
         ]);
 
     
@@ -91,6 +94,7 @@ class CourseController extends Controller
         $course->user_name = $request->input('user_name');
         $course->price = $request->input('price');
         $course->description = $request->input('description');
+        $course->details = $request->input('details');
 
         if ($request->hasFile('imgCourse') && $request->file('imgCourse')->isValid()) {
             $image = $request->file('imgCourse');
