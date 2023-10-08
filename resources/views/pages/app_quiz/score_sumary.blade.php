@@ -18,7 +18,7 @@
       <div class="flex gap-10">
         <a href="/course/{{$quiz->elerningcourse_id}}" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">back to course</a>
         <a href="/all_question/{{$quiz->id}}" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Try again</a>
-        <button id="downloadCertificate" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Download Certificate</button>
+        <button id="downloadCertificate" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Download Certificate</button>
       </div>
     </div>
     
@@ -32,18 +32,19 @@
   percenScore.innerText = percentage + ' %';
   let btnCertificate = document.querySelector('#downloadCertificate')
   let textCongrat = document.querySelector('#text-congrat');
-  if (percentage > 80) {
+  if (percentage > 70) {
     textCongrat.classList.add('text-green-600');
+    btnCertificate.classList.add('bg-green-600', 'hover:bg-green-800');
     textCongrat.innerText = "Congratulations!"
   } else {
     textCongrat.classList.add('text-red-600');
+    btnCertificate.classList.add('bg-gray-600', 'cursor-default');
     textCongrat.innerText = "Sorry you didn't pass."
   }
   
   btnCertificate.addEventListener('click', () => {
-    console.log(percentage);
-    if(percentage > 80) {
-      console.log('get Certificates');
+    if(percentage > 70) {
+      location.href = "/certificate";
     } else {
       console.log('your score not pass');
     }

@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Cohensive\Embed\EmbedServiceProvider::class,
         App\Providers\HeaderServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -186,6 +187,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Embed' => Cohensive\Embed\Facades\Embed::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
     ])->toArray(),
 
 ];

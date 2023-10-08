@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\ElerningController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 // Route::get('/register', [Controller::class,'registerPage']);
 // Route::get('/login',[Controller::class,'loginPage']);
 // Route::middleware('web')->group(function () {
+  Route::get('/certificate', [PDFController::class, 'generatepdf']);
   Route::get('/', [Controller::class, 'homePage'])->name('home');
   Route::get('/register', [Controller::class, 'registerPage'])->name('register');
   Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
