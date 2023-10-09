@@ -42,8 +42,10 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 // Route::get('/',[Controller::class,'homePage']);
 // Route::get('/register', [Controller::class,'registerPage']);
 // Route::get('/login',[Controller::class,'loginPage']);
-// Route::middleware('web')->group(function () {
+// Route::middleware('web')->group(function   () {
   Route::get('/certificate', [PDFController::class, 'generatepdf']);
+  Route::get('/formcer', [PDFController::class, 'formver']);
+
   Route::get('/', [Controller::class, 'homePage'])->name('home');
   Route::get('/register', [Controller::class, 'registerPage'])->name('register');
   Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
@@ -81,7 +83,13 @@ Route::middleware('checklogin')->group(function () {
   Route::get('/purchasedetail/{id}',[DashboardController::class,'purchaseDetail']);
   Route::get('/reservationhistory',[DashboardController::class,'reservationPage']);
   Route::get('/reservedetail/{id}',[DashboardController::class,'reserveDetail']);
+
 });  
+  // Route::get('/home', [FrontendController::class, 'index']);
+  // Route::get('/sendmail',[Controller::class,'sendEmail']);
+  Route::get('/sendmail/{email}/{id}',[TrainingController::class,'sendEmail']);
+  Route::get('/emailform',[FrontendController::class, 'emailForm']);
+
 
 Route::prefix('backend')->middleware('checkadmin')->group(function () { 
   Route::get('/',[BackendController::class,'homePage']);
@@ -104,13 +112,6 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
   Route::get('/pendingtraining-detail/{id}',[PendingTrainingController::class,'pendingTrainingDetail']);
 });
-
-
-// Route::get('/home', [FrontendController::class, 'index']);
-// Route::get('/sendmail',[Controller::class,'sendEmail']);
-Route::get('/sendmail/{email}/{id}',[TrainingController::class,'sendEmail']);
-Route::get('/emailform',[FrontendController::class, 'emailForm']);
-
 
 
 Route::prefix('api')->group(function (){

@@ -132,8 +132,8 @@
 
     <div class="w-10/12 flex justify-end mx-auto my-4">
         <div>
-            <button id="prevPage" class="bg-blue-500 px-3 py-1 rounded-lg">Prev</button>
-            <button id="nextPage" class="bg-green-500 px-3 py-1 rounded-lg">Next</button>
+            <button id="prevPage" class="text-white px-3 py-1 rounded-lg">Prev</button>
+            <button id="nextPage" class="text-white px-3 py-1 rounded-lg">Next</button>
         </div>
     </div>
 
@@ -179,13 +179,19 @@
         if (currentPage <= 1) {
         // ถ้าหน้าปัจจุบันเป็นหน้าแรก ปิดปุ่ม "กลับ"
         console.log("ปิดปุ่มกัลบ")
-        document.getElementById('prevPage').disabled = true; // ปิดปุ่ม "กลับ"
+        prevPage.disabled = true; // ปิดปุ่ม "กลับ"
+        prevPage.classList.add('bg-gray-400')
+        } else {
+            prevPage.classList.add('bg-blue-500')
         }
 
         if (currentPage >= totalPages) {
             // ถ้าหน้าปัจจุบันเป็นหน้าสุดท้าย หรือหน้าเดียว
-            document.getElementById('nextPage').disabled = true; // ปิดปุ่ม "ถัดไป"
+            nextPage.disabled = true; // ปิดปุ่ม "ถัดไป"
+            nextPage.classList.add('bg-gray-400')
             console.log("ปิดปุ่มทัดไป")
+        }else {
+            nextPage.classList.add('bg-green-400')
         }
     });
     

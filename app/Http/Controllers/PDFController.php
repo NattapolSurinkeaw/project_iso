@@ -15,4 +15,9 @@ class PDFController extends Controller
         return $pdf->stream();
         // return $pdf->download('certificate.pdf');
     }
+
+    public function formver(){
+        $user = Auth::user();
+        return view('pdf.certificate', compact('user'));
+    }
 }
