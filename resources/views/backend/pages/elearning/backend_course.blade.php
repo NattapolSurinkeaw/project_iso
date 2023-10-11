@@ -66,10 +66,10 @@
                         {{$course->updated_at}}
                     </td>
                     <td class="px-6 py-4 flex gap-2">
-                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-10 h-10" alt="สมาชิก"></a>
-                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-10 h-10" alt="รายละเอียด"></a>
-                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-10 h-10" alt="แก้ไข"></button>
-                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-10 h-10" alt="ลบ"></button>
+                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="member" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-10 h-10" alt="สมาชิก"></a>
+                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="detail" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-10 h-10" alt="รายละเอียด"></a>
+                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="edit" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-10 h-10" alt="แก้ไข"></button>
+                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="delete" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-10 h-10" alt="ลบ"></button>
                     </td>
                 </tr>
                 @endforeach

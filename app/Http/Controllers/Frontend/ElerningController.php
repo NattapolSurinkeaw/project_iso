@@ -10,6 +10,7 @@ use App\Models\Quiz;
 use App\Models\Annoucement;
 use App\Models\MyCourse;
 use App\Models\Category;
+use App\Models\UserLerning;
 
 class ElerningController extends Controller
 {
@@ -49,8 +50,8 @@ class ElerningController extends Controller
             $elcourses = Elerningcourse::paginate(10);
             $countElerning = $elcourses->total();
             if (Auth::check()) {
-                $user = Auth::user();
-                $mycourse = MyCourse::where('user_id', $user->id)->get();
+                $user = Auth::user()->id;
+                $mycourse = MyCourse::where('user_id', $user)->get();
             } else {
                 $mycourse = "";
             }
@@ -67,6 +68,9 @@ class ElerningController extends Controller
         $course = Elerningcourse::find($sessionCourseId);
         $quizzes = Quiz::where('elerningcourse_id', $course_id)->get();
         $announcements = Annoucement::where('elerningcourse_id', $course_id)->get();
+        
+        $user = Auth::user()->id;
+        $user_learning = UserLerning::where('user_id', $user)->get();
         
         return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes'));
     }

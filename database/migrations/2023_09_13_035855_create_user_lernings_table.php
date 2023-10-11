@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('watch_video',100)->nullable();
             $table->integer('total_round')->unsigned()->default(0);
             $table->integer('score')->unsigned()->default(0);
+            $table->integer('last_score')->unsigned()->default(0);
             $table->integer('total_score')->unsigned()->default(0);
             //เอาไว้เช็คว่าทำหรือยัง
             // pretest(yes , no) 
-            //$table->string('pretest', 3)->nullable();
+            // $table->string('pretest', 3)->default("no");
             // posttest(yes , no) 
-            // $table->string('posttest',3)->nullable();
-            $table->string('certificate')->nullable(); // yes , no เอาไว้เช็คว่าให้โหลด cer ไหม
+            // $table->string('posttest',3)->default("no");
+            $table->string('certificate',3)->default("no"); // yes , no เอาไว้เช็คว่าให้โหลด cer ไหม
             $table->timestamps();
         });
     }

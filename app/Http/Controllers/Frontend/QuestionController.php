@@ -16,19 +16,21 @@ class QuestionController extends Controller
         $questions = Question::where('quiz_id', $quiz_id)->paginate(5);
         // $questions = Question::where('quiz_id', $quiz_id)->inRandomOrder()->paginate(5);
     
-        $quiz_id = Quiz::select('id')->find($quiz_id);
-        return view('pages.app_quiz.all_question', compact('questions', 'quiz_id'));
+        $quizes = Quiz::find($quiz_id);
+        return view('pages.app_quiz.all_question', compact('questions', 'quizes'));
     }
 
     public function checkAnswers (Request $request, $quiz_id) {
         $useranswe = $request->toArray();
         $questions = Question::where('quiz_id', $quiz_id)->get();
+        $quiz_scoreTotal = $questions->sum('score'); // คะแนนข้อสอบรวม
 
+        $quiz = Quiz::find($quiz_id);
+
+        // dd($quiz->quiz_type);exit();
         $user_id = Auth::user()->id;
-        
-        // dd($user);exit();
 
-        $totalScore = 0;
+        $totalScore = 0;  // คะแนน user ทำได้
 
         foreach ($useranswe as $userAnswer) {
             $matchingQuestion = $questions->firstWhere('id', $userAnswer['questionId']);
@@ -37,34 +39,65 @@ class QuestionController extends Controller
                 $totalScore += $matchingQuestion->score;
             }
         }
-
+        
         $userLearning = UserLerning::where('quiz_id', $quiz_id)
         ->where('user_id', $user_id)
         ->first();
 
-        if (!$userLearning) {
-            // If no record exists, create a new one
-            $userLearning = UserLerning::create([
-                'quiz_id' => $quiz_id,
-                'user_id' => $user_id,
-                'score' => $totalScore,
-                'total_score' => $questions->sum('score'),
-                'total_round' => 1,
-            ]);
-        } else {
-            // If a record exists, update the existing one
-            $userLearning->increment('total_round');
-            $userLearning->score = $totalScore;
-            $userLearning->total_score = $questions->sum('score');
-            $userLearning->save();
-        }
+        
+        if($quiz->quiz_type == 'posttest') {
+            if (!$userLearning) {
+                // If no record exists, create a new one
+                $percentage = ($totalScore / $quiz_scoreTotal) * 100;
+                $certificate = ($percentage > 70) ? "yes" : "no";
+                $userLearning = UserLerning::create([
+                    'quiz_id' => $quiz_id,
+                    'user_id' => $user_id,
+                    'score' => $totalScore,
+                    'last_score' => $totalScore,
+                    'total_score' => $questions->sum('score'),
+                    'certificate' => $certificate,
+                    'total_round' => 1,
+                ]);
+            } else {
+                // If a record exists, update the existing one
+                $userLearning->increment('total_round');
+                if ($totalScore > $userLearning->score) {
+                    $userLearning->score = $totalScore;
+                }
+                $userLearning->last_score = $totalScore;
+                $userLearning->total_score = $questions->sum('score');
 
+                $percentage = ($totalScore / $quiz_scoreTotal) * 100;
+                $certificate = ($percentage > 70) ? "yes" : "no";
+                $userLearning->certificate = $certificate;
+                $userLearning->save();
+            }
+
+        } else {
+            // dd($totalScore);exit();
+            if (!$userLearning) {
+                // If no record exists, create a new one
+                $userLearning = UserLerning::create([
+                    'quiz_id' => $quiz_id,
+                    'user_id' => $user_id,
+                    'last_score' => $totalScore,
+                    'total_score' => $questions->sum('score'),
+                    'total_round' => 1,
+                ]);
+            } else {
+                // If a record exists, update the existing one
+                $userLearning->increment('total_round');
+                $userLearning->last_score = $totalScore;
+                $userLearning->total_score = $questions->sum('score');
+                $userLearning->save();
+            }
+        }
         return response()->json([
             'status' => 'success',
             'message' => 'data has been saved successfully',
-            'score' => $totalScore
         ], 200);
-
+        
     }
 
 }

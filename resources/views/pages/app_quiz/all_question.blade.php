@@ -61,11 +61,11 @@
             </div>
 
             @if($questions->currentPage() === $questions->lastPage())
-                <button data-quiz="{{$quiz_id->id}}" id="checkanswer" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                <button data-quiz="{{$quizes->id}}" id="checkanswer" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
             @endif
         </div>
         
-        <button id="btnSubmit" data-quiz="{{$quiz_id->id}}" class="p-2 px-4 bg-red-400 rounded-xl">ไม่ใช้</button>
+        {{-- <button id="btnSubmit" data-quiz="{{$quiz_id->id}}" class="p-2 px-4 bg-red-400 rounded-xl">ไม่ใช้</button> --}}
         {{-- <div class="w-full flex justify-between px-10 p-2 bg-gray-600 rounded-xl">
             <button class="p-2 px-4 bg-red-400 rounded-xl">Prev</button>
             <button onclick="calculateTotalScore()" class="p-2 px-4 bg-red-400 rounded-xl">ปุ่มเทสคำนวณ</button>
@@ -77,6 +77,8 @@
 
 @section('scripts')
 <script>
+    let quizes = {!! $quizes !!}
+    console.log(quizes);
     let timer = document.querySelector('#counting-time').innerText;
 
     let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];

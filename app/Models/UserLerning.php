@@ -15,6 +15,7 @@ class UserLerning extends Model
         'watch_video',
         'total_round',
         'score',
+        'last_score',
         'total_score',
         'certificate'
     ];

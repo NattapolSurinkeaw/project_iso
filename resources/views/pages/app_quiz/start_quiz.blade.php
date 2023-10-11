@@ -10,7 +10,7 @@
       <h1 class="text-center">Quiz Type : {{$quiz->quiz_type}}</h1>
       <h1 class="text-center">Total Questions : {{$questionCount}}</h1>
       <h1 class="text-center">total Mark : {{$totalScore}}</h1>
-      <h1 class="text-center">Duration : 30 min</h1>
+      <h1 class="text-center">Duration : &nbsp; {{$quiz->timer}} min</h1>
       <h1 class="text-center text-3xl text-green-600 font-medium">Started!</h1>
       <button onclick="startQuiz()" id="btnaction" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Attempt now</button>
     </div>

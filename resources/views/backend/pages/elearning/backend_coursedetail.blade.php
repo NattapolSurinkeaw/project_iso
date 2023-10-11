@@ -434,26 +434,29 @@
         Swal.fire({
             title: "Create Quiz",
             html: ` <div class="flex flex-col justify-center items-center gap-4">
-                <input id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="">
-                <select id="quiz_type" style="font-size:20px;" name="quiz_type" class="block w-full h-14 px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                    <option class="text-lg" value="pretest">Pre-test</option>
-                    <option class="text-lg" value="posttest">Post-Test</option>
-                </select>
-                </div>
-    `,
+                        <input type="text" id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="">
+                        <input type="number" id="quiz_timer" class="swal2-input" placeholder="Timer" value="">
+                        <select id="quiz_type" style="font-size:20px;" name="quiz_type" class="block w-full h-14 px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option class="text-lg" value="pretest">Pre-test</option>
+                            <option class="text-lg" value="posttest">Post-Test</option>
+                        </select>
+                    </div>
+            `,
             confirmButtonText: "Submit",
             focusConfirm: false,
             preConfirm: () => {
                 const quiz_name = Swal.getPopup().querySelector("#quiz_name").value;
+                const quiz_timer = Swal.getPopup().querySelector("#quiz_timer").value;
                 const quiz_type = Swal.getPopup().querySelector("#quiz_type").value;
 
-                if (!quiz_name || !quiz_type) {
+                if (!quiz_name|| !quiz_timer|| !quiz_type) {
                     Swal.showValidationMessage(`Please enter your data.`);
                     return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
                 }
 
                 param = {
                     quiz_name: quiz_name,
+                    quiz_timer: quiz_timer,
                     quiz_type: quiz_type,
                     courseId: courseId
                 }
@@ -487,12 +490,13 @@
     function editQuiz(quiz_id) {
         axios.get(`/api/backend/quiz/${quiz_id}`).then((response) => {
             let data = response.data.data;
-            // console.log(data);
+            console.log(data);
             Swal.fire({
                 title: "Create Quiz",
                 html: `
                     <div class="flex flex-col justify-center items-center gap-4">
-                        <input id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="${data.quiz_name}">
+                        <input type="text" id="quiz_name" class="swal2-input" placeholder="Quiz Name" value="${data.quiz_name}">
+                        <input type="number" id="quiz_timer" class="swal2-input" placeholder="Timer" value="${data.timer}">
                         <select id="quiz_type" style="font-size:20px;" name="quiz_type" class="block w-full h-14 px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                             <option class="text-lg" value="pretest" ${data.quiz_type === 'pretest' ? 'selected' : ''}>Pre-test</option>
                             <option class="text-lg" value="posttest" ${data.quiz_type === 'posttest' ? 'selected' : ''}>Post-Test</option>
@@ -503,6 +507,7 @@
                 focusConfirm: false,
                 preConfirm: () => {
                     const quiz_name = Swal.getPopup().querySelector("#quiz_name").value;
+                    const quiz_timer = Swal.getPopup().querySelector("#quiz_timer").value;
                     const quiz_type = Swal.getPopup().querySelector("#quiz_type").value;
 
                     if (!quiz_name || !quiz_type) {
@@ -512,6 +517,7 @@
 
                     param = {
                         quiz_name: quiz_name,
+                        quiz_timer: quiz_timer,
                         quiz_type: quiz_type
                     }
 

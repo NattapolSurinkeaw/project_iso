@@ -232,6 +232,7 @@ class CourseController extends Controller
             'courseId' => 'required',
             'quiz_name' => 'required',
             'quiz_type' => 'required',
+            'quiz_timer' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -246,6 +247,7 @@ class CourseController extends Controller
             'elerningcourse_id' => $request->input('courseId'),
             'quiz_name' => $request->input('quiz_name'),
             'quiz_type' => $request->input('quiz_type'),
+            'timer' => $request->input('quiz_timer'),
         ]);
 
         return response()->json([
@@ -284,6 +286,7 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(), [
             'quiz_name' => 'required',
             'quiz_type' => 'required',
+            'quiz_timer' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -295,6 +298,7 @@ class CourseController extends Controller
         }
 
         $quiz->quiz_name = $request->input('quiz_name');
+        $quiz->timer = $request->input('quiz_timer');
         $quiz->quiz_type = $request->input('quiz_type');
 
         $quiz->save();
