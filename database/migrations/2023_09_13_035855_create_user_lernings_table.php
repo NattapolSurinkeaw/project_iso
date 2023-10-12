@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('score')->unsigned()->default(0);
             $table->integer('last_score')->unsigned()->default(0);
             $table->integer('total_score')->unsigned()->default(0);
+            $table->string('quiz_type', 20)->nullable();
             //เอาไว้เช็คว่าทำหรือยัง
             // pretest(yes , no) 
             // $table->string('pretest', 3)->default("no");

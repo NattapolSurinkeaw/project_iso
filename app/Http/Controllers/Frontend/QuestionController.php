@@ -56,6 +56,7 @@ class QuestionController extends Controller
                     'score' => $totalScore,
                     'last_score' => $totalScore,
                     'total_score' => $questions->sum('score'),
+                    'quiz_type' => $quiz->quiz_type,
                     'certificate' => $certificate,
                     'total_round' => 1,
                 ]);
@@ -67,7 +68,7 @@ class QuestionController extends Controller
                 }
                 $userLearning->last_score = $totalScore;
                 $userLearning->total_score = $questions->sum('score');
-
+                $userLearning->quiz_type = $quiz->quiz_type;
                 $percentage = ($totalScore / $quiz_scoreTotal) * 100;
                 $certificate = ($percentage > 70) ? "yes" : "no";
                 $userLearning->certificate = $certificate;
@@ -83,6 +84,7 @@ class QuestionController extends Controller
                     'user_id' => $user_id,
                     'last_score' => $totalScore,
                     'total_score' => $questions->sum('score'),
+                    'quiz_type' => $quiz->quiz_type,
                     'total_round' => 1,
                 ]);
             } else {
@@ -90,6 +92,7 @@ class QuestionController extends Controller
                 $userLearning->increment('total_round');
                 $userLearning->last_score = $totalScore;
                 $userLearning->total_score = $questions->sum('score');
+                $userLearning->quiz_type = $quiz->quiz_type;
                 $userLearning->save();
             }
         }

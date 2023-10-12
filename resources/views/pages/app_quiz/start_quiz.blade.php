@@ -32,6 +32,7 @@
   }
   function startQuiz() {
     if(questionCount > 0) {
+      localStorage.clear();  // เคลียค่าเวลาจาก course อื่นๆ
       window.location.href = "/all_question/{{$quiz->id}}";
       document.querySelector('#btnaction').addClasslist("bg-green-700")
     } else {

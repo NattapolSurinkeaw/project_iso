@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Elerningcourse;
 use App\Models\Quiz;
 use App\Models\Annoucement;
+use App\Models\CourseMaterial;
 use App\Models\MyCourse;
 use App\Models\Category;
 use App\Models\UserLerning;
@@ -71,8 +72,9 @@ class ElerningController extends Controller
         
         $user = Auth::user()->id;
         $user_learning = UserLerning::where('user_id', $user)->get();
-        
-        return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes'));
+        $materials = CourseMaterial::where('elerningcourse_id', $course_id)->get();
+        // dd($materials);exit();
+        return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes', 'materials'));
     }
 
     public function courseDetail($course_id) {

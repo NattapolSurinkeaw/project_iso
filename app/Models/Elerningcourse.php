@@ -25,4 +25,9 @@ class Elerningcourse extends Model
     {
         return $this->belongsToMany(User::class, 'my_courses', 'elerningcourse_id', 'user_id');
     }
+
+    public function coursematerial()
+    {
+        return $this->hasMany(CourseMaterial::class, 'elerningcourse_id');
+    }
 }

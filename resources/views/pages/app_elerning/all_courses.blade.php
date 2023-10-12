@@ -137,32 +137,24 @@
         </div>
     </div>
 
-    {{-- <div class="mx-20 flex justify-end">
-        <div class="w-96">
-            {{ $elcourses->links() }}
-        </div>
-    </div> --}}
-    {{-- @if ($elcourses->lastPage() > 1)
-        <ul class="pagination">
-            <li class="{{ ($elcourses->currentPage() == 1) ? ' disabled' : '' }}">
-                <a href="{{ $elcourses->url(1) }}">Previous</a>
-            </li>
-            @for ($i = 1; $i <= $elcourses->lastPage(); $i++)
-                <li class="{{ ($elcourses->currentPage() == $i) ? ' active' : '' }}">
-                    <a href="{{ $elcourses->url($i) }}">{{ $i }}</a>
-                </li>
-            @endfor
-            <li class="{{ ($elcourses->currentPage() == $elcourses->lastPage()) ? ' disabled' : '' }}">
-                <a href="{{ $elcourses->url($elcourses->currentPage()+1) }}">Next</a>
-            </li>
-        </ul>
-    @endif --}}
+    <div class="w-3/4 mx-auto" id="search-course">
+        fff
+    </div>
     
 
 @endsection
 
 @section('scripts')
 <script>
+     // let course = {!! $elcourses !!};
+    // console.log(course);
+    
+    let search_course = document.querySelector('#search-course');
+    const gogo = "nattapol surinkeaw"
+    let datasearch = `<h1>My name is </h1>
+                      <h1>${gogo}</h1>
+                    `;
+    
     // pagination
     let countElerning = {!! $countElerning !!}
     const itemsPerPage = 10;
@@ -178,7 +170,7 @@
         // console.log(currentPage);
         if (currentPage <= 1) {
         // ถ้าหน้าปัจจุบันเป็นหน้าแรก ปิดปุ่ม "กลับ"
-        console.log("ปิดปุ่มกัลบ")
+        // console.log("ปิดปุ่มกัลบ")
         prevPage.disabled = true; // ปิดปุ่ม "กลับ"
         prevPage.classList.add('bg-gray-400')
         } else {
@@ -189,7 +181,7 @@
             // ถ้าหน้าปัจจุบันเป็นหน้าสุดท้าย หรือหน้าเดียว
             nextPage.disabled = true; // ปิดปุ่ม "ถัดไป"
             nextPage.classList.add('bg-gray-400')
-            console.log("ปิดปุ่มทัดไป")
+            // console.log("ปิดปุ่มทัดไป")
         }else {
             nextPage.classList.add('bg-green-400')
         }

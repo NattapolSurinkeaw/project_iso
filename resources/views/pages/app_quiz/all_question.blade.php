@@ -5,8 +5,8 @@
     {{-- @dd($quizzes) --}}
     {{-- {{$quizzes}} --}}
     <div for="box-quiz" class="w-full flex flex-col items-center gap-10">
-        <div class="text-xl w-full flex justify-end">
-            timer : <span id="counting-time" class="ml-2"> 0.0</span> 
+        <div class="fixed top-20 w-11/12 text-xl flex justify-end">
+            timer : <span id="counting-time" class="ml-2 text-red-600"> 0.0</span> 
         </div>
         @php
             $i = ($questions->currentPage() - 1) * $questions->perPage() + 1;
@@ -78,8 +78,38 @@
 @section('scripts')
 <script>
     let quizes = {!! $quizes !!}
-    console.log(quizes);
-    let timer = document.querySelector('#counting-time').innerText;
+    console.log(quizes.id);
+    let quiz_time = quizes.timer;
+    let timer = document.querySelector('#counting-time');
+
+    function startTimer() {
+        // ตรวจสอบว่ามีค่า timeLeft ที่เก็บใน localStorage หรือไม่
+        let storedTimeLeft = localStorage.getItem('timeLeft');
+        
+        // ถ้ามีค่าใน localStorage ให้ใช้ค่านั้น
+        let timeLeft = storedTimeLeft ? parseInt(storedTimeLeft, 10) : quiz_time * 60;
+
+        // สร้างตัวจับเวลาและอัปเดตค่าทุกวินาที
+        let countdownInterval = setInterval(function() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timer.innerText = `${minutes} . ${seconds}`;
+
+            if (timeLeft <= 0) {
+                // ทำอะไรก็ตามที่คุณต้องการเมื่อหมดเวลา
+                clearInterval(countdownInterval); // หยุดจับเวลาเมื่อหมดเวลา
+                timer.innerText = "หมดเวลา!";
+                checkQuestion(quizes.id)
+            } else {
+                timeLeft--;
+                
+                // บันทึกค่า timeLeft ใน localStorage เพื่อใช้ในครั้งถัดไป
+                localStorage.setItem('timeLeft', timeLeft.toString());
+            }
+        }, 1000); // จับเวลาทุกวินาที (1000 มิลลิวินาที = 1 วินาที)
+    }
+
+    startTimer(); // เริ่มต้นจับเวลาเมื่อเอกสารโหลด
 
     let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 
@@ -130,6 +160,7 @@
             dataanswer = JSON.parse(storedUserAnswers);
         }
         console.log(dataanswer);
+        localStorage.removeItem("timeLeft") // เคลียร์ค่าเวลาก่อนส่งข้อมูล
         axios.post(`/api/checkanswer/${quiz_id}`, dataanswer).then((response) => {
             console.log(response);
             if(response.data.status === 'success') {
