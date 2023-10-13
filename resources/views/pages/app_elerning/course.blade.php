@@ -46,9 +46,13 @@
           <div>
             @php
               $course_video ="";
-              if($item->input_type == 'youtube'){
+              if($item->input_type == 'youtube' || $item->input_type == 'vimeo'){
                 $embed = \Embed::make($item->video_url)->parseUrl();
                 $course_video = $embed->getHtml();
+              } else if ($item->input_type == 'drive') {
+                  $course_video = '<iframe src="' . $item->video_url . '" width="600px" height="300" allow="autoplay"></iframe>';
+              } else {
+                  $course_video = "ไม่มีวิดีโอ";
               }
             @endphp
             {!!$course_video !!}

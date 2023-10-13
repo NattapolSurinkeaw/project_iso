@@ -24,7 +24,12 @@
                 <div class="flex items-center gap-2">
                     <input type="checkbox" name="category" cate_id="{{$cate->id}}" id="category"
                         {{ is_array(json_decode($course->category)) && in_array($cate->id, json_decode($course->category)) ? 'checked' : '' }}>
-                    <label for="category_{{$cate->id}}">{{$cate->category_name}}</label>
+                    <label id="output-cate" class="" for="category_{{$cate->id}}">{{$cate->category_name}}</label>
+                    <input id="input-cate" class="w-40 border hidden" type="text" value="">
+                    <div class="flex gap-2">
+                        <button class="" id="edit-cate" cate_id="{{$cate->id}}"><img src="/image/icon/penedit.png" class="w-4 h-4" alt=""></button>
+                        <button class="" id="delete-cate" cate_id="{{$cate->id}}"><img src="/image/icon/delete.png" class="w-4 h-4" alt=""></button>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -67,26 +72,41 @@
         </div>
 
         <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">
-            <div class="animate__animated animate__bounce flex justify-between ">
-                <img class="h-8" src="/image/icon/material-icon.png" alt="">
-                <h1 class="text-xl">Course Material</h1>
-                <button onclick="addMaterial()" id="addMaterial"><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
+            <div class="animate__animated animate__bounce flex justify-between">
+              <img class="h-8" src="/image/icon/material-icon.png" alt="">
+              <h1 class="text-xl">Course Material</h1>
+              <button onclick="addMaterial()"><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
             </div>
             <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
-
-            <p class="my-5">ไฟล์สำหรับทำความเข้าใจควบคู่กับการเกี่ยวกับมาตรฐาน iso</p>
-            <p class="my-4 text-blue-400 cursor-pointer">ไฟล์ iso.pdf</p>
-            <p>07-feb-23, 08.02 Am</p>
-            <hr>
-            <p class="my-5">ไฟล์สำหรับทำความเข้าใจควบคู่กับการเกี่ยวกับมาตรฐาน iso</p>
-            <p class="my-4 text-blue-400 cursor-pointer">
-                <video class="w-96" controls>
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </p>
-            <p>07-feb-23, 08.02 Am</p>
-            <hr>
+      
+            @foreach($materials as $item)
+            <div class="w-full relative">
+              <p class="my-5">{{$item->description}}</p>
+              <div class="hidden" id="content-material">
+                <a href="{{$item->document}}" class="text-blue-500">เอกสาร</a>
+                <div class="mt-4">
+                  @php
+                    $course_video ="";
+                    if($item->input_type == 'youtube' || $item->input_type == 'vimeo'){
+                      $embed = \Embed::make($item->video_url)->parseUrl();
+                      $course_video = $embed->getHtml();
+                    } else if ($item->input_type == 'drive') {
+                        $course_video = '<iframe src="' . $item->video_url . '" width="600px" height="300" allow="autoplay"></iframe>';
+                    } else {
+                        $course_video = "ไม่มีวิดีโอ";
+                    }
+                  @endphp
+                  {!!$course_video !!}
+                </div>
+              </div>
+              <div class="absolute top-0 right-0 cursor-pointer" id="action-material">
+                <box-icon type='solid' name='chevrons-right' class="" id="right"></box-icon>
+                <box-icon name='chevrons-down' type='solid' class="hidden" id="bottom"></box-icon>
+              </div>
+            </div>
+              <p class="text-gray-400">07-feb-23, 08.02 Am</p>
+              <hr>
+            @endforeach
         </div>
 
         <div class="bg-white border-l-8 border-l-red-500 rounded-xl p-4 m-10">
@@ -129,6 +149,30 @@
     let chkcate = document.querySelectorAll('#category');
     let actionCate = document.querySelector('#action-cate');
     // console.log(chkcate)
+
+    const action_material = document.querySelectorAll('#action-material');
+    const content_material = document.querySelectorAll('#content-material');
+    // let show = false; // เริ่มต้นเป็น false
+
+    action_material.forEach((element, index) => {
+        let show = false; // เริ่มต้นเป็น false
+        let rightIcon = element.querySelector('#right');
+        let bottomIcon = element.querySelector('#bottom');
+
+        element.addEventListener('click', function () {
+        if (show === false) {
+            rightIcon.classList.add('hidden');
+            bottomIcon.classList.remove('hidden');
+            content_material[index].classList.remove('hidden');
+            show = true; // เปลี่ยนเป็น true เมื่อคลิกเพื่อแสดงเนื้อหา
+        } else {
+            rightIcon.classList.remove('hidden');
+            bottomIcon.classList.add('hidden');
+            content_material[index].classList.add('hidden');
+            show = false; // เปลี่ยนเป็น false เมื่อคลิกเพื่อซ่อนเนื้อหา
+        }
+        });
+    });
 
     hiddenaction.onclick = () => {
         actionCate.classList.add('hidden')
@@ -379,18 +423,41 @@
     function addMaterial() {
         Swal.fire({
             title: "Create Quiz",
-            html: `   <label for="video">video</label>
-                <input type="file" id="video" class="swal2-input">
-                <label for="video">document</label>
-                <input type="file" id="filedoc" class="swal2-input">
-    `,
+            html: `   <div class="flex items-center gap-4">
+                        <label for="video">video url</label>
+                        <input type="text" id="video" class="swal2-input">
+                      </div>
+                      <div class="flex items-center gap-4 ">
+                        <label for="video">thumbnail</label>
+                        <input type="file" id="thumbnail" class="swal2-input">
+                      </div>
+                      <div class="flex items-center gap-4 >
+                        <label for="video">input type</label>
+                        <select id="input-type">
+                            <option value="youtube">Youtube</option>
+                            <option value="drive">GoogleDrive</option>
+                            <option value="vimeo">Vimeo</option>
+                        </select>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <label for="video">document</label>
+                        <input type="file" id="filedoc" class="swal2-input">
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <label for="video">description</label>
+                        <textarea id="description" class="swal2-input"></textarea>
+                      </div>
+                    `,
             confirmButtonText: "Submit",
             focusConfirm: false,
             preConfirm: () => {
-                const video = Swal.getPopup().querySelector("#video");
-                let videoFile = video.files[0];
+                const video_url = Swal.getPopup().querySelector("#video").value;
+                const thumbnail = Swal.getPopup().querySelector("#thumbnail");
+                let thumbFile = thumbnail.files[0];
+                const input_type = Swal.getPopup().querySelector("#input-type").value;
                 const document = Swal.getPopup().querySelector("#filedoc");
                 let docFile = document.files[0];
+                const description = Swal.getPopup().querySelector("#description").value;
 
                 //   if (!video || !document) {
                 //       Swal.showValidationMessage(`Please enter your data.`);
@@ -398,10 +465,16 @@
                 //   }
 
                 formData = new FormData();
-                formData.append('video', videoFile),
-                    formData.append('document', docFile)
-
+                formData.append('elerningcourse_id', courseId),
+                formData.append('video_url', video_url),
+                formData.append('thumbnail', thumbFile),
+                formData.append('input_type', input_type),
+                formData.append('document', docFile)
+                formData.append('description', description)
                 return formData;
+            },
+            customClass: {
+                popup: 'custom-popup-material', // ปรับแต่งคลาส CSS ของ Popup
             },
         }).then((result) => {
             if (result.isConfirmed) {

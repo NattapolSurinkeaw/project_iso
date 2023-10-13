@@ -11,6 +11,7 @@ use App\Models\Annoucement;
 use App\Models\Category;
 use App\Models\Quiz;
 use App\Models\Question;
+use App\Models\CourseMaterial;
 
 class CourseController extends Controller
 {
@@ -25,7 +26,8 @@ class CourseController extends Controller
         $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
         $quizzes = Quiz::where('elerningcourse_id', $id_course)->get();
         $cates = Category::all();
-        return view('backend.pages.elearning.backend_coursedetail', compact('course', 'announcements', 'quizzes', 'cates'));
+        $materials = CourseMaterial::where('elerningcourse_id', $id_course)->get();
+        return view('backend.pages.elearning.backend_coursedetail', compact('course', 'announcements', 'quizzes', 'cates', 'materials'));
     }
 
     public function allQuestionTable($quiz_id) {
@@ -224,7 +226,57 @@ class CourseController extends Controller
     }
 
     public function createMeterial(Request $request) {
-        dd($request->all());exit();
+        $validator = Validator::make($request->all(), [
+            'elerningcourse_id' => 'required',
+            'video_url' => 'required',
+            'input_type' => 'required',
+            'thumbnail' => 'required',
+            'description' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+        
+        // เตรียมข้อมูล
+        $url = "";
+        $type_input = $request->input('input_type');
+        if($type_input == 'drive'){
+            $parsedUrl = parse_url($request->input('video_url'));
+            // dd($parsedUrl['path']);exit();
+            if ($parsedUrl) {
+                $path = str_replace('/view', '/preview', $parsedUrl['path']);
+                $url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $path;
+            } else {
+                $url = null;
+            }
+        } else {
+            $url = $request->input('video_url');
+        }
+
+        $image = $request->file('thumbnail');
+        $imgName = '/upload/images/material/'.time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/images/material'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+        // dd($url);exit();
+
+        $document = $request->file('document');
+        $documentPath = '/upload/pdf/material/'.time() . '.' . $document->getClientOriginalExtension();
+        $document->move(public_path('upload/pdf/material'), $documentPath); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+        
+        //จบการเตรียม
+
+        $material = new CourseMaterial;
+        $material->elerningcourse_id = $request->input('elerningcourse_id');
+        $material->video_url = $url;
+        $material->input_type = $type_input;
+        $material->thumbnail = $imgName;
+        $material->document = $documentPath;
+        $material->description = $request->input('description');
+        $material->save();
     }
 
     public function createQuiz(Request $request) {

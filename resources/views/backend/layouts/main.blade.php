@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="icon" type="image/x-icon" href="/image/svg/favicon.png">
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
