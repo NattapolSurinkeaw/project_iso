@@ -279,6 +279,117 @@ class CourseController extends Controller
         $material->save();
     }
 
+    public function getMaterialById($mat_id){
+        $material = CourseMaterial::find($mat_id);
+        if(!$material){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'course material not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $material,
+        ], 200);
+    }
+
+    public function editMaterial( Request $request, $mat_id) {
+        $validator = Validator::make($request->all(), [
+            'elerningcourse_id' => 'required',
+            'video_url' => 'required',
+            'input_type' => 'required',
+            'description' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        $material = CourseMaterial::find($mat_id);
+        if(!$material){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'course material not found'
+            ], 404);
+        }
+
+        // เตรียมข้อมูล
+        $url = "";
+        $type_input = $request->input('input_type');
+        if($type_input == 'drive'){
+            $parsedUrl = parse_url($request->input('video_url'));
+            if ($parsedUrl) {
+                $path = str_replace('/view', '/preview', $parsedUrl['path']);
+                $url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $path;
+            } else {
+                $url = null;
+            }
+        } else {
+            $url = $request->input('video_url');
+        }
+
+        if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
+            $image = $request->file('thumbnail');
+            $imgName = '/upload/images/material/'.time() . '.' . $image->getClientOriginalExtension();
+
+            if (!empty($material->thumbnail)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($material->thumbnail));
+            }   
+            $image->move(public_path('upload/images/material'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+            $material->thumbnail = $imgName;
+        }
+
+        if ($request->hasFile('document') && $request->file('document')->isValid()) {
+            $document = $request->file('document');
+            $documentPath = '/upload/pdf/material/'.time() . '.' . $document->getClientOriginalExtension();
+            if (!empty($material->thumbnail)) {
+                File::delete(public_path($material->document));
+            }
+            $document->move(public_path('upload/pdf/material'), $documentPath); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+            $material->document = $documentPath;
+        }
+
+        $material->elerningcourse_id = $request->input('elerningcourse_id');
+        $material->video_url = $url;
+        $material->input_type = $type_input;
+        $material->description = $request->input('description');
+        $material->save();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $material,
+        ], 200);
+    }
+
+    public function delMaterial($mat_id) {
+        $material = CourseMaterial::find($mat_id);
+        if(!$material){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'course material not found'
+            ], 404);
+        }
+
+        if (!empty($material->thumbnail)) {
+            // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+            File::delete(public_path($material->thumbnail));
+        }   
+        if (!empty($material->thumbnail)) {
+            File::delete(public_path($material->document));
+        }
+        $material->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'delete quiz successfully',
+        ], 201);
+    }
+
     public function createQuiz(Request $request) {
         $validator = Validator::make($request->all(), [
             'courseId' => 'required',
@@ -305,7 +416,7 @@ class CourseController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'บันทึกข้อมูล Quiz สำเร็จ'
-        ], 200);
+        ], 201);
 
     }
 

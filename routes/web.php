@@ -155,6 +155,9 @@ Route::prefix('api')->group(function (){
   Route::delete('/backend/delann/{id}',[CourseController::class,'deleteAnnouncement']);
 
   Route::post('/backend/creatematerial',[CourseController::class,'createMeterial']);
+  Route::get('/backend/material/{id}',[CourseController::class,'getMaterialById']);
+  Route::post('/backend/editmaterial/{id}',[CourseController::class,'editMaterial']);
+  Route::delete('/backend/delmaterial/{id}',[CourseController::class,'delMaterial']);
 
   Route::get('/backend/quiz/{id}',[CourseController::class,'getQuiz']);
   Route::post('/backend/createquiz',[CourseController::class,'createQuiz']);

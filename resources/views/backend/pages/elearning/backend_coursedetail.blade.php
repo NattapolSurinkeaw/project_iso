@@ -81,31 +81,35 @@
       
             @foreach($materials as $item)
             <div class="w-full relative">
-              <p class="my-5">{{$item->description}}</p>
-              <div class="hidden" id="content-material">
-                <a href="{{$item->document}}" class="text-blue-500">เอกสาร</a>
-                <div class="mt-4">
-                  @php
-                    $course_video ="";
-                    if($item->input_type == 'youtube' || $item->input_type == 'vimeo'){
-                      $embed = \Embed::make($item->video_url)->parseUrl();
-                      $course_video = $embed->getHtml();
-                    } else if ($item->input_type == 'drive') {
-                        $course_video = '<iframe src="' . $item->video_url . '" width="600px" height="300" allow="autoplay"></iframe>';
-                    } else {
-                        $course_video = "ไม่มีวิดีโอ";
-                    }
-                  @endphp
-                  {!!$course_video !!}
+                <p class="my-5">{{$item->description}}</p>
+                <div class="hidden" id="content-material">
+                <a href="{{$item->document}}" target="_bank" class="text-blue-500">เอกสาร</a>
+                    <div class="mt-4">
+                        @php
+                        $course_video ="";
+                        if($item->input_type == 'youtube' || $item->input_type == 'vimeo'){
+                            $embed = \Embed::make($item->video_url)->parseUrl();
+                            $course_video = $embed->getHtml();
+                        } else if ($item->input_type == 'drive') {
+                            $course_video = '<iframe src="' . $item->video_url . '" width="600px" height="300" allow="autoplay"></iframe>';
+                        } else {
+                            $course_video = "ไม่มีวิดีโอ";
+                        }
+                        @endphp
+                        {!!$course_video !!}
+                    </div>
                 </div>
-              </div>
-              <div class="absolute top-0 right-0 cursor-pointer" id="action-material">
-                <box-icon type='solid' name='chevrons-right' class="" id="right"></box-icon>
-                <box-icon name='chevrons-down' type='solid' class="hidden" id="bottom"></box-icon>
-              </div>
+                <div class="flex gap-2 absolute top-0 right-0">
+                    <div class="cursor-pointer" id="action-material">
+                        <box-icon type='solid' name='chevrons-right' class="" id="right"></box-icon>
+                        <box-icon name='chevrons-down' type='solid' class="hidden" id="bottom"></box-icon>
+                    </div>
+                    <img onclick="editMaterial({{$item->id}})" class="w-5 h-5" src="/image/icon/penedit.png" alt="">
+                    <img onclick="delMaterial({{$item->id}})" class="w-5 h-5" src="/image/icon/delete.png" alt="">
+                </div>
             </div>
-              <p class="text-gray-400">07-feb-23, 08.02 Am</p>
-              <hr>
+            <p class="text-gray-400">07-feb-23, 08.02 Am</p>
+            <hr>
             @endforeach
         </div>
 
@@ -115,13 +119,18 @@
                 <h1 class="text-xl">Asssignment</h1>
                 <button onclick="addQuiz()"><img class="w-7 h-7" src="/image/icon/addicon.png" alt=""></button>
             </div>
-            <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
+            <hr class="my-4 bg-gray-200 border-1">
             @if (count($quizzes) > 0)
                 @foreach ($quizzes as $quiz)
                     <div class="flex justify-between items-center">
                         <div>
-                            <p class="my-4 text-green-500 cursor-pointer">{{ $quiz->quiz_name }}</p>
-                            <p>{{ $quiz->update_at }}</p>
+                            <p class="my-4 text-green-500 cursor-pointer">Name : {{ $quiz->quiz_name }}</p>
+                        </div>
+                        <div>
+                            <p class="my-4 text-green-500 cursor-pointer">Quiz type : {{ $quiz->quiz_type }}</p>
+                        </div>
+                        <div>
+                            <p class="my-4 text-green-500 cursor-pointer">Total Question : 10</p>
                         </div>
                         <div class="flex gap-2">
                             <a href="{{ url('/backend/question-table/' . $quiz->id) }}" class="p-1 bg-blue-500 text-white rounded-lg">คำถาม</a>
@@ -500,7 +509,126 @@
                     });
             }
         });
+    }
 
+    function editMaterial(mat_id) {
+        axios.get(`/api/backend/material/${mat_id}`).then((response) => {
+            console.log(response.data.data);
+            let material = response.data.data;
+            Swal.fire({
+                title: "Create Quiz",
+                html: `   <div class="flex items-center gap-4">
+                            <label for="video">video url</label>
+                            <input type="text" id="video" class="swal2-input w-3/4" value="${material.video_url}">
+                        </div>
+                        <div class="flex items-center gap-4 ">
+                            <label for="video">thumbnail</label>
+                            <input type="file" id="thumbnail" class="swal2-input">
+                        </div>
+                        <div class="flex mt-4 items-center gap-4 >
+                            <label for="video">input type</label>
+                            <select id="input-type" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <option value="youtube" ${material.input_type === 'youtube' ? 'selected' : ''}>Youtube</option>
+                                <option value="drive" ${material.input_type === 'drive' ? 'selected' : ''}>GoogleDrive</option>
+                                <option value="vimeo" ${material.input_type === 'vimeo' ? 'selected' : ''}>Vimeo</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <label for="video">document</label>
+                            <input type="file" id="filedoc" class="swal2-input">
+                        </div>
+                        <div class="flex mt-4 gap-4">
+                            <label for="video">description</label>
+                            <textarea id="description" class="block w-3/4 rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">${material.description}</textarea>
+                        </div>
+                        `,
+                confirmButtonText: "Submit",
+                focusConfirm: false,
+                preConfirm: () => {
+                    const video_url = Swal.getPopup().querySelector("#video").value;
+                    const thumbnail = Swal.getPopup().querySelector("#thumbnail");
+                    let thumbFile = thumbnail.files[0];
+                    const input_type = Swal.getPopup().querySelector("#input-type").value;
+                    const document = Swal.getPopup().querySelector("#filedoc");
+                    let docFile = document.files[0];
+                    const description = Swal.getPopup().querySelector("#description").value;
+
+                    //   if (!video_url || !document) {
+                    //       Swal.showValidationMessage(`Please enter your data.`);
+                    //       return false; // ยกเลิกการยืนยันหากข้อมูลไม่ถูกต้อง
+                    //   }
+
+                    formData = new FormData();
+                    formData.append('elerningcourse_id', courseId),
+                    formData.append('video_url', video_url),
+                    formData.append('thumbnail', thumbFile),
+                    formData.append('input_type', input_type),
+                    formData.append('document', docFile)
+                    formData.append('description', description)
+                    return formData;
+                },
+                customClass: {
+                    popup: 'custom-popup-material', // ปรับแต่งคลาส CSS ของ Popup
+                },
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const param = result.value;
+                    param.forEach((value, key) => {
+                        console.log(key + ': ' + value);
+                    });
+                    axios.post(`/api/backend/editmaterial/${mat_id}`, param)
+                        .then((response) => {
+                            console.log(response);
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1000
+                            }).then(() => {
+                                // location.reload()
+                            });
+                        })
+                        .catch((error) => {
+                            console.error('API Error:', error);
+                            // จัดการข้อผิดพลาด
+                        });
+                }
+            });
+        })
+    }
+
+    function delMaterial(mat_id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/api/backend/delmaterial/${mat_id}`).then((response) => {
+                    console.log(response.status);
+                    if (response.status = 200) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'Delete failed some think wrong.',
+                            'error'
+                        )
+                    }
+                })
+            }
+        })
     }
 
     function addQuiz() {

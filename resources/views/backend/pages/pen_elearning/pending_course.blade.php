@@ -4,7 +4,7 @@
 
 <div class="overflow-hidden">
   <h1 class="my-4 text-center text-2xl font-medium">PendingCourse</h1>
-  <div id="table-train" class="h-[750px] overflow-y-scroll mx-10">
+  <div id="table-train" class="h-[750px] max-2xl:w-[93%] max-xl:w-[80%] overflow-y-scroll mx-10">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
           <tr>
@@ -78,16 +78,17 @@
                 @endif
             </td>
             <td class="px-6 py-4">
-              {{ $pending->created_at->format('d-M-y') }}
+              <p class="w-20">{{ $pending->created_at->format('d-M-y') }}</p>
             </td>
-            <td class="px-6 py-4">
+            <td class="w-40 px-6 py-4">
               @if (!empty($pending->updated_at))
-                {{ $pending->updated_at->format('d-M-y') }}
+              <p class="w-20">{{ $pending->updated_at->format('d-M-y') }}</p>
+                
               @else
                 null
               @endif
             </td>
-            <td class="px-6 py-4">
+            <td class="flex px-6 py-4">
               <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="{{url('/backend/pendingcourse-detail')}}/{{$pending->id}}">ลายละเอียด</a>
             </td>
           </tr>
