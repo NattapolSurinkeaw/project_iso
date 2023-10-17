@@ -2,12 +2,12 @@
 @section('title') CoursePage @endsection
 @section('content')
 <div>
-  <div class="bg-red-500 flex">
-    <div class="w-full flex flex-col items-center justify-center">
+  <div class="bg-red-500 flex max-lg:flex-col">
+    <div class="w-full flex flex-col items-center justify-center p-4">
       <h1 class="text-3xl text-white">Detail : {{$course->course_name}}</h1>
       <h1 class="text-3xl text-white">description : {{$course->description}}</h1>
     </div>
-    <div class="w-full">
+    <div class="w-full max-lg:order-first">
       <img class="w-full h-80" src="{{$course->img_course}}" alt="">
     </div>
   </div>
@@ -42,8 +42,6 @@
         <button>ทำการสั่งซื้อทันที</button>
       </div>
     </div>
-
-
     <a href="{{url('/elerning')}}">back</a>
   </div>
 </div>

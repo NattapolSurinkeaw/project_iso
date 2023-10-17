@@ -11,6 +11,7 @@ class HomeVideo extends Model
     
     protected $fillable = [
         'url',
-        'thumbnail'
+        'thumbnail', 
+        'type_input'
     ];
 }

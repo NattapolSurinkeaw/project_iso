@@ -1,9 +1,9 @@
 <nav id="myNav" class="sticky top-0 w-full duration-300 bg-white shadow z-[10]">
-  <div class="m-auto flex items-center justify-between text-gray-700">
+  <div class="md:container m-auto flex items-center justify-between text-gray-700">
     <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
     </a>
-    <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-medium md:flex text-gray-200">
+    <ul id="navLink" class="text-base hidden text-inherit cursor-pointer items-center font-medium xl:flex text-gray-200">
       <a href="{{url('/')}}"><li class="px-6 py-4 hover:bg-gray-200">HOME</li></a>
       <a href="{{url('/elerning')}}">
         <li class="px-6 py-4 hover:bg-gray-200 transition duration-300 ease-in-out relative group">
@@ -33,7 +33,7 @@
       <a href="{{url('/contact')}}"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
     </ul>
     @if($user)
-      <div class="text-base hidden cursor-pointer items-center pr-10 font-medium md:flex gap-3 items-center">
+      <div class="text-base hidden cursor-pointer items-center pr-10 font-medium xl:flex gap-3 items-center">
         @if(empty($user->img_profile))
         <a href="{{url('/dashboard')}}"><div><img class="rounded-full w-8 h-8" src="/image/icon/user.png" alt=""></div></a>
         @else
@@ -44,16 +44,17 @@
         <button onclick="onLogout()" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Logout</button>
       </div>
     @else
-      <div class="text-base hidden cursor-pointer items-center pr-10 font-semibold md:flex gap-2">
+      <div class="text-base hidden cursor-pointer items-center pr-10 font-semibold xl:flex gap-2">
         <a href="/login" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Login</a>
         <a href="/register" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Register</a>
       </div>
     @endif
-    <button class="group mx-2 block rounded py-3 focus:outline-none md:hidden">
+    <button class="group mx-2 block rounded py-3 focus:outline-none xl:hidden duration-500" name="menu" onclick="showNav(this)">
       <div class="mb-1 h-1 w-5 bg-gray-600"></div>
       <div class="mb-1 h-1 w-5 bg-gray-600"></div>
       <div class="h-1 w-5 bg-gray-600"></div>
-      <div class="absolute -right-full top-12 h-screen w-6/12 border bg-white opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
+
+      <div class="absolute -right-full top-12 h-screen w-6/12 border bg-white hidden opacity-0 transition-all duration-500 group-focus:right-0 group-focus:opacity-100" id="menu-content">
         <ul class="flex w-full cursor-pointer flex-col items-center pt-10 text-base">
           <a class="" href="/"><li class="w-full px-6 py-4 hover:bg-gray-200">HOME</li></a>
           <a href="/elerning"><li class="w-full px-6 py-4 hover:bg-gray-200">ELEARNING</li></a>
@@ -86,5 +87,12 @@
       console.log(response);
       location.href ='/login';
     });
+  }
+
+  let contentMenu = document.querySelector('#menu-content');
+  function showNav(e) {
+    console.log(e.name)
+    e.name = e.name === 'menu' ? 'close' : 'menu';
+    contentMenu.classList.toggle('hidden');
   }
 </script>

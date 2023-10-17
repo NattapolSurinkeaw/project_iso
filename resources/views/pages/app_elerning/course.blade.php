@@ -39,7 +39,7 @@
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
 
       @foreach($materials as $item)
-      <div class="w-full relative">
+      <div class="w-full relative pr-8">
         <p class="my-5">{{$item->description}}</p>
         <div class="hidden" id="content-material">
           <a href="{{$item->document}}">ไฟล์ pdf</a>

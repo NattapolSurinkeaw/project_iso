@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('thumbnail');
+            $table->string('type_input', 20);
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 @section('title') QuizPage @endsection
 @section('content')
 {{-- @dd($quiz) --}}
-  <div class="bg-gray-100 h-screen p-20 flex justify-center ">
+  <div class="bg-gray-100 h-screen p-20 max-xs:p-10 flex justify-center ">
     <div class="mx-auto p-10 bg-white w-[970px] border-2 flex flex-col justify-center items-center gap-10 rounded-xl bg-gray-100">
       <h1 class="text-center text-3xl font-medium">Star Quiz</h1>
       <h1 class="text-center">Course : {{$course->course_name}}</h1>

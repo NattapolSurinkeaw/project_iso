@@ -2,8 +2,8 @@
 @section('title') Score Sumary @endsection
 @section('content') 
 {{-- @dd($userLearning) --}}
-  <div class="bg-gray-100 h-screen p-20 flex justify-center ">
-    <div class="mx-auto p-10 bg-white w-[970px] border-2 flex flex-col justify-center items-center gap-10 rounded-xl bg-gray-100">
+  <div class="bg-gray-100 h-screen p-20 max-xs:p-5 flex justify-center ">
+    <div class="mx-auto p-5 bg-white w-[970px] border-2 flex flex-col justify-center items-center gap-7 rounded-xl bg-gray-100">
       <h1 class="text-center text-3xl font-medium">สรุปคะแนน</h1>
       <h1 class="text-center">Total Questions : {{$questionCount}}</h1>
       <h1 class="text-center">คะแนนที่ได้ : {{$userLearning->last_score}} / {{$userLearning->total_score}}</h1>
@@ -14,10 +14,10 @@
       <h1 class="text-center">Quiz Name : {{$quiz->quiz_name}}</h1>
       <h1 class="text-center">Quiz Type : {{$quiz->quiz_type}}</h1>
       <h1 id="text-congrat" class="text-center text-3xl font-medium"></h1>
-      <div class="flex gap-10">
-        <a href="/course/{{$quiz->elerningcourse_id}}" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">back to course</a>
-        <a href="/all_question/{{$quiz->id}}" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Try again</a>
-        <button id="downloadCertificate" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Download Certificate</button>
+      <div class="flex max-xs:flex-col gap-10">
+        <a href="/course/{{$quiz->elerningcourse_id}}" class="text-white text-center bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 ">back to course</a>
+        <a href="/all_question/{{$quiz->id}}" class="text-white text-center bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 ">Try again</a>
+        <button id="downloadCertificate" class="text-white text-center font-medium rounded-lg text-sm px-5 py-2.5 ">Download Certificate</button>
       </div>
     </div>
     

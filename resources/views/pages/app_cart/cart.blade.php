@@ -4,16 +4,16 @@
   <div class="py-4">
     <h1 class="text-3xl text-center font-medium">หลักสูตรในรถเข็น</h1>
 
-    <div class="flex p-10">
+    <div class="flex max-lg:flex-col max-lg:gap-5 p-10">
       <!-- detail cartProduct -->
-      <div class="w-full border rounded-lg h-[500px] p-10 flex flex-col gap-4 overflow-auto">
+      <div class="w-full border rounded-lg h-[500px] p-5 flex flex-col gap-4 overflow-auto">
         @if(count($cartCourses) > 0)
         @foreach($cartCourses as $course)
-        <div class="flex">
-          <div class="h-48 w-64">
+        <div class="flex max-xs:flex-col">
+          <div class="h-48 w-64 max-xs:w-full">
             <img class="w-full h-full rounded-lg" src="{{ $course->img_course}}" alt="course">
           </div>
-          <div class="px-10 w-full flex flex-col justify-between">
+          <div class="px-10 max-xs:py-2 w-full flex flex-col justify-between">
             <h1 class="text-2xl font-bold">Course : {{ $course->course_name }} </h1>
             <p class="text-gray-400">{{ $course->description }}</p>
             <p class="text-gray-400">{{ $course->user_name }}</p>
@@ -47,7 +47,7 @@
 
       </div>
     
-      <div class="w-full max-w-[500px] px-14">
+      <div class="w-full lg:max-w-[500px] xs:px-14 ">
         <h1 class="text-xl text-gray-400 mb-5">ทั้งหมด</h1>
         @if(count($cartCourses) > 0)
         @php

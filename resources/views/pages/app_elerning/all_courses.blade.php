@@ -31,16 +31,16 @@
         </nav>
     </div>
 
-    <div class="w-10/12 my-5 mx-auto grid gap-10 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+    <div class="w-10/12 my-5 mx-auto grid gap-10 grid-cols-5 max-2xl:grid-cols-3 max-lg:grid-cols-2 max-xs:grid-cols-1">
         @isset($elcourses)
             @if(count($elcourses) > 0)
                 @foreach($elcourses as $elcourse)
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                         <div class="overflow-hidden rounded-lg h-45 w-full">
                             @if(!empty($elcourse->img_course))
-                                <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
                             @else
-                                <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
+                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
                             @endif
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
@@ -137,9 +137,9 @@
         </div>
     </div>
 
-    <div class="w-3/4 mx-auto" id="search-course">
+    {{-- <div class="w-3/4 mx-auto" id="search-course">
         fff
-    </div>
+    </div> --}}
     
 
 @endsection
@@ -149,11 +149,16 @@
      // let course = {!! $elcourses !!};
     // console.log(course);
     
-    let search_course = document.querySelector('#search-course');
-    const gogo = "nattapol surinkeaw"
-    let datasearch = `<h1>My name is </h1>
-                      <h1>${gogo}</h1>
-                    `;
+    // let search_course = document.querySelector('#search-course');
+    // const gogo = "nattapol surinkeaw"
+    // let array = ['boss', 'love', 'anime']
+    // let datasearch = []
+    // array.forEach(element => {
+    //     datasearch += `<h1>My name is </h1>
+    //                       <h1>${element}</h1>
+    //                     `;
+    // });
+    // search_course.innerHTML = datasearch;
     
     // pagination
     let countElerning = {!! $countElerning !!}

@@ -17,7 +17,7 @@ class Controller extends BaseController
     public function homePage() {
         // $allSessions = session()->all();
         // dd($allSessions);
-        $homeVideos = HomeVideo::select('id', 'thumbnail')->get();
+        $homeVideos = HomeVideo::select('id', 'thumbnail')->take(5)->get();
         $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
 
         return view('pages.app_iso.home', compact('homeVideos', 'homeNews'));
