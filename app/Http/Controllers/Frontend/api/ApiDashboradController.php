@@ -17,6 +17,15 @@ class ApiDashboradController extends Controller
     public function getHomeVideo($id) {
         $urlvdo = HomeVideo::find($id);
 
+        if($urlvdo->type_input == 'youtube' || $urlvdo->type_input == 'vimeo'){
+            $embed = \Embed::make($urlvdo->url)->parseUrl();
+            $course_video = $embed->getHtml();
+        } else if ($urlvdo->type_input == 'drive') {
+            $course_video = '<iframe src="' . $urlvdo->url . '" width="1200" height="700" allow="autoplay"></iframe>';
+        } else {
+            $course_video = "ไม่มีวิดีโอ";
+        }
+
         if (empty($urlvdo)) {
             return response([
                "status" => "404",
@@ -25,7 +34,7 @@ class ApiDashboradController extends Controller
         } else {
             return response([
                "status" => "200",
-               "data" => $urlvdo, 
+               "data" => $course_video, 
             ], 200);
         }
 

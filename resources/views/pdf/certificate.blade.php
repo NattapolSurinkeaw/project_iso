@@ -8,6 +8,9 @@
     <title>Document</title>
 </head>
 <style>
+    @page {
+        margin: 0 !important;
+    }
     @font-face {
             font-family: 'THSarabunNew';
             font-style: normal;
