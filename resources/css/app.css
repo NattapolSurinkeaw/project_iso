@@ -12,6 +12,10 @@
 .group:hover .group-hover\:block {
   display: block;
 }
+
+#check:checked ~ ul {
+  left: 50%;
+}
 /* * {
   scroll-behavior: smooth;
 } */

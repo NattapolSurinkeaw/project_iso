@@ -1,4 +1,4 @@
-<nav id="myNav" class="sticky top-0 w-full duration-300 bg-white shadow z-[10]">
+{{-- <nav id="myNav" class="sticky top-0 w-full duration-300 bg-white shadow z-[10]">
   <div class="md:container m-auto flex items-center justify-between text-gray-700">
     <a href="{{url('/')}}" class="flex items-center">
       <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
@@ -78,6 +78,30 @@
       </div>
     </button>
   </div>
+</nav> --}}
+
+
+<nav class="sticky top-0 flex items-center justify-between h-14 w-full bg-slate-600 z-50">
+        
+  <!-- <label for="" class="pl-12 text-3xl leading-[80px] text-white md:pl-24 md:text-4xl md:leading-[80px]">Navigation</label> -->
+  <a href="{{url('/')}}" class="flex items-center">
+    <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
+  </a>
+  <input type="checkbox" id="check" hidden />
+  <label for="check" class="float-right mr-10 flex w-5 flex-col gap-1 leading-[80px] lg:hidden cursor-pointer m-2">
+    <div class="border"></div>
+    <div class="border"></div>
+    <div class="border"></div>
+  </label>
+  
+<ul class="z-50 fixed left-[100%] top-12 float-right  mr-10 h-[100vh] w-[50%] rounded bg-slate-700 text-center uppercase leading-[80px] text-white transition-all duration-300 lg:relative lg:left-0 lg:-top-10 lg:flex lg:gap-6 lg:h-0 lg:w-fit lg:transition-none">
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">HOME</a></li>
+</ul>
 </nav>
 
 <script>
