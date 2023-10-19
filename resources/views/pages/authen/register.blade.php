@@ -2,8 +2,8 @@
 @section('title') Register @endsection
 @section('content')
     <div class="h-[94%] w-full bg-blue-100 flex justify-center items-center">
-        <div class="w-10/12 h-9/12 bg-white rounded-lg flex">
-            <div class="w-full border-r-2">
+        <div class="w-10/12 h-9/12 bg-white rounded-lg flex max-lg:flex-col">
+            <div class="w-full border-r-2 max-sm:hidden">
                 <img class="w-full h-full rounded-l-lg" src="/image/background/login.jpg" alt="">
             </div>
             <div class="w-full p-8 rounded-r-lg flex flex-col justify-center items-center gap-5">

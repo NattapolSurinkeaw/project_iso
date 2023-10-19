@@ -32,9 +32,9 @@
       </a>
       <a href="{{url('/contact')}}"><li class="px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
     </ul>
-    @if($user)
+    @if ($user)
       <div class="text-base hidden cursor-pointer items-center pr-10 font-medium xl:flex gap-3 items-center">
-        @if(empty($user->img_profile))
+        @if (empty($user->img_profile))
         <a href="{{url('/dashboard')}}"><div><img class="rounded-full w-8 h-8" src="/image/icon/user.png" alt=""></div></a>
         @else
         <a href="{{url('/dashboard')}}"><div><img class="rounded-full w-8 h-8" src="{{$user->img_profile}}" alt=""></div></a>
@@ -61,9 +61,9 @@
           <a href="/newsandevent"><li class="w-full px-6 py-4 hover:bg-gray-200">NEWS & EVENT</li></a>
           <a href="/training"><li class="w-full px-6 py-4 hover:bg-gray-200">TRAINING</li></a>
           <a href="/contact"><li class="w-full px-6 py-4 hover:bg-gray-200">CONTACT</li></a>
-          @if($user)
+          @if ($user)
             <a class="-order-1 font-medium" href="{{url('/dashboard')}}"><li class="w-full px-6 py-4 hover:bg-gray-200 flex justify-center items-center">{{$user->name}}</li></a>
-            @if(empty($user->img_profile))
+            @if (empty($user->img_profile))
             <a class=" order-first" href="{{url('/dashboard')}}"><li class="w-full px-6 py-4 hover:bg-gray-200 flex justify-center items-center"><img class="w-10 h-10 rounded-full" src="/image/icon/user.png" alt=""></li></a>
             @else
             <a class=" order-first" href="{{url('/dashboard')}}"><li class="w-full px-6 py-4 hover:bg-gray-200 flex justify-center items-center"><img class="w-10 h-10 rounded-full" src="{{$user->img_profile}}" alt=""></li></a>
@@ -80,43 +80,116 @@
   </div>
 </nav> --}}
 
+<nav id="myNav" class="sticky top-0 w-full h-[60px] bg-blue-600 z-10 px-8 flex justify-between items-center">
+    <a href="{{ url('/') }}" class="flex items-center">
+        <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
+    </a>
+    <ul id="elNav" class="max-xl:overflow-hidden max-xl:bg-slate-600 max-xl:p-0 flex flex-row max-xl:flex-col max-xl:fixed max-xl:items-center max-xl:top-[60px] max-xl:right-0 text-xl text-white w-full max-xl:w-0 h-full max-xl:h-screen gap-4 justify-end max-xl:justify-start max-xl:items-start items-center transition-all ease-in-out duration-300">
+        <li><a href="/">HOME</a></li>
+        <li><a href="elerning">ELEARNING</a></li>
+        <li><a href="newsandevent">NEWS & EVENT</a></li>
+        <li><a href="training">TRAINING</a></li>
+        <li><a href="contact">CONTACT</a></li>
+        <li>
 
-<nav class="sticky top-0 flex items-center justify-between h-14 w-full bg-slate-600 z-50">
-        
-  <!-- <label for="" class="pl-12 text-3xl leading-[80px] text-white md:pl-24 md:text-4xl md:leading-[80px]">Navigation</label> -->
-  <a href="{{url('/')}}" class="flex items-center">
-    <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
-  </a>
-  <input type="checkbox" id="check" hidden />
-  <label for="check" class="float-right mr-10 flex w-5 flex-col gap-1 leading-[80px] lg:hidden cursor-pointer m-2">
-    <div class="border"></div>
-    <div class="border"></div>
-    <div class="border"></div>
-  </label>
-  
-<ul class="z-50 fixed left-[100%] top-12 float-right  mr-10 h-[100vh] w-[50%] rounded bg-slate-700 text-center uppercase leading-[80px] text-white transition-all duration-300 lg:relative lg:left-0 lg:-top-10 lg:flex lg:gap-6 lg:h-0 lg:w-fit lg:transition-none">
-  <li><a href="#">HOME</a></li>
-  <li><a href="#">HOME</a></li>
-  <li><a href="#">HOME</a></li>
-  <li><a href="#">HOME</a></li>
-  <li><a href="#">HOME</a></li>
-  <li><a href="#">HOME</a></li>
-</ul>
+        @if ($user)
+          @if (empty($user->img_profile))
+            <a class=" order-first" href="{{ url('/dashboard') }}">
+                <img class="rounded-full w-[40px] h-[40px]" src="/image/icon/user.png" alt="">
+            </a>
+          @else
+            <a class=" order-first" href="{{ url('/dashboard') }}">
+        <li class=""><img class="rounded-full w-[40px] h-[40px]" src="{{ $user->img_profile }}" alt=""></li>
+        </a>
+        @endif
+        <a href="/cart" class=""><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+            viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+            <path
+                d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z">
+            </path>
+            <circle cx="10.5" cy="19.5" r="1.5"></circle>
+            <circle cx="16.5" cy="19.5" r="1.5"></circle>
+          </svg></a>
+        <li class="" onclick="onLogout()">Logout</li>
+        </li>
+    @else
+        <li><a href="login">LOGIN</a></li>
+        <li><a href="register">REGISTER</a></li>
+        @endif
+    </ul>
+    <input type="checkbox" id="check" hidden />
+    <label id="burgur" for="check" class="float-right flex w-5 flex-col gap-1 leading-[80px] xl:hidden cursor-pointer m-2">
+      <div class="border"></div>
+      <div class="border"></div>
+      <div class="border"></div>
+    </label>
 </nav>
 
-<script>
-  
-  function onLogout() {
-    axios.get('/api/auth/logout').then((response) => {
-      console.log(response);
-      location.href ='/login';
-    });
-  }
+{{-- <nav id="myNav" class="sticky top-0 flex items-center justify-between h-14 w-full bg-slate-600 z-50 xl:px-10">
+    <!-- <label for="" class="pl-12 text-3xl leading-[80px] text-white md:pl-24 md:text-4xl md:leading-[80px]">Navigation</label> -->
+    <a href="{{url('/')}}" class="flex items-center">
+      <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
+    </a>
+    <input type="checkbox" id="check" hidden />
+    <label for="check" class="float-right mr-10 flex w-5 flex-col gap-1 leading-[80px] lg:hidden cursor-pointer m-2">
+      <div class="border"></div>
+      <div class="border"></div>
+      <div class="border"></div>
+    </label>
+    
+    <ul id="elNav" class="text-white w-full">
+    <ul id="elNav" class="z-50 fixed flex left-[100%] top-14  mr-10 h-[100vh] w-[50%] rounded bg-slate-700 text-center uppercase leading-[80px] text-white transition-all duration-300 lg:relative lg:left-0 lg:-top-10 lg:flex lg:gap-6 lg:h-0 lg:w-fit lg:transition-none">
+      <li><a href="/">HOME</a></li>
+      <li><a href="elerning">ELEARNING</a></li>
+      <li><a href="newsandevent">NEWS & EVENT</a></li>
+      <li><a href="training">TRAINING</a></li>
+      <li><a href="contact">CONTACT</a></li>
+      @if ($user)
+        @if (empty($user->img_profile))
+          <a class=" order-first" href="{{url('/dashboard')}}"><li class="w-full px-6 py-4 hover:bg-gray-200 flex justify-center items-center"><img class="w-10 h-10 rounded-full" src="/image/icon/user.png" alt=""></li></a>
+        @else
+          <a class=" order-first" href="{{url('/dashboard')}}"><li class="w-full px-6 py-4 hover:bg-gray-200 flex justify-center items-center"><img class="w-10 h-10 rounded-full" src="{{$user->img_profile}}" alt=""></li></a>
+        @endif
+          <a href="/cart" class="flex justify-center w-full px-6 py-4 hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></a>
+          <li class="w-full px-6 py-4 hover:bg-gray-200 hover:text-red-500" onclick="onLogout()">Logout</li>
+      @else
+        <li><a href="login">LOGIN</a></li>
+        <li><a href="register">REGISTER</a></li>
+      @endif
+    </ul>
+</nav> --}}
 
-  let contentMenu = document.querySelector('#menu-content');
-  function showNav(e) {
-    console.log(e.name)
-    e.name = e.name === 'menu' ? 'close' : 'menu';
-    contentMenu.classList.toggle('hidden');
-  }
+<script>
+    function onLogout() {
+        axios.get('/api/auth/logout').then((response) => {
+            console.log(response);
+            location.href = '/login';
+        });
+    }
+
+    let contentMenu = document.querySelector('#menu-content');
+
+    function showNav(e) {
+        console.log(e.name)
+        e.name = e.name === 'menu' ? 'close' : 'menu';
+        contentMenu.classList.toggle('hidden');
+    }
+</script>
+<script>
+  const burgur = document.getElementById("burgur")
+  const sidebar = document.getElementById("elNav")
+
+  burgur.addEventListener("click", () => {
+    if (sidebar.classList.contains("open")) {
+      sidebar.classList.remove("open")
+      sidebar.style.width = "0";
+      sidebar.style.padding = "0";
+    } else {
+      
+      sidebar.classList.add("open")
+      sidebar.style.width = "40%";
+      sidebar.style.padding = "1rem";
+    }
+      
+  }) 
 </script>

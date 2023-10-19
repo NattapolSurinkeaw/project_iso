@@ -13,9 +13,9 @@
   display: block;
 }
 
-#check:checked ~ ul {
+/* #check:checked ~ ul {
   left: 50%;
-}
+} */
 /* * {
   scroll-behavior: smooth;
 } */
