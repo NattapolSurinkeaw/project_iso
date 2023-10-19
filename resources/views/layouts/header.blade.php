@@ -80,19 +80,31 @@
   </div>
 </nav> --}}
 
-<nav id="myNav" class="sticky top-0 w-full h-[60px] bg-blue-600 z-10 px-8 flex justify-between items-center">
+<nav id="myNav" class="sticky top-0 w-full h-[60px] bg-blue-600 z-10 px-8 flex justify-between items-center 2xl:px-30">
     <a href="{{ url('/') }}" class="flex items-center">
         <img src="/image/icon/isologo.png" class="mr-3 h-12" alt="isoconsult logo" />
     </a>
-    <ul id="elNav" class="max-xl:overflow-hidden max-xl:bg-slate-600 max-xl:p-0 flex flex-row max-xl:flex-col max-xl:fixed max-xl:items-center max-xl:top-[60px] max-xl:right-0 text-xl text-white w-full max-xl:w-0 h-full max-xl:h-screen gap-4 justify-end max-xl:justify-start max-xl:items-start items-center transition-all ease-in-out duration-300">
+    <ul id="elNav" class="max-xl:overflow-hidden max-xl:bg-slate-600 max-xl:p-0 flex flex-row max-xl:flex-col max-xl:fixed max-xl:items-center max-xl:top-[60px] max-xl:right-0 text-lg text-white w-full max-xl:w-0 h-full max-xl:h-screen gap-10 justify-end max-xl:justify-start max-xl:items-start items-center transition-all ease-in-out duration-300">
         <li><a href="/">HOME</a></li>
         <li><a href="elerning">ELEARNING</a></li>
         <li><a href="newsandevent">NEWS & EVENT</a></li>
         <li><a href="training">TRAINING</a></li>
         <li><a href="contact">CONTACT</a></li>
-        <li>
-
         @if ($user)
+        <li class="max-xl:-order-1">
+          <a class="order-first" href="{{ url('/dashboard') }}">
+            <img class="rounded-full w-[40px] h-[40px]" src="/image/icon/user.png" alt="">
+          </a>
+        </li>
+        <li class="max-xl:-order-1 hover:bg-gray-200 flex justify-center items-center"><a class="-order-1 font-medium" href="{{url('/dashboard')}}">{{$user->name}}</a></li>
+        <li><a href="/cart" class="flex justify-center w-full hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></a></li>
+        <li class="hover:bg-gray-200 hover:text-red-500" onclick="onLogout()">Logout</li>
+        @else
+        <li><a href="login">login</a></li>
+        <li><a href="register">register</a></li>
+        @endif
+
+        {{-- @if ($user)
           @if (empty($user->img_profile))
             <a class=" order-first" href="{{ url('/dashboard') }}">
                 <img class="rounded-full w-[40px] h-[40px]" src="/image/icon/user.png" alt="">
@@ -112,10 +124,10 @@
           </svg></a>
         <li class="" onclick="onLogout()">Logout</li>
         </li>
-    @else
+    else
         <li><a href="login">LOGIN</a></li>
         <li><a href="register">REGISTER</a></li>
-        @endif
+        @endif --}}
     </ul>
     <input type="checkbox" id="check" hidden />
     <label id="burgur" for="check" class="float-right flex w-5 flex-col gap-1 leading-[80px] xl:hidden cursor-pointer m-2">
@@ -161,10 +173,10 @@
 
 <script>
     function onLogout() {
-        axios.get('/api/auth/logout').then((response) => {
-            console.log(response);
-            location.href = '/login';
-        });
+      axios.get('/api/auth/logout').then((response) => {
+        console.log(response);
+        location.href = '/login';
+      });
     }
 
     let contentMenu = document.querySelector('#menu-content');
@@ -174,22 +186,20 @@
         e.name = e.name === 'menu' ? 'close' : 'menu';
         contentMenu.classList.toggle('hidden');
     }
-</script>
-<script>
-  const burgur = document.getElementById("burgur")
-  const sidebar = document.getElementById("elNav")
 
-  burgur.addEventListener("click", () => {
-    if (sidebar.classList.contains("open")) {
-      sidebar.classList.remove("open")
-      sidebar.style.width = "0";
-      sidebar.style.padding = "0";
-    } else {
-      
-      sidebar.classList.add("open")
-      sidebar.style.width = "40%";
-      sidebar.style.padding = "1rem";
-    }
-      
-  }) 
+    const burgur = document.getElementById("burgur")
+    const sidebar = document.getElementById("elNav")
+
+    burgur.addEventListener("click", () => {
+      if (sidebar.classList.contains("open")) {
+        sidebar.classList.remove("open")
+        sidebar.classList.remove("max-xl:w-[60%]")
+        sidebar.classList.remove("max-xl:p-4")
+      } else {
+        sidebar.classList.add("open")
+        sidebar.classList.add("max-xl:w-[60%]")
+        sidebar.classList.add("max-xl:p-4")
+      }
+        
+    }) 
 </script>

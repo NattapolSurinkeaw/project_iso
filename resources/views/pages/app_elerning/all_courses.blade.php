@@ -136,29 +136,12 @@
             <button id="nextPage" class="text-white px-3 py-1 rounded-lg">Next</button>
         </div>
     </div>
-
-    {{-- <div class="w-3/4 mx-auto" id="search-course">
-        fff
-    </div> --}}
     
 
 @endsection
 
 @section('scripts')
 <script>
-     // let course = {!! $elcourses !!};
-    // console.log(course);
-    
-    // let search_course = document.querySelector('#search-course');
-    // const gogo = "nattapol surinkeaw"
-    // let array = ['boss', 'love', 'anime']
-    // let datasearch = []
-    // array.forEach(element => {
-    //     datasearch += `<h1>My name is </h1>
-    //                       <h1>${element}</h1>
-    //                     `;
-    // });
-    // search_course.innerHTML = datasearch;
     
     // pagination
     let countElerning = {!! $countElerning !!}

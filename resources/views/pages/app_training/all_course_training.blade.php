@@ -2,9 +2,9 @@
 @section('title') Alltraning @endsection
 @section('content')
   <div class="mb-4">
-    <img class="w-full h-96" src="/image/background/img-training.png" alt="thumbnail-training">
+    <img class="w-full h-96 max-xl:h-40 max-xs:h-28" src="/image/background/img-training.png" alt="thumbnail-training">
   </div>
-  <div class="w-11/12 m-auto px-8">
+  <div class="w-11/12 m-auto px-8 max-xl:px-0">
     {{-- <h1 class="text-3xl text-center mb-4">All Course</h1> --}}
     <div class="flex flex-col w-full overflow-auto">
       <table class="min-w-full text-left text-sm font-light">
