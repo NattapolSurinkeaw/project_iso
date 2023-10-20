@@ -147,12 +147,12 @@
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
             <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="training-reserve" type="text"  disabled>{{$course->name}}</textarea>
-            <div class="flex gap-4 mb-4 mt-4">
+            <div class="flex items-center gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="number-participants">
                         The number of participants
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
                         id="number-participants" name="number-participants" type="number">
                         <p class="text-xs text-red-500 hidden" id="validate-number-participants">กรุณากรอกข้อมูล number of participants</p>
                 </div>
@@ -175,8 +175,8 @@
                 <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรอื่น ๆ (หากมี) </p>
                 <box-icon name='plus-medical' class="cursor-pointer p-1 rounded-md hover:bg-orange-300" onclick="addOtherCourses()"></box-icon>
             </div>
-            <div class="flex justify-between gap-4 mb-2">
-                <div class="w-full md:w-0 mx-3 mb-6 md:mb-0 mt-5">
+            <div class="flex justify-between items-center gap-4 mb-2">
+                <div class="w-full max-w-[20px]">
                     <input id="check-reserve" type="checkbox" value="" class="w-5 h-10 text-blue-600 bg-gray-100 border-gray-300 rounded">
                 </div>
                 <div class="w-full md:w-3/5 mb-6 md:mb-0">
@@ -426,11 +426,11 @@
     function addOtherCourses(){
         console.log("addcourse")
         const newInputContainer = document.createElement('div');
-        newInputContainer.classList.add('flex', 'gap-4', 'mb-2');
+        newInputContainer.classList.add('flex','items-center', 'gap-4', 'mb-2');
 
         // สร้าง element ของ div ที่บรรจุ checkbox
         const checkboxDiv = document.createElement('div');
-        checkboxDiv.classList.add('w-full', 'mx-3', 'md:w-0','mb-6', 'md:mb-0', 'mt-5');
+        checkboxDiv.classList.add('w-full', 'max-w-[20px]');
 
         // สร้าง element ของ checkbox
         const checkbox = document.createElement('input');
@@ -537,13 +537,6 @@
             setInputValue(repElements[index], value);
             });
         }
-        //  else {
-        //     // ถ้า checkbox ไม่ถูกติ๊ก ให้เคลียร์ค่าใน input หมายเลข rep
-        //     const repElements = ['rep-company', 'rep-address', 'rep-contact', 'rep-phone', 'rep-email', 'rep-fax'];
-        //     repElements.forEach((element) => {
-        //     setInputValue(element, '');
-        //     });
-        // }
     }
 </script>
 @endsection

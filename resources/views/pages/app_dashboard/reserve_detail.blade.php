@@ -3,10 +3,8 @@
     Dashboard
 @endsection
 @section('content')
-<div class="py-4 px-1 flex gap-4">
-  <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
+<div class="py-4 px-1 gap-4 flex max-xs:flex-col">
     @include('pages.app_dashboard.components.sidebar')
-  </div>
   
   <div class="w-full flex flex-col items-center">
     <div class="text-center w-full mb-4 flex justify-between px-10">

@@ -1,16 +1,14 @@
 @extends('layouts.main')
 @section('title') Dashboard @endsection
 @section('content')
-<div class="py-4 px-1 flex gap-4">
-  <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
-    @include('pages.app_dashboard.components.sidebar')
-  </div>
+<div class="py-4 px-1 gap-4 flex max-xs:flex-col">
+  @include('pages.app_dashboard.components.sidebar')
   <!-- box-profile -->
-  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
+  <div class="w-full max-2xl:max-w-[80%] max-lg:max-w-[68%] max-xs:max-w-[100%] max-2xl:h-4/6 bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
     <h1 class="text-2xl font-medium">Reservation History</h1>
     
-    <div id="table-train" class="relative w-full h-4/5 overflow-y-scroll mx-10">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div id="table-train" class="relative w-full h-4/5 max-2xl:max-h-[680px] max-lg:max-h-[980px] overflow-scroll mx-10">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 max-2xl:h-[50%]">
         <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>
                 <th scope="col" class="px-6 py-3 rounded-tl-lg font-medium">
@@ -91,16 +89,16 @@
                 @endif
               </td>
               <td class="px-6 py-4">
-                {{ \Carbon\Carbon::parse($pending->date_reserve)->format('d-M-Y') }}
+                <p class="w-24">{{ \Carbon\Carbon::parse($pending->date_reserve)->format('d-M-Y') }}</p>
               </td>
               <td class="px-6 py-4">
                 @if (!empty($pending->updated_at))
-                {{ $pending->created_at->format('d-M-y') }}
+                <p class="w-20">{{ $pending->created_at->format('d-M-y') }}</p>
                 @else
                 null
                 @endif
               </td>
-              <td class="px-6 py-4">
+              <td class="flex px-6 py-4">
                 <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center"
                     href="/reservedetail/{{$pending->id}}">ลายละเอียด</a>
               </td>

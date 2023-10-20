@@ -3,11 +3,10 @@
     Dashboard
 @endsection
 @section('content')
-<div class="py-4 px-1 flex gap-4">
-  <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
-      @include('pages.app_dashboard.components.sidebar')
-  </div>
-  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
+<div class="py-4 px-1 gap-4 flex max-xs:flex-col">
+  @include('pages.app_dashboard.components.sidebar')
+
+  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4 max-2xl:max-w-[80%]">
     <h1 class="text-2xl font-medium">Purchase History</h1>
 
     <div id="table-train" class="relative w-full h-4/5 overflow-y-scroll mx-10">
@@ -81,16 +80,16 @@
                 <img class="w-18 h-20" src="{{ $pending->payment_slip}}" alt="">
               </td>
               <td class="px-6 py-4">
-                {{ $pending->created_at->format('d-M-y') }}
+                <p class="w-20">{{ $pending->created_at->format('d-M-y') }}</p>
               </td>
               <td class="px-6 py-4">
                 @if (!empty($pending->updated_at))
-                {{ $pending->updated_at->format('d-M-y') }}
+                <p class="w-20">{{ $pending->updated_at->format('d-M-y') }}</p>
                 @else
                 null
                 @endif
               </td>
-              <td class="px-6 py-4">
+              <td class="px-6 py-4 flex">
                 <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/purchasedetail/{{$pending->id}}">ลายละเอียด</a>
               </td>
             </tr>

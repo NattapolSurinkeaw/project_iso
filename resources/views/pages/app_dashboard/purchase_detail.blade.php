@@ -3,10 +3,9 @@
     Dashboard
 @endsection
 @section('content')
-<div class="py-4 px-1 flex gap-4">
-  <div class="w-full max-w-[240px] bg-gray-300 px-2 rounded-xl">
-      @include('pages.app_dashboard.components.sidebar')
-  </div>
+<div class="py-4 px-1 gap-4 flex max-xs:flex-col">
+  @include('pages.app_dashboard.components.sidebar')
+
   <div class="w-full bg-gray-100 rounded-lg p-4">
     <h1 class="text-2xl font-medium text-center">Purchase Detail</h1>
 
