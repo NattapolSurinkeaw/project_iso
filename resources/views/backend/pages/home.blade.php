@@ -5,7 +5,7 @@
 <div class="p-10">
     <h1 class="text-2xl font-bold">Dashboard</h1>
 
-    <div class="my-4 grid grid-cols-4 gap-10">
+    <div class="my-4 grid grid-cols-4 max-lg:grid-cols-2 gap-10">
         <a href="{{url('backend/member')}}">
             <div class="h-30 p-4 bg-red-300 rounded-lg">
                 <h1>Member</h1>

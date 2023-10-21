@@ -4,7 +4,7 @@
 <div class="py-4 px-1 gap-4 flex max-xs:flex-col">
   @include('pages.app_dashboard.components.sidebar')
   <!-- box-profile -->
-  <div class="w-full max-2xl:max-w-[80%] max-lg:max-w-[68%] max-xs:max-w-[100%] max-2xl:h-4/6 bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
+  <div class="w-full max-2xl:max-w-[80%] max-lg:max-w-[68%] max-xs:max-w-[100%] bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
     <h1 class="text-2xl font-medium">Reservation History</h1>
     
     <div id="table-train" class="relative w-full h-4/5 max-2xl:max-h-[680px] max-lg:max-h-[980px] overflow-scroll mx-10">

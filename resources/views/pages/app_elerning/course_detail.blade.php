@@ -37,12 +37,61 @@
       <div class="w-full p-4 max-w-[400px] bg-gray-300 rounded-lg">
         <h1 class="text-xl">ราคา</h1>
         <h1 class="text-xl">price : {{$course->price}}</h1>
-        <hr class="border border-2 my-1">
-        <button>เพิ่มใส่ตระกร้า</button>
-        <button>ทำการสั่งซื้อทันที</button>
+        <hr class="border border-2 my-2">
+        <div class="px-2 flex flex-col gap-3">
+          <button id="btnAddCart" class="w-full bg-blue-600 p-1 rounded-lg text-white">เพิ่มใส่ตระกร้า</button>
+          <button id="btnBuyNow" class="w-full bg-red-600 p-1 rounded-lg text-white">สั่งซื้อทันที</button>
+        </div>
       </div>
     </div>
     <a href="{{url('/elerning')}}">back</a>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+  const courseId = {{$course->id}}
+
+  btnAddCart.onclick = () => {
+    console.log(courseId)
+    axios.post('/add-to-cart', {
+      course_id: courseId
+    })
+    .then(response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: response.data.message,
+          showConfirmButton: false,
+          timer: 1000
+        })
+        console.log(response.data.message);
+        // คุณสามารถทำอะไรก็ได้หลังจากเพิ่มคอร์สลงใน Session แล้ว
+    })
+    .catch(error => {
+        console.error('An error occurred:', error);
+    });
+  }
+
+  btnBuyNow.onclick = () => {
+    console.log("fff")
+    axios.post('/add-to-cart', {
+      course_id: courseId
+    })
+    .then(response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: response.data.message,
+          showConfirmButton: false,
+          timer: 1000
+        }).then(() => location.href = "/cart")
+        // คุณสามารถทำอะไรก็ได้หลังจากเพิ่มคอร์สลงใน Session แล้ว
+    })
+    .catch(error => {
+        console.error('An error occurred:', error);
+    });
+  }
+</script>
 @endsection

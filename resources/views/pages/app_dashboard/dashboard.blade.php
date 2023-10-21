@@ -36,8 +36,9 @@
             <!-- box-mycourse -->
             <div class="p-4 bg-white rounded-lg">
                 <h1 class="text-xl font-bold text-center">my course</h1>
-                <div class="flex flex-wrap gap-2 mt-5">
+                <div class="flex flex-wrap gap-2 mt-5 max-xs:justify-center">
                     @if(count($elerningcourses) > 0)
+                    @for($i = 0; $i < 10; $i++)
                     @foreach ($elerningcourses as $elerningcourse)
                     <a href="{{url('/course/'.$elerningcourse->id)}}">
                         <div class=" border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
@@ -62,6 +63,7 @@
                         </div>
                     </a>
                     @endforeach
+                    @endfor
                     @else
                     <div class="mx-auto">
                         <img class="w-32 " src="/image/icon/bookempty.png" alt="">

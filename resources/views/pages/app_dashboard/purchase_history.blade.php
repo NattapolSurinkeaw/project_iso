@@ -6,10 +6,10 @@
 <div class="py-4 px-1 gap-4 flex max-xs:flex-col">
   @include('pages.app_dashboard.components.sidebar')
 
-  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4 max-2xl:max-w-[80%]">
+  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4 max-2xl:max-w-[80%] max-lg:max-w-[70%] max-xs:max-w-[100%]">
     <h1 class="text-2xl font-medium">Purchase History</h1>
 
-    <div id="table-train" class="relative w-full h-4/5 overflow-y-scroll mx-10">
+    <div id="table-train" class="relative w-full h-4/5 max-2xl:h-[680px] max-lg:h-[880px] overflow-y-scroll mx-10">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>

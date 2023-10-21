@@ -87,11 +87,11 @@
   <ul id="elNav" class="flex h-full w-full items-center justify-end gap-5 text-lg font-medium transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
     <div class="invisible"></div>
     <div class="flex items-center gap-10 max-xl:flex-col max-xl:items-center">
-      <li><a class="lg:py-4" href="/">HOME</a></li>
-      <li><a class="lg:py-4" href="elerning">ELEARNING</a></li>
-      <li><a class="lg:py-4" href="newsandevent">NEWS & EVENT</a></li>
-      <li><a class="lg:py-4" href="training">TRAINING</a></li>
-      <li><a class="lg:py-4" href="contact">CONTACT</a></li>
+      <li><a class="lg:py-4" href="{{ url('/') }}">HOME</a></li>
+      <li><a class="lg:py-4" href="{{ url('/elerning') }}">ELEARNING</a></li>
+      <li><a class="lg:py-4" href="{{ url('/newsandevent') }}">NEWS & EVENT</a></li>
+      <li><a class="lg:py-4" href="{{ url('/training') }}">TRAINING</a></li>
+      <li><a class="lg:py-4" href="{{ url('/contact') }}">CONTACT</a></li>
     </div>
     <div class="flex items-center gap-5 max-xl:-order-1 max-xl:flex-col max-xl:items-center">
       @if ($user)

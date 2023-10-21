@@ -1,5 +1,5 @@
 <div class="w-full xs:max-w-[240px] bg-gray-300 px-2 rounded-xl">
-  <div class="2xl:h-screen max-xs:h-full max-xs:w-full">
+  <div class="h-screen max-xs:h-full max-xs:w-full">
     <a href="{{url('/dashboard')}}"><h1 class="p-5 mt-2 mb-4 font-medium text-center text-xl">User Dashboard</h1></a>
     <div class="flex flex-col">
       <ul class="flex flex-col items-center gap-4">
