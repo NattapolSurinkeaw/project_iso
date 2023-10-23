@@ -39,7 +39,7 @@
               @endif
                 <tr class="border-b dark:border-neutral-500">
                   <td class="whitespace-nowrap px-6 py-4">{{ $course->code }}</td>
-                  <td class="whitespace-nowrap px-6 py-4">{{ $course->name }}</td>
+                  <td class="whitespace-nowrap px-6 py-4"><a class="underline text-blue-500" href="{{ url('/detail-training/'.$course->id.'') }}">{{ $course->name }}</a></td>
                   <td class="whitespace-nowrap px-6 py-4">{{ $course->day }}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{ number_format($course->fee) }}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{ \Carbon\Carbon::parse($course->date)->format('d-M-Y') }}</td>

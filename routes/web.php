@@ -52,6 +52,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
   Route::get('/training/{id?}', [TrainingController::class, 'tainingPage']);
+  Route::get('/detail-training/{id}', [TrainingController::class, 'trainingDetail']);
 
   Route::get('/testmail',[TrainingController::class,'testemail']);
   

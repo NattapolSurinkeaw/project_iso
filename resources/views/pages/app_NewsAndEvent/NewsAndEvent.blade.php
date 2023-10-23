@@ -26,16 +26,16 @@
     <div class="flex flex-col gap-2 w-full 2xl:w-[75%] rounded-lg shadow-lg">
       <h1 class="text-center rounded-lg bg-gray-600 py-2 text-xl text-white">ข่าวทั้งหมด</h1>
       @foreach($newsEvents as $index => $news)
-      <a class="px-4 @if($index % 2 !== 0) bg-gray-200 @endif" href="/newsdetails/{{$news->id}}">
-        <div class="flex break-words truncate overflow-hidden">
-          <div class="max-md:h-34 h-48 w-80 overflow-hidden">
-            <img class="h-48 w-80 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
+      <a class="px-4" href="/newsdetails/{{$news->id}}">
+        <div class="flex items-center break-words truncate @if($index % 2 !== 0) bg-gray-200 @endif">
+          <div class="overflow-hidden rounded-lg">
+            <img class="w-96 h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
           </div>
-          <div class="overflow-hidden px-10 w-full flex flex-col justify-start">
+          <div class="overflow-hidden px-10 w-full flex flex-col justify-start @if($index % 2 !== 0) bg-gray-200 @endif">
             <h1 class="text-2xl text-gray-400 p-2 underline w-full">{{$news->name}}</h1>
             <p>{{$news->description}}</p>
-            <div class="lg:w-full max-md:hidden break-words">{!!$news->content!!}</div>
-            <div class="flex gap-2">
+            <div class="lg:w-full max-md:hidden break-words h-[90px] overflow-hidden">{!!$news->content!!}</div>
+            <div class="flex gap-2 my-2">
               <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
               <span>/</span>
               <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
@@ -61,7 +61,7 @@
         <a href="/newsdetails/{{$news->id}}">
           <div class="w-full rounded-lg bg-white my-5 flex flex-col gap-2 items-center justify-center">
             <div class="overflow-hidden w-11/12 rounded-lg">
-              <img class="w-80 h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
+              <img class="w-full h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
             </div>
             <h1 class="text-lg text-blue-800">{{$news->name}}</h1>
             <h1>{{$news->description}}</h1>

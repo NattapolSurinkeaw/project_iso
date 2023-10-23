@@ -40,8 +40,7 @@
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
                             <div class="w-full flex justify-between items-center">
-                                <h1 class="text-2xl font-medium w-full truncate">{{$elcourse->course_name}}</h1>
-                                <a class="text-blue-600 rounded-md p-1" href="/coursedetail/{{$elcourse->id}}">detail</a>
+                                <h1 class="text-2xl font-medium w-full truncate cursor-default" title="{{$elcourse->course_name}}">{{$elcourse->course_name}}</h1>
                             </div>
 
                             <div class="flex flex-wrap gap-2">
@@ -90,6 +89,7 @@
                                     <h1 class="text-lg text-gray-400">{{$elcourse->user_name}}</h1>
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
+                                    <a class="bg-blue-600 text-white rounded-md p-1 " href="/coursedetail/{{$elcourse->id}}">detail</a>
                                     @if($user)
                                         @php
                                             $isAddedToCart = false; // สร้างตัวแปรเพื่อตรวจสอบว่ามีการเพิ่มลงในตะกร้าหรือไม่

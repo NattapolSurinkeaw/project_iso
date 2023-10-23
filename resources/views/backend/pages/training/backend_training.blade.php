@@ -13,7 +13,7 @@
         <button id="toggleCalendar" class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
     </div>
     <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
                     <th scope="col" class="px-6 py-3 rounded-tl-lg">
@@ -77,11 +77,11 @@
                         @endif
                     </td>
                     <td class="px-6 py-4">
-                        {{$trainingcourse->date}}
+                        <p class="w-36">{{$trainingcourse->date}}</p>
                     </td>
                     <td class="px-6 py-4">
                         @if(!empty($trainingcourse->updated_at))
-                        {{$trainingcourse->updated_at}}
+                        <p class="w-36">{{$trainingcourse->updated_at}}</p>
                         @else
                         null
                         @endif

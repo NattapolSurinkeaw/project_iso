@@ -84,16 +84,33 @@
   <a href="{{ url('/') }}" class="flex items-center">
     <img src="/image/icon/isologo.png" class="h-12" alt="isoconsult logo" />
   </a>
-  <ul id="elNav" class="flex h-full w-full items-center justify-end gap-5 text-lg font-medium transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
+  <ul id="elNav" class="flex h-full w-full items-center justify-end gap-5 text-lg font-normal transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
     <div class="invisible"></div>
     <div class="flex items-center gap-10 max-xl:flex-col max-xl:items-center">
       <li><a class="lg:py-4" href="{{ url('/') }}">HOME</a></li>
-      <li><a class="lg:py-4" href="{{ url('/elerning') }}">ELEARNING</a></li>
+      <li class="px-6 py-4 hover:bg-gray-200 relative group">
+        <a class="lg:py-4" href="{{ url('/elerning') }}">ELEARNING </a>
+        <ul class="max-xl:hidden absolute top-[55px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 20rem;">
+          @foreach ($categories as $category)
+          <a href="/elerning/{{$category->id}}">
+            <li class="cursor-pointer hover:bg-gray-200">{{$category->category_name}}</li>
+          </a>
+          @endforeach
+        </ul>
+      </li>
       <li><a class="lg:py-4" href="{{ url('/newsandevent') }}">NEWS & EVENT</a></li>
-      <li><a class="lg:py-4" href="{{ url('/training') }}">TRAINING</a></li>
+      <li class="px-6 py-4 hover:bg-gray-200 relative group">
+        <a class="lg:py-4" href="{{ url('/training') }}">TRAINING </a>
+        <ul class="max-xl:hidden absolute top-[55px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 20rem;">
+          @foreach ($modules as $module)
+          <a href="/training/{{$module->id}}">
+            <li class="cursor-pointer hover:bg-gray-200">{{$module->name}}</li>
+          </a>
+          @endforeach
+        </ul>
       <li><a class="lg:py-4" href="{{ url('/contact') }}">CONTACT</a></li>
     </div>
-    <div class="flex items-center gap-5 max-xl:-order-1 max-xl:flex-col max-xl:items-center">
+    <div class="flex items-center gap-5 max-xl:flex-col max-xl:items-center @if($user) max-xl:-order-1 @endif">
       @if ($user)
       <li class="max-xl:-order-1">
         <a class="order-first lg:py-4" href="{{ url('/dashboard') }}">
