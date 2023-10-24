@@ -36,8 +36,9 @@
   let textCongrat = document.querySelector('#text-congrat');
   if(quiz.quiz_type == 'pretest'){
     btnCertificate.classList.add('hidden');
-  } else {
-    if (percentage > 70) {
+  } 
+
+  if (percentage > 70) {
       textCongrat.classList.add('text-green-600');
       btnCertificate.classList.add('bg-green-700', 'hover:bg-green-800');
       textCongrat.innerText = "Congratulations!"
@@ -46,7 +47,6 @@
       btnCertificate.classList.add('bg-gray-600', 'cursor-default');
       textCongrat.innerText = "Sorry you didn't pass."
     }
-  }
   
   btnCertificate.addEventListener('click', () => {
     if(percentage > 70  && userLearning.certificate == 'yes') {

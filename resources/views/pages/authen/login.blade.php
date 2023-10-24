@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Login @endsection
 @section('content')
-    <div class="h-[94%] w-full bg-blue-100 flex justify-center items-center">
+    <div class="h-[94%] w-full bg-gradient-to-r from-sky-300 to-indigo-300 flex justify-center items-center">
         <div class="w-10/12 h-9/12 bg-white rounded-lg flex max-lg:flex-col">
             <div class="w-full border-r-2 max-sm:hidden">
                 <img class="w-full h-full rounded-l-lg" src="/image/background/login.jpg" alt="">

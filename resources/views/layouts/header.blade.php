@@ -79,18 +79,17 @@
     </button>
   </div>
 </nav> --}}
-
 <nav id="myNav" class="sticky top-0 z-10 flex h-[60px] items-center justify-between bg-white px-8 shadow 2xl:px-28">
   <a href="{{ url('/') }}" class="flex items-center">
     <img src="/image/icon/isologo.png" class="h-12" alt="isoconsult logo" />
   </a>
-  <ul id="elNav" class="flex h-full w-full items-center justify-end gap-5 text-lg font-normal transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
+  <ul id="elNav" class="flex h-full w-full items-center justify-end max-xl:gap-10 text-lg font-normal transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
     <div class="invisible"></div>
-    <div class="flex items-center gap-10 max-xl:flex-col max-xl:items-center">
-      <li><a class="lg:py-4" href="{{ url('/') }}">HOME</a></li>
-      <li class="px-6 py-4 hover:bg-gray-200 relative group">
-        <a class="lg:py-4" href="{{ url('/elerning') }}">ELEARNING </a>
-        <ul class="max-xl:hidden absolute top-[55px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 20rem;">
+    <div class="flex items-center xl:gap-10 max-xl:gap-7 max-xl:flex-col max-xl:items-center">
+      <li><a class="xl:py-4 max-xl:px-10" href="{{ url('/') }}">HOME</a></li>
+      <li class="hover:bg-gray-200 relative group">
+        <a class="xl:py-4 max-xl:px-10" href="{{ url('/elerning') }}">ELEARNING </a>
+        <ul class="max-xl:hidden absolute top-[44px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 20rem;">
           @foreach ($categories as $category)
           <a href="/elerning/{{$category->id}}">
             <li class="cursor-pointer hover:bg-gray-200">{{$category->category_name}}</li>
@@ -98,10 +97,10 @@
           @endforeach
         </ul>
       </li>
-      <li><a class="lg:py-4" href="{{ url('/newsandevent') }}">NEWS & EVENT</a></li>
-      <li class="px-6 py-4 hover:bg-gray-200 relative group">
-        <a class="lg:py-4" href="{{ url('/training') }}">TRAINING </a>
-        <ul class="max-xl:hidden absolute top-[55px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 20rem;">
+      <li><a class="xl:py-4 max-xl:px-10" href="{{ url('/newsandevent') }}">NEWS & EVENT</a></li>
+      <li class="hover:bg-gray-200 relative group">
+        <a class="xl:py-4 max-xl:px-10" href="{{ url('/training') }}">TRAINING </a>
+        <ul class="max-xl:hidden absolute top-[44px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 22rem;">
           @foreach ($modules as $module)
           <a href="/training/{{$module->id}}">
             <li class="cursor-pointer hover:bg-gray-200">{{$module->name}}</li>
@@ -110,11 +109,15 @@
         </ul>
       <li><a class="lg:py-4" href="{{ url('/contact') }}">CONTACT</a></li>
     </div>
-    <div class="flex items-center gap-5 max-xl:flex-col max-xl:items-center @if($user) max-xl:-order-1 @endif">
+    <div class="flex items-center gap-7 max-xl:flex-col max-xl:items-center @if($user) max-xl:-order-1 @endif">
       @if ($user)
       <li class="max-xl:-order-1">
         <a class="order-first lg:py-4" href="{{ url('/dashboard') }}">
+          @if($user->img_profile)
+          <img class="h-[40px] w-[40px] rounded-full" src="{{$user->img_profile}}" alt="" />
+          @else
           <img class="h-[40px] w-[40px] rounded-full" src="/image/icon/user.png" alt="" />
+          @endif
         </a>
       </li>
       <li class="flex items-center justify-center hover:bg-gray-200 max-xl:-order-1"><a class="-order-1 font-medium lg:py-4" href="{{url('/dashboard')}}">{{$user->name}}</a></li>
@@ -128,8 +131,8 @@
       </li>
       <li><button onclick="onLogout()" class="hover:bg-gray-200 hover:text-red-500 max-xl:text-red-600 lg:py-4">Logout</button></li>
       @else
-      <li><a href="login" class="lg:py-4">login</a></li>
-      <li><a href="register" class="lg:py-4">register</a></li>
+      <li><a href="{{ url('/login') }}" class="lg:py-4">login</a></li>
+      <li><a href="{{ url('/register') }}" class="lg:py-4">register</a></li>
       @endif
     </div>
   </ul>

@@ -6,7 +6,7 @@
     {{-- {{$quizzes}} --}}
     <div for="box-quiz" class="w-full flex flex-col items-center gap-10">
         <div class="fixed top-20 w-11/12 text-xl flex justify-end">
-            timer : <span id="counting-time" class="ml-2 text-red-600"> 0.0</span> 
+            timer : <span id="counting-time" class="ml-2 text-red-600"> {{$quizes->timer}}</span> 
         </div>
         @php
             $i = ($questions->currentPage() - 1) * $questions->perPage() + 1;

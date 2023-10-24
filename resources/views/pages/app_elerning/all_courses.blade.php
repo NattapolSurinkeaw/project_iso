@@ -8,7 +8,10 @@
 
     <div class="w-10/12 mx-auto flex items-center">
         <div class="w-full mx-auto flex flex-wrap items-center justify-between">
-            <h1 class="uppercase tracking-wide no-underline hover:no-underline font-nrmal text-gray-800 text-xl">Searching {{$countElerning}}</h1>
+            <div class="flex gap-2">
+                <h1 class="font-normal text-xl">SEARCHING</h1>
+                <h1 class="font-normal text-xl text-red-600">{{$countElerning}}</h1>
+            </div>
             <div class="relative text-right absolute inset-y-0">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
@@ -33,9 +36,9 @@
                 <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                         <div class="overflow-hidden rounded-lg h-45 w-full">
                             @if(!empty($elcourse->img_course))
-                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-125" src="{{$elcourse->img_course}}" alt="">
+                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-110" src="{{$elcourse->img_course}}" alt="">
                             @else
-                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
+                                <img class="rounded-lg w-full h-44 duration-200 hover:scale-110" src="/image/icon/isologo.png" alt="">
                             @endif
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
