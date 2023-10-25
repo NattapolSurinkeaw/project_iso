@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\HomeVideo;
 use App\Models\NewsEvent;
+use App\Models\HomeDocument;
 
 class Controller extends BaseController
 {
@@ -19,8 +20,9 @@ class Controller extends BaseController
         // dd($allSessions);
         $homeVideos = HomeVideo::select('id', 'thumbnail')->take(5)->get();
         $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
+        $homeDocuments = HomeDocument::all();
 
-        return view('pages.app_iso.home', compact('homeVideos', 'homeNews'));
+        return view('pages.app_iso.home', compact('homeVideos', 'homeNews', 'homeDocuments'));
     }
 
     public function registerPage() {

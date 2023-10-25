@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\BackendNewsEventController;
 use App\Http\Controllers\Backend\PendingCourseController;
 use App\Http\Controllers\Backend\PendingTrainingController;
 
+use App\Http\Controllers\Backend\WebContentController;
 
 
 use App\Http\Controllers\Frontend\api\ApiDashboradController;
@@ -112,6 +113,8 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/pendingcourse-detail/{id}',[PendingCourseController::class,'pendingCourseDetail']);
   Route::get('/pendingtraining',[PendingTrainingController::class,'pendingTraining']);
   Route::get('/pendingtraining-detail/{id}',[PendingTrainingController::class,'pendingTrainingDetail']);
+
+  Route::get('/webcontent',[WebContentController::class,'contentHome']);
 });
 
 
@@ -181,5 +184,11 @@ Route::prefix('api')->group(function (){
   Route::post('/backend/approvecourse/{id}', [PendingCourseController::class,'approvePendindCourse']);
 
   Route::post('/backned/updatependingtrain/{id}', [PendingTrainingController::class,'updatePendingTrain']);
+
+  Route::get('/backend/getvideo/{id}', [WebContentController::class, 'getVideo']);
+  Route::post('/backend/editvideo/{id}', [WebContentController::class, 'editVideo']);
+
+  Route::get('/backend/getdocument/{id}', [WebContentController::class, 'getDocument']);
+  Route::post('/backend/editdocument/{id}', [WebContentController::class, 'editHomeDoc']);
 
 });

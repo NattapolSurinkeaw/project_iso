@@ -1,4 +1,4 @@
-<nav class="h-full flex flex-col justify-between p-4">
+<nav class="h-full flex flex-col justify-between p-4 overflow-y-auto">
     <div class="">
         <a href="/backend/"><img src="/image/icon/isologo.png"></a>
         <h1 class="my-4 text-white font-medium text-xl">MAIN CONTENT</h1>
@@ -14,14 +14,11 @@
         <ul class="flex flex-col items-center gap-4">
             <a href="/backend/pendingcourse"><li>ELEARNING</li></a>
             <a href="/backend/pendingtraining"><li>TRAINING</li></a>
-            <li></li>
         </ul>
 
         <h1 class="my-4 text-white font-medium text-xl">WEB CONTENT</h1>
         <ul class="flex flex-col items-center gap-4">
-            <a href="/backend/pendingcourse"><li>HOME</li></a>
-            <a href="/backend/pendingtraining"><li>TRAINING</li></a>
-            <li></li>
+            <a href="/backend/webcontent"><li>HOME</li></a>
         </ul>
         <a href="/image/manual.pdf" target="_bank"><h1 class="my-4 text-white font-medium text-xl">คู่มือ</h1></a>
     </div>

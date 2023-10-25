@@ -213,7 +213,25 @@
 
 <div id="documents"></div>
 <div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
-  <h1>เอกสารที่เผยแพร่</h1>
+    <h1 class="text-center text-xl">เอกสารที่เผยแพร่</h1>
+  <div class="flex 2xl:justify-around gap-4 overflow-x-auto">
+    @foreach($homeDocuments as $doc)
+    <a href="{{$doc->path}}" target="_bank">
+      <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
+        <div class="w-60 overflow-hidden rounded-lg">
+          @if(!empty($doc->thumbnail))
+          <img class="w-60 h-40 duration-300 rounded-lg "
+              src="{{$doc->thumbnail}}" alt="">
+          @else
+          <img class="w-60 h-40 duration-300 rounded-lg "
+              src="/image/icon/isologo.png" alt="">
+          @endif
+        </div>
+          <h1 class="font-normal">{{$doc->name}}</h1>
+      </div>
+    </a>
+    @endforeach
+  </div>
 </div>
 
 <div id="agencies"></div>

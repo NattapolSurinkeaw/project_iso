@@ -41,7 +41,7 @@
       @foreach($materials as $item)
       <div class="w-full relative pr-8">
         <p class="my-5">{{$item->description}}</p>
-        <div class="hidden" id="content-material">
+        <div class="h-0 overflow-hidden transition-all duration-300 ease-in-out" id="content-material">
           <a href="{{$item->document}}">ไฟล์ pdf</a>
           <div>
             @php
@@ -135,12 +135,16 @@
       if (show === false) {
         rightIcon.classList.add('hidden');
         bottomIcon.classList.remove('hidden');
-        content_material[index].classList.remove('hidden');
+
+        content_material[index].classList.remove('h-0');
+        content_material[index].classList.add('h-[370px]');
         show = true; // เปลี่ยนเป็น true เมื่อคลิกเพื่อแสดงเนื้อหา
       } else {
         rightIcon.classList.remove('hidden');
         bottomIcon.classList.add('hidden');
-        content_material[index].classList.add('hidden');
+
+        content_material[index].classList.remove('h-[370px]');
+        content_material[index].classList.add('h-0');
         show = false; // เปลี่ยนเป็น false เมื่อคลิกเพื่อซ่อนเนื้อหา
       }
     });
