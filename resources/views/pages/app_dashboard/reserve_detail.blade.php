@@ -10,7 +10,7 @@
     <div class="text-center w-full mb-4 flex justify-between px-10">
       <a href="{{url('/reservationhistory')}}" class="w-20 bg-blue-500 flex justify-center items-center rounded-lg">กลับ</a>
       <input type="text" value="{{$pendingTraining->status}}" id="status" class="text-center rounded-lg" disabled>
-      <button class="bg-red-600 text-white py-1 px-1 rounded-lg">ดาวโหลด PDF</button>
+      <a href="/quotation/{{$pendingTraining->id}}" class="bg-red-600 text-white py-1 px-1 rounded-lg">ดาวโหลด PDF</a>
     </div>
     <div class="bg-[#fff] w-4/5 p-6 pt-5 drop-shadow-2xl rounded-xl">
       <div class="items-center w-full mt-6 mb-6">

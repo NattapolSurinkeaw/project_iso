@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Quiz;
 use App\Models\Question;
 use App\Models\CourseMaterial;
+use App\Models\MyCourse;
 
 class CourseController extends Controller
 {
@@ -19,6 +20,11 @@ class CourseController extends Controller
     public function backendCourse() {
         $courses = Elerningcourse::all();
         return view('backend.pages.elearning.backend_course', compact('courses'));
+    }
+
+    public function courseMemberPage($id_course) {
+        $members = MyCourse::where('elerningcourse_id', $id_course)->get();
+        return view('backend.pages.elearning.backend_coursemember', compact('members'));
     }
 
     public function detailCourse($id_course) {
@@ -624,6 +630,23 @@ class CourseController extends Controller
         $cate->category_name = $request->input('category_name');
         $cate->save();
 
+        return response()->json([
+            'status' => 'success',
+            'message' => 'created category successfully',
+        ], 201);
+    }
+
+    public function delCate($cate_id) {
+        $cate = Category::find($cate_id);
+
+        if(!$cate) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'created not found',
+            ], 404);
+        }
+
+        $cate->delete();
         return response()->json([
             'status' => 'success',
             'message' => 'created category successfully',

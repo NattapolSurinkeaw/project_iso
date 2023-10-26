@@ -45,6 +45,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 // Route::get('/login',[Controller::class,'loginPage']);
 // Route::middleware('web')->group(function   () {
   Route::get('/certificate', [PDFController::class, 'generatepdf']);
+  Route::get('/quotation/{id}', [PDFController::class, 'genarateQuotation']);
   Route::get('/formcer', [PDFController::class, 'formver']);
 
   Route::get('/', [Controller::class, 'homePage'])->name('home');
@@ -98,6 +99,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/member',[MemberController::class,'backendMember']);
   Route::get('/memberdetail/{id}',[MemberController::class,'memberDetail']);
   Route::get('/coruse',[CourseController::class,'backendCourse']);
+  Route::get('/coruse-member/{id}',[CourseController::class,'courseMemberPage']);
   Route::get('/coursedetail/{id}',[CourseController::class,'detailCourse']);
   Route::get('/question-table/{id}',[CourseController::class,'allQuestionTable']);
 
@@ -146,6 +148,7 @@ Route::prefix('api')->group(function (){
   Route::delete('/backend/delcourse/{id}',[CourseController::class,'delCourse']);
 
   Route::post('/backend/createcate', [CourseController::class, 'createCate']);
+  Route::delete('/backend/delcate/{id}', [CourseController::class, 'delCate']);
   Route::post('/backend/addcate/{id}', [CourseController::class, 'addCategory']);
   
   Route::post('/backend/createquestion',[CourseController::class,'createQuestion']);

@@ -66,7 +66,7 @@
                         {{$course->updated_at}}
                     </td>
                     <td class="max-2xl:w-60 px-6 py-4 flex justify-center gap-2">
-                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="member" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-8 h-8" alt="สมาชิก"></a>
+                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="member" href="/backend/coruse-member/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-8 h-8" alt="สมาชิก"></a>
                         <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="detail" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-8 h-8" alt="รายละเอียด"></a>
                         <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="edit" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-8 h-8" alt="แก้ไข"></button>
                         <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="delete" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-8 h-8" alt="ลบ"></button>

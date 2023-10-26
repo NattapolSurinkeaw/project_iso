@@ -82,7 +82,7 @@
             @foreach($materials as $item)
             <div class="w-full relative">
                 <p class="my-5">{{$item->description}}</p>
-                <div class="hidden" id="content-material">
+                <div class="h-0 overflow-hidden transition-all duration-300 ease-in-out" id="content-material">
                 <a href="{{$item->document}}" target="_bank" class="text-blue-500">เอกสาร</a>
                     <div class="mt-4">
                         @php
@@ -157,6 +157,8 @@
 
     let chkcate = document.querySelectorAll('#category');
     let actionCate = document.querySelector('#action-cate');
+    let editCate = document.querySelectorAll('#edit-cate');
+    let deleteButtons = document.querySelectorAll('#delete-cate');
     // console.log(chkcate)
 
     const action_material = document.querySelectorAll('#action-material');
@@ -172,14 +174,33 @@
         if (show === false) {
             rightIcon.classList.add('hidden');
             bottomIcon.classList.remove('hidden');
-            content_material[index].classList.remove('hidden');
+            // content_material[index].classList.remove('hidden');
+            content_material[index].classList.remove('h-0');
+            content_material[index].classList.add('h-[370px]');
             show = true; // เปลี่ยนเป็น true เมื่อคลิกเพื่อแสดงเนื้อหา
         } else {
             rightIcon.classList.remove('hidden');
             bottomIcon.classList.add('hidden');
-            content_material[index].classList.add('hidden');
+            // content_material[index].classList.add('hidden');
+            content_material[index].classList.remove('h-[370px]');
+            content_material[index].classList.add('h-0');
+
             show = false; // เปลี่ยนเป็น false เมื่อคลิกเพื่อซ่อนเนื้อหา
         }
+        });
+    });
+
+    editCate.forEach(button => {
+        button.addEventListener('click', () => {
+            const cate_id = button.getAttribute('cate_id');
+            funeditCate(cate_id);
+        });
+    });
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const cate_id = button.getAttribute('cate_id');
+            deleteCate(cate_id);
         });
     });
 
@@ -272,6 +293,44 @@
             });
             }
         });
+    }
+
+    function funeditCate(cate_id) {
+        console.log("edit" + cate_id);
+    }
+
+    function deleteCate(cate_id) {
+        console.log(cate_id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/api/backend/delcate/${cate_id}`).then((response) => {
+                    console.log(response.status);
+                    if (response.status = 200) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'Delete failed some think wrong.',
+                            'error'
+                        )
+                    }
+                })
+            }
+        })
     }
     
 

@@ -10,9 +10,8 @@
       <option value="approve" @if ($pendingTraining->status == 'approve') selected @endif>Approve</option>
       <option value="reject" @if ($pendingTraining->status == 'reject') selected @endif>Reject</option>
     </select>
-    {{-- <button class="bg-red-600 text-white py-1 px-1 rounded-lg">ดาวโหลด PDF</button> --}}
-    <button id="mockup" class="opacity-0 py-1 px-4 cursor-default">บันทึก</button>
-    <button class="bg-green-600 text-white py-1 px-4 rounded-lg hidden" id="btnSave" onclick="editpendind()">บันทึก</button>
+    <a href="/quotation/{{$pendingTraining->id}}" class="bg-red-600 text-white py-1 px-1 rounded-lg flex items-center">ดาวโหลด PDF</a>
+    <button class="bg-green-600 text-white py-1 px-4 rounded-lg hidden" id="btnSave" onclick="editpending()">บันทึก</button>
   </div>
   <div class="h-[800px] overflow-y-scroll mx-10 flex flex-col items-center">
     <div class="bg-[#fff] w-4/5 p-6 pt-5 drop-shadow-2xl rounded-xl">
@@ -211,13 +210,11 @@
 <script>
   let selectStatus = document.querySelector('#status');
   let btnSave = document.querySelector('#btnSave');
-  let mockup = document.querySelector('#mockup');
   selectStatus.addEventListener('change', () => {
     btnSave.classList.remove('hidden');
-    mockup.classList.add('hidden');
   })
 
-  function editpendind() {
+  function editpending() {
     const pedId = {!! $pendingTraining->id !!}
 
     param = {
@@ -225,7 +222,17 @@
     }
     console.log(param)
     axios.post(`/api/backned/updatependingtrain/${pedId}`, param).then((response) => {
-      console.log(response)
+      console.log(response.data.status);
+      if(response.data.status == 'success') {
+        btnSave.classList.add('hidden');
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1000
+        })
+      }
     })
   }
 
