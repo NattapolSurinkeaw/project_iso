@@ -40,25 +40,6 @@
             </div>
         </div>
 
-        <div class="mx-10 my-10 bg-white p-4 border-l-4 border-indigo-500 overflow-hidden overflow-x-scroll">
-            <h1 class="text-xl font-bold">HOME DOCUMENT</h1>
-            <div class="flex 2xl:justify-center gap-4">
-                @foreach($homeDocuments as $doc)
-                <div data-id="{{$doc->id}}" id="homeDoc" class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
-                    <div class="w-60 overflow-hidden rounded-lg">
-                    @if(!empty($doc->thumbnail))
-                    <img class="w-60 h-40 duration-300 rounded-lg "
-                        src="{{$doc->thumbnail}}" alt="">
-                    @else
-                    <img class="w-60 h-40 duration-300 rounded-lg "
-                        src="/image/icon/isologo.png" alt="">
-                    @endif
-                    </div>
-                    <h1 class="font-normal">{{$doc->name}}</h1>
-                </div>
-                @endforeach 
-            </div>
-        </div>
     </div>
 </div>
 

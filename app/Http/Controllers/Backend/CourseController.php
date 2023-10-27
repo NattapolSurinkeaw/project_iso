@@ -13,6 +13,7 @@ use App\Models\Quiz;
 use App\Models\Question;
 use App\Models\CourseMaterial;
 use App\Models\MyCourse;
+use App\Models\UserLerning;
 
 class CourseController extends Controller
 {
@@ -23,8 +24,31 @@ class CourseController extends Controller
     }
 
     public function courseMemberPage($id_course) {
-        $members = MyCourse::where('elerningcourse_id', $id_course)->get();
-        return view('backend.pages.elearning.backend_coursemember', compact('members'));
+        $members = MyCourse::where('elerningcourse_id', $id_course)
+        ->with('User') // Eager Loading ข้อมูลผู้ใช้
+        ->get();
+
+        $users = array(); // สร้างอาร์เรย์เพื่อเก็บข้อมูลผู้ใช้
+
+        if ($members->isNotEmpty()) {
+            foreach ($members as $course) {
+                $user = $course->User; // ข้อมูลผู้ใช้สำหรับแต่ละคอร์ส
+        
+                // ดึงข้อมูลจากตาราง UserLerning โดยใช้ join กับตาราง User
+                $userLerning = UserLerning::join('users', 'users.id', '=', 'user_lernings.user_id')
+                ->where('users.id', $user->id)
+                ->where('quiz_type', 'posttest') // เพิ่มเงื่อนไขนี้
+                ->get();
+        
+                $users[] = [
+                    'user' => $user,
+                    'userLerning' => $userLerning,
+                ];
+            }
+        }
+
+        // dd($users); // แสดงข้อมูลผู้ใช้ทั้งหมด
+        return view('backend.pages.elearning.backend_coursemember', compact('users'));
     }
 
     public function detailCourse($id_course) {

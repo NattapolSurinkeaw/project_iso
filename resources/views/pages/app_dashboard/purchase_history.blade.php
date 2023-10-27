@@ -89,8 +89,8 @@
                 null
                 @endif
               </td>
-              <td class="px-6 py-4 flex">
-                <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/purchasedetail/{{$pending->id}}">ลายละเอียด</a>
+              <td class="px-6 py-4">
+                <p class="w-24"><a class="bg-blue-600 p-2 rounded-lg text-white  text-center" href="/purchasedetail/{{$pending->id}}">ลายละเอียด</a></p>
               </td>
             </tr>
           @endforeach
