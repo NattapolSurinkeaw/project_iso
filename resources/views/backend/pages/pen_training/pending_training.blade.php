@@ -90,8 +90,8 @@
                     null
                   @endif
                 </td>
-                <td class="flex px-6 py-4">
-                  <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="{{url('/backend/pendingtraining-detail/'.$pending->id)}}">ลายละเอียด</a>
+                <td class="px-6 py-4">
+                  <div class="w-24"><a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="{{url('/backend/pendingtraining-detail/'.$pending->id)}}">ลายละเอียด</a></div>
                 </td>
               </tr>
             @endforeach

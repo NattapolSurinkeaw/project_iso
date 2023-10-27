@@ -66,7 +66,9 @@
                 </p>
               </td> --}}
               <td class="px-6 py-4">
-                {{$pending->training_reserve}}
+                <div class="w-40">
+                  {{$pending->training_reserve}}
+                </div>
               </td>
               <td class="px-6 py-4">
                 {{$pending->number_participants}}
@@ -74,8 +76,8 @@
               <td class="px-6 py-4">
                 {{$pending->reserve_tel}}
               </td>
-              <td class="px-6 py-4 flex justify-center">
-                {{$pending->reserve_email}}
+              <td class="px-6 py-4">
+                <div>{{$pending->reserve_email}}</div>
               </td>
               <td class="px-6 py-4">
                 @if ($pending->status === 'pending')
@@ -98,9 +100,10 @@
                 null
                 @endif
               </td>
-              <td class="flex px-6 py-4">
-                <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center"
-                    href="/reservedetail/{{$pending->id}}">ลายละเอียด</a>
+              <td class="px-6 py-4">
+                <div class="w-24">
+                  <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center"href="/reservedetail/{{$pending->id}}">ลายละเอียด</a>
+                </div>
               </td>
             </tr>
           @endforeach

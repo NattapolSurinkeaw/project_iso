@@ -4,9 +4,8 @@
 
 <div class="overflow-hidden">
     <h1 class="text-center text-2xl font-bold my-3">Member</h1>
-    <div class="h-[780px] mx-10 p-4 bg-gray-300 rounded-lg overflow-y-scroll shadow-2xl">
-    
-        <div class="flex gap-3 flex-wrap">
+    <div class="h-[780px] max-2xl:h-[670px] mx-10 p-4 bg-gray-300 rounded-lg overflow-y-scroll overflow-hidden shadow-2xl">
+        <div class="grid grid-cols-3 gap-3">
             @foreach($users as $member)
             <div class="bg-white shadow-xl rounded-lg py-3">
                 <div class="flex justify-center p-4">

@@ -2,15 +2,15 @@
 @section('title') Manage Elearning @endsection
 @section('container')
 
-<div class="h-screen">
-    <div class="mx-10 my-4 flex justify-between items-center">
+<div class="h-screen max-2xl:w-[97%] max-xl:w-[89%]">
+    <div class="px-10 py-4 flex justify-between items-center">
         <h1 class="text-xl font-medium">Elearning Course</h1>
         <div>
             <button type="button" id="create-course" class="text-white bg-green-500 hover:bg-green-600 font-normal rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Course</button>
         </div>
     </div>
     
-    <div class="relative h-4/5 overflow-y-scroll max-xl:w-[85%] mx-10">
+    <div class="relative h-4/5 overflow-y-scroll max-xl:w-[85%] max-2xl:w-[90%] mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -53,7 +53,7 @@
                         {{$course->price}}
                     </td>
                     <td class="w-96 px-6 py-4 text-center">
-                        {{ Str::limit($course->description, 100) }}
+                        <p class="w-64">{{ Str::limit($course->description, 100) }}</p>
                     </td>
                     <td class="">
                         @if (!empty($course->img_course) && $course->img_course !== 'null')
@@ -63,7 +63,7 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 text-center">
-                        {{$course->updated_at}}
+                        <p class="w-40">{{$course->updated_at}}</p>
                     </td>
                     <td class="max-2xl:w-60 px-6 py-4 flex justify-center gap-2">
                         <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="member" href="/backend/coruse-member/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-8 h-8" alt="สมาชิก"></a>

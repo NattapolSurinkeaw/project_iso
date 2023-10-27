@@ -12,7 +12,7 @@
         <button id="toggleTable" class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
         <button id="toggleCalendar" class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
     </div>
-    <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10">
+    <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10 max-xl:w-[80%] max-2xl:w-[84%]">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
@@ -61,7 +61,7 @@
                         {{$trainingcourse->code}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$trainingcourse->name}}
+                        <p class="w-60">{{$trainingcourse->name}}</p>
                     </td>
                     <td class="px-6 py-4">
                         {{$trainingcourse->day}}

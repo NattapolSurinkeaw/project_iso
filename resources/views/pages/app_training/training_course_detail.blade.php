@@ -35,7 +35,7 @@
           <h1 class="text-xl">price : {{$taining->fee}}</h1>
           <hr class="border border-2 my-2">
           <div class="px-2 flex flex-col gap-3">
-            <button id="btnBuyNow" class="w-full bg-red-600 p-1 rounded-lg text-white">จองอบรม</button>
+            <a href="{{ url('/reserveday/'.$taining->id) }}" class="w-full bg-red-600 p-1 rounded-lg text-white">จองอบรม</a>
           </div>
         </div>
       </div>
