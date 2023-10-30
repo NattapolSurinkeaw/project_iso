@@ -116,8 +116,8 @@
 
       @if(count($quizzes) > 0)
       @foreach($quizzes as $quiz)
-      <p class="my-4 text-green-500 cursor-pointer" id="startQuiz"><a href="/quizstart/{{$course->id}}/{{$quiz->id}}">{{$quiz->quiz_name}}</a></p>
-        
+      <p class="my-4 text-green-500 cursor-pointer" data-id="{{$quiz->id}}" id="startQuiz">{{$quiz->quiz_name}}</p>
+        {{-- <a href="/quizstart/{{$course->id}}/{{$quiz->id}}">{{$quiz->quiz_name}}</a> --}}
       <p class="text-gray-400">{{$quiz->updated_at->format('d-M-Y')}}</p>
       <hr>
       @endforeach
@@ -257,5 +257,24 @@
     })
   }
 
+  let startQuiz = document.querySelectorAll("#startQuiz");
+  startQuiz.forEach(element => {
+    element.addEventListener('click', () => {
+      let quiz_id = element.getAttribute("data-id")
+      funStartQuiz(quiz_id)
+    })
+  });
+
+  function funStartQuiz(quiz_id){
+    axios.get(`/quizstart/${quiz_id}`).then((response) => {
+      console.log(response);
+      if(response.data.status == 'error') {
+        console.log("error")
+        return false;
+      } else {
+        location.href = `/quizstart/${quiz_id}`
+      }
+    })
+  }
 </script>
 @endsection

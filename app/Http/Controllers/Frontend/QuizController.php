@@ -14,21 +14,29 @@ use App\Models\CourseMaterial;
 class QuizController extends Controller
 {
     //
-    public function quizStart($id_coruse, $quiz_id) {
-        $course = Elerningcourse::find($id_coruse);
+    public function quizStart($quiz_id) {
+        $session_CourseId = session('course_id');
+        $course = Elerningcourse::find($session_CourseId);
         $quiz = Quiz::find($quiz_id);
     
         $questionCount = Question::where('quiz_id', $quiz_id)->count();
         $totalScore = Question::where('quiz_id', $quiz_id)->sum('score');
 
-        $user_id = Auth::user()->id;
-        $user_learning = UserLerning::where('user_id', $user_id)
-        ->where('elearning_id', $id_coruse)
-        ->first();
-        $materials = CourseMaterial::where('elerningcourse_id', $id_coruse)->get();
-        $video_ids = explode(',', $user_learning->watch_video);
-
         if($quiz->quiz_type == 'posttest'){
+            $user_id = Auth::user()->id;
+            $user_learning = UserLerning::where('user_id', $user_id)
+            ->where('elearning_id', $session_CourseId)
+            ->first();
+            if(!$user_learning) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'you have not learned finished'
+                ], 400);
+            }
+            // dd($user_learning);exit();
+            $video_ids = explode(',', $user_learning->watch_video);
+
+            $materials = CourseMaterial::where('elerningcourse_id', $session_CourseId)->get();
             $materialIds = $materials->pluck('id')->toArray();
 
             // นับจำนวนวัสดุที่อยู่ในทั้งสองรายการ
@@ -39,7 +47,10 @@ class QuizController extends Controller
             if ($commonCount == $materialCount) {
                 return view('pages.app_quiz.start_quiz', compact('course', 'quiz', 'questionCount', 'totalScore')); // เพิ่ม 'questions'
             } else {
-                return back()->with('message', 'you learn not finished');
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'you have not learned finished'
+                ], 400);
             }
         }
         return view('pages.app_quiz.start_quiz', compact('course', 'quiz', 'questionCount', 'totalScore')); // เพิ่ม 'questions'

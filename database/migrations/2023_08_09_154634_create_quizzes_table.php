@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('quiz_name');
             $table->unsignedBigInteger('elerningcourse_id')->unsigned();
             $table->string('quiz_type');
-            $table->integer('before_quiz', 3)->nullable();
+            $table->integer('before_quiz')->nullable();
             $table->integer('timer');
-            //เพิ่มฟิล์ด เวลา $table->integer('timer');
             $table->timestamps();
 
             $table->foreign('elerningcourse_id')->references('id')->on('elerningcourses')->onDelete('cascade');

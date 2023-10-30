@@ -18,8 +18,12 @@
       <div class="flex gap-4">
         <label for="course" class="block text-sm font-medium leading-6 text-gray-900">Course</label>
         <div class="flex flex-col gap-2 w-full">
+          {{-- @dd($courses) --}}
         @foreach($courses as $course)
-          <input type="text" value="{{$course->course_name}}"  name="course" id="course" class="w-full block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"disabled>
+          <div class="grid grid-cols-5 gap-4">
+            <input type="text" value="{{$course->course_name}}"  name="course" id="course" class="w-full block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 col-span-4"disabled>
+            <a class="col-span-1 flex justify-center items-center bg-green-500 text-white rounded-lg" href="{{ url('/course/'.$course->id) }}">เริ่มเรียน</a>
+          </div>
         @endforeach
         </div>
       </div>
@@ -73,9 +77,6 @@
         <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Comment</label>
         <textarea id="about" name="about" rows="3" class="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled>{{$pendingCourse->comment}}</textarea>
       </div>
-    </div>
-    <div class="mx-10 mt-4">
-      <a href="#" class="bg-green-600 text-white mt-3 px-3 py-1 rounded-lg">เริ่มเรียน</a>
     </div>
   </div>
 </div>

@@ -65,7 +65,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
   Route::get('/course/{id}',[ElerningController::class,'coursePage'])->middleware('checklogin');
   Route::get('/coursedetail/{id}',[ElerningController::class,'courseDetail']);
   
-  Route::get('/quizstart/{course_id}/{quiz_id}',[QuizController::class,'quizStart'])->middleware('checklogin');
+  Route::get('/quizstart/{quiz_id}',[QuizController::class,'quizStart'])->middleware('checklogin');
   Route::get('/all_question/{id}',[QuestionController::class,'all_question'])->middleware('checklogin');
   Route::get('/scoresumary/{id}',[QuizController::class,'score_sumary'])->middleware('checklogin');
 
