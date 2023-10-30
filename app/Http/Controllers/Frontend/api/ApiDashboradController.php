@@ -37,7 +37,6 @@ class ApiDashboradController extends Controller
                "data" => $course_video, 
             ], 200);
         }
-
     }
 
     public function editUser(Request $request, $user_id) {

@@ -46,7 +46,6 @@ class CourseController extends Controller
                 ];
             }
         }
-
         // dd($users); // แสดงข้อมูลผู้ใช้ทั้งหมด
         return view('backend.pages.elearning.backend_coursemember', compact('users'));
     }
@@ -323,7 +322,7 @@ class CourseController extends Controller
             'data' => $material,
         ], 200);
     }
-
+ 
     public function editMaterial( Request $request, $mat_id) {
         $validator = Validator::make($request->all(), [
             'elerningcourse_id' => 'required',

@@ -11,6 +11,7 @@ class UserLerning extends Model
 
     protected $fillable = [
         'quiz_id',
+        'elearning_id',
         'user_id',
         'watch_video',
         'total_round',

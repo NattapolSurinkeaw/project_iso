@@ -24,6 +24,7 @@ class QuestionController extends Controller
         $useranswe = $request->toArray();
         $questions = Question::where('quiz_id', $quiz_id)->get();
         $quiz_scoreTotal = $questions->sum('score'); // คะแนนข้อสอบรวม
+        $session_CourseId = session('course_id');
 
         $quiz = Quiz::find($quiz_id);
 
@@ -40,11 +41,10 @@ class QuestionController extends Controller
             }
         }
         
-        $userLearning = UserLerning::where('quiz_id', $quiz_id)
+        $userLearning = UserLerning::where('elearning_id', $session_CourseId)
         ->where('user_id', $user_id)
         ->first();
 
-        
         if($quiz->quiz_type == 'posttest') {
             if (!$userLearning) {
                 // If no record exists, create a new one
@@ -65,36 +65,37 @@ class QuestionController extends Controller
                 $userLearning->increment('total_round');
                 if ($totalScore > $userLearning->score) {
                     $userLearning->score = $totalScore;
+                    $percentage = ($totalScore / $quiz_scoreTotal) * 100;
+                    $certificate = ($percentage > 70) ? "yes" : "no";
+                    $userLearning->certificate = $certificate;
                 }
+                $userLearning->quiz_id = $quiz_id;
                 $userLearning->last_score = $totalScore;
                 $userLearning->total_score = $questions->sum('score');
                 $userLearning->quiz_type = $quiz->quiz_type;
-                $percentage = ($totalScore / $quiz_scoreTotal) * 100;
-                $certificate = ($percentage > 70) ? "yes" : "no";
-                $userLearning->certificate = $certificate;
                 $userLearning->save();
             }
 
         } else {
             // dd($totalScore);exit();
-            if (!$userLearning) {
-                // If no record exists, create a new one
-                $userLearning = UserLerning::create([
-                    'quiz_id' => $quiz_id,
-                    'user_id' => $user_id,
-                    'last_score' => $totalScore,
-                    'total_score' => $questions->sum('score'),
-                    'quiz_type' => $quiz->quiz_type,
-                    'total_round' => 1,
-                ]);
-            } else {
+            // if (!$userLearning) {
+            //     // If no record exists, create a new one
+            //     $userLearning = UserLerning::create([
+            //         // 'quiz_id' => $quiz_id,
+            //         // 'user_id' => $user_id,
+            //         'last_score' => $totalScore,
+            //         'total_score' => $questions->sum('score'),
+            //         'quiz_type' => $quiz->quiz_type,
+            //         'total_round' => 1,
+            //     ]);
+            // } else {
                 // If a record exists, update the existing one
                 $userLearning->increment('total_round');
                 $userLearning->last_score = $totalScore;
                 $userLearning->total_score = $questions->sum('score');
-                $userLearning->quiz_type = $quiz->quiz_type;
+                // $userLearning->quiz_type = $quiz->quiz_type;
                 $userLearning->save();
-            }
+            // }
         }
         return response()->json([
             'status' => 'success',

@@ -298,14 +298,14 @@
     closeButton.addEventListener('click', function(event) {
       event.stopPropagation(); // หยุด event propagation
       modal.classList.add('hidden');
-      videoFrame.src = ''; // Clear the iframe source
+      videoFrame.innerHTML = ''; // Clear the iframe content
     });
 
     // Close the modal when clicking outside of it
     window.addEventListener('click', function(event) {
       if (event.target === modal) {
         modal.classList.add('hidden');
-        videoFrame.src = ''; // Clear the iframe source
+        videoFrame.innerHTML = ''; // Clear the iframe content
       }
     });
   }

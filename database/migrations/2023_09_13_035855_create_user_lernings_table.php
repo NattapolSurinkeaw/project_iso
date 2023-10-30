@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('user_lernings', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
-            $table->integer('quiz_id')->unsigned();
+            $table->integer('elearning_id',5)->unsigned();
+            $table->integer('quiz_id')->unsigned()->default(0);
             $table->string('watch_video',100)->nullable();
             $table->integer('total_round')->unsigned()->default(0);
             $table->integer('score')->unsigned()->default(0);
