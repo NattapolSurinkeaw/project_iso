@@ -6,11 +6,11 @@
     <h1 class="my-4 text-3xl text-center"> Elearning All Course</h1>
     {{-- @dd($elcourses) --}}
 
-    <div class="w-10/12 mx-auto flex items-center">
+    <div class="w-10/12 max-xs:w-full max-xs:px-4 mx-auto flex items-center">
         <div class="w-full mx-auto flex flex-wrap items-center justify-between">
             <div class="flex gap-2">
                 <h1 class="font-normal text-xl">SEARCHING</h1>
-                <h1 class="font-normal text-xl text-red-600">{{$countElerning}}</h1>
+                <h1 id="many-course" class="font-normal text-xl text-red-600">{{$countElerning}}</h1>
             </div>
             <div class="relative text-right absolute inset-y-0">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -22,9 +22,11 @@
                         </path>
                     </svg>
                 </div>
-                <input type="text" id="simple-search"
-                    class="bg-gray-50 shadow-sm outline-none border border-gray-300 text-gray-900 text-sm rounded-full  block  w-full xl:w-60 pl-10 p-2.5 "
-                    placeholder="Search" required>
+                <input type="text" id="course-search" class="bg-gray-50 shadow-sm outline-none border border-gray-300 text-gray-900 text-sm rounded-full  block  w-full xl:w-60 pl-10 p-2.5 "
+                    placeholder="Search">
+                    <ul id="data-searce" class="hidden w-full flex flex-col gap-2 absolute top-11 bg-white p-2 z-[5] rounded-lg border" id="data-search">
+                        
+                    </ul>
             </div>
         </div>
     </div>
@@ -108,7 +110,7 @@
                                         @endforeach
                         
                                         @if($isAddedToCart)
-                                            <a href="{{url('/course/'.$elcourse->id)}}" class="bg-green-500 text-white rounded-md p-1">ซื้อแล้ว</a>
+                                            <a href="{{url('/course/'.$elcourse->id)}}" class="bg-green-500 text-white rounded-md p-1">Learn</a>
                                         @else
                                             <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
                                         @endif
@@ -126,6 +128,10 @@
                 </div>
             @endif
         @endisset
+    </div>
+
+    <div id="box-search" class="w-10/12 my-5 mx-auto grid gap-10 grid-cols-5 max-2xl:grid-cols-3 max-lg:grid-cols-2 max-xs:grid-cols-1">
+
     </div>
 
     <div class="w-10/12 flex justify-end mx-auto my-4">
@@ -187,7 +193,7 @@
         }
     })
 
-
+    // Function addCart
     document.addEventListener('DOMContentLoaded', function () {
         const addToCartButtons = document.querySelectorAll('#add-to-cart');
 
@@ -218,6 +224,59 @@
             });
         }
     });
+
+    // Function Search 
+    let courses = @json($elcourses);
+    let inputSearch = document.querySelector('#course-search');
+    let data_searce = document.querySelector('#data-searce');
+    
+    inputSearch.addEventListener('keyup', () => {
+        let dataSearch = inputSearch.value;
+        if(dataSearch){
+            data_searce.classList.remove('hidden');
+            console.log(dataSearch);
+            console.log(courses);
+            let matchingCourses = courses.data.filter(course => {
+                let courseName = course.course_name.toLowerCase();
+                let searchData = dataSearch.toLowerCase();
+                return courseName.includes(searchData);
+            });
+            set_form_search(matchingCourses); // ส่ง matchingCourses เข้าไปในฟังก์ชัน
+        } else {
+            data_searce.classList.add('hidden');
+        }
+
+    })
+
+    function set_form_search(matchingCourses){
+        if(matchingCourses) {
+            console.log(matchingCourses);
+
+            // render content
+            data_searce.innerHTML = ''; // เคลียร์ค่าเดิม
+            matchingCourses.forEach(element => {
+                data_searce.innerHTML += renderData(element.id, element.img_course, element.course_name, element.price);
+            });
+        }
+    }
+
+    function renderData(id, img_course, course_name, price) {
+        let content = `<a href="/coursedetail/${id}">
+                            <li class="w-full flex justify-between items-center gap-4 hover:bg-gray-100">
+                                <div>
+                                    <img class="w-10 h-10" src="${img_course}" alt="">
+                                </div>
+                                <div>
+                                    <p>${course_name}</p>
+                                </div>
+                                <div>
+                                    <p>${price}</p>
+                                </div>
+                            </li>
+                        </a>
+                    `;
+        return content;
+    }
 
 </script>
 @endsection

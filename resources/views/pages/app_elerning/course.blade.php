@@ -1,12 +1,12 @@
 @extends('layouts.main')
 @section('title') CoursePage @endsection
 @section('content')
-<div class="bg-gray-100 py-20">
+<div class="bg-gray-100 py-4 h-auto min-h-[896px]">
   <div class="w-11/12 mx-auto">
     <h1 class="text-3xl text-center">Course : {{$course->course_name}}</h1>
     <h1 class="text-3xl text-center">Teacher : {{$course->user_name}}</h1>
 
-    <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
+    <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10 max-md:m-5">
       <div class="animate__animated animate__bounce flex justify-between ">
         <img class="h-8" src="/image/icon/annouce.png" alt="">
         <h1 class="text-xl">Anoucement</h1>
@@ -30,7 +30,7 @@
       @endif
     </div>
 
-    <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10">
+    <div class="bg-white border-l-8 border-l-yellow-500 rounded-xl p-4 m-10 max-md:m-5">
       <div class="animate__animated animate__bounce flex justify-between">
         <img class="h-8" src="/image/icon/material-icon.png" alt="">
         <h1 class="text-xl">Course Material</h1>
@@ -38,7 +38,7 @@
       </div>
       <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
       @foreach($materials as $item)
-      <div class="w-full relative pr-8">
+      <div class="w-full relative pr-10">
         <p class="my-5">{{$item->description}}</p>
         <div class="h-0 overflow-hidden transition-all duration-300 ease-in-out" id="content-material">
           <a href="{{$item->document}}" target="_bank">ไฟล์ pdf</a>
@@ -64,49 +64,20 @@
                 <div id="box-video"></div>
               </div>
             </div>
-
-            <div id="watch-time">0:00</div>
           </div>
         </div>
-        <div class="absolute top-0 right-0 cursor-pointer" id="action-material">
+        <div class="absolute top-0 right-0 cursor-pointer flex items-center gap-2" id="action-material">
+          <input type="checkbox" name="" id="check-video" data-id="{{$item->id}}" disabled>
           <box-icon type='solid' name='chevrons-right' class="" id="right"></box-icon>
           <box-icon name='chevrons-down' type='solid' class="hidden" id="bottom"></box-icon>
         </div>
       </div>
-
-        {{-- <div>
-          @php 
-          $embed1 = \Embed::make('https://youtu.be/2GbLTYmFB6s')->parseUrl();
-          @endphp
-          <div>
-            {!!$embed1->getHtml() !!}
-          </div> --}}
-
-          {{-- <div class="">
-            @php
-              if ($embed1) {
-                // Display the embed HTML in a div
-                echo "<div class='video'>" . $embed1->getHtml() . "</div>";
-            } else {
-                // If provider is not found
-                echo "Video not found.";
-            }
-            @endphp
-          </div> --}}
-        {{-- <div>
-        <iframe src="https://drive.google.com/file/d/1kJiC7agiB23YQtIbVEhHW4eew-hcGCL9/preview" width="300" height="300" allow="autoplay"></iframe>
-        </div>
-        <div>
-            <iframe src="https://drive.google.com/file/d/1_GcCKEaFWJXwoDA3gmTVM4dkvefsI67B/preview" width="300" height="300" allow="autoplay"></iframe>
-        </div>
-        </div> --}}
-
         <p class="text-gray-400">07-feb-23, 08.02 Am</p>
         <hr>
       @endforeach
     </div>
 
-    <div class="bg-white border-l-8 border-l-red-500 rounded-xl p-4 m-10">
+    <div class="bg-white border-l-8 border-l-red-500 rounded-xl p-4 m-10 max-md:m-5">
       <div class="animate__animated animate__bounce flex justify-between ">
         <img class="h-8" src="/image/icon/assignment.png" alt="">
         <h1 class="text-xl">Asssignment</h1>
@@ -117,7 +88,6 @@
       @if(count($quizzes) > 0)
       @foreach($quizzes as $quiz)
       <p class="my-4 text-green-500 cursor-pointer" data-id="{{$quiz->id}}" id="startQuiz">{{$quiz->quiz_name}}</p>
-        {{-- <a href="/quizstart/{{$course->id}}/{{$quiz->id}}">{{$quiz->quiz_name}}</a> --}}
       <p class="text-gray-400">{{$quiz->updated_at->format('d-M-Y')}}</p>
       <hr>
       @endforeach
@@ -129,11 +99,6 @@
     </div>
   </div>
 </div>
-  @if(session('message'))
-  <div class="alert alert-success">
-      {{ session('message') }}
-  </div>
-  @endif
 @endsection
 
 @section('scripts')
@@ -269,7 +234,13 @@
     axios.get(`/quizstart/${quiz_id}`).then((response) => {
       console.log(response);
       if(response.data.status == 'error') {
-        console.log("error")
+        console.log(response.data.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: response.data.message,
+          showConfirmButton: false
+        })
         return false;
       } else {
         location.href = `/quizstart/${quiz_id}`

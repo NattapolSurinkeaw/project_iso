@@ -37,10 +37,10 @@
             <div class="lg:w-full max-md:hidden break-words h-[90px] overflow-hidden">{!!$news->content!!}</div>
             <div class="flex gap-2 my-2">
               <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
-              <span>/</span>
+              {{-- <span>/</span>
               <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
               <span>/</span>
-              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span> --}}
             </div>
           </div>
         </div>
@@ -61,16 +61,16 @@
         <a href="/newsdetails/{{$news->id}}">
           <div class="w-full rounded-lg bg-white my-5 flex flex-col gap-2 items-center justify-center">
             <div class="overflow-hidden w-11/12 rounded-lg">
-              <img class="w-full h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
+              <img class="w-full max-2xl:w-80 h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
             </div>
             <h1 class="text-lg text-blue-800">{{$news->name}}</h1>
             <h1>{{$news->description}}</h1>
             <div class="p-2 flex gap-2">
               <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
-              <span>/</span>
+              {{-- <span>/</span>
               <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='facebook-square' type='logo' ></box-icon></span>
               <span>/</span>
-              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span>
+              <span class="flex gap-1 items-center text-gray-500">0 <box-icon name='twitch' type='logo' ></box-icon></span> --}}
             </div>
           </div>
         </a>

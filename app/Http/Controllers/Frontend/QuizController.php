@@ -30,10 +30,9 @@ class QuizController extends Controller
             if(!$user_learning) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'you have not learned finished'
-                ], 400);
+                    'message' => 'You haven not finished studying yet.'
+                ], 200);
             }
-            // dd($user_learning);exit();
             $video_ids = explode(',', $user_learning->watch_video);
 
             $materials = CourseMaterial::where('elerningcourse_id', $session_CourseId)->get();
@@ -49,8 +48,8 @@ class QuizController extends Controller
             } else {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'you have not learned finished'
-                ], 400);
+                    'message' => 'You haven not finished studying yet.'
+                ], 200);
             }
         }
         return view('pages.app_quiz.start_quiz', compact('course', 'quiz', 'questionCount', 'totalScore')); // เพิ่ม 'questions'

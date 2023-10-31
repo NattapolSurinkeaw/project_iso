@@ -62,6 +62,30 @@
                         </div>
                     </a>
                     @endforeach
+                    @foreach ($elerningcourses as $elerningcourse)
+                    <a href="{{url('/course/'.$elerningcourse->id)}}">
+                        <div class=" border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
+                            <div class="overflow-hidden rounded-lg h-42 w-64">
+                                @if(!empty($elerningcourse->img_course))
+                                    <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$elerningcourse->img_course}}" alt="">
+                                @else
+                                    <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="/image/icon/isologo.png" alt="">
+                                @endif
+                            </div> 
+                            <div class="w-full flex flex-col items-start gap-2">
+                                <div class="flex justify-between items-center">
+                                    <h1 class="text-2xl font-bold w-full truncate">{{$elerningcourse->course_name}}</h1>
+                                </div>
+    
+                                <div class="flex justify-between items-center">
+                                    <div class="flex justify-between">
+                                        <h1 class="text-lg text-gray-400">{{$elerningcourse->user_name}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
                     @else
                     <div class="mx-auto">
                         <img class="w-32 " src="/image/icon/bookempty.png" alt="">
