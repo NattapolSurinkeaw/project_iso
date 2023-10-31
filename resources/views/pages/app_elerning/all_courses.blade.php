@@ -236,12 +236,27 @@
             data_searce.classList.remove('hidden');
             console.log(dataSearch);
             console.log(courses);
-            let matchingCourses = courses.data.filter(course => {
-                let courseName = course.course_name.toLowerCase();
-                let searchData = dataSearch.toLowerCase();
-                return courseName.includes(searchData);
-            });
-            set_form_search(matchingCourses); // ส่ง matchingCourses เข้าไปในฟังก์ชัน
+            if (courses && courses.data) {
+                let matchingCourses = courses.data.filter(course => {
+                    let courseName = course.course_name.toLowerCase();
+                    let searchData = dataSearch.toLowerCase();
+                    return courseName.includes(searchData);
+                    
+                });
+                set_form_search(matchingCourses); // ส่ง matchingCourses เข้าไปในฟังก์ชัน
+                // ทำสิ่งที่คุณต้องการกับ matchingCourses
+            } else {
+                let coursesArray = Object.values(courses);
+
+                let matchingCourses = coursesArray.filter(course => {
+                    let courseName = course.course_name.toLowerCase();
+                    let searchData = dataSearch.toLowerCase();
+                    return courseName.includes(searchData);
+                });
+                set_form_search(matchingCourses); // ส่ง matchingCourses เข้าไปในฟังก์ชัน
+            }
+            
+            
         } else {
             data_searce.classList.add('hidden');
         }

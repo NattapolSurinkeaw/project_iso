@@ -21,6 +21,7 @@ class QuestionController extends Controller
     }
 
     public function checkAnswers (Request $request, $quiz_id) {
+        // dd($request->all());exit();
         $useranswe = $request->toArray();
         $questions = Question::where('quiz_id', $quiz_id)->get();
         $quiz_scoreTotal = $questions->sum('score'); // คะแนนข้อสอบรวม
@@ -28,7 +29,6 @@ class QuestionController extends Controller
 
         $quiz = Quiz::find($quiz_id);
 
-        // dd($quiz->quiz_type);exit();
         $user_id = Auth::user()->id;
 
         $totalScore = 0;  // คะแนน user ทำได้
@@ -44,7 +44,7 @@ class QuestionController extends Controller
         $userLearning = UserLerning::where('elearning_id', $session_CourseId)
         ->where('user_id', $user_id)
         ->first();
-
+        
         if($quiz->quiz_type == 'posttest') {
             if (!$userLearning) {
                 // If no record exists, create a new one
@@ -78,24 +78,22 @@ class QuestionController extends Controller
 
         } else {
             // dd($totalScore);exit();
-            // if (!$userLearning) {
-            //     // If no record exists, create a new one
-            //     $userLearning = UserLerning::create([
-            //         // 'quiz_id' => $quiz_id,
-            //         // 'user_id' => $user_id,
-            //         'last_score' => $totalScore,
-            //         'total_score' => $questions->sum('score'),
-            //         'quiz_type' => $quiz->quiz_type,
-            //         'total_round' => 1,
-            //     ]);
-            // } else {
+            if (!$userLearning) {
+                // If no record exists, create a new one
+                $userLearning = UserLerning::create([
+                    'elearning_id' => $session_CourseId,
+                    'user_id' => $user_id,
+                    'last_score' => $totalScore,
+                    'total_score' => $questions->sum('score'),
+                    'total_round' => 1,
+                ]);
+            } else {
                 // If a record exists, update the existing one
                 $userLearning->increment('total_round');
                 $userLearning->last_score = $totalScore;
                 $userLearning->total_score = $questions->sum('score');
-                // $userLearning->quiz_type = $quiz->quiz_type;
                 $userLearning->save();
-            // }
+            }
         }
         return response()->json([
             'status' => 'success',

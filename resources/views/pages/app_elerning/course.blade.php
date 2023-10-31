@@ -193,7 +193,7 @@
   function startTimer(videoId) {
     // ถ้ามีค่าใน localStorage ให้ใช้ค่านั้น
     // let timeLeft = 1 * 60;
-    let timeLeft = 10;
+    let timeLeft = 30;
 
     // สร้างตัวจับเวลาและอัปเดตค่าทุกวินาที
     let countdownInterval = setInterval(function() {

@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <a href="{{url('/elerning')}}">back</a>
+      <a class="w-20 py-1 text-center bg-red-500 text-white rounded-lg" href="{{url('/training')}}">back</a>
     </div>
   </div>
 @endsection

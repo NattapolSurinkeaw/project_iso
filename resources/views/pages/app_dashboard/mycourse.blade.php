@@ -4,9 +4,9 @@
 <div class="py-4 px-1 gap-4 flex max-xs:flex-col">
     @include('pages.app_dashboard.components.sidebar')
   <!-- box-profile -->
-  <div class="w-full bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
+  <div class="w-full max-xs:min-h-[750px] bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-4">
     <h1 class="text-2xl font-medium">My course</h1>
-    <div class="w-full p-5 bg-white flex flex-wrap gap-2 rounded-lg">
+    <div class="w-full p-5 bg-white flex flex-wrap max-xs:justify-center gap-2 rounded-lg">
       @if(count($elerningcourses) > 0)
       @foreach ($elerningcourses as $elerningcourse)
       <a href="{{url('/course/'.$elerningcourse->id)}}">
