@@ -67,7 +67,16 @@
           </div>
         </div>
         <div class="absolute top-0 right-0 cursor-pointer flex items-center gap-2" id="action-material">
-          <input type="checkbox" name="" id="check-video" data-id="{{$item->id}}" disabled>
+          @if(count($watch_video) > 0)
+          @foreach($watch_video as $video_id)
+            @php
+                $check = in_array($item->id, $watch_video) ? "checked" : "";
+            @endphp
+          @endforeach
+          @else
+            @php $check = "";  @endphp
+          @endif
+          <input type="checkbox" name="" id="check-video" data-id="{{$item->id}}" {{$check}} disabled>
           <box-icon type='solid' name='chevrons-right' class="" id="right"></box-icon>
           <box-icon name='chevrons-down' type='solid' class="hidden" id="bottom"></box-icon>
         </div>
@@ -213,12 +222,17 @@
   }
 
   function learnvideo(videoId) {
-    console.log(videoId);
+    // console.log(videoId);
     param = {
       "course_id" : {{$course->id}}
     }
     axios.post(`/api/learning-video/${videoId}`,param).then((response) => {
-      console.log(response);
+      // console.log(response.data.status);
+      if(response.data.status == "success"){
+        let check_video = document.querySelector('#check-video');
+        check_video.checked = true;
+      }
+      
     })
   }
 

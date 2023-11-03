@@ -48,10 +48,10 @@
             <circle cx="16.5" cy="19.5" r="1.5"></circle></svg>
         </a>
       </li>
-      <li><button onclick="onLogout()" class="hover:text-red-500 max-xl:text-red-600 xl:py-4 max-2xl:px-4">Logout</button></li>
+      <li><button onclick="onLogout()" class="hover:text-red-500 max-xl:text-red-600 xl:py-4 max-2xl:px-4">LOGOUT</button></li>
       @else
-      <li><a href="{{ url('/login') }}" class="lg:py-4">login</a></li>
-      <li><a href="{{ url('/register') }}" class="lg:py-4">register</a></li>
+      <li><a href="{{ url('/login') }}" class="lg:py-4">LOGIN</a></li>
+      <li><a href="{{ url('/register') }}" class="lg:py-4">REGISTER</a></li>
       @endif
     </div>
   </ul>

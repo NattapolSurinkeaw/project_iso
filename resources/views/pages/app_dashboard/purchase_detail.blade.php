@@ -20,9 +20,9 @@
         <div class="flex flex-col gap-2 w-full">
           {{-- @dd($courses) --}}
         @foreach($courses as $course)
-          <div class="grid grid-cols-5 gap-4">
+          <div class="flex gap-4">
             <input type="text" value="{{$course->course_name}}"  name="course" id="course" class="w-full block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 col-span-4"disabled>
-            <a class="col-span-1 flex justify-center items-center bg-green-500 text-white rounded-lg" href="{{ url('/course/'.$course->id) }}">เริ่มเรียน</a>
+            <a id="start-learn" class="w-20 flex justify-center items-center bg-green-500 text-white rounded-lg" href="{{ url('/course/'.$course->id) }}">เริ่มเรียน</a>
           </div>
         @endforeach
         </div>
@@ -84,14 +84,19 @@
 @section('scripts')
 <script>
   let statusInput = document.querySelector('#status');
+  let start_learn = document.querySelectorAll('#start-learn');
 
-  window.onload = function() {
+
+  
   let selectedValue = statusInput.value;
+  console.log(selectedValue); // แก้ไขเป็น console.log(selectedValue);
 
   switch (selectedValue) {
     case 'pending':
       statusInput.classList.remove('bg-green-400', 'bg-red-400');
       statusInput.classList.add('bg-yellow-400');
+
+      hiddenElearn();
       break;
     case 'approve':
       statusInput.classList.remove('bg-yellow-400', 'bg-red-400');
@@ -100,10 +105,18 @@
     case 'reject':
       statusInput.classList.remove('bg-yellow-400', 'bg-green-400');
       statusInput.classList.add('bg-red-400');
+      
+      hiddenElearn();
       break;
     default:
       statusInput.classList.remove('bg-yellow-400', 'bg-green-400', 'bg-red-400');
+      hiddenElearn();
   }
-};
+
+  function hiddenElearn() {
+    start_learn.forEach(element => {
+      element.classList.add('hidden');
+    });
+  }
 </script>
 @endsection

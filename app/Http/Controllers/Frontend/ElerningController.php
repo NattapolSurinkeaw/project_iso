@@ -70,13 +70,30 @@ class ElerningController extends Controller
         $quizzes = Quiz::where('elerningcourse_id', $session_CourseId)->get();
         $announcements = Annoucement::where('elerningcourse_id', $session_CourseId)->get();
         $materials = CourseMaterial::where('elerningcourse_id', $session_CourseId)->get();
+
+        $user_id = Auth::user()->id;
+        $userLearning = UserLerning::where('elearning_id', $session_CourseId)
+        ->where('user_id', $user_id)
+        ->first();
+        if ($userLearning && $userLearning->watch_video) {
+            $watch_video = array_filter(explode(',', $userLearning->watch_video));
+        } else {
+            $watch_video = [];
+        }
         
-        return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes', 'materials'));
+        
+        return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes', 'materials', 'watch_video'));
     }
 
     public function courseDetail($course_id) {
         $course = Elerningcourse::find($course_id);
-        return view('pages.app_elerning.course_detail',compact('course'));
+
+        $user_id = Auth::user()->id;
+        $mycourse = MyCourse::where('user_id', $user_id)
+                            ->where('elerningcourse_id', $course_id)
+                            ->first();
+        // dd($mycourse);exit();
+        return view('pages.app_elerning.course_detail',compact('course', 'mycourse'));
     }
 
     // user learning video material
