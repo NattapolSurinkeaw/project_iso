@@ -1,5 +1,8 @@
 @extends('layouts.main')
-@section('title') ContactPage @endsection
+@section('meta-description','Contact us ISOConsult.shop for more information')
+@section('meta-keywords', 'ISOConsult,elerning,products,quality,online training,onsite training')
+@section('title', 'Contact us ')
+
 @section('content')
 <div class="py-4 bg-gray-100">
   <h1 class="text-3xl text-center my-4">Contact</h1>

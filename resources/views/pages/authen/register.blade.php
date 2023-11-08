@@ -38,19 +38,6 @@
 @endsection
 
 <script>
-// เก็บ session หน้า register
-document.addEventListener("DOMContentLoaded", function() {
-    sessionStorage.setItem('fromRegister', 'true');
-});
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     document.querySelector('#password').addEventListener('keydown', function (event) {
-//         if (event.key === 'Enter') {
-//             // เรียกใช้ฟังก์ชัน onLogin หากปุ่ม Enter ถูกกด
-//             onRegister();
-//         }
-//     });
-// });
 
 function onRegister() {
     let name = document.querySelector('#fname').value;
@@ -111,26 +98,12 @@ function onRegister() {
         } 
         else {
             msEmailEr.classList.remove('hidden');
-            // Swal.fire({
-            //     position: 'center',
-            //     icon: 'error',
-            //     title: 'Registration Email failed',
-            //     text: 'Please check your fill email',
-            //     showConfirmButton: true
-            // });
         }
     } 
     else {
         msNameEr.classList.remove('hidden');
         msEmailEr.classList.remove('hidden');
         msPassEr.classList.remove('hidden');
-        // Swal.fire({
-        //     position: 'center',
-        //     icon: 'error',
-        //     title: 'Login failed',
-        //     text: 'Please check your credentials and try again.',
-        //     showConfirmButton: true
-        // });
     }
 }
 

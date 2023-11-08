@@ -34,7 +34,6 @@
 @endsection
 
 <script>
-
   function onLogin() {
     let data = {
       email: document.querySelector('#email').value,
@@ -55,24 +54,16 @@
             showConfirmButton: false,
             timer: 1000
         }).then(() => {
-            if (fromRegister) {
-                // ลบข้อมูลที่บันทึกไว้
-                sessionStorage.removeItem('fromRegister');
-                // ไปที่หน้า home
-                window.location.href = '/';
-            } else {
-                if (role === 'admin') {
-                    window.location.href = 'backend/';
-                } else if (role === 'user') {
-                    // กลับไปที่หน้าก่อนหน้า
-                    history.back();
-                }
+            if (role === 'admin') {
+                window.location.href = '/backend';
+            } else if (role === 'user') {
+                // กลับไปที่หน้าก่อนหน้า
+                location.reload();
             }
         });
     })
     .catch((error) => {
         console.log(error);
-        // Handle the error here, such as displaying an error message to the user
         Swal.fire({
             position: 'center',
             icon: 'error',
@@ -81,6 +72,5 @@
             showConfirmButton: true
         });
     });
-    
   }
 </script>

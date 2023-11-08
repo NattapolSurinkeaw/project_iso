@@ -1,5 +1,8 @@
 @extends('layouts.main')
-@section('title') CoursePage @endsection
+@section('meta-description',$course->description)
+@section('meta-keywords', $course->course_name)
+@section('title', $course->course_name)
+
 @section('content')
 <div class="bg-gray-100 py-4 h-auto min-h-[896px]">
   <div class="w-11/12 mx-auto">

@@ -1,14 +1,17 @@
 @extends('layouts.main')
-@section('title') CoursePage @endsection
+@section('meta-description',$course->description)
+@section('meta-keywords', $course->course_name)
+@section('title', $course->course_name)
+
 @section('content')
 <div>
-  <div class="bg-red-500 flex max-lg:flex-col">
+  <div class="bg-gradient-to-r from-[#00ADEF] to-[#4338ca] flex max-lg:flex-col">
     <div class="w-full flex flex-col items-center justify-center p-4">
       <h1 class="text-3xl text-white">Detail : {{$course->course_name}}</h1>
       <h1 class="text-3xl text-white">description : {{$course->description}}</h1>
     </div>
-    <div class="w-full max-lg:order-first">
-      <img class="w-full h-80" src="{{$course->img_course}}" alt="">
+    <div class="w-full max-lg:order-first transform">
+      <img class="w-full h-80 transform" src="{{$course->img_course}}" alt="">
     </div>
   </div>
 

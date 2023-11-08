@@ -1,7 +1,7 @@
 @extends('layouts.main')
-@section('title')
-    AllCourse
-@endsection
+@section('meta-description','ISOConsult Elerning - Your Source Everything for  Quality of Products or industry')
+@section('title', 'AllCourse')
+
 @section('content')
     <h1 class="my-4 text-3xl text-center"> Elearning All Course</h1>
     {{-- @dd($elcourses) --}}

@@ -1,5 +1,6 @@
 @extends('layouts.main')
-@section('title') Alltraning @endsection
+@section('meta-description','ISOConsult is source for training onsite in thailand')
+@section('title', 'Alltraning')
 @section('content')
   <div class="mb-4">
     <img class="w-full h-96 max-xl:h-40 max-xs:h-28" src="/image/background/img-training.png" alt="thumbnail-training">

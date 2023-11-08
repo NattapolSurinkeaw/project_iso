@@ -1,7 +1,9 @@
 @extends('layouts.main')
-@section('title') HomePage @endsection
-@section('content')
+@section('meta-description','ISOConsult elerning - Your Source for Quality Products')
+@section('meta-keywords', '')
+@section('title', 'HomePage')
 
+@section('content')
 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" centered-slides="true" loop="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
   <swiper-slide>
     <img class="brightness-50 max-xs:h-[400px] h-[910px] w-full" src="/image/background/background.jpeg" alt="">
@@ -114,14 +116,14 @@
     <p >ISO Consult.org เป็นที่ปรึกษาระบบมาตรฐานสากลที่ได้นำสิ่งใหม่ๆในระดับสากลซึ่งยอมรับกันทั่วโลกที่เหมาะสมกับองค์กรลูกค้ามาใช้งานเป็นการพัฒนาภายใต้ความมุ่งมั่นของการดำเนินการให้ประสบความสำเร็จตามแผนการดำเนินการเพื่อให้องค์กรลูกค้าสามารถแข่งขันได้ ที่ปรึกษาและวิทยากรที่ได้รับการคัดเลือกมาอย่างดีทั้งคุณวุฒิและประสบการณ์ในงานมากกว่า 20 ปี ผ่านการฝึกอบรมมากว่า 125 หลักสูตรทั้งในและต่างประเทศ ให้บริการลูกค้าในการจัดทำระบบมามากกว่า 60 โครงการ ทำให้เราได้รับความไว้วางใจในความสามารถจากลูกค้า การบริการของเราครอบคลุมการพัฒนาบุคลากรและระบบมาตรฐานในทุกส่วนงาน ทุกอุตสาหกรรมทั้ง อากาศยาน ยานยนต์ ปิโตรเลี่ยม การแพทย์ อาหารและยา เทคโนโลยีสารสนเทศ และอื่นๆ ทั้งภาครัฐและเอกชนเรามีผู้เชี่ยวชาญโดยเฉพาะ ด้วยหลักสูตรฝึกอบรมที่ทันสมัย มีรูปแบบการถ่ายทอดที่ทั้งแบบ on-line training (eLearning) และ on-site(In-house training) รวมทั้ง ISO9001, ISO14001, AS9100/10/20, IATF16949, ISO45001(OHSAS), ISO13485, ISO15189, ISO17025, ISO22301, ISO27001, ISO/FSSC22000, TL9000, ISO31000, SA8000, ISO50001, ISO/TS22163 (IRIS), GMP/HACCP, Lean, Six Sigma, FAA, EASA, NADCAP, BRC, RTAC ... ซึ่งเราสรรหาสิ่งที่ดีที่สุดให้กับองค์กรลูกค้าเพื่อให้บรรลุซึ่งความต้องการเสมอ นอกจากภาษาไทยแล้วเราสามารถจัดทำเอกสารได้หลายภาษาทั้งภาษาอังกฤษ ญี่ปุ่น จีน และอื่นๆ เน้นให้สามารถนำไปประยุกต์และปฏิบัติได้จริงในธุรกิจทุกประเภท</p>
     <p >ISO Consult.org เป็นที่ปรึกษาระบบมาตรฐานสากลที่ได้นำสิ่งใหม่ๆในระดับสากลซึ่งยอมรับกันทั่วโลกที่เหมาะสมกับองค์กรลูกค้ามาใช้งานเป็นการพัฒนาภายใต้ความมุ่งมั่นของการดำเนินการให้ประสบความสำเร็จตามแผนการดำเนินการเพื่อให้องค์กรลูกค้าสามารถแข่งขันได้ ที่ปรึกษาและวิทยากรที่ได้รับการคัดเลือกมาอย่างดีทั้งคุณวุฒิและประสบการณ์ในงานมากกว่า 20 ปี ผ่านการฝึกอบรมมากว่า 125 หลักสูตรทั้งในและต่างประเทศ ให้บริการลูกค้าในการจัดทำระบบมามากกว่า 60 โครงการ ทำให้เราได้รับความไว้วางใจในความสามารถจากลูกค้า การบริการของเราครอบคลุมการพัฒนาบุคลากรและระบบมาตรฐานในทุกส่วนงาน ทุกอุตสาหกรรมทั้ง อากาศยาน ยานยนต์ ปิโตรเลี่ยม การแพทย์ อาหารและยา เทคโนโลยีสารสนเทศ และอื่นๆ ทั้งภาครัฐและเอกชนเรามีผู้เชี่ยวชาญโดยเฉพาะ ด้วยหลักสูตรฝึกอบรมที่ทันสมัย มีรูปแบบการถ่ายทอดที่ทั้งแบบ on-line training (eLearning) และ on-site(In-house training) รวมทั้ง ISO9001, ISO14001, AS9100/10/20, IATF16949, ISO45001(OHSAS), ISO13485, ISO15189, ISO17025, ISO22301, ISO27001, ISO/FSSC22000, TL9000, ISO31000, SA8000, ISO50001, ISO/TS22163 (IRIS), GMP/HACCP, Lean, Six Sigma, FAA, EASA, NADCAP, BRC, RTAC ... ซึ่งเราสรรหาสิ่งที่ดีที่สุดให้กับองค์กรลูกค้าเพื่อให้บรรลุซึ่งความต้องการเสมอ นอกจากภาษาไทยแล้วเราสามารถจัดทำเอกสารได้หลายภาษาทั้งภาษาอังกฤษ ญี่ปุ่น จีน และอื่นๆ เน้นให้สามารถนำไปประยุกต์และปฏิบัติได้จริงในธุรกิจทุกประเภท</p>
   </div>
-  <img class="h-[470px] w-full max-xs:h-[200px] max-xs:order-first" src="https://images.unsplash.com/photo-1543599538-a6c4f6cc5c05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="" />
+  <img class="h-[470px] w-full max-2xl:w-1/2 max-xs:w-full max-xs:h-[200px] max-xs:order-first" src="/image/background/industry.jpg" alt="" />
 </div>
 
 <!-- วิดีโอของเรา -->
 <div id="ourVideo"></div>
 <div class="w-10/12 shadow-lg rounded-lg mx-auto p-4">
   <h1 class="text-center text-2xl font-normal">Our Video</h1>
-  <div class="flex 2xl:justify-around my-5 gap-4 overflow-x-auto p-4">
+  <div class="flex 2xl:justify-around my-5 gap-4 overflow-x-auto p-4" data-aos="flip-left" data-aos-duration="700" data-aos-easing="ease-in-out">
     @foreach($homeVideos as $homeVideo)
       <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
         <div id="getVideo" video-id="{{$homeVideo->id}}" class="w-60 overflow-hidden rounded-lg">
@@ -142,9 +144,9 @@
 
 <!-- หลักสูตรของเรา  -->
 <div id="ourCourse"></div>
-<div class="flex flex-col gap-10 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
+<div class="flex flex-col gap-10 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4 overflow-hidden">
   <h1 class="text-center text-2xl font-normal">CHECK OUT THE HOT RELEASES</h1>
-  <div class="xl:max-w-[70%] flex max-xs:flex-col justify-start items-center gap-5">
+  <div class="xl:max-w-[70%] flex max-xs:flex-col justify-start items-center gap-5" data-aos="fade-right" data-aos-duration="700" data-aos-easing="ease-in-out">
     <img class="w-72 rounded-xl" src="https://media.istockphoto.com/id/1425406857/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4.jpg?s=1024x1024&w=is&k=20&c=mS8Ml7NhgFzRvTr1L7c-Rqfr2009YhBEdLgnz7xLrZo=" alt="">
     <div class="max-xs:text-center">
       <h1>ISO 29110-4</h1>
@@ -154,7 +156,7 @@
     </div>
   </div>
 
-  <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5">
+  <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5" data-aos="fade-left" data-aos-duration="700" data-aos-easing="ease-in-out">
     <div class="text-right max-xs:text-center">
       <h1>ISO 29110-4</h1>
       <h1>Version:2018</h1>
@@ -164,7 +166,7 @@
     <img class="w-72 rounded-xl max-xs:order-first" src="https://media.istockphoto.com/id/1400070880/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99-%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%9B%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%A1%E0%B8%B8%E0%B8%A1%E0%B8%A1%E0%B8%AD%E0%B8%87%E0%B8%94%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%89-%E0%B8%A7.jpg?s=612x612&w=0&k=20&c=QZp3qQ4ebgnC5-atKmKswDXnjTzqHCVcfAX1MyCvNfA=" alt="">
   </div>
 
-  <div class="xl:max-w-[70%] flex max-xs:flex-col justify-start items-center gap-5">
+  <div class="xl:max-w-[70%] flex max-xs:flex-col justify-start items-center gap-5" data-aos="fade-right" data-aos-duration="700" data-aos-easing="ease-in-out">
     <img class="w-72 rounded-xl" src="https://media.istockphoto.com/id/1425406857/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4.jpg?s=1024x1024&w=is&k=20&c=mS8Ml7NhgFzRvTr1L7c-Rqfr2009YhBEdLgnz7xLrZo=" alt="">
     <div class="max-xs:text-center">
       <h1>ISO 29110-4</h1>
@@ -174,7 +176,7 @@
     </div>
   </div>
 
-  <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5">
+  <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5" data-aos="fade-left" data-aos-duration="700" data-aos-easing="ease-in-out">
     <div class="text-right max-xs:text-center">
       <h1>ISO 29110-4</h1>
       <h1>Version:2018</h1>
@@ -191,7 +193,7 @@
     <h1 class="text-center text-xl">News and Event</h1>
     <a href="{{url('/newsandevent')}}" class="text-center text-blue-600 text-xl underline">more</a>
   </div>
-  <div class="flex 2xl:justify-around gap-4 overflow-x-auto">
+  <div class="flex 2xl:justify-around gap-4 overflow-x-auto" data-aos="flip-right" data-aos-duration="700" data-aos-easing="ease-in-out">
     @foreach($homeNews as $news)
     <a href="{{url('/newsdetails')}}/{{$news->id}}">
       <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">

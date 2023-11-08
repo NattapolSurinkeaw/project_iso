@@ -1,5 +1,8 @@
 @extends('layouts.main')
-@section('title') NewsDetail @endsection
+@section('meta-description','ISOConsult is source for training onsite in thailand')
+@section('meta-keywords', $taining->name)
+@section('title', $taining->name)
+
 @section('content')
 <div>
     <div class="bg-red-500 flex max-lg:flex-col">

@@ -7,13 +7,13 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" type="image/x-icon" href="/image/svg/favicon.png">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ISOConsult elerning - Your Source for Quality Products">
-  <meta name="keywords" content="ISOConsult, elerning, products, quality, online training">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="@yield('meta-description')">
+  <meta name="keywords" content="ISOConsult,elerning,products,quality,online training,@yield('meta-keywords')">
   <meta name="author" content="ISOConsult Company">
   <meta name="robots" content="index, follow">
+  <title>ISOConsult | @yield('title')</title>
 
-  <title>@yield('title')</title>
   @vite('resources/css/app.css')
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

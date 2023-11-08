@@ -88,11 +88,15 @@ class ElerningController extends Controller
     public function courseDetail($course_id) {
         $course = Elerningcourse::find($course_id);
 
-        $user_id = Auth::user()->id;
-        $mycourse = MyCourse::where('user_id', $user_id)
-                            ->where('elerningcourse_id', $course_id)
-                            ->first();
-        // dd($mycourse);exit();
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $mycourse = MyCourse::where('user_id', $user_id)
+                                ->where('elerningcourse_id', $course_id)
+                                ->first();
+        } else {
+            $mycourse = [];
+        }
+        
         return view('pages.app_elerning.course_detail',compact('course', 'mycourse'));
     }
 

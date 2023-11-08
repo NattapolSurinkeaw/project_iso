@@ -1,5 +1,8 @@
 @extends('layouts.main')
-@section('title') QuizPage @endsection
+@section('meta-description','ISOConsult elerning - Your Source for Quality Products')
+@section('meta-keywords', 'ISOConsult,elerning,products,quality,online training')
+@section('title', 'ISOConsult')
+@section('detail', 'Elearning Course')
 @section('content')
   <div class="bg-gray-200 w-full p-10 pt-20 flex justify-center"> 
     {{-- @dd($quizzes) --}}

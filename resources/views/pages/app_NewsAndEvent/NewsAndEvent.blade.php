@@ -1,5 +1,7 @@
 @extends('layouts.main')
-@section('title') News & Event @endsection
+@section('meta-description','ISOConsult elerning - Your Source for Quality Products')
+@section('meta-keywords', '')
+@section('title', 'News & Event')
 @section('content')
 <h1 class="text-3xl text-center my-4">News And Events </h1>
 <div class="w-11/12 mx-auto">

@@ -1,5 +1,7 @@
 @extends('layouts.main')
-@section('title') NewsDetail @endsection
+@section('meta-description','ISOConsult elerning - Your Source for Quality Products')
+@section('meta-keywords', $getNews->name)
+@section('title', $getNews->name)
 @section('content')
 <div class="w-11/12 mx-auto my-4">
   <div class="flex justify-center my-4">
