@@ -2,7 +2,7 @@
 @section('title') Manage Elearning @endsection
 @section('container')
 
-<div class="h-screen max-2xl:w-[97%] max-xl:w-[89%]">
+<div class="h-screen max-2xl:w-[82%] max-xl:w-[75%]">
     <div class="px-10 py-4 flex justify-between items-center">
         <h1 class="text-xl font-medium">Elearning Course</h1>
         <div>
@@ -10,7 +10,7 @@
         </div>
     </div>
     
-    <div class="relative h-4/5 overflow-y-scroll max-xl:w-[85%] max-2xl:w-[90%] mx-10">
+    <div class="relative h-4/5 overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>

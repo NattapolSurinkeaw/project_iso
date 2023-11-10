@@ -10,6 +10,9 @@ export default defineConfig({
                     'resources/js/backend.js',
                     'resources/js/bootstrap.js',
                     'resources/js/main.js',
+
+                    // backend
+                    'resources/js/backend/home/home.js',
                 ],
             refresh: true,
         }),

@@ -2,17 +2,17 @@
 @section('title') Training @endsection
 @section('container')
 
-<div class="h-screen">
-    <div class="mx-10 my-4 flex justify-between items-center">
+<div class="h-screen ">
+    <div class="mx-10 my-4 flex justify-between items-center max-2xl:w-[75%] max-xl:w-[70%]">
         <h1 class="text-xl font-medium">Training Course</h1>
         <a href="{{url('/backend/createtraining')}}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
     </div>
     
     <div class="mx-10 mb-2">
-        <button id="toggleTable" class="p-2 bg-blue-600 texr-white rounded-lg ">Table</button>
-        <button id="toggleCalendar" class="p-2 bg-green-600 texr-white rounded-lg ">Calendar</button>
+        <button id="toggleTable" class="p-2 bg-blue-600 text-white rounded-lg ">Table</button>
+        <button id="toggleCalendar" class="p-2 bg-green-600 text-white rounded-lg ">Calendar</button>
     </div>
-    <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10 max-xl:w-[80%] max-2xl:w-[84%]">
+    <div id="table-train" class="relative h-4/6 overflow-y-scroll mx-10 max-2xl:w-[75%] max-xl:w-[70%]">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
@@ -86,7 +86,7 @@
                         null
                         @endif
                     </td>
-                    <td class="px-6 py-4 flex ites-center gap-1">
+                    <td class="px-6 py-4 my-auto h-full flex items-center justify-center gap-1">
                         <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/">ลายละเอียด</a>
                         <a href="{{url('/backend/edittraining')}}/{{$trainingcourse->id}}" class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="" id="editCourse">แก้ไข</a>
                         <button onclick="delTraining({{$trainingcourse->id}})"  class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>

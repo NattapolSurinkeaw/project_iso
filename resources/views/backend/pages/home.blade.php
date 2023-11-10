@@ -38,11 +38,18 @@
         </div>
     </div>
 
+    <div class="bg-white rounded-[10px] p-4">
+        <div class="h-[600px] w-full">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
 </div>
 
 @endsection
 @section('be-scripts')
+@vite('resources/js/backend/home/home.js')
 <script>
-
+    let data = @json($data);
 </script>
 @endsection

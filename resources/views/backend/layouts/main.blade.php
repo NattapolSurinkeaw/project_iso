@@ -12,14 +12,15 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>  <!-- แสดงปฎิทิน -->
   <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> <!--animate.cc -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />  <!-- AOS animate -->
 </head>
 <body>
 
   <div class="flex gap-5 h-screen overflow-hidden">
-    <div id="navbar" class="w-full bg-[#74788A] max-w-[240px] duration-300">
+    <div id="navbar" class="w-80 bg-[#74788A] max-w-[240px] duration-300">
         @include('backend.layouts.sidebar')
     </div>
   

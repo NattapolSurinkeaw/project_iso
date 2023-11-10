@@ -1,5 +1,5 @@
 <nav class="h-full flex flex-col justify-between p-4 overflow-y-auto">
-    <div class="">
+    <div class="w-full max-2xl:w-52">
         <a href="/backend/"><img src="/image/icon/isologo.png"></a>
         <h1 class="my-4 text-white font-medium text-xl">MAIN CONTENT</h1>
         <ul class="flex flex-col items-center gap-4">
