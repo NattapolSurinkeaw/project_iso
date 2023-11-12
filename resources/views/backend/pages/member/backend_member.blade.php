@@ -28,19 +28,18 @@
                             </tr>
                             <tr>
                                 <td class="px-2 py-2 text-gray-500 font-semibold">Address</td>
-                                <td class="px-2 py-2">Chatakpur-3, Dhangadhi Kailali</td>
+                                <td class="px-2 py-2">null</td>
                             </tr>
                             <tr>
                                 <td class="px-2 py-2 text-gray-500 font-semibold">Phone</td>
-                                <td class="px-2 py-2">+977 9955221114</td>
+                                <td class="px-2 py-2">null</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="text-center my-3">
-                        <a class="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium" href="memberdetail/{{$member->id}}">View Profile</a>
+                        <a class="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium" href="{{ url('backend/memberdetail/'.$member->id) }}">View Profile</a>
                     </div>
-
                 </div>
             </div>
             @endforeach

@@ -45,13 +45,11 @@
               {{ $pending->name }}
             </th>
             <td class="px-6 py-4">
-                <p class="block">
                   @foreach ($courses as $course)
                   @if (in_array($course->id, explode(',', $pending->total_courses)))
-                  <p>{{ $course->course_name }}</p>
+                  <p class="w-52">{{ $course->course_name }}</p>
                   @endif
                   @endforeach
-                </p>
             </td>
             <td class="px-6 py-4">
               {{ $pending->user_id }}

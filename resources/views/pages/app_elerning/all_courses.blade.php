@@ -7,10 +7,10 @@
     {{-- @dd($elcourses) --}}
 
     <div class="w-10/12 max-xs:w-full max-xs:px-4 mx-auto flex items-center">
-        <div class="w-full mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full mx-auto flex max-lg:flex-col items-center justify-between">
             <div class="flex gap-2">
-                <h1 class="font-normal text-xl">SEARCHING</h1>
-                <h1 id="many-course" class="font-normal text-xl text-red-600">{{$countElerning}}</h1>
+                <h2 class="font-normal text-xl">SEARCHING</h2>
+                <h2 id="many-course" class="font-normal text-xl text-red-600">{{$countElerning}}</h2>
             </div>
             <div class="relative text-right absolute inset-y-0">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -22,7 +22,7 @@
                         </path>
                     </svg>
                 </div>
-                <input type="text" id="course-search" class="bg-gray-50 shadow-sm outline-none border border-gray-300 text-gray-900 text-sm rounded-full  block  w-full xl:w-60 pl-10 p-2.5 "
+                <input type="text" id="course-search" class="w-[177px] bg-gray-50 shadow-sm outline-none border border-gray-300 text-gray-900 text-sm rounded-full block pl-10 p-2.5 transition-all duration-300 ease-in-out"
                     placeholder="Search">
                     <ul id="data-searce" class="hidden w-full flex flex-col gap-2 absolute top-11 bg-white p-2 z-[5] rounded-lg border" id="data-search">
                         
@@ -45,7 +45,7 @@
                         </div> 
                         <div class="w-full flex flex-col items-start gap-2">
                             <div class="w-full flex justify-between items-center">
-                                <h1 class="text-2xl font-medium w-full truncate cursor-default" title="{{$elcourse->course_name}}">{{$elcourse->course_name}}</h1>
+                                <h2 class="text-2xl font-medium w-full truncate cursor-default" title="{{$elcourse->course_name}}">{{$elcourse->course_name}}</h2>
                             </div>
 
                             <div class="flex flex-wrap gap-2">
@@ -84,14 +84,14 @@
 
                             <div class="w-full flex justify-between gap-4">
                                 <div class="flex gap-2">
-                                    <h1 class="font-medium text-gray-400">Price</h1>
-                                    <h1 class="font-medium">{{number_format($elcourse->price)}} THB</h1>
+                                    <h2 class="font-medium text-gray-400">Price</h2>
+                                    <h2 class="font-medium">{{number_format($elcourse->price)}} THB</h2>
                                 </div>
                             </div>
 
                             <div class="w-full flex justify-between items-center">
                                 <div class="flex justify-between">
-                                    <h1 class="text-lg text-gray-400">{{$elcourse->user_name}}</h1>
+                                    <h2 class="text-lg text-gray-400">{{$elcourse->user_name}}</h2>
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
                                     <a class="bg-blue-600 text-white rounded-md p-1 " href="/coursedetail/{{$elcourse->id}}">detail</a>
@@ -124,7 +124,7 @@
                 @endforeach
             @else
                 <div>
-                    <h1 class="text-3xl">Nodata</h1>
+                    <h2 class="text-3xl">Nodata</h2>
                 </div>
             @endif
         @endisset
@@ -226,10 +226,31 @@
     });
 
     // Function Search 
-    let courses = @json($elcourses);
+    let courses = {!! json_encode($elcourses) !!};
     let inputSearch = document.querySelector('#course-search');
     let data_searce = document.querySelector('#data-searce');
     
+    inputSearch.addEventListener('focus', function() {
+        // เมื่อมีการ focus เกิดขึ้น
+        if (window.innerWidth < 480) {
+            inputSearch.classList.replace('w-[177px]', 'w-[390px]');
+        } else {
+            inputSearch.classList.replace('w-[177px]', 'w-[600px]');
+        }
+    });
+
+    inputSearch.addEventListener('blur', function() {
+        // เมื่อมีการ blur (ไม่ focus) เกิดขึ้น
+        if (window.innerWidth < 480) {
+            console.log("mobile")
+            inputSearch.classList.replace('w-[390px]', 'w-[177px]');
+        } else {
+            inputSearch.classList.replace('w-[600px]', 'w-[177px]');
+        }
+        // inputSearch.value = "";
+        // data_searce.classList.add('hidden');
+    });
+
     inputSearch.addEventListener('keyup', () => {
         let dataSearch = inputSearch.value;
         if(dataSearch){
@@ -277,17 +298,18 @@
 
     function renderData(id, img_course, course_name, price) {
         let content = `<a href="/coursedetail/${id}">
-                            <li class="w-full flex justify-between items-center gap-4 hover:bg-gray-100">
+                            <li class="w-full grid grid-cols-[50px,1fr,80px] items-center gap-4 hover:bg-gray-100">
                                 <div>
-                                    <img class="w-10 h-10" src="${img_course}" alt="">
+                                    <img src="${img_course}" alt="" width="50px">
                                 </div>
                                 <div>
-                                    <p>${course_name}</p>
+                                    <p class="text-left">${course_name}</p>
                                 </div>
                                 <div>
                                     <p>${price}</p>
                                 </div>
                             </li>
+                            <hr>
                         </a>
                     `;
         return content;

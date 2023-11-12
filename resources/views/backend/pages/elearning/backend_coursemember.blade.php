@@ -9,7 +9,6 @@
     <h1 class="w-full text-xl font-bold text-center">Detail Course :</h1>
     <ul role="list" class="bg-white divide-y divide-gray-100 mx-auto w-[90%] h-[80%] 2xl:h-[85%] overflow-auto">
       @if (count($users) > 0)
-      @for($i = 1; $i < 10 ; $i++)
       @foreach($users as $userData)
         <li class="grid grid-cols-4 gap-x-6 py-5 px-5 2xl:px-10">
             <div class="flex col-span-2 min-w-0 gap-x-4">
@@ -55,7 +54,6 @@
         </li>
         <hr>
       @endforeach
-      @endfor
       @else
         <li class="flex justify-center gap-x-6 py-5">
           Course User Empty

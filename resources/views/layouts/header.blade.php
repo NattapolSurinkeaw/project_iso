@@ -1,6 +1,6 @@
 <nav id="myNav" class="sticky top-0 z-10 flex h-[60px] items-center justify-between bg-white px-8 shadow 2xl:px-28">
   <a href="{{ url('/') }}" class="flex items-center">
-    <img src="/image/icon/isologo.png" class="h-12" alt="isoconsult logo" />
+    <img src="/image/icon/isologo.png" height="57px" width="173px" alt="isoconsult logo" />
   </a>
   <ul id="elNav" class="flex h-full w-full items-center justify-end max-xl:gap-10 text-lg font-normal transition-all duration-300 ease-in-out max-xl:fixed max-xl:right-0 max-xl:top-[60px] max-xl:h-screen max-xl:w-0 max-xl:flex-col max-xl:items-center max-xl:justify-start max-xl:overflow-hidden max-xl:overflow-y-scroll max-xl:bg-slate-600 max-xl:p-0 xl:justify-between">
     <div class="invisible"></div>

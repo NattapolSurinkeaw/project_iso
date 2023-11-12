@@ -50,6 +50,6 @@
 @section('be-scripts')
 @vite('resources/js/backend/home/home.js')
 <script>
-    let data = @json($data);
+    let data = {!! json_encode($data) !!};
 </script>
 @endsection

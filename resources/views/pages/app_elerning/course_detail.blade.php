@@ -43,11 +43,16 @@
         <hr class="border border-2 my-2">
        
         <div class="px-2 flex flex-col gap-3">
-          @if($mycourse)
-          <a href="{{ url('/course/' .$course->id ) }}" class="w-full bg-green-500 p-1 rounded-lg text-white text-center">เริ่มเรียน</a>
+          @if($user)
+            @if($mycourse)
+            <a href="{{ url('/course/' .$course->id ) }}" class="w-full bg-green-500 p-1 rounded-lg text-white text-center">เริ่มเรียน</a>
+            @else
+            <button id="btnAddCart" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตระกร้า</button>
+            <button id="btnBuyNow" class="w-full bg-red-600 p-1 rounded-lg text-white text-center">สั่งซื้อทันที</button>
+            @endif
           @else
-          <button id="btnAddCart" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตระกร้า</button>
-          <button id="btnBuyNow" class="w-full bg-red-600 p-1 rounded-lg text-white text-center">สั่งซื้อทันที</button>
+            <a href="{{url('/login')}}" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตระกร้า</a>
+            <a href="{{url('/login')}}" class="w-full bg-red-600 p-1 rounded-lg text-white text-center">สั่งซื้อทันที</a>
           @endif
         </div>
       </div>

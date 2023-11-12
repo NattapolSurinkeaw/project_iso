@@ -48,27 +48,15 @@
           @php $i = 1; @endphp
           @foreach ($pendig_train as $pending)
             <tr class="bg-white dark:bg-gray-800 border-b-2">
-              <td scope="row"
+              <td
                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
                 {{ $i++; }}
               </td>
-              <td scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                {{ $pending->company }}
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                <p class="w-40">{{ $pending->company }}</p>
               </td>
-              {{-- <td class="px-6 py-4">
-                <p class="block">
-                    @foreach ($courses as $course)
-                    @if (in_array($course->id, explode(',', $pending->total_courses)))
-                    <p>{{ $course->course_name }}</p>
-                    @endif
-                    @endforeach
-                </p>
-              </td> --}}
               <td class="px-6 py-4">
-                <div class="w-40">
-                  {{$pending->training_reserve}}
-                </div>
+                <p class="w-40">{{$pending->training_reserve}}</p>
               </td>
               <td class="px-6 py-4">
                 {{$pending->number_participants}}

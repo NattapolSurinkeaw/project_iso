@@ -10,7 +10,7 @@
       @if(count($elerningcourses) > 0)
       @foreach ($elerningcourses as $elerningcourse)
       <a href="{{url('/course/'.$elerningcourse->id)}}">
-        <div class=" border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
+        <div class="w-96 border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
           <div class="overflow-hidden rounded-lg h-42 w-64">
               @if(!empty($elerningcourse->img_course))
                   <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$elerningcourse->img_course}}" alt="">
@@ -20,7 +20,7 @@
           </div> 
           <div class="w-full flex flex-col items-start gap-2">
               <div class="flex justify-between items-center">
-                  <h1 class="text-2xl font-normal w-full truncate">{{$elerningcourse->course_name}}</h1>
+                  <h1 class="text-2xl font-normal w-full break-words">{{$elerningcourse->course_name}}</h1>
               </div>
 
               <div class="flex justify-between items-center">

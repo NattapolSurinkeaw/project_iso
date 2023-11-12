@@ -128,19 +128,18 @@ function editUser() {
         console.log(userdata.id)
         axios.post(`/api/backend/editmember/${userdata.id}`, formData)
         .then((response) => {
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1000
-        }).then( () => {
-            location.reload()
-        });
+          Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 1000
+          }).then( () => {
+              location.reload()
+          });
         })
         .catch((error) => {
             console.error('API Error:', error);
-            // จัดการข้อผิดพลาด
         });
       }
   });

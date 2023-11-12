@@ -142,7 +142,7 @@ let totalmoney = document.querySelectorAll('#totalmoney')
           });
         } else {
             // ถ้าค่าไม่ถูกต้อง ให้กลับไปเป็นค่าเดิม
-            this.value = this.dataset.previousValue || '';
+            this.value = '';
         }
     });
 

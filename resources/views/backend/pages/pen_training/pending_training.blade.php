@@ -4,7 +4,7 @@
 
 <div class="overflow-hidden">
     <h1 class="my-4 text-center text-2xl font-medium">PendingTraining</h1>
-    <div id="table-train" class="h-[750px] max-2xl:w-[93%] max-xl:w-[75%] overflow-y-scroll mx-10">
+    <div id="table-train" class="h-[750px] max-2xl:w-[93%] max-xl:w-[70%] overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
               <tr>
@@ -12,7 +12,7 @@
                   ลำดับ
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  E-mail
+                  <p>E-mail</p>
                 </th>
                 <th scope="col" class="px-6 py-3">
                   Company
@@ -30,10 +30,10 @@
                   reading
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  วันที่จองอบรม
+                  <p class="w-20">วันที่จองอบรม</p>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  วันที่ตอบกลับ
+                  <p class="w-20">วันที่ตอบกลับ</p>
                 </th>
                 <th scope="col" class="px-6 py-3 rounded-tr-lg">
                   actions
@@ -51,7 +51,7 @@
                   {{ $i++ }}
                 </th>
                 <td class="px-6 py-4">
-                  {{$pending->email}}
+                  <p>{{$pending->email}}</p>
                 </td>
                 <td class="px-6 py-4">
                   {{ $pending->company }}

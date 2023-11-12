@@ -10,7 +10,7 @@
         </div>
     </div>
     
-    <div class="relative h-4/5 overflow-y-scroll mx-10">
+    <div class="relative h-4/5 max-2xl:w-[90%] overflow-y-scroll mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -47,10 +47,10 @@
                         {{$i++}}
                     </th>
                     <td class="px-6 py-4 text-center">
-                        {{$course->course_name}}
+                        <p class="w-60">{{$course->course_name}}</p>
                     </td>
                     <td class="px-6 py-4 text-center">
-                        {{$course->price}}
+                        <p class="w-20">{{$course->price}}</p>
                     </td>
                     <td class="w-96 px-6 py-4 text-center">
                         <p class="w-64">{{ Str::limit($course->description, 100) }}</p>
@@ -66,10 +66,10 @@
                         <p class="w-40">{{$course->updated_at}}</p>
                     </td>
                     <td class="max-2xl:w-60 px-6 py-4 flex justify-center gap-2">
-                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="member" href="/backend/coruse-member/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-8 h-8" alt="สมาชิก"></a>
-                        <a class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="detail" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-8 h-8" alt="รายละเอียด"></a>
-                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="edit" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-8 h-8" alt="แก้ไข"></button>
-                        <button class="bg-gray-300 hover:bg-gray-500 p-2 rounded-lg text-white text-center" title="delete" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-8 h-8" alt="ลบ"></button>
+                        <a class="w-14 bg-gray-300 hover:bg-gray-500 p-2 flex justify-center items-center rounded-lg text-white text-center" title="member" href="/backend/coruse-member/{{$course->id}}"><img src="/image/icon/membercourse.png" class="w-8 h-8" alt="สมาชิก"></a>
+                        <a class="w-14 bg-gray-300 hover:bg-gray-500 p-2 flex justify-center items-center rounded-lg text-white text-center" title="detail" href="/backend/coursedetail/{{$course->id}}"><img src="/image/icon/detail.jpg" class="w-8 h-8" alt="รายละเอียด"></a>
+                        <button class="w-14 bg-gray-300 hover:bg-gray-500 p-2 flex justify-center items-center rounded-lg text-white text-center" title="edit" data-id="{{$course->id}}" id="editCourse"><img src="/image/icon/edit.png" class="w-8 h-8" alt="แก้ไข"></button>
+                        <button class="w-14 bg-gray-300 hover:bg-gray-500 p-2 flex justify-center items-center rounded-lg text-white text-center" title="delete" data-id="{{$course->id}}" id="delCourse"><img data-id="{{$course->id}}" src="/image/icon/delete.png" class="w-8 h-8" alt="ลบ"></button>
                     </td>
                 </tr>
                 @endforeach

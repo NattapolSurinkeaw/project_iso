@@ -51,13 +51,11 @@
                 {{ $pending->name }}
               </th>
               <td class="px-6 py-4">
-                <p class="block">
-                    @foreach ($courses as $course)
+                  @foreach ($courses as $course)
                     @if (in_array($course->id, explode(',', $pending->total_courses)))
-                    <p>{{ $course->course_name }}</p>
+                    <p class="w-40">{{ $course->course_name }}</p>
                     @endif
-                    @endforeach
-                </p>
+                  @endforeach
               </td>
               <td class="px-6 py-4">
                 {{ $pending->total_price }}
@@ -74,10 +72,12 @@
                 @endif
               </td>
               <td class="px-6 py-4">
-                {{ $pending->comment}}
+                <p class="w-40">{{ $pending->comment}}</p>
               </td>
               <td class="px-6 py-4 flex justify-center">
-                <img class="w-18 h-20" src="{{ $pending->payment_slip}}" alt="">
+                <div class="w-20 h-28">
+                  <img class="w-20 h-28" src="{{ $pending->payment_slip}}" alt="">
+                </div>
               </td>
               <td class="px-6 py-4">
                 <p class="w-20">{{ $pending->created_at->format('d-M-y') }}</p>
