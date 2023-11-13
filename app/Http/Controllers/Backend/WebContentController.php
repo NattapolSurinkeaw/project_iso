@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use App\Models\HomeVideo;
 use App\Models\HomeDocument;
+use App\Models\BannerImage;
 
 class WebContentController extends Controller
 {
@@ -16,7 +17,8 @@ class WebContentController extends Controller
         // dd($allSessions);
         $homeVideos = HomeVideo::select('id', 'thumbnail')->take(5)->get();
         $homeDocuments = HomeDocument::all();
-        return view('backend.pages.web_content.content_home', compact('homeVideos', 'homeDocuments'));
+        $banners = BannerImage::all();
+        return view('backend.pages.web_content.content_home', compact('banners', 'homeVideos', 'homeDocuments'));
     }
 
     public function getVideo($vid_id){

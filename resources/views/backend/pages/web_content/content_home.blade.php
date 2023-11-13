@@ -3,12 +3,33 @@
 @section('container')
 
 <div class="h-screen overflow-auto">
-    <div class="w-[90%]">
+    <div class="w-[90%] flex flex-col gap-5">
+
         <div class="mx-10 my-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">HOME CONTENT</h1>
+            <h2 class="text-xl font-bold">HOME CONTENT</h2>
         </div>
-        <div class="mx-10 bg-white p-4 border-l-4 border-indigo-500 overflow-hidden overflow-x-scroll">
-            <h1 class="text-xl font-bold">HOME VIDEO</h1>
+
+        <div class="mx-10 bg-white p-4 border-t-4 border-indigo-500 overflow-hidden rounded-lg">
+            <h2 class="text-xl font-bold mb-2">IMAGE BANNER </h2>
+            <div class="flex flex-col 2xl:justify-center gap-4">
+                @foreach($banners as $banner)
+                <div class="bg-[#f4f4f4] w-full flex justify-between items-center p-2 rounded-lg" style="filter: drop-shadow(0px 0px 2px rgba(7, 49, 88, 0.4));">
+                    <div class="flex gap-4">
+                        <img class="w-40 h-20 duration-300 rounded-lg"src="{{$banner->thumbnail}}">
+                        <div class="flex flex-col">
+                            <p>{{$banner->title}}</p>
+                            <p class="text-gray-400">{{$banner->created_at}}</p>
+                        </div>
+                    </div>
+                    <button id="edit-benner" data-id="{{$banner->id}}" class="bg-green-600 text-white text-xl py-1 px-3 rounded-lg">แก้ไข</button>
+                </div>
+                @endforeach 
+            </div>
+        </div>
+
+
+        <div class="mx-10 bg-white p-4 border-t-4 border-yellow-500 overflow-hidden overflow-x-scroll rounded-lg">
+            <h2 class="text-xl font-bold">HOME VIDEO</h2>
             <div class="flex 2xl:justify-center gap-4">
                 @foreach($homeVideos as $homeVideo)
                 <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
@@ -20,11 +41,11 @@
             </div>
         </div>
 
-        <div class="mx-10 my-10 bg-white p-4 border-l-4 border-indigo-500 overflow-hidden overflow-x-scroll">
-            <h1 class="text-xl font-bold">HOME DOCUMENT</h1>
+        <div class="mx-10 bg-white p-4 border-t-4 border-blue-500 overflow-hidden overflow-x-scroll rounded-lg">
+            <h2 class="text-xl font-bold">HOME DOCUMENT</h2>
             <div class="flex 2xl:justify-center gap-4">
                 @foreach($homeDocuments as $doc)
-                <div data-id="{{$doc->id}}" id="homeDoc" class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
+                <div data-id="{{$doc->id}}" id="homeDoc" class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg">
                     <div class="w-60 overflow-hidden rounded-lg">
                     @if(!empty($doc->thumbnail))
                     <img class="w-60 h-40 duration-300 rounded-lg "
@@ -34,7 +55,7 @@
                         src="/image/icon/isologo.png" alt="">
                     @endif
                     </div>
-                    <h1 class="font-normal">{{$doc->name}}</h1>
+                    <h2 class="font-normal">{{$doc->name}}</h2>
                 </div>
                 @endforeach 
             </div>

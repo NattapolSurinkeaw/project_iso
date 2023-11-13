@@ -5,30 +5,16 @@
 
 @section('content')
 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" centered-slides="true" loop="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
+  @foreach($banners as $banner)
   <swiper-slide>
-    <img class="brightness-50 max-xs:h-[400px] h-[910px] w-full" src="/image/background/background.jpeg" alt="">
+    <img class="brightness-50 max-xs:h-[400px] h-[910px] w-full" src="{{$banner->thumbnail}}" alt="">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
-      <h2 class="text-[30px] max-xs:text-lg">In-house & On-line Learning!</h2>
-      <h2 class="text-[60px] max-xs:text-xl text-orange-500 font-bold my-5">ISO CONSULTING & TRAINING</h2>
-      <p class="max-xs:hidden">ISO9001, ISO14001, AS9100/10/20, IATF16949, ISO45001, ISO13485, ISO15189, ISO17025, ISO22301, ISO27001, ISO22000, TL9000, Lean, Six Sigma,..etc.</p>
+      <h2 class="text-[30px] max-xs:text-lg">{{$banner->title}}</h2>
+      <h2 class="text-[60px] max-xs:text-xl text-orange-500 font-bold my-5">{{$banner->heading}}</h2>
+      <p class="max-xs:hidden">{{$banner->description}}</p>
     </div>
   </swiper-slide>
-  <swiper-slide>
-    <img class="brightness-50 max-xs:h-[400px] h-[910px] w-full" src="/image/background/background.jpeg" alt="">
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
-      <h2 class="text-[30px] max-xs:text-lg">ISO/QSEH consulting services!</h2>
-      <h2 class="text-[60px] max-xs:text-xl text-orange-500 font-bold my-5">ISO DOCUMENTATION</h2>
-      <p class="max-xs:hidden">We provide creating a comprehensive quality system and documentation both hard-paper and software.</p>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <img class="brightness-50 max-xs:h-[400px] h-[910px] w-full" src="/image/background/background.jpeg" alt="">
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
-      <h2 class="text-[30px] max-xs:text-lg">Online Learning Anytime, Anywhere!</h2>
-      <h2 class="text-[60px] max-xs:text-xl text-orange-500 font-bold my-5">ELEARNING & ECONSULTING SERVICES</h2>
-      <p class="max-xs:hidden">To support time management and effectiveness of implementation, we provide on-line consulting and training with low cost to our clients.</p>
-    </div>
-  </swiper-slide>
+  @endforeach
 </swiper-container>
 
 <!-- menu -->

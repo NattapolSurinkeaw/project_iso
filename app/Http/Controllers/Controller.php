@@ -10,19 +10,19 @@ use App\Models\User;
 use App\Models\HomeVideo;
 use App\Models\NewsEvent;
 use App\Models\HomeDocument;
+use App\Models\BannerImage;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
     public function homePage() {
-        // $allSessions = session()->all();
-        // dd($allSessions);
+        $banners = BannerImage::all();
         $homeVideos = HomeVideo::select('id', 'thumbnail')->take(5)->get();
         $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
         $homeDocuments = HomeDocument::all();
 
-        return view('pages.app_iso.home', compact('homeVideos', 'homeNews', 'homeDocuments'));
+        return view('pages.app_iso.home', compact('banners', 'homeVideos', 'homeNews', 'homeDocuments'));
     }
 
     public function registerPage() {
