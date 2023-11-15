@@ -86,11 +86,19 @@
     burgur.addEventListener("click", () => {
       if (sidebar.classList.contains("open")) {
         sidebar.classList.remove("open")
-        sidebar.classList.remove("max-xl:w-[60%]")
+        if(innerWidth <= 500) {
+          sidebar.classList.remove("max-xl:w-[65%]")
+        } else {
+          sidebar.classList.remove("max-xl:w-[45%]")
+        }
         sidebar.classList.remove("max-xl:p-4")
       } else {
         sidebar.classList.add("open")
-        sidebar.classList.add("max-xl:w-[60%]")
+        if(innerWidth <= 500) {
+          sidebar.classList.add("max-xl:w-[65%]")
+        } else {
+          sidebar.classList.add("max-xl:w-[45%]")
+        }
         sidebar.classList.add("max-xl:p-4")
       }
         

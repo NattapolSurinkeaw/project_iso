@@ -14,14 +14,36 @@ use Illuminate\Support\Str;
 class ApiDashboradController extends Controller
 {
     //
-    public function getHomeVideo($id) {
-        $urlvdo = HomeVideo::find($id);
+    public function getHomeVideo(Request $request, $id) {
+        $display = $request->input('display');
 
+        $width = null;
+        $height = null;
+        if($display == '2xl') {
+            $width = 1450;
+            $height = 768;
+        } elseif($display == 'xl') {
+            $width = 1000;
+            $height = 500;
+        } elseif($display == 'lg') {
+            $width = 768;
+            $height = 400;
+        } elseif($display == 'md') {
+            $width = 640;
+            $height = 400;
+        } elseif($display == 'xs') {
+            $width = 375;
+            $height = 300;
+        }
+        $urlvdo = HomeVideo::find($id);
+  
         if($urlvdo->type_input == 'youtube' || $urlvdo->type_input == 'vimeo'){
             $embed = \Embed::make($urlvdo->url)->parseUrl();
+            $embed->setAttribute('width', $width);  // กำหนดค่า width
+            $embed->setAttribute('height', $height); // กำหนดค่า height
             $course_video = $embed->getHtml();
         } else if ($urlvdo->type_input == 'drive') {
-            $course_video = '<iframe src="' . $urlvdo->url . '" width="1200" height="700" allow="autoplay"></iframe>';
+            $course_video = '<iframe src="' . $urlvdo->url . '" width="'.$width.'" height="'.$height.'" allow="autoplay"></iframe>';
         } else {
             $course_video = "ไม่มีวิดีโอ";
         }

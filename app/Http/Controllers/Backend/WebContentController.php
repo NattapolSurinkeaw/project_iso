@@ -21,6 +21,72 @@ class WebContentController extends Controller
         return view('backend.pages.web_content.content_home', compact('banners', 'homeVideos', 'homeDocuments'));
     }
 
+    
+    public function get_banner_by_id($id) {
+        $banner = BannerImage::find($id);
+
+        if ($banner) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $banner
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'data not found'
+            ], 404);
+        }
+    }
+
+    public function edit_banner(Request $request, $id) {
+        $banner = BannerImage::find($id);
+        
+        if (!$banner) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'data not found'
+            ], 404);
+        } 
+        
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'heading' => 'required',
+            'description' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 400);
+        }
+
+        if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
+            $image = $request->file('thumbnail');
+            $imgName = '/upload/images/banner/' . time() . '.' . $image->getClientOriginalExtension();
+
+            // ตรวจสอบว่ามีรูปเก่าใน $user->img_profile หรือไม่
+            if (!empty($homevideo->thumbnail)) {
+                // ถ้ามีรูปเก่า ให้ลบไฟล์เก่าที่อยู่ใน $user->img_profile
+                File::delete(public_path($homevideo->thumbnail));
+            }
+
+            $image->move(public_path('upload/images/banner'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+            $banner->thumbnail = $imgName;
+        }
+
+        $banner->title = $request->input('title');
+        $banner->heading = $request->input('heading');
+        $banner->description = $request->input('description');
+        $banner->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'update banner successfully'
+        ], 201);
+    }
+
     public function getVideo($vid_id){
         $homevideo = HomeVideo::find($vid_id);
 

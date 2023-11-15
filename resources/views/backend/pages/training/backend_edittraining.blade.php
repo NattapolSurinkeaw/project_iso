@@ -16,12 +16,6 @@
         </option>
         @endforeach
       </select>
-      {{-- <select name="" id="">
-        <option value="A">A</option>
-        <option selected value="B">B</option>
-        <option value="C">C</option>
-        <option value="E">E</option>
-      </select> --}}
       <button id="addModule" class="px-3 py-1 bg-green-500 text-white rounded-lg" onclick="addModule()">add</button>
       <button id="editModule" class="px-3 py-1 bg-yellow-500 text-white rounded-lg" onclick="editModule()">Edit</button>
       <button id="delModule" class="px-3 py-1 bg-red-500 text-white rounded-lg" onclick="delModule()">delete</button>
@@ -63,7 +57,8 @@
         <textarea name="content" id="editor" >{{$training->training_detail}}</textarea>
       </div>
 
-      <div class="flex justify-end my-4">
+      <div class="flex justify-end my-4 gap-4">
+        <button id="backTotrain"  class="px-5 py-2 text-white bg-red-500 rounded-lg">back</button>
         <button onclick="editTraining({{$training->id}})" class="px-5 py-2 text-white bg-green-500 rounded-lg">save</button>
       </div>
     </div>
@@ -73,9 +68,15 @@
 
 @section('be-scripts')
 <script>
-
+  const main_backend = document.querySelector('#main-backend');
+  main_backend.style.overflow = "auto";
+  main_backend.style.padding = "10px";
+  console.log(main_backend)
   // let modules = {!! json_encode($modules) !!};
   // console.log(modules)
+  backTotrain.onclick = () => {
+    location.href = "/backend/training";
+  }
   
   function addModule() {
     Swal.fire({

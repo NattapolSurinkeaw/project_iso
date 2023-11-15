@@ -128,7 +128,7 @@ Route::prefix('api')->group(function (){
   
   Route::get('/getvideomat/{id}', [ElerningController::class, 'getVideoMat']);
   Route::post('/learning-video/{id}', [ElerningController::class, 'learningvideo']);
-  Route::get('/getvideo/{id}', [ApiDashboradController::class, 'getHomeVideo']);
+  Route::post('/getvideo/{id}', [ApiDashboradController::class, 'getHomeVideo']);
   Route::post('/dashboard/edituser/{id}', [ApiDashboradController::class, 'editUser']);
 
   Route::get('/auth/adminData', [BackendController::class, 'onGetAdminData']);
@@ -196,5 +196,7 @@ Route::prefix('api')->group(function (){
 
   Route::get('/backend/getdocument/{id}', [WebContentController::class, 'getDocument']);
   Route::post('/backend/editdocument/{id}', [WebContentController::class, 'editHomeDoc']);
-
+  
+  Route::get('/backend/banner/{id}', [WebContentController::class, 'get_banner_by_id']);
+  Route::post('/backend/editbanner/{id}', [WebContentController::class, 'edit_banner']);
 });

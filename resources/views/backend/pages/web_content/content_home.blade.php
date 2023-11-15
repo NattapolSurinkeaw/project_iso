@@ -2,8 +2,8 @@
 @section('title') Create Training @endsection
 @section('container')
 
-<div class="h-screen overflow-auto">
-    <div class="w-[90%] flex flex-col gap-5">
+<div class="h-screen mb-4">
+    <div class="w-[95%] flex flex-col gap-5">
 
         <div class="mx-10 my-4 flex justify-between items-center">
             <h2 class="text-xl font-bold">HOME CONTENT</h2>
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="mx-10 bg-white p-4 border-t-4 border-blue-500 overflow-hidden overflow-x-scroll rounded-lg">
+        <div class="mx-10 mb-4 bg-white p-4 border-t-4 border-blue-500 overflow-hidden overflow-x-scroll rounded-lg">
             <h2 class="text-xl font-bold">HOME DOCUMENT</h2>
             <div class="flex 2xl:justify-center gap-4">
                 @foreach($homeDocuments as $doc)
@@ -67,6 +67,9 @@
 @endsection
 @section('be-scripts')
 <script>
+    const main_backend = document.querySelector('#main-backend');
+    main_backend.style.overflow = "auto";
+    console.log(main_backend)
     let videoLinks = document.querySelectorAll('#getVideo');
     let documentHome = document.querySelectorAll('#homeDoc');
 
@@ -222,6 +225,96 @@
                     //     console.log(key + ': ' + value);
                     // });
                     axios.post(`/api/backend/editdocument/${doc_id}`, param)
+                        .then((response) => {
+                            console.log(response)
+                            if(response.data.status == 'success') {
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1000
+                                }).then(() => {
+                                    location.reload()
+                                });
+                            } else {
+                                console.log(response.data.status)
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('API Error:', error);
+                            // จัดการข้อผิดพลาด
+                        });
+                }
+            });
+        })
+    }
+
+
+    let edit_benner = document.querySelectorAll('#edit-benner')
+    // console.log(edit_benner);
+
+    edit_benner.forEach(element => {
+        element.addEventListener('click', () => {
+            const data_id = element.getAttribute('data-id');
+            edit_banner(data_id)
+        })
+    });
+
+    function edit_banner(data_id) {
+        console.log(data_id)
+        axios.get(`/api/backend/banner/${data_id}`).then((response) => {
+            console.log(response.data.data)
+            const data = response.data.data;
+            Swal.fire({
+            title: "Create Quiz",
+            html: `   
+                    <div>
+                        <div class="text-left flex flex-col gap-4">
+                            <div class="grid grid-cols-[150px,1fr] gap-2">
+                                <img class="w-40 h-20" src="${data.thumbnail}">
+                                <input class="self-center" type="file" name="banner-thumbnail" id="banner-thumbnail"
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-[100px,1fr] gap-2"> 
+                            <label>title</label>
+                            <input type="text" class="w-full border" id="banner-title" value="${data.title}" />
+                        </div>
+                        <div class="grid grid-cols-[100px,1fr] gap-2"> 
+                            <label>header</label>
+                            <input type="text" class="w-full border" name="banner-head" id="banner-head" value="${data.heading}" />
+                        </div>
+                        <div class="grid grid-cols-[100px,1fr] gap-2"> 
+                            <label>description</label>
+                            <textarea class="border" id="description" name="description">${data.description}</textarea>
+                        </div>
+                    </div>
+                    `,
+            confirmButtonText: "Submit",
+            focusConfirm: false,
+            preConfirm: () => {
+                const thumbnail = Swal.getPopup().querySelector("#banner-thumbnail");
+                let thumbFile = thumbnail.files[0];
+                const title = Swal.getPopup().querySelector('#banner-title').value;
+                const heading = Swal.getPopup().querySelector('#banner-head').value;
+                const description = Swal.getPopup().querySelector('#description').value;
+
+
+                formData = new FormData();
+                formData.append('thumbnail', thumbFile)
+                formData.append('title', title),
+                formData.append('heading', heading)
+                formData.append('description', description)
+                return formData;
+            },
+            customClass: {
+                popup: 'custom-popup-banner', 
+            },
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const param = result.value;
+                    console.log(data_id);
+                    axios.post(`/api/backend/editbanner/${data_id}`, param)
                         .then((response) => {
                             console.log(response)
                             if(response.data.status == 'success') {

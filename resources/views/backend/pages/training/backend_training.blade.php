@@ -87,7 +87,6 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 my-auto h-full flex items-center justify-center gap-1">
-                        <a class="bg-blue-600 p-2 rounded-lg text-white w-24 text-center" href="/backend/coursedetail/">ลายละเอียด</a>
                         <a href="{{url('/backend/edittraining')}}/{{$trainingcourse->id}}" class="bg-yellow-500 p-2 rounded-lg text-white text-center" data-id="" id="editCourse">แก้ไข</a>
                         <button onclick="delTraining({{$trainingcourse->id}})"  class="bg-red-600 p-2 rounded-lg text-white text-center">ลบ</button>
                     </td>

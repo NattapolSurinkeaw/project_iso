@@ -33,7 +33,7 @@
             <p>{{$user->name}}</p>
           </div>
         </div>
-        <div class="bg-gray-100 h-full">
+        <div id="main-backend" class="bg-gray-100 h-full">
           @yield('container')
         </div>
     </div>

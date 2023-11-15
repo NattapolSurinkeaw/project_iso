@@ -94,7 +94,7 @@
 
 <!-- ป้ายประชาสัมพันธ์ -->
 <div id="signBoard"></div>
-<div data-aos="fade-up" data-aos-duration="700" data-aos-easing="ease-in-out" class="my-20 mx-auto flex max-xs:flex-col w-10/12 overflow-hidden rounded-xl border drop-shadow h-[450px]">
+<div data-aos="fade-up" data-aos-duration="700" data-aos-easing="ease-in-out" class="my-20 mx-auto flex max-xs:flex-col w-10/12 overflow-hidden rounded-xl border h-[450px]">
   <div class="w-full p-5 overflow-y-scroll">
     <h1 class="text-4xl font-normal" style="font-family: 'Dancing Script', cursive;">WELCOME TO ISO CONSULT</h1>
     <hr class="my-1 w-2/12 border border-red-600" />
@@ -111,7 +111,7 @@
   <h2 class="text-center text-2xl font-normal">Our Video</h2>
   <div class="flex 2xl:justify-around my-5 gap-4 overflow-x-auto p-4" data-aos="flip-left" data-aos-duration="700" data-aos-easing="ease-in-out">
     @foreach($homeVideos as $homeVideo)
-      <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
+      <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-gray-300 rounded-lg ">
         <div id="getVideo" video-id="{{$homeVideo->id}}" class="w-60 overflow-hidden rounded-lg">
           <img class="w-60 h-40 duration-300 rounded-lg"src="{{$homeVideo->thumbnail}}" data-type={{$homeVideo->type_input}}>
         </div>
@@ -122,8 +122,8 @@
 
 <!-- The Modal -->
 <div id="videoModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[11]">
-  <div class="modal-content bg-white p-4 rounded-lg shadow-lg">
-    <a id="close" class="flex absolute top-10 right-48 text-center text-4xl text-white hover:text-black cursor-pointer">X</a>
+  <div class="modal-content bg-white p-4 max-lg:p-1 rounded-lg shadow-lg">
+    <a id="close" class="flex absolute top-10 right-48 max-2xl:top-20 max-xl:top-10 max-xl:right-20 max-lg:top-36 max-xs:top-48 max-xs:right-5 text-center text-4xl text-white hover:text-black cursor-pointer">X</a>
     <div id="box-video"></div>
   </div>
 </div>
@@ -262,9 +262,29 @@
     // console.log(videoId)
     let modal = document.getElementById('videoModal');
     let videoFrame = document.getElementById('box-video');
-
+    
     try {
-      axios.get(`{{url('/')}}/api/getvideo/${videoId}`)
+      let display = null;
+      if(innerWidth >= 1536){
+        display = "2xl";
+      } else if (innerWidth >= 1280) {
+        display = "xl";
+      } else if (innerWidth >= 1024) {
+        display = "lg";
+      } else if (innerWidth >= 768) {
+        display = "md";
+      } else if (innerWidth >= 640) {
+        display = "sm";
+      } else {
+        display = "xs";
+      }
+      console.log(display);
+      param = {
+        display : display
+      }
+
+      console.log(param);
+      axios.post(`/api/getvideo/${videoId}`, param)
         .then(response => {
           console.log(response.data.data);
           const url = response.data.data;
