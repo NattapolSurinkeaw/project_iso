@@ -2,7 +2,7 @@
 @section('title') Create News @endsection
 @section('container')
 
-<div class="h-screen overflow-y-scroll">
+<div class="h-screen">
     <div class="mx-10 my-4 flex justify-between items-center">
         <h1 class="text-xl font-bold">News And Events</h1>
     </div>
@@ -37,6 +37,7 @@
 @endsection
 
 @section('be-scripts')
+@vite('resources/js/backend/global_overflow/main_overflow.js')
 <script>
   let editor; // เราจะใช้ตัวแปร editor เก็บอินสแตนซ์ของ CKEditor
 

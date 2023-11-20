@@ -13,6 +13,7 @@ export default defineConfig({
 
                     // backend
                     'resources/js/backend/home/home.js',
+                    'resources/js/backend/global_overflow/main_overflow.js',
                 ],
             refresh: true,
         }),

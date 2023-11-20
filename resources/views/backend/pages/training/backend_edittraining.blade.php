@@ -67,11 +67,8 @@
 @endsection
 
 @section('be-scripts')
+@vite('resources/js/backend/global_overflow/main_overflow.js')
 <script>
-  const main_backend = document.querySelector('#main-backend');
-  main_backend.style.overflow = "auto";
-  main_backend.style.padding = "10px";
-  console.log(main_backend)
   // let modules = {!! json_encode($modules) !!};
   // console.log(modules)
   backTotrain.onclick = () => {

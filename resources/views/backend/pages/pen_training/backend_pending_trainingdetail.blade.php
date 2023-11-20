@@ -13,7 +13,7 @@
     <a href="/quotation/{{$pendingTraining->id}}" class="bg-red-600 text-white py-1 px-1 rounded-lg flex items-center">ดาวโหลด PDF</a>
     <button class="bg-green-600 text-white py-1 px-4 rounded-lg hidden" id="btnSave" onclick="editpending()">บันทึก</button>
   </div>
-  <div class="h-[800px] overflow-y-scroll mx-10 flex flex-col items-center">
+  <div class="mx-10 flex flex-col items-center">
     <div class="bg-[#fff] w-4/5 p-6 pt-5 drop-shadow-2xl rounded-xl">
       <div class="items-center w-full mt-6 mb-6">
         <p class="text-gray-600 text-2xl font-ligth text-center">Request For Quote</p>
@@ -207,6 +207,7 @@
 @endsection
 
 @section('be-scripts')
+@vite('resources/js/backend/global_overflow/main_overflow.js')
 <script>
   let selectStatus = document.querySelector('#status');
   let btnSave = document.querySelector('#btnSave');
