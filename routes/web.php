@@ -125,6 +125,7 @@ Route::prefix('api')->group(function (){
   Route::get('/auth/logout', [BackendController::class, 'onLogout'])->name('logout');
   Route::post('/auth/register', [BackendController::class, 'onRegister']);
 
+  Route::post('/sendmessage', [FrontendController::class, 'sendMessage']);
   
   Route::get('/getvideomat/{id}', [ElerningController::class, 'getVideoMat']);
   Route::post('/learning-video/{id}', [ElerningController::class, 'learningvideo']);

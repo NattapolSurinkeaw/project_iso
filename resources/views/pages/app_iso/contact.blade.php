@@ -16,7 +16,7 @@
           </div>
           <div class="flex flex-col w-full">
             <label for="phone-number">Telephone:</label>
-            <input type="text" class="w-full h-10" id="phone-number">
+            <input type="text" class="w-full h-10" id="phone-number" maxlength="10">
           </div>
         </div>
 
@@ -33,6 +33,9 @@
         <div>
           <label for="leave-message">Message:</label>
           <textarea name="" id="leave-message" cols="30" rows="10" class="w-full"></textarea>
+        </div>
+        <div>
+          <button class="py-1 px-2 bg-green-400" id="sendMessage">send</button>
         </div>
       </div>
       {{-- <div class="flex max-xs:flex-col max-2xl:justify-center gap-10">
@@ -92,4 +95,50 @@
   </div>
 </div>
 @include('layouts.footer')
+@endsection
+
+@section('scripts')
+<script>
+  const sendMessage = document.querySelector('#sendMessage')
+
+  sendMessage.addEventListener('click', () => {
+    sendLeaveMessage()
+  })
+
+  function sendLeaveMessage() {
+    let fname_lname = document.querySelector('#fname-lname').value;
+    let phone_number = document.querySelector('#phone-number').value;
+    let organiz = document.querySelector('#organiz').value;
+    let email = document.querySelector('#email').value;
+    let leave_message = document.querySelector('#leave-message').value;
+    if(!fname_lname || !phone_number || !organiz || !email || !leave_message) {
+      console.log("ค่าว่าง")
+      return false;
+    }
+
+    let param = {
+      'fname_lname' : fname_lname,
+      'phone_number' : phone_number,
+      'organiz' : organiz,
+      'email' : email,
+      'leave_message' : leave_message
+    }
+    console.log(param);
+    axios.post(`/api/sendmessage`,param).then((response) => {
+      console.log(response);
+      if(response.status = "success"){
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            location.reload();
+          })
+        }
+    })
+    return false;
+  }
+</script>
 @endsection
