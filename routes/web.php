@@ -21,7 +21,7 @@ use App\Http\Controllers\Backend\PendingCourseController;
 use App\Http\Controllers\Backend\PendingTrainingController;
 
 use App\Http\Controllers\Backend\WebContentController;
-
+use App\Http\Controllers\Backend\LeaveMessageController;
 
 use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use App\Http\Controllers\Backend\api\ApiBackendController;
@@ -117,6 +117,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/pendingtraining-detail/{id}',[PendingTrainingController::class,'pendingTrainingDetail']);
 
   Route::get('/webcontent',[WebContentController::class,'contentHome']);
+  Route::get('/leavemessage',[LeaveMessageController::class,'manage_leavemessage']);
 });
 
 

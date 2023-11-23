@@ -4,38 +4,38 @@
 @section('title', 'Contact us ')
 
 @section('content')
-<div class="min-h-[660px] py-4 bg-gray-100">
-  <div class="mx-auto 2xl:max-w-[1536px]">
-    <h1 class="text-3xl text-center my-4">Contact</h1>
+<div class="min-h-[690px] ">
+  <div class="mx-auto mt-4 2xl:max-w-[1536px] max-2xl:max-w-[90%]  p-4 bg-gray-100 rounded-md">
+    <h1 class="text-3xl text-center">Contact</h1>
     <div class="flex max-2xl:flex-col justify-between gap-10">
       <div class="flex flex-col gap-10 w-full">
         <div class="flex gap-4 w-full">
           <div class="flex flex-col w-full">
             <label for="fname-lname">Name-Surname:</label>
-            <input type="text" class="w-full h-10" id="fname-lname">
+            <input type="text" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="fname-lname">
           </div>
           <div class="flex flex-col w-full">
             <label for="phone-number">Telephone:</label>
-            <input type="text" class="w-full h-10" id="phone-number" maxlength="10">
+            <input type="text" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="phone-number" maxlength="10">
           </div>
         </div>
 
         <div class="flex gap-4 w-full">
           <div class="flex flex-col w-full">
             <label for="organiz">Organization:</label>
-            <input type="text" class="w-full h-10" id="organiz">
+            <input type="text" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="organiz">
           </div>
           <div class="flex flex-col w-full">
             <label for="email">Email:</label>
-            <input type="text" class="w-full h-10" id="email">
+            <input type="text" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="email">
           </div>
         </div>
         <div>
           <label for="leave-message">Message:</label>
-          <textarea name="" id="leave-message" cols="30" rows="10" class="w-full"></textarea>
+          <textarea name="" id="leave-message" cols="30" rows="10" class="w-full px-2 max-xs:h-20 border border-gray-300 rounded-md"></textarea>
         </div>
         <div>
-          <button class="py-1 px-2 bg-green-400" id="sendMessage">send</button>
+          <button class="py-2 px-3 bg-green-600 text-white rounded-lg" id="sendMessage">Send! &rarr;</button>
         </div>
       </div>
       {{-- <div class="flex max-xs:flex-col max-2xl:justify-center gap-10">

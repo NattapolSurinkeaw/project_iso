@@ -2,7 +2,7 @@
   <div id="navSide" class="h-screen max-xs:h-10 max-xs:w-full overflow-hidden transition-all duration-300">
     <div class="flex justify-between">
       <a href="{{url('/dashboard')}}"><h1 class="sm:p-5 mt-2 mb-4 font-medium text-center text-xl">User Dashboard</h1></a>
-      <button class="sm:p-5 xs:hidden mt-2 mb-4 font-medium text-center text-xl" id="btnShow">กด</button>
+      <button class="sm:p-5 xs:hidden mt-2 mb-4 font-medium text-center text-xl" id="btnShow">Show</button>
     </div>
     <div class="flex flex-col">
       <ul class="flex flex-col items-center gap-4">

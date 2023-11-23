@@ -223,11 +223,11 @@
 </div>
 
 <div id="agencies"></div>
-<div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4">
+<div class="flex flex-col gap-5 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-8">
   <h2>หน่วยงานที่เกี่ยวข้อง</h2>
   <p>ISOConsult.org</p>
 </div>
-
+@include('layouts.footer')
 @endsection
 
 @section('scripts')
