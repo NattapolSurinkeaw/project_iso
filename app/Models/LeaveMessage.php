@@ -14,6 +14,7 @@ class LeaveMessage extends Model
         'phone_number',
         'organiz',
         'email',
-        'leave_message'
+        'leave_message',
+        'status'
     ];
 }

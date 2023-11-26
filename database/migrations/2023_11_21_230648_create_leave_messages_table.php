@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('organiz');
             $table->string('email');
             $table->text('leave_message');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
