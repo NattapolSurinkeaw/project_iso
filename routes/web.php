@@ -201,4 +201,6 @@ Route::prefix('api')->group(function (){
   
   Route::get('/backend/banner/{id}', [WebContentController::class, 'get_banner_by_id']);
   Route::post('/backend/editbanner/{id}', [WebContentController::class, 'edit_banner']);
+
+  Route::get('/backend/getmessage/{id}', [LeaveMessageController::class, 'getMessageById']);
 });
