@@ -13,22 +13,27 @@
             <div class="w-full h-[200px] max-w-[300px] bg-white rounded-lg">
                 <h2 class="text-center text-xl bg-gray-400 py-2 rounded-t-lg">กล่องข้อความ</h2>
                 <div class="flex flex-col gap-4 my-1">
-                    <button class="py-2 border-l-4 border-green-500">ข้อความ</button>
-                    <button class="py-2">ติดดาว</button>
+                    <button id="btn-list" class="py-2 border-l-4 border-green-500">ข้อความ</button>
+                    <button id="btn-star" class="py-2">ติดดาว</button>
                 </div>
             </div>
 
             <div class="w-full h-[500px] bg-white p-4 border-t-4 border-indigo-500 overflow-hidden rounded-lg">
-                <h2 class="text-xl font-bold mb-2">Message</h2>
-                <div class="flex flex-col 2xl:justify-center gap-4">
-                    @foreach($message as $mess)
-                    <div id="message" class="bg-[#f4f4f4] w-full grid grid-cols-[50px,1fr,1fr,1fr] p-2 rounded-lg" style="filter: drop-shadow(0px 0px 2px rgba(7, 49, 88, 0.4));">
-                        <div id="follow"><box-icon name='star' type="solid"></box-icon></div>
-                        <div>{{$mess->fname_lname}}</div>
-                        <div>{{$mess->organiz}}</div>
-                        <div>{{$mess->created_at}}</div>
+                <div class="" id="list-message">
+                    <h2 class="text-xl font-bold mb-2">Message</h2>
+                    <div class="flex flex-col 2xl:justify-center gap-4">
+                        @foreach($message as $mess)
+                        <div id="message" data-id="{{$mess->id}}" class="bg-[#f4f4f4] w-full grid grid-cols-[50px,1fr,1fr,1fr] p-2 rounded-lg" style="filter: drop-shadow(0px 0px 2px rgba(7, 49, 88, 0.4));">
+                            <div id="follow"><box-icon name='star' type="solid"></box-icon></div>
+                            <div>{{$mess->fname_lname}}</div>
+                            <div>{{$mess->organiz}}</div>
+                            <div>{{$mess->created_at}}</div>
+                        </div>
+                        @endforeach 
                     </div>
-                    @endforeach 
+                </div>
+                <div id="message-detail">
+
                 </div>
             </div>
         </div>
@@ -40,23 +45,37 @@
 <script>
     const message = document.querySelector('#message')
     const follow = document.querySelector('#follow')
+    const btn_list = document.querySelector('#btn-list')
+    const list_message = document.querySelector('#list-message')
+    const message_detail = document.querySelector('#message-detail');
 
-    message.onclick = () => {
-        contentMessage()
-    }
-    // message.addEventListener('click', () => {
-    //     contentMessage()
-    // })
+    message.addEventListener('click', () => {
+        const data_id = message.getAttribute('data-id');
+        contentMessage(data_id)
+    })
 
-    follow.onclick = () => {
+    follow.addEventListener('click', () => {
         updateMessage()
-    }
-    // follow.addEventListener('click', () => {
-    //     updateMessage()
-    // })
+    })
 
-    function contentMessage() {
-        console.log("get message")
+    btn_list.addEventListener('click', () => {
+        message_detail.classList.add('hidden')
+        list_message.classList.remove('hidden')
+    })
+
+    function contentMessage(data_id) {
+        console.log("get message"+ data_id)
+        list_message.classList.add('hidden')
+
+        createContent()
+    }
+
+    function createContent() {
+        let content = `
+                       <h1>hellword</h1> 
+                    `;
+        console.log(message_detail)
+        message_detail.innerHTML = content
     }
 
     function updateMessage() {

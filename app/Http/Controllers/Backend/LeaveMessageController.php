@@ -13,4 +13,6 @@ class LeaveMessageController extends Controller
         $message = LeaveMessage::all();
         return view('backend.pages.leave_message.manage_leavemessage', compact('message'));
     }
+
+    public function get
 }
