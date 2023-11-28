@@ -16,7 +16,7 @@
           </div>
           <div class="flex flex-col w-full">
             <label for="phone-number">Telephone:</label>
-            <input type="text" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="phone-number" maxlength="10">
+            <input type="text" pattern="[0-9]+" class="w-full h-10 px-2 max-xs:h-8 border border-gray-300 rounded-md" id="phone-number" maxlength="10">
           </div>
         </div>
 
@@ -104,6 +104,11 @@
   sendMessage.addEventListener('click', () => {
     sendLeaveMessage()
   })
+
+  const phone_number = document.querySelector('#phone-number');
+  phone_number.addEventListener('input', () => {
+    phone_number.value = phone_number.value.replace(/[^0-9]/g, '');
+  });
 
   function sendLeaveMessage() {
     let fname_lname = document.querySelector('#fname-lname').value;
