@@ -18,79 +18,61 @@
 </swiper-container>
 
 <!-- menu -->
-<div id="menu" class="grid grid-cols-6 max-2xl:grid-cols-3 max-xs:grid-cols-1 gap-10 place-items-center p-4 mt-10">
+<div id="menu" class="w-10/12 mx-auto grid grid-cols-6 max-2xl:grid-cols-3 max-xs:grid-cols-2 gap-5 place-items-center mt-10">
   <a href="#signBoard">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/book.png" alt="">
       <div class="flex gap-2 flex-col justify-center font-normal">
-        <h2 class="text-lg">ป้ายประชาสัมพันธ์</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">ป้ายประชาสัมพันธ์</h2>
       </div>
     </div>
   </a>
 
   <a href="#ourVideo">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/video.png" alt="">
       <div class="flex gap-2 flex-col justify-center font-normal">
-        <h2 class="text-lg">วิดีโอแนะนำ</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">วิดีโอแนะนำ</h2>
       </div>
     </div>
   </a>
 
   <a href="#ourCourse">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-7 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/book.png" alt="">
       <div class="flex gap-2 flex-col justify-center font-normal">
-        <h2 class="text-lg">หลักสูตรของเรา</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">หลักสูตรของเรา</h2>
       </div>
     </div>
   </a>
 
   <a href="#news">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-6 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/audio.png" alt="">
       <div class="flex gap-2 flex-col justify-center font-normal">
-        <h2 class="text-lg">ข่าวประชาสัมพันธ์</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">ข่าวประชาสัมพันธ์</h2>
       </div>
     </div>
   </a>
 
   <a href="#documents">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/magazine.png" alt="">
       <div class="flex gap-2 flex-col justify-center font-normal">
-        <h2 class="text-lg">เอกสารที่เผยแพร่</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">เอกสารที่เผยแพร่</h2>
       </div>
     </div>
   </a>
 
   <a href="#agencies">
-    <div class="max-xs:w-[17rem] break-all flex items-center max-xs:justify-center gap-4 border px-4 py-2 bg-gray-200 rounded-lg shadow-lg">
+    <div class="max-xs:w-[17rem] w-[239px] max-lg:w-[190px] max-xs:w-[150px] break-all flex max-lg:flex-col items-center max-xs:justify-center gap-2 border px-3 py-2 bg-gray-200 rounded-lg shadow-lg">
       <img class="w-14 h-14" src="image/icon/video.png" alt="">
       <div class="flex gap-2 flex-col justify-center">
-        <h2 class="text-lg">หน่วยงานที่เกี่ยวข้อง</h2>
-        <p>45,00</p>
+        <h2 class="text-lg max-xs:text-sm">หน่วยงานที่เกี่ยวข้อง</h2>
       </div>
     </div>
   </a>
 </div>
-
-{{-- {{Auth::user()->name}} --}}
-{{-- @dd($user) --}}
-{{-- @dd($allSessions) --}}
-{{-- @foreach ($allSessions as $key => $value)
-    <p>{{ $key }}: {{ $value }}</p>
-@endforeach --}}
-{{-- @if($user)
-  <h2>Mr => {{$user->email}}</h2>
-@else 
-  <h2>nodata</h2>
-@endif --}}
 
 <!-- ป้ายประชาสัมพันธ์ -->
 <div id="signBoard"></div>
@@ -132,17 +114,23 @@
 <div id="ourCourse"></div>
 <div class="flex flex-col gap-10 shadow-lg rounded-lg p-4 w-10/12 mx-auto mt-10 mb-4 overflow-hidden">
   <h2 class="text-center text-2xl font-normal">CHECK OUT THE HOT RELEASES</h2>
-  <div class="xl:max-w-[70%] flex max-xs:flex-col justify-start items-center gap-5" data-aos="fade-right" data-aos-duration="700" data-aos-easing="ease-in-out">
+  @php $i = 1; @endphp
+  @foreach($elearnings as $learn)
+  @php
+    $css1 = ($i % 2 == 0) ? 'justify-end' : 'justify-start';
+    echo $css1;
+    $i++;
+  @endphp
+  <div class="xl:max-w-full flex max-xs:flex-col {{$css1}} items-center gap-5" data-aos="fade-right" data-aos-duration="700" data-aos-easing="ease-in-out">
     <img class="w-72 rounded-xl" src="https://media.istockphoto.com/id/1425406857/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4.jpg?s=1024x1024&w=is&k=20&c=mS8Ml7NhgFzRvTr1L7c-Rqfr2009YhBEdLgnz7xLrZo=" alt="">
     <div class="max-xs:text-center">
-      <h2>ISO 29110-4</h2>
-      <h2>Version:2018</h2>
-      <h2>Topic: System and software engineering -- Lifecycle profiles for very small antities (VSEs)</h2>
-      <h2>The standard provides a set of re</h2>
+      <h2>{{$learn->course_name}}</h2>
+      <h2>{{$learn->description}}</h2>
     </div>
   </div>
+  @endforeach
 
-  <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5" data-aos="fade-left" data-aos-duration="700" data-aos-easing="ease-in-out">
+  {{-- <div class="xl:max-w-[70%] ml-auto flex max-xs:flex-col justify-end items-center gap-5" data-aos="fade-left" data-aos-duration="700" data-aos-easing="ease-in-out">
     <div class="text-right max-xs:text-center">
       <h2>ISO 29110-4</h2>
       <h2>Version:2018</h2>
@@ -170,7 +158,7 @@
       <h2>The standard provides a set of re</h2>
     </div>
     <img class="w-72 rounded-xl max-xs:order-first" src="https://media.istockphoto.com/id/1425406857/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-iso-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%8D%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4.jpg?s=1024x1024&w=is&k=20&c=mS8Ml7NhgFzRvTr1L7c-Rqfr2009YhBEdLgnz7xLrZo=" alt="">
-  </div>
+  </div> --}}
 </div>
 
 <div id="news"></div>

@@ -9,15 +9,6 @@ use App\Models\LeaveMessage;
 
 class FrontendController extends Controller
 {
-    //
-    // public function index() {
-
-    //     $user = Auth::user();
-    //     return view('layouts.main', [
-    //         'user' => $user
-    //     ]);
-    // }
-
     public function contactPage() {
         return view('pages.app_iso.contact');
     }

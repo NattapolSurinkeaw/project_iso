@@ -11,6 +11,7 @@ use App\Models\HomeVideo;
 use App\Models\NewsEvent;
 use App\Models\HomeDocument;
 use App\Models\BannerImage;
+use App\Models\Elerningcourse;
 
 class Controller extends BaseController
 {
@@ -20,9 +21,10 @@ class Controller extends BaseController
         $banners = BannerImage::all();
         $homeVideos = HomeVideo::select('id', 'thumbnail')->take(5)->get();
         $homeNews = NewsEvent::orderBy('created_at', 'desc')->take(5)->get();
+        $elearnings = Elerningcourse::take(4)->get();
         $homeDocuments = HomeDocument::all();
 
-        return view('pages.app_iso.home', compact('banners', 'homeVideos', 'homeNews', 'homeDocuments'));
+        return view('pages.app_iso.home', compact('banners', 'homeVideos', 'homeNews', 'homeDocuments','elearnings'));
     }
 
     public function registerPage() {
