@@ -1,5 +1,6 @@
 // console.log("use backend.js")
 
+let main_box = document.querySelector('#main-box');
 let btn = document.querySelector('#btn-close');
 let navbar = document.querySelector('#navbar');
 // console.log(navbar);
@@ -10,13 +11,15 @@ btn.addEventListener('click', () => {
 
     if(toggleNav === true) {
         btn.innerHTML = "<box-icon name='chevrons-right' ></box-icon>"
-        navbar.classList.add("max-w-[100px]");
-        navbar.classList.remove("max-w-[240px]");
+        navbar.classList.add("max-w-[0px]", "invisible");
+        navbar.classList.remove("max-w-[240px]", "visible");
+        main_box.classList.remove("gap-2");
         toggleNav = false;
     } else {
         btn.innerHTML = "<box-icon name='chevrons-left' ></box-icon>"
-        navbar.classList.add("max-w-[240px]");
-        navbar.classList.remove("max-w-[100px]");
+        main_box.classList.add("gap-2");
+        navbar.classList.add("max-w-[240px]", "visible");
+        navbar.classList.remove("max-w-[0px]", "invisible");
         toggleNav = true;
     }
 })

@@ -99,6 +99,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
   Route::get('/member',[MemberController::class,'backendMember']);
   Route::get('/memberdetail/{id}',[MemberController::class,'memberDetail']);
   Route::get('/coruse',[CourseController::class,'backendCourse']);
+  Route::get('/createcoruse',[CourseController::class,'create_course_page']);
   Route::get('/coruse-member/{id}',[CourseController::class,'courseMemberPage']);
   Route::get('/coursedetail/{id}',[CourseController::class,'detailCourse']);
   Route::get('/question-table/{id}',[CourseController::class,'allQuestionTable']);

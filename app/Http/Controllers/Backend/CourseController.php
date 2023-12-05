@@ -50,6 +50,10 @@ class CourseController extends Controller
         return view('backend.pages.elearning.backend_coursemember', compact('users'));
     }
 
+    public function create_course_page() {
+        return view('backend.pages.elearning.backend_create_course');
+    }
+
     public function detailCourse($id_course) {
         $course = Elerningcourse::find($id_course);
         $announcements = Annoucement::where('elerningcourse_id', $id_course)->get();
@@ -78,18 +82,25 @@ class CourseController extends Controller
             'price' => 'required',
             'description' => 'required',
             'details' => 'required',
-            'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // เพิ่มการตรวจสอบรูปภาพ
+            'imgCourse' => 'required|image|mimes:jpeg,png,jpg,gif', // เพิ่มการตรวจสอบรูปภาพ
         ]);
     
         $image = $request->file('imgCourse');
         $imgName = '/upload/images/course/'.time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('upload/images/course'), $imgName); // บันทึกไฟล์ไว้ในโฟลเดอร์ public/images
+
+        $discount = ($request->input('discount') != null)?$request->input('discount'): 0;
+        
+        // dd($discount);
+        $total_price = $request->input('price') - ($request->input('price') * ($discount / 100));
     
         // สร้างคอร์ส Elerningcourse ใหม่
         Elerningcourse::create([
             'course_name' => $request->input('course_name'),
             'user_name' => $request->input('user_name'),
             'price' => $request->input('price'),
+            'discount' => $discount,
+            'total_price' => $total_price,
             'description' => $request->input('description'),
             'details' => $request->input('details'),
             'img_course' => $imgName,

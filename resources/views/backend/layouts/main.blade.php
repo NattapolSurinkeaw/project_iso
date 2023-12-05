@@ -19,12 +19,12 @@
 </head>
 <body>
 
-  <div class="flex gap-5 h-screen overflow-hidden">
+  <div id="main-box" class="flex gap-2 h-screen overflow-hidden">
     <div id="navbar" class="w-80 bg-[#74788A] max-w-[240px] duration-300">
         @include('backend.layouts.sidebar')
     </div>
   
-    <div class="w-full flex flex-col gap-4">
+    <div class="w-full flex flex-col gap-2">
         <div class="bg-gray-400 p-2 flex justify-between">
           <button id="btn-close" class="flex justify-center items-center"><box-icon name='chevrons-left'></box-icon></button>
           <div class="mr-4 flex items-center gap-2">
@@ -33,7 +33,7 @@
             <p>{{$user->name}}</p>
           </div>
         </div>
-        <div id="main-backend" class="bg-gray-100 h-full">
+        <div id="main-backend" class="bg-gray-100 h-full overflow-auto">
           @yield('container')
         </div>
     </div>

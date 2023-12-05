@@ -24,7 +24,7 @@
                 </div>
                 <input type="text" id="course-search" class="w-[177px] bg-gray-50 shadow-sm outline-none border border-gray-300 text-gray-900 text-sm rounded-full block pl-10 p-2.5 transition-all duration-300 ease-in-out"
                     placeholder="Search">
-                    <ul id="data-searce" class="hidden w-full flex flex-col gap-2 absolute top-11 bg-white p-2 z-[5] rounded-lg border" id="data-search">
+                    <ul id="data-searce" class="hidden w-full flex flex-col gap-2 absolute top-11 bg-white p-2 z-[5] rounded-lg border overflow-hidden" id="data-search">
                         
                     </ul>
             </div>
@@ -35,7 +35,12 @@
         @isset($elcourses)
             @if(count($elcourses) > 0)
                 @foreach($elcourses as $elcourse)
-                <div class="w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
+                <div class="relative w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
+                        @if($elcourse->discount)
+                        <div class="w-14 text-center absolute top-0 right-0 bg-red-600 text-white z-10 rounded-lg">
+                            {{$elcourse->discount}}%
+                        </div>
+                        @endif
                         <div class="overflow-hidden rounded-lg h-45 w-full">
                             @if(!empty($elcourse->img_course))
                                 <img class="rounded-lg w-full h-44 duration-200 hover:scale-110" src="{{$elcourse->img_course}}" alt="">
@@ -84,8 +89,11 @@
 
                             <div class="w-full flex justify-between gap-4">
                                 <div class="flex gap-2">
-                                    <h2 class="font-medium text-gray-400">Price</h2>
-                                    <h2 class="font-medium">{{number_format($elcourse->price)}} THB</h2>
+                                    <h2 class="font-medium">Price</h2>
+                                    @if($elcourse->discount)
+                                    <h2 class="font-medium text-gray-400 line-through">{{number_format($elcourse->price)}} THB</h2>
+                                    @endif
+                                    <h2 class="font-medium">{{number_format($elcourse->total_price)}} THB</h2>
                                 </div>
                             </div>
 
@@ -166,7 +174,7 @@
         prevPage.disabled = true; // ปิดปุ่ม "กลับ"
         prevPage.classList.add('bg-gray-400')
         } else {
-            prevPage.classList.add('bg-blue-500')
+            prevPage.classList.add('bg-orange-900')
         }
 
         if (currentPage >= totalPages) {
@@ -175,7 +183,7 @@
             nextPage.classList.add('bg-gray-400')
             // console.log("ปิดปุ่มทัดไป")
         }else {
-            nextPage.classList.add('bg-green-400')
+            nextPage.classList.add('bg-orange-900')
         }
     });
     
@@ -291,12 +299,12 @@
             // render content
             data_searce.innerHTML = ''; // เคลียร์ค่าเดิม
             matchingCourses.forEach(element => {
-                data_searce.innerHTML += renderData(element.id, element.img_course, element.course_name, element.price);
+                data_searce.innerHTML += renderData(element.id, element.img_course, element.course_name, element.total_price);
             });
         }
     }
 
-    function renderData(id, img_course, course_name, price) {
+    function renderData(id, img_course, course_name, total_price) {
         let content = `<a href="/coursedetail/${id}">
                             <li class="w-full grid grid-cols-[50px,1fr,80px] items-center gap-4 hover:bg-gray-100">
                                 <div>
@@ -306,7 +314,7 @@
                                     <p class="text-left">${course_name}</p>
                                 </div>
                                 <div>
-                                    <p>${price}</p>
+                                    <p>${total_price}</p>
                                 </div>
                             </li>
                             <hr>

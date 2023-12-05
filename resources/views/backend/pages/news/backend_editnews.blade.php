@@ -36,7 +36,7 @@
 @endsection
 
 @section('be-scripts')
-@vite('resources/js/backend/global_overflow/main_overflow.js')
+{{-- @vite('resources/js/backend/global_overflow/main_overflow.js') --}}
 <script>
   let editor; // เราจะใช้ตัวแปร editor เก็บอินสแตนซ์ของ CKEditor
   const newsid = {{$news->id}};

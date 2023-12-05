@@ -87,7 +87,7 @@
 @endsection
 
 @section('be-scripts')
-@vite('resources/js/backend/global_overflow/main_overflow.js')
+{{-- @vite('resources/js/backend/global_overflow/main_overflow.js') --}}
 <script>
 let statusSelect = document.querySelector('#status');
 let username = document.querySelector('#name').value;

@@ -2,7 +2,7 @@
 @section('title') Manage Elearning @endsection
 @section('container')
 
-<div class="h-screen max-2xl:w-[82%] max-xl:w-[75%]">
+<div class=" max-2xl:w-[82%] max-xl:w-[75%]">
     <div class="px-10 py-4 flex justify-between items-center">
         <h1 class="text-xl font-medium">Elearning Course</h1>
         <div>
@@ -10,7 +10,7 @@
         </div>
     </div>
     
-    <div class="relative h-4/5 max-2xl:w-[90%] overflow-y-scroll mx-10">
+    <div class="relative mb-5 max-2xl:w-[90%] overflow-auto mx-10">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
@@ -108,10 +108,13 @@
         Swal.fire({
         title: "Add Course",
         html: ` <img src="/image/icon/upload.png" alt="" class="w-32 h-40 mx-auto" id="ImgOpt">
-                <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="">
-                <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="">
-                <input type="number" id="price" class="swal2-input" placeholder="price" value="">
-                <input type="text" id="description" class="swal2-input mb-4" placeholder="description" >
+                <input type="text" id="course_name" class="swal2-input w-[80%]" placeholder="Name" value="">
+                <input type="text" id="user_name" class="swal2-input w-[80%]" placeholder="teacher" value="">
+                <div class="flex gap-2">
+                    <input type="number" id="price" class="swal2-input w-[80%]" placeholder="price" value="">
+                    <input type="number" id="discount" class="swal2-input w-[80%]" placeholder="discount" value="">
+                </div>
+                <input type="text" id="description" class="swal2-input w-[80%] mb-4" placeholder="description" >
                 <textarea id="details"></textarea>
                 <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
                     <span>
@@ -129,6 +132,7 @@
                 const course_name = Swal.getPopup().querySelector("#course_name").value;
                 const user_name = Swal.getPopup().querySelector("#user_name").value;
                 const price = Swal.getPopup().querySelector("#price").value;
+                const discount = Swal.getPopup().querySelector("#discount").value;
                 const description = Swal.getPopup().querySelector("#description").value;
                 let details = editor.getData();
                 const img_course = Swal.getPopup().querySelector("#img_course");
@@ -136,11 +140,13 @@
                 if (!course_name || !user_name || !price || !description || !imgCourse) {
                     Swal.showValidationMessage(`Please enter your data.`);
                 }
-
+                let data_discount = (discount !== null && discount !== "") ? parseInt(discount) : 0;
+        
                 formData = new FormData();
                 formData.append('course_name' , course_name)
                 formData.append('user_name' , user_name)
                 formData.append('price' , price)
+                formData.append('discount' , data_discount)
                 formData.append('description' , description)
                 formData.append('details' , details)
                 formData.append('imgCourse' , imgCourse)

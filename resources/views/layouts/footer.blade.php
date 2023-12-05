@@ -1,5 +1,5 @@
-<div class="bg-[#393939] h-[200px] py-10">
-  <div class="mx-auto  2xl:max-w-[1536px] max-xl:max-w-[90%] grid grid-cols-4">
+<div class="bg-[#393939] h-[200px] max-lg:h-auto py-10">
+  <div class="mx-auto 2xl:max-w-[1536px] max-xl:max-w-[90%] grid grid-cols-4 max-lg:grid-cols-2 max-xs:grid-cols-1 max-xs:place-items-center max-lg:gap-4">
     {{-- <div>
       d
     </div>
