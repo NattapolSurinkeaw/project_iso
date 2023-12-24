@@ -11,21 +11,20 @@
                     Register to your account
                 </h1>
                 <div class="w-10/12">
-                    <label for="name" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Your
-                        name</label>
+                    <label for="name" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Input Your Name</label>
                     <input type="name" name="name" id="fname"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="firtname lastname" required="">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-blue-300"
+                        placeholder="Input Your Full Name">
                         <p id="ms-er-name" class="ml-2 hidden text-red-500 text-sm">validate name error</p>
                 </div>
                 <div class="w-10/12">
-                    <label for="email" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Your email</label>
-                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                    <label for="email" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Input Your Email</label>
+                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-blue-300" placeholder="name@company.com" required="">
                     <p id="ms-er-email" class="ml-2 hidden text-red-500 text-sm">validate email error please fill type email </p>
                 </div>
                 <div class="w-10/12">
-                    <label for="password" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Password</label>
-                    <input type="password" name="password" id="password" onkeydown="if (event.key === 'Enter') onRegister()" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                    <label for="password" class="block mb-2 text-sm font-ligth text-gray-900 dark:text-white">Input Password</label>
+                    <input type="password" name="password" id="password" onkeydown="if (event.key === 'Enter') onRegister()" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-blue-300" required="">
                     <p id="ms-er-pass" class="ml-2 hidden text-red-500 text-sm">validate password error</p>
                 </div>
                 <button onclick="onRegister()" class="w-1/2 bg-green-600 border-b-4 border-green-600 hover:bg-green-500 hover:border-b-4 hover:border-green-700 font-normal rounded-lg text-md text-white px-5 py-2.5 text-center mt-4 duration-200">register</button>
