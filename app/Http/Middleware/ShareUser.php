@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 
 class ShareUser
 {
@@ -17,7 +19,10 @@ class ShareUser
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        view()->share('user', $user);
+        $cartList = session('cart_list', []); // ดึงข้อมูลจาก Session
+
+        View::share('user', $user);
+        View::share('count_order', count($cartList));
         return $next($request);  // คืนค่า Response จาก $next
     }
 }

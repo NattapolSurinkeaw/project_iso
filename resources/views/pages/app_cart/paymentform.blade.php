@@ -59,12 +59,12 @@
   
             <div class="flex flex-col">
               <label for="" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">เลขบัญชีผู้ซื้อ</label>
-              <input name="bank-number" id="bank-number" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="number">
+              <input name="bank-number" id="bank-number" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text">
             </div>
   
             <div class="flex flex-col">
               <label for="" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">จำนวนเงินที่โอน</label>
-              <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text" placeholder="9,999">
+              <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text" placeholder="9,999" maxlength="8">
             </div>
           </div>
 
@@ -153,8 +153,9 @@ let totalmoney = document.querySelectorAll('#totalmoney')
   });
 
 let btnsubmut = document.querySelector('#submit');
-let user = {!! json_encode($user) !!};
-const userId = user.id;
+// let user = {!! json_encode($user) !!};
+const userId = @json($user->id);
+console.log(userId);
 
 let dataCourse = {!! json_encode($cartCourses) !!}
 let idCourse = [];
@@ -169,32 +170,55 @@ for (let i = 0; i < dataCourse.length; i++) {
     totalPrice += price;
 }
 
+const customertelEl = document.querySelector('#customer-tel'); 
+const banknumberEl = document.querySelector('#bank-number');
+
+customertelEl.addEventListener('input', () => {
+  customertelEl.value = filterNumber(customertelEl)
+})
+
+banknumberEl.addEventListener('change', () => {
+  banknumberEl.value = filterNumber(banknumberEl)
+})
+
+function filterNumber(element) {
+  return element.value.replace(/[^0-9]/g, '')
+}
+
+
 btnsubmut.addEventListener('click', () => {
-  let customername = document.querySelector('#cumtomer-name').value; 
-  let banknumber = document.querySelector('#bank-number').value; 
-  let totalmoneyInput = document.querySelector('#totalmoney');
-  let totalmoney = totalmoneyInput.value.replace(/,/g, '');
-  let customertel = document.querySelector('#customer-tel').value; 
-  let bankcustomer = document.querySelector('#bank-customer').value; 
-  let bankcompany = document.querySelector('#bank-company').value; 
-  let imgInp = document.querySelector('#imgInp'); 
-  let imageFile = imgInp.files[0];
-  if(!customername || !banknumber || !totalmoney || !customertel || !bankcustomer || !bankcompany || !imageFile) {
+  const customername = document.querySelector('#cumtomer-name').value; 
+  const totalmoneyInput = document.querySelector('#totalmoney');
+  const totalmoney = totalmoneyInput.value.replace(/,/g, '');
+  const bankcustomer = document.querySelector('#bank-customer').value; 
+  const bankcompany = document.querySelector('#bank-company').value; 
+  const imgInp = document.querySelector('#imgInp'); 
+  const imageFile = imgInp.files[0];
+  console.log(totalmoney);
+  if(!customername || !banknumberEl.value || !totalmoney || !customertelEl.value || !bankcustomer || !bankcompany || !imageFile) {
     Swal.fire({
       position: 'center',
       icon: 'error',
       title: 'กรุณากรอกข้อมูลให้ครบทุกช่อง',
     })
-    return;
+    return false;
+  }
+  if(idCourse.length <= 0) {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'คุณยังไม่ได้เลือกหลักสูตร',
+    })
+    return false;
   }
   let formData = new FormData();
   formData.append('name', customername);
   formData.append('totalcourse', idCourse);
   formData.append('totalprice', totalPrice);
   formData.append('name', customername);
-  formData.append('banknumber', banknumber);
+  formData.append('banknumber', banknumberEl.value);
   formData.append('totalmoney', totalmoney);
-  formData.append('customertel', customertel);
+  formData.append('customertel', customertelEl.value);
   formData.append('bankcustomer', bankcustomer);
   formData.append('bankcompany', bankcompany);
   formData.append('slippayment', imageFile);

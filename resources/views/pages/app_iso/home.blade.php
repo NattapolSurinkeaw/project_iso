@@ -92,7 +92,7 @@
   <div id="ourVideo"></div>
   <div class="w-10/12 shadow-md rounded-lg mx-auto p-4">
     <h2 class="text-center text-2xl font-normal">Our Video</h2>
-    <div class="flex 2xl:justify-around my-5 gap-4 overflow-x-auto p-4" data-aos="flip-left" data-aos-duration="700" data-aos-easing="ease-in-out">
+    <div class="flex 2xl:justify-around my-5 gap-4 overflow-x-auto p-4" data-aos="fade-up" data-aos-duration="700" data-aos-easing="ease-in-out">
       @foreach($homeVideos as $homeVideo)
         <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-gray-300 rounded-lg ">
           <div id="getVideo" video-id="{{$homeVideo->id}}" class="w-60 overflow-hidden rounded-lg">
@@ -142,7 +142,7 @@
       <h2 class="text-center text-xl">News and Event</h2>
       <a href="{{url('/newsandevent')}}" class="text-center text-blue-600 text-xl underline">more</a>
     </div>
-    <div class="flex 2xl:justify-around gap-4 overflow-x-auto" data-aos="flip-right" data-aos-duration="700" data-aos-easing="ease-in-out">
+    <div class="flex 2xl:justify-around gap-4 overflow-x-auto" data-aos="fade-up" data-aos-duration="700" data-aos-easing="ease-in-out">
       @foreach($homeNews as $news)
       <a href="{{url('/newsdetails')}}/{{$news->id}}">
         <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
