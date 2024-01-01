@@ -10,7 +10,7 @@
         <h1 class="text-3xl text-white">Detail : {{$taining->name}}</h1>
       </div>
       <div class="w-full max-lg:order-first">
-        <img class="w-full h-80" src="{{$taining->img_training}}" alt="">
+        <img class="w-full h-80 rounded-l-3xl" src="{{$taining->img_training}}" alt="">
       </div>
     </div>
   

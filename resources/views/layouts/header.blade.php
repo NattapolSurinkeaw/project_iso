@@ -18,7 +18,7 @@
       </li>
       <li><a class="xl:py-4 max-xl:px-10" href="{{ url('/newsandevent') }}">NEWS & EVENT</a></li>
       <li class="relative group">
-        <a class="xl:py-4 max-xl:px-10" href="{{ url('/training') }}">TRAINING </a>
+        <a class="xl:py-4 max-xl:px-10" href="{{ url('/training') }}">IN-HOUSE</a>
         <ul class="max-xl:hidden absolute top-[43px] left-0 transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md text-gray-800 px-4 h-0 group-hover:h-auto group-hover:py-4 overflow-hidden" style="min-width: 22rem;">
           @foreach ($modules as $module)
           <a href="/training/{{$module->id}}">
@@ -41,8 +41,8 @@
       </li>
       <li class="flex items-center justify-center max-xl:-order-1"><a class="-order-1 font-medium xl:py-4 max-2xl:px-4" href="{{url('/dashboard')}}">{{$user->name}}</a></li>
       <li>
-        <a href="/cart" class="flex w-full justify-center xl:py-4 max-2xl:px-4">
-          {{$count_order}}
+        <a href="/cart" class="w-full flex justify-center gap-2 xl:py-4 max-2xl:px-4">
+          <p class="text-xl text-red-600 font-bold">{{$count_order}}</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
             <path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path>
             <circle cx="10.5" cy="19.5" r="1.5"></circle>

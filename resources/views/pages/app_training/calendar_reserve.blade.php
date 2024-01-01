@@ -2,9 +2,15 @@
 @section('title') Reserve Day @endsection
 @section('content')
   <div class="w-10/12 my-4 mx-auto">
-    <div class="">
-        <h1 class="text-2xl text-center">Reserve Day</h1>
-        <h1 class="text-xl text-center">Course : {{$training->name}}</h1>
+    <div class="flex justify-between items-center mb-4">
+        <div class="m-2">
+          <a href="{{url('/training')}}" class="bg-red-500 text-white rounded-lg py-1 px-2">BACK</a>
+        </div>
+        <div>
+          <h1 class="text-2xl text-center">Reserve Day</h1>
+          <h1 class="text-xl text-center">Course : {{$training->name}}</h1>
+        </div>
+        <div></div>
     </div>
     <div id='calendar-train'></div>
   </div>

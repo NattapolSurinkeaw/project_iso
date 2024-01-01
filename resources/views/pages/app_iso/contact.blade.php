@@ -4,9 +4,9 @@
 @section('title', 'Contact us ')
 
 @section('content')
-<div class="min-h-[690px] ">
-  <div class="mx-auto mt-4 2xl:max-w-[1536px] max-2xl:max-w-[90%]  p-4 bg-gray-100 rounded-md">
-    <h1 class="text-3xl text-center">Contact</h1>
+<div class="min-h-[calc(100%-60px)] ">
+  <div class="mx-auto mt-4 2xl:max-w-[1536px] max-2xl:max-w-[90%] p-10 bg-gray-100 rounded-md">
+    <h1 class="text-3xl text-center mb-8">Contact</h1>
     <div class="flex max-2xl:flex-col justify-between gap-10">
       <div class="flex flex-col gap-10 w-full">
         <div class="flex gap-4 w-full">
@@ -87,9 +87,9 @@
           </div>
         </div>
       </div> --}}
-      <div class="flex justify-center">
+      {{-- <div class="flex justify-center">
         <iframe class="rounded-xl border" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15496.753526029157!2d100.726389!3d13.827724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d648e0b6f5499%3A0x9115940a3a6aea60!2sQuality%20Associates%20Ltd.!5e0!3m2!1sth!2sth!4v1688743924456!5m2!1sth!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      </div> --}}
 
     </div>
   </div>

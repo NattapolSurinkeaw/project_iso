@@ -3,7 +3,7 @@
 @section('title', 'AllCourse')
 
 @section('content')
-    <h1 class="my-4 text-3xl text-center"> Elearning All Course</h1>
+    <h1 class="my-4 text-3xl text-center"> {{ ($select_cate !== null)?$select_cate:"Elearning All"}} Course</h1>
     {{-- @dd($elcourses) --}}
 
     <div class="w-10/12 max-xs:w-full max-xs:px-4 mx-auto flex items-center">

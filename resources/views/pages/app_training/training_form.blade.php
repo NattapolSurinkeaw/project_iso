@@ -15,11 +15,19 @@
             <p class="text-gray-600 text-xl font-ligth ">Issue to: </p>
             <p class="text-gray-600 text-l mb-4">ออกให้ </p>
             
-            <div class="w-full mb-2">
-                <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Company</label>
-                <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="company" type="text">
-                <p class="text-xs text-red-500 hidden" id="validate-company">กรุณากรอกข้อมูล company</p>
+            <div class="flex gap-4 mb-2">
+                <div class="w-full">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Company</label>
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="company" type="text">
+                    <p class="text-xs text-red-500 hidden" id="validate-company">กรุณากรอกข้อมูล company</p>
+                </div>
+                <div class="w-full">
+                    <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Branch</label>
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="branch" type="text">
+                    <p class="text-xs text-red-500 hidden" id="validate-branch">กรุณากรอกข้อมูล branch</p>
+                </div>
             </div>
             <div class="w-full mb-2">
                 <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="address">Address</label>
@@ -78,11 +86,19 @@
             <!-- คัดลอกข้างบน -->
 
             <p class="text-gray-600 text-l mb-4">ออกใบเสร็จรับเงินให้ </p>
-            <div class="flex flex-col mb-3 w-full">
-                <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Company</label>
-                <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="bil-company" type="text">
-                <p class="text-xs text-red-500 hidden" id="validate-bil-company">กรุณากรอกข้อมูล Company</p>
+            <div class="flex gap-4 mb-3 w-full">
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Company</label>
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-company" type="text">
+                    <p class="text-xs text-red-500 hidden" id="validate-bil-company">กรุณากรอกข้อมูล Company</p>
+                </div>
+                <div class="w-full">
+                    <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-branch">Branch</label>
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="bil-branch" type="text">
+                    <p class="text-xs text-red-500 hidden" id="validate-bil-branch">กรุณากรอกข้อมูล branch</p>
+                </div>
             </div>
             <div class="flex flex-col mb-4 w-full">
                 <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Address</label>

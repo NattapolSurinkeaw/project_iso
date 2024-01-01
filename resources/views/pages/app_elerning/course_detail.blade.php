@@ -7,11 +7,11 @@
 <div>
   <div class="bg-gradient-to-r from-[#00ADEF] to-[#4338ca] flex max-lg:flex-col">
     <div class="w-full flex flex-col items-center justify-center p-4">
-      <h1 class="text-3xl text-white">Detail : {{$course->course_name}}</h1>
-      <h1 class="text-3xl text-white">description : {{$course->description}}</h1>
+      <h1 class="text-3xl text-white">Course : {{$course->course_name}}</h1>
+      {{-- <h1 class="text-3xl text-white">description : {{$course->description}}</h1> --}}
     </div>
     <div class="w-full max-lg:order-first transform">
-      <img class="w-full h-80 transform" src="{{$course->img_course}}" alt="">
+      <img class="w-full h-80 transform rounded-l-3xl" src="{{$course->img_course}}" alt="">
     </div>
   </div>
 
@@ -22,7 +22,7 @@
           <h1 class="text-3xl text-center mb-4">รายละเอียด</h1>
           <h1 class="text-2xl text-center">{{$course->description}}</h1>
           <div class="flex gap-4" id="box">
-            <h1 class="text-xl w-20 max-md:w-40 max-sm:w-32">detail : </h1>
+            {{-- <h1 class="text-xl w-20 max-md:w-40 max-sm:w-32">detail : </h1> --}}
             <h1 class="text-xl break-all">{!! $course->details !!}</h1>
           </div>
         </div>
@@ -47,11 +47,11 @@
             @if($mycourse)
             <a href="{{ url('/course/' .$course->id ) }}" class="w-full bg-green-500 p-1 rounded-lg text-white text-center">เริ่มเรียน</a>
             @else
-            <button id="btnAddCart" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตระกร้า</button>
+            <button id="btnAddCart" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตะกร้า</button>
             <button id="btnBuyNow" class="w-full bg-red-600 p-1 rounded-lg text-white text-center">สั่งซื้อทันที</button>
             @endif
           @else
-            <a href="{{url('/login')}}" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตระกร้า</a>
+            <a href="{{url('/login')}}" class="w-full bg-blue-600 p-1 rounded-lg text-white text-center">เพิ่มใส่ตะกร้า</a>
             <a href="{{url('/login')}}" class="w-full bg-red-600 p-1 rounded-lg text-white text-center">สั่งซื้อทันที</a>
           @endif
         </div>

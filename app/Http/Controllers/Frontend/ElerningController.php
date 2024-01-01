@@ -21,9 +21,18 @@ class ElerningController extends Controller
         $elcourses = null;
         $mycourse = null;
         $countElerning = 0;
+        $select_cate = null;
 
         if ($cate_id != null) {
+            foreach($cates as $cate) {
+                if($cate->id == $cate_id) {
+                    $select_cate = $cate->category_name;
+                }
+            }
+            // dd($select_cate);
+
             $elcourses = Elerningcourse::paginate(10);
+
         
             $elcourses = $elcourses->map(function ($elcourse) {
                 $elcourse->category = json_decode($elcourse->category, true);
@@ -57,7 +66,7 @@ class ElerningController extends Controller
                 $mycourse = "";
             }
         }
-        return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse', 'countElerning'));
+        return view('pages.app_elerning.all_courses', compact('elcourses', 'cates', 'mycourse', 'countElerning', 'select_cate'));
     }
 
     public function coursePage($course_id) {
@@ -80,7 +89,6 @@ class ElerningController extends Controller
         } else {
             $watch_video = [];
         }
-        
         
         return view('pages.app_elerning.course',compact('course', 'announcements', 'quizzes', 'materials', 'watch_video'));
     }
