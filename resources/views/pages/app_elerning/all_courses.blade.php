@@ -32,6 +32,7 @@
     </div>
 
     <div class="w-10/12 my-5 mx-auto grid gap-10 grid-cols-5 max-2xl:grid-cols-3 max-lg:grid-cols-2 max-xs:grid-cols-1">
+        {{-- @dd($elcourses) --}}
         @isset($elcourses)
             @if(count($elcourses) > 0)
                 @foreach($elcourses as $elcourse)
@@ -93,7 +94,7 @@
                                     @if($elcourse->discount)
                                     <h2 class="font-medium text-gray-400 line-through">{{number_format($elcourse->price)}} THB</h2>
                                     @endif
-                                    <h2 class="font-medium">{{number_format($elcourse->total_price)}} THB</h2>
+                                    <h2 class="font-medium">{{number_format($elcourse->price)}} THB</h2>
                                 </div>
                             </div>
 
