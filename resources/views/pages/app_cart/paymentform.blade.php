@@ -69,7 +69,7 @@
 
             <div class="flex flex-col">
               <label for="" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">วันที่โอน</label>
-              <input name="transfer-date" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="datetime-local">
+              <input name="date-transfer" id="date-transfer" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="datetime-local">
             </div>
           </div>
 
@@ -195,12 +195,13 @@ btnsubmut.addEventListener('click', () => {
   const customername = document.querySelector('#cumtomer-name').value; 
   const totalmoneyInput = document.querySelector('#totalmoney');
   const totalmoney = totalmoneyInput.value.replace(/,/g, '');
+  const date_transfer = document.querySelector('#date-transfer').value;
   const bankcustomer = document.querySelector('#bank-customer').value; 
   const bankcompany = document.querySelector('#bank-company').value; 
-  const imgInp = document.querySelector('#imgInp'); 
+  const imgInp = document.querySelector('#imgInp');
   const imageFile = imgInp.files[0];
   console.log(totalmoney);
-  if(!customername || !banknumberEl.value || !totalmoney || !customertelEl.value || !bankcustomer || !bankcompany || !imageFile) {
+  if(!customername || !banknumberEl.value || !totalmoney || !date_transfer|| !customertelEl.value || !bankcustomer || !bankcompany || !imageFile) {
     Swal.fire({
       position: 'center',
       icon: 'error',
@@ -220,7 +221,7 @@ btnsubmut.addEventListener('click', () => {
   formData.append('name', customername);
   formData.append('totalcourse', idCourse);
   formData.append('totalprice', totalPrice);
-  formData.append('name', customername);
+  formData.append('date_transfer', date_transfer);
   formData.append('banknumber', banknumberEl.value);
   formData.append('totalmoney', totalmoney);
   formData.append('customertel', customertelEl.value);
@@ -232,6 +233,7 @@ btnsubmut.addEventListener('click', () => {
   // formData.forEach((value, key) => {
   //     console.log(key + ': ' + value);
   //   });
+  // return false;
 
   try {
     Swal.fire({

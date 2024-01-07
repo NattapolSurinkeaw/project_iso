@@ -13,6 +13,7 @@ class PendingTraining extends Model
         'user_id',
         'billing_id',
         'company',
+        'branch',
         'address',
         'contact',
         'position',

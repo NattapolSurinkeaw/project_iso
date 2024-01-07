@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('billing_tos', function (Blueprint $table) {
             $table->id();
             $table->string('bil_company');
+            $table->string('bil_branch', 10);
             $table->string('bil_address');
             $table->string('bil_tax_id',10);
             $table->string('bil_contact',100);

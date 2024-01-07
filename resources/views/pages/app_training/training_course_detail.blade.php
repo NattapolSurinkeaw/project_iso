@@ -33,7 +33,7 @@
           </div>
         </div>
   
-        <div class="w-full p-4 max-w-[400px] bg-gray-300 rounded-lg">
+        <div class="w-full p-4 max-w-[400px] h-[200px] sticky top-[80px] bg-gray-300 rounded-lg">
           <h1 class="text-xl">ราคา</h1>
           <h1 class="text-xl">price : {{$taining->fee}}</h1>
           <hr class="border border-2 my-2">

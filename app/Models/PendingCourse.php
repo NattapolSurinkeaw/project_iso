@@ -19,6 +19,7 @@ class PendingCourse extends Model
         'bankcustomer',
         'bankcompany',
         'payment_slip',
+        'date_transfer',
         'user_id',
         'reading',
         'comment',

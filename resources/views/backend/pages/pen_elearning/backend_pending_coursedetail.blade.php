@@ -7,6 +7,17 @@
         <h1 class="text-xl font-bold">Pending Course Detail</h1>
     </div>
     <div class="flex flex-col gap-4 mx-10 bg-white p-4 rounded-lg drop-shadow-lg">
+      <div class="flex gap-4">
+        <div class="w-full flex gap-4 items-center">
+          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+          <input type="text" value="{{$user->name}}" name="username" id="username" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+        </div>
+        <div class="w-full flex gap-4 items-center">
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+          <input type="text" value="{{$user->email}}" name="email" id="email" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+        </div>
+      </div>
+
       <div class="flex gap-4 items-center">
         <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
         <input type="text" value="{{$pendingcourse->name}}" name="name" id="name" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
@@ -51,6 +62,14 @@
           <label for="bank-company" class="block text-sm font-medium leading-6 text-gray-900">ธนาคารบริษัท</label>
           <input type="text" value="{{$pendingcourse->bankcompany}}" name="bank-company" id="bank-company" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
         </div>
+
+        <div class="flex gap-4 items-center">
+          @php
+            use Carbon\Carbon;
+        @endphp
+          <label for="bank-company" class="block text-sm font-medium leading-6 text-gray-900">วันที่โอน</label>
+          <input type="text" value="{{ Carbon::parse($pendingcourse->date_transfer)->format('d-m-Y H:i:s') }}" name="date_transfer" id="date_transfer" class="block flex-1 border rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" disabled>
+        </div>
   
         <div class="flex gap-4">
           <label for="country" class="block text-sm font-medium leading-6 text-gray-900">การอนุมัติ</label>
@@ -67,8 +86,7 @@
         </div>
       </div>
 
-      
-
+  
       
     </div>
 

@@ -61,6 +61,7 @@ class TrainingController extends Controller
         // dd($request->all());exit();
         $validator = Validator::make($request->all(), [
             'company' => 'required',
+            'branch' => 'required',
             'address' => 'required',
             'contact' => 'required',
             'position' => 'required',
@@ -69,6 +70,7 @@ class TrainingController extends Controller
             'fax' => 'required',
 
             'bil_company' => 'required',
+            'bil_branch' => 'required',
             'bil_address' => 'required',
             'bil_tax_id' => 'required',
             'bil_contact' => 'required',
@@ -98,6 +100,7 @@ class TrainingController extends Controller
 
         $billing = new BillingTo;
         $billing->bil_company = $request->input('bil_company');
+        $billing->bil_branch = $request->input('bil_branch');
         $billing->bil_address = $request->input('bil_address');
         $billing->bil_tax_id = $request->input('bil_tax_id');
         $billing->bil_contact = $request->input('bil_contact');
@@ -112,6 +115,7 @@ class TrainingController extends Controller
         $pendingTrain->user_id = $user;
         $pendingTrain->billing_id = $billing->id;
         $pendingTrain->company = $request->input('company');
+        $pendingTrain->branch = $request->input('branch');
         $pendingTrain->address = $request->input('address');
         $pendingTrain->contact = $request->input('contact');
         $pendingTrain->position = $request->input('position');

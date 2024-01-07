@@ -11,6 +11,7 @@ class BillingTo extends Model
 
     protected $fillable = [
         'bil_company',
+        'bil_branch',
         'bil_address',
         'bil_tax_id',
         'bil_contact',

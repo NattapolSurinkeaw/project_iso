@@ -25,7 +25,7 @@
                 <div class="w-full">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Branch</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="branch" type="text">
+                        id="branch" type="text" maxlength="5">
                     <p class="text-xs text-red-500 hidden" id="validate-branch">กรุณากรอกข้อมูล branch</p>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 <div class="w-full">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-branch">Branch</label>
                     <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="bil-branch" type="text">
+                        id="bil-branch" type="text" maxlength="5">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-branch">กรุณากรอกข้อมูล branch</p>
                 </div>
             </div>
@@ -294,6 +294,12 @@
         validate()
     })
 
+    document.getElementById('branch').addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    document.getElementById('bil-branch').addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
     document.getElementById('reserve-tel').addEventListener('input', function() {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
@@ -306,8 +312,8 @@
 
     function validate() {
         console.log('Validating')
-        const fieldsToValidate = ['company', 'address', 'contact', 'position', 'phone', 'email', 'fax',
-                                'bil-company', 'bil-address', 'bil-tax-id', 'bil-contact', 'bil-title', 
+        const fieldsToValidate = ['company', 'branch', 'address', 'contact', 'position', 'phone', 'email', 'fax',
+                                'bil-company', 'bil-branch', 'bil-address', 'bil-tax-id', 'bil-contact', 'bil-title', 
                                 'bil-phone', 'bil-email', 'bil-fax', 'number-participants', 'date-reserve', 'reserve-name', 
                                 'reserve-position', 'reserve-tel', 'reserve-email'];
         let isValid = true;
@@ -374,6 +380,7 @@
         console.log(reqCoruse)
         let param = {
             company: getValueById('company'),
+            branch: getValueById('branch'),
             address: getValueById('address'),
             contact: getValueById('contact'),
             position: getValueById('position'),
@@ -382,6 +389,7 @@
             fax: getValueById('fax'),
 
             bil_company: getValueById('bil-company'),
+            bil_branch: getValueById('bil-branch'),
             bil_address: getValueById('bil-address'),
             bil_tax_id: getValueById('bil-tax-id'),
             bil_contact: getValueById('bil-contact'),
@@ -545,8 +553,8 @@
             const getInputValue = (id) => document.getElementById(id).value;
             const setInputValue = (id, value) => document.getElementById(id).value = value;
 
-            const elements = ['company', 'address', 'contact', 'phone', 'email', 'fax'];
-            const repElements = ['bil-company', 'bil-address', 'bil-contact', 'bil-phone', 'bil-email', 'bil-fax'];
+            const elements = ['company', 'branch', 'address', 'contact', 'phone', 'email', 'fax'];
+            const repElements = ['bil-company', 'bil-branch', 'bil-address', 'bil-contact', 'bil-phone', 'bil-email', 'bil-fax'];
 
             elements.forEach((element, index) => {
             const value = getInputValue(element);

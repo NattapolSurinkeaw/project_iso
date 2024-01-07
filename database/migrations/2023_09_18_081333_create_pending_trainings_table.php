@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreignId('billing_id')->constrained('billing_tos')->onDelete('cascade');
             $table->string('company');
+            $table->string('branch', 10);
             $table->string('address');
             $table->string('contact');
             $table->string('position');

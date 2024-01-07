@@ -33,12 +33,12 @@
       </div>
       <!-- box-mycourse -->
       <div class="p-4 bg-white rounded-lg">
-        <h1 class="text-xl font-bold text-center">my course</h1>
+        <h1 class="text-xl font-bold text-center">All Course</h1>
         <div class="flex flex-wrap gap-2 mt-5">
           @if(count($mycourses) > 0)
           @foreach($mycourses as $mycourse)
               @if($mycourse->elerningcourse) <!-- ตรวจสอบว่ามี elerningcourse หรือไม่ -->
-                <div class=" border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
+                <div class="w-96 border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                   <div class="overflow-hidden rounded-lg h-42 w-64">
                       @if(!empty($mycourse->elerningcourse->img_course))
                           <img class="rounded-lg w-64 h-44 duration-200 hover:scale-125" src="{{$mycourse->elerningcourse->img_course}}" alt="">
@@ -47,16 +47,16 @@
                       @endif
                   </div> 
                   <div class="w-full flex flex-col items-start gap-2">
-                      <div class="flex justify-between items-center">
-                          <h1 class="text-2xl font-bold w-full truncate">{{$mycourse->elerningcourse->course_name}}</h1>
-                      </div>
+                    <div class="flex justify-between w-full items-center">
+                        <h1 class="text-2xl font-normal truncate">{{$mycourse->elerningcourse->course_name}}</h1>
+                    </div>
 
-                      <div class="flex justify-between items-center">
-                          <div class="flex justify-between">
-                              <h1 class="text-lg text-gray-400">{{$mycourse->elerningcourse->user_name}}</h1>
-                          </div>
-                      </div>
-                  </div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex justify-between">
+                            <h1 class="text-lg text-gray-400">{{$mycourse->elerningcourse->user_name}}</h1>
+                        </div>
+                    </div>
+                </div>
                 </div>
               @endif
           @endforeach

@@ -96,7 +96,7 @@
             let data = response.data.data;
             console.log(data);
             Swal.fire({
-            title: "Create Quiz",
+            title: "Edit Home Video",
             html: `   <div class="flex items-center gap-4">
                         <label for="video">video url</label>
                         <input type="text" id="video" class="swal2-input" value="${data.url}">
@@ -175,7 +175,7 @@
             let data = response.data.data;
             console.log(data);
             Swal.fire({
-            title: "Create Quiz",
+            title: "Edit Home Document",
             html: `   <div class="flex items-center gap-4">
                         <label for="name-doc">title</label>
                         <input type="text" id="name-doc" class="swal2-input" value="${data.name}">
@@ -267,7 +267,7 @@
             console.log(response.data.data)
             const data = response.data.data;
             Swal.fire({
-            title: "Create Quiz",
+            title: "Edit Home Banner",
             html: `   
                     <div>
                         <div class="text-left flex flex-col gap-4">

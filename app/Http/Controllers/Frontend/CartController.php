@@ -62,6 +62,7 @@ class CartController extends Controller
             'totalprice' => 'required',
             'banknumber' => 'required',
             'totalmoney' => 'required',
+            'date_transfer' => 'required',
             'customertel' => 'required',
             'bankcustomer' => 'required',
             'bankcompany' => 'required',
@@ -85,6 +86,7 @@ class CartController extends Controller
         $pendingCourse->customer_tel = $request->input('customertel');
         $pendingCourse->bankcustomer = $request->input('bankcustomer');
         $pendingCourse->bankcompany = $request->input('bankcompany');
+        $pendingCourse->date_transfer = $request->input('date_transfer');
         $pendingCourse->user_id = $request->input('user_id');
         $pendingCourse->reading = "no";
         $pendingCourse->status = "pending";

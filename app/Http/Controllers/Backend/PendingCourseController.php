@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\PendingCourse;
 use App\Models\Elerningcourse;
 use App\Models\MyCourse;
+use App\Models\User;
 
 class PendingCourseController extends Controller
 {
@@ -23,6 +24,7 @@ class PendingCourseController extends Controller
 
     public function pendingCourseDetail($pen_id) {
         $pendingcourse = PendingCourse::find($pen_id);
+        $user = User::find($pendingcourse->user_id);
 
         if($pendingcourse->reading === "no"){
             $pendingcourse->reading = "yes";
@@ -39,7 +41,7 @@ class PendingCourseController extends Controller
             }
         }
 
-        return view('backend.pages.pen_elearning.backend_pending_coursedetail', compact('pendingcourse', 'courses'));
+        return view('backend.pages.pen_elearning.backend_pending_coursedetail', compact('pendingcourse', 'user', 'courses'));
     }
 
     public function approvePendindCourse(Request $request,$pen_id) {

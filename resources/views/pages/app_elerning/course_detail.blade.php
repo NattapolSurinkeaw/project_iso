@@ -37,9 +37,9 @@
         </div>
       </div>
 
-      <div class="w-full p-4 max-w-[400px] bg-gray-300 rounded-lg">
+      <div class="w-full p-4 max-w-[400px] h-[200px] sticky top-[80px] bg-gray-300 rounded-lg">
         <h1 class="text-xl">ราคา</h1>
-        <h1 class="text-xl">price : {{$course->price}}</h1>
+        <h1 class="text-xl">price : {{ number_format($course->price) }}</h1>
         <hr class="border border-2 my-2">
        
         <div class="px-2 flex flex-col gap-3">
