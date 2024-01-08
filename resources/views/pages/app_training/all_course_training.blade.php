@@ -6,8 +6,8 @@
     <img class="w-full h-96 max-xl:h-40 max-xs:h-28" src="/image/background/img-training.png" alt="thumbnail-training">
   </div>
   <div class="w-11/12 m-auto px-8 max-xl:px-0">
-    <div class="flex flex-col w-full">
-      <table class="min-w-full text-left text-sm font-light">
+    <div class="flex flex-col w-full max-xs:overflow-auto">
+      <table id="table-course" class="min-w-full text-left text-sm font-light">
         <tbody>
           @isset($courses)
             @if(count($courses) > 0)
