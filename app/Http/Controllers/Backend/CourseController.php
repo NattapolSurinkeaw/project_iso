@@ -135,6 +135,7 @@ class CourseController extends Controller
         $course->course_name = $request->input('course_name');
         $course->user_name = $request->input('user_name');
         $course->price = $request->input('price');
+        $course->discount = $request->input('discount');
         $course->description = $request->input('description');
         $course->details = $request->input('details');
 

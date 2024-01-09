@@ -38,7 +38,7 @@
                 @foreach($elcourses as $elcourse)
                 <div class="relative w-full border-2 rounded-xl p-5 flex flex-col justify-center items-center gap-2 shadow-lg">
                         @if($elcourse->discount)
-                        <div class="w-14 text-center absolute top-0 right-0 bg-red-600 text-white z-10 rounded-lg">
+                        <div class="w-14 text-center text-xl font-bold text-amber-400 absolute top-3 right-0 bg-black text-white z-[5] rounded-lg rotate-[35deg] shadow-lg">
                             {{$elcourse->discount}}%
                         </div>
                         @endif
@@ -94,7 +94,7 @@
                                     @if($elcourse->discount)
                                     <h2 class="font-medium text-gray-400 line-through">{{number_format($elcourse->price)}} THB</h2>
                                     @endif
-                                    <h2 class="font-medium">{{number_format($elcourse->price)}} THB</h2>
+                                    <h2 class="font-medium">{{number_format($last_price = $elcourse->price - (($elcourse->price * $elcourse->discount) / 100))}} THB</h2>
                                 </div>
                             </div>
 
@@ -218,6 +218,7 @@
                 course_id: courseId
             })
             .then(response => {
+                document.querySelector('#number-cart').innerText = response.data.amount
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -225,7 +226,6 @@
                     showConfirmButton: false,
                     timer: 1000
                 })
-                console.log(response.data.message);
                 // คุณสามารถทำอะไรก็ได้หลังจากเพิ่มคอร์สลงใน Session แล้ว
             })
             .catch(error => {

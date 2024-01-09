@@ -111,7 +111,7 @@
   });
 
   // payment
-  let cartlist = {!! json_encode($cartCourses) !!};
+  let cartlist = @json($cartCourses);
   console.log(cartlist);
   if(cartlist.length > 0) {
     document.querySelector('#payment').classList.add("bg-red-600", "hover:bg-red-500");

@@ -29,9 +29,9 @@ class ElerningController extends Controller
                     $select_cate = $cate->category_name;
                 }
             }
-            // dd($select_cate);
-
-            $elcourses = Elerningcourse::paginate(10);
+            
+            $elcourses = Elerningcourse::where('category', 'LIKE', '%'.$cate_id.'%')->paginate(10);
+            // dd($elcourses);
 
         
             $elcourses = $elcourses->map(function ($elcourse) {

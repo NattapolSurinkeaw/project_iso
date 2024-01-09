@@ -39,7 +39,7 @@
               <h1 class="px-10 text-xl font-bold">5422065818</h1>
             </div>
             <div class="flex items-center bg-gray-300 rounded-full drop-shadow-lg">
-              <img class="h-14 w-14 rounded-full" src="https://nbtworld.prd.go.th/dc/transcode/image/2563/4/27/e2ebfc05ee2ef2f857e124957714d1c1_small.jpg" alt="">
+              <img class="h-14 w-14 rounded-full" src="image/icon/krung.webp" alt="">
               <h1 class="px-10 text-xl font-bold">0240455568</h1>
             </div>
           </div>

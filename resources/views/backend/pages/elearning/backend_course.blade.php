@@ -115,6 +115,7 @@
                     <input type="number" id="discount" class="swal2-input w-[80%]" placeholder="discount" value="">
                 </div>
                 <input type="text" id="description" class="swal2-input w-[80%] mb-4" placeholder="description" >
+                <label class="w-full block">รายละเอียดหลักสูตร</label>
                 <textarea id="details"></textarea>
                 <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
                     <span>
@@ -191,13 +192,18 @@
     function edit(courseId) {
         axios.get(`/api/course/${courseId}`).then((response) => {
             let data = response.data.data
+            console.log(data);
             Swal.fire({
             title: "Edit Course",
             html: ` <img src="/image/icon/upload.png" alt="" class="w-32 h-40 mx-auto" id="ImgOpt">
                     <input type="text" id="course_name" class="swal2-input" placeholder="Name" value="${data.course_name}">
                     <input type="text" id="user_name" class="swal2-input" placeholder="teacher" value="${data.user_name}">
-                    <input type="number" id="price" class="swal2-input" placeholder="price" value="${data.price}">
+                    <div class="flex gap-2">
+                        <input type="number" id="price" class="swal2-input w-[80%]" placeholder="price" value="${data.price}">
+                        <input type="number" id="discount" class="swal2-input w-[80%]" placeholder="discount" value="${data.discount}">
+                    </div>
                     <input type="text" id="description" class="swal2-input mb-4" placeholder="description" value="${data.description}">
+                    <label class="w-full block">รายละเอียดหลักสูตร</label>
                     <textarea id="details">${data.details}</textarea>
                     <label for="img_course" class="block w-full mx-auto mt-3 bg-blue-500 text-white flex items-center justify-center gap-1 w-44 p-3 rounded-xl">
                         <span>
@@ -215,6 +221,7 @@
                     const course_name = Swal.getPopup().querySelector("#course_name").value;
                     const user_name = Swal.getPopup().querySelector("#user_name").value;
                     const price = Swal.getPopup().querySelector("#price").value;
+                    const discount = Swal.getPopup().querySelector("#discount").value;
                     const description = Swal.getPopup().querySelector("#description").value;
                     let details = editor.getData();
                     const img_course = Swal.getPopup().querySelector("#img_course");
@@ -228,6 +235,7 @@
                     formData.append('course_name' , course_name)
                     formData.append('user_name' , user_name)
                     formData.append('price' , price)
+                    formData.append('discount' , discount)
                     formData.append('description' , description)
                     formData.append('details' , details)
                     formData.append('imgCourse' , imgCourse)

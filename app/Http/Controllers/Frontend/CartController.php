@@ -15,32 +15,64 @@ class CartController extends Controller
     //
     public function addToCart(Request $request) {
         $courseId = $request->input('course_id');
-        $cartList = Session::get('cart_list', []);
-
-        array_push($cartList, $courseId);
-        Session::put('cart_list', $cartList);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Course added to cart'
-        ],200);
+        $cartList = Session::get('cart_list', ['items' => [], 'amount' => 0]);
+    
+        // Check if "items" key exists in $cartList
+        if (!isset($cartList['items'])) {
+            $cartList['items'] = [];
+        }
+    
+        if (in_array($courseId, $cartList['items'])) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Course already in cart',
+                'amount' => $cartList['amount']
+            ], 200);
+        } else {
+            $cartList['items'][] = $courseId;
+            
+            // Check if "amount" key exists in $cartList
+            if (!isset($cartList['amount'])) {
+                $cartList['amount'] = 0;
+            }
+    
+            $cartList['amount'] += 1;
+            Session::put('cart_list', $cartList);
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Course added to cart',
+                'amount' => $cartList['amount']
+            ], 200);
+        }
     }
 
     public function removeCart(Request $request) {
         $courseId = $request->input('course_id');
         $cartList = Session::get('cart_list', []);
-        $cartList = array_diff($cartList, [$courseId]); // ลบคอร์สออกจากรายการ
-        Session::put('cart_list', $cartList);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Course removed from cart'
-        ], 200);
+      
+        if (isset($cartList['items']) && in_array($courseId, $cartList['items'])) {
+            $cartList['items'] = array_diff($cartList['items'], [$courseId]); // ลบคอร์สออกจากรายการ
+            $cartList['amount'] = isset($cartList['amount']) ? max(0, $cartList['amount'] - 1) : 0;
+            Session::put('cart_list', $cartList);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Course removed from cart'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Course not found in your cart'
+            ], 204);
+        }
     }
 
     public function cartPage() {
         $cartList = session('cart_list', []); // ดึงข้อมูลจาก Session
-
-        $cartCourses = Elerningcourse::whereIn('id', $cartList)->get();
-        // dd($cartList);
+        $cartCourses = [];
+        if(isset($cartList['items'])) {
+            $cartCourses = Elerningcourse::whereIn('id', $cartList['items'])->get();
+        }
         return view('pages.app_cart.cart', compact('cartCourses','cartList'));
     }
 

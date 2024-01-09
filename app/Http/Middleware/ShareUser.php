@@ -22,7 +22,7 @@ class ShareUser
         $cartList = session('cart_list', []); // ดึงข้อมูลจาก Session
 
         View::share('user', $user);
-        View::share('count_order', count($cartList));
+        View::share('cartList', count($cartList));
         return $next($request);  // คืนค่า Response จาก $next
     }
 }

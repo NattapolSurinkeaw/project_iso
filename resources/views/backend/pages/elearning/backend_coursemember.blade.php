@@ -2,12 +2,12 @@
 @section('title') user Elearning @endsection
 @section('container')
 
-<div class="h-screen">
+<div class="pb-10">
     <div class="m-1">
       <a href="{{url('/backend/coruse')}}" class="bg-red-500 text-white text-lg px-2 rounded">กลับ</a>
     </div>
     <h1 class="w-full text-xl font-bold text-center">Detail Course :</h1>
-    <ul role="list" class="bg-white divide-y divide-gray-100 mx-auto w-[90%] h-[80%] 2xl:h-[85%] overflow-auto">
+    <ul role="list" class="bg-white divide-y divide-gray-100 mx-auto w-[90%] h-auto min-h-[500px]">
       @if (count($users) > 0)
       @foreach($users as $userData)
         <li class="grid grid-cols-4 gap-x-6 py-5 px-5 2xl:px-10">
