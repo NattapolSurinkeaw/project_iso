@@ -21,8 +21,9 @@ class ShareUser
         $user = Auth::user();
         $cartList = session('cart_list', []); // ดึงข้อมูลจาก Session
 
+        // dd($cartList);
         View::share('user', $user);
-        View::share('cartList', count($cartList));
+        View::share('cartList', $cartList);
         return $next($request);  // คืนค่า Response จาก $next
     }
 }

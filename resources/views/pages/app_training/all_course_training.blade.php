@@ -6,8 +6,8 @@
     <img class="w-full h-96 max-xl:h-40 max-xs:h-28" src="/image/background/img-training.png" alt="thumbnail-training">
   </div>
   <div class="w-11/12 m-auto px-8 max-xl:px-0">
-    <div class="flex flex-col w-full max-xs:overflow-auto">
-      <table id="table-course" class="min-w-full text-left text-sm font-light">
+    <div class="flex flex-col w-full max-ms:overflow-auto">
+      <table id="table-course" class="min-w-full text-left text-sm font-light mb-4">
         <tbody>
           @isset($courses)
             @if(count($courses) > 0)
@@ -39,7 +39,7 @@
               @endif
                 <tr class="border-b dark:border-neutral-500">
                   <td class="whitespace-nowrap px-6 py-4">{{ $course->code }}</td>
-                  <td class=" px-6 py-4"><a class="underline text-blue-500" href="{{ url('/detail-training/'.$course->id.'') }}">{{ $course->name }}</a></td>
+                  <td class=" px-6 py-4 block w-60"><a class="underline text-blue-500" href="{{ url('/detail-training/'.$course->id.'') }}">{{ $course->name }}</a></td>
                   <td class="whitespace-nowrap px-6 py-4">{{ $course->day }}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{ number_format($course->fee) }}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{ \Carbon\Carbon::parse($course->date)->format('d-M-Y') }}</td>

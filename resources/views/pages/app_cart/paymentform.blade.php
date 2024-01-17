@@ -64,7 +64,7 @@
   
             <div class="flex flex-col">
               <label for="" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">จำนวนเงินที่โอน</label>
-              <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text" placeholder="9,999" maxlength="8">
+              <input name="totalmoney" id="totalmoney" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="text" placeholder="9,999" maxlength="7">
             </div>
 
             <div class="flex flex-col">
@@ -102,7 +102,7 @@
             </div>
   
             <div class="flex flex-col">
-              <label for="bank-company" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">บัญชีบริษัท</label>
+              <label for="bank-company" class="block text-sm font-medium leading-6 text-gray-900 text-[17px] mb-2">โอนเข้าบัญชี</label>
               <select name="bank-company" id="bank-company" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                 <option value="ธนาคารกรุงไทย">ธนาคารกสิกรไทย 5422065818</option>
                 <option value="ธนาคารกรุงเทพ">ธนาคารกรุงไทย 0240455568</option>
@@ -182,7 +182,7 @@ customertelEl.addEventListener('input', () => {
   customertelEl.value = filterNumber(customertelEl)
 })
 
-banknumberEl.addEventListener('change', () => {
+banknumberEl.addEventListener('input', () => {
   banknumberEl.value = filterNumber(banknumberEl)
 })
 

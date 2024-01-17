@@ -36,7 +36,8 @@
   background-color: rgb(56, 44, 25);
   border-radius: 15px;
 } */
-#table-course {
+
+/* #table-course {
   margin-bottom: 20px;
 }
 @media screen and (max-width: 821px) and (min-width: 769px) {
@@ -48,7 +49,7 @@
   #table-course {
     margin-bottom: 150px;
   }
-}
+} */
 
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -72,6 +73,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .ck-content .image {
   max-width: 80%;
   margin: 20px auto;
+}
+
+.popup-manual-video {
+  width: 50%;
 }
 
 /* create questions */

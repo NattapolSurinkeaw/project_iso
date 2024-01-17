@@ -70,7 +70,11 @@ class ElerningController extends Controller
     }
 
     public function coursePage($course_id) {
-
+        $user_id = Auth::user()->id;
+        $myCourse = MyCourse::where('elerningcourse_id', $course_id)->where('user_id', $user_id)->first();
+        if(!$myCourse){
+            return redirect('/elerning');
+        }
         // เก็บ id ที่ส่งมาเข้า session
         session(['course_id' => $course_id]);
         $session_CourseId = session('course_id');
@@ -80,7 +84,6 @@ class ElerningController extends Controller
         $announcements = Annoucement::where('elerningcourse_id', $session_CourseId)->get();
         $materials = CourseMaterial::where('elerningcourse_id', $session_CourseId)->get();
 
-        $user_id = Auth::user()->id;
         $userLearning = UserLerning::where('elearning_id', $session_CourseId)
         ->where('user_id', $user_id)
         ->first();
@@ -109,16 +112,37 @@ class ElerningController extends Controller
     }
 
     // user learning video material
-    public function getVideoMat($mat_id){
+    public function getVideoMat(Request $request, $mat_id){
+        $display = $request->input('display');
+        
+        $width = null;
+        $height = null;
+        if($display == '2xl') {
+            $width = 1450;
+            $height = 768;
+        } elseif($display == 'xl') {
+            $width = 1000;
+            $height = 500;
+        } elseif($display == 'lg') {
+            $width = 768;
+            $height = 400;
+        } elseif($display == 'md') {
+            $width = 640;
+            $height = 400;
+        } elseif($display == 'xs') {
+            $width = 375;
+            $height = 300;
+        }
+
         $urlvdo = CourseMaterial::find($mat_id);
         if($urlvdo->input_type == 'youtube' || $urlvdo->input_type == 'vimeo'){
             $embed = \Embed::make($urlvdo->video_url)->parseUrl();
-            $embed->setAttribute('width', 800); // กำหนดความกว้างตามที่คุณต้องการ
-            $embed->setAttribute('height', 450); // กำหนดความสูงตามที่คุณต้องการ
+            $embed->setAttribute('width', $width);  // กำหนดค่า width
+            $embed->setAttribute('height', $height); // กำหนดค่า height
             $course_video = $embed->getHtml();
         } else if ($urlvdo->input_type == 'drive') {
             $width = "1000";
-            $course_video = '<iframe src="' . $urlvdo->video_url . '" width="'.$width.'" height="700" allow="autoplay"></iframe>';
+            $course_video = '<iframe src="' . $urlvdo->url . '" width="'.$width.'" height="'.$height.'" allow="autoplay"></iframe>';
         } else {
             $course_video = "ไม่มีวิดีโอ";
         }

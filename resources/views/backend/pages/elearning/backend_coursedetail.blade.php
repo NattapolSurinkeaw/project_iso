@@ -8,7 +8,7 @@
 </div>
 
 <div class="mx-10 my-4 h-screen">
-    <div class="h-4/5 overflow-y-scroll">
+    <div class="overflow-hidden">
         <h1 class="w-full text-xl font-bold text-center">Detail Course : {{ $course->course_name }}</h1>
         
         <div class="bg-white border-l-8 border-l-indigo-500 rounded-xl p-4 m-10">
@@ -85,17 +85,25 @@
                 <div class="h-0 overflow-hidden transition-all duration-300 ease-in-out" id="content-material">
                 <a href="{{$item->document}}" target="_bank" class="text-blue-500">เอกสาร</a>
                     <div class="mt-4">
-                        @php
-                        $course_video ="";
-                        if($item->input_type == 'youtube' || $item->input_type == 'vimeo'){
-                            $embed = \Embed::make($item->video_url)->parseUrl();
-                            $course_video = $embed->getHtml();
-                        } else if ($item->input_type == 'drive') {
-                            $course_video = '<iframe src="' . $item->video_url . '" width="600px" height="300" allow="autoplay"></iframe>';
-                        } else {
-                            $course_video = "ไม่มีวิดีโอ";
-                        }
-                        @endphp
+                        @if($item->input_type == 'youtube' || $item->input_type == 'vimeo')
+                            @php
+                                $embed = \Embed::make($item->video_url)->parseUrl();
+                                $course_video = $embed ? $embed->getHtml() : "ไม่สามารถ embed วิดีโอได้";
+                            @endphp
+                        @elseif($item->input_type == 'drive')
+                            @php
+                                $course_video = '<div  style="width: 640px; height: 480px; position: relative;">
+                                                    <iframe src="' . $item->video_url . '"   width="640" height="480" frameborder="0" scrolling="no" seamless="" allowfullscreen="allowfullscreen"></iframe>
+                                                    <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;"> </div>
+                                                </div>
+                                                ';
+                            @endphp
+                        @else
+                            @php
+                                $course_video = "ไม่มีวิดีโอ";
+                            @endphp
+                        @endif
+
                         {!!$course_video !!}
                     </div>
                 </div>
@@ -111,6 +119,9 @@
             <p class="text-gray-400">07-feb-23, 08.02 Am</p>
             <hr>
             @endforeach
+            <div class="pt-3 flex justify-center">
+                <button id="manual-video" class="text-blue-500 underline">คู่มือการเพิ่มวิดีโอ</button>
+            </div>
         </div>
 
         <div class="bg-white border-l-8 border-l-red-500 rounded-xl p-4 m-10">
@@ -153,6 +164,22 @@
 
 @section('be-scripts')
 <script>
+    const manual_video = document.querySelector('#manual-video');
+    manual_video.addEventListener('click', function() {
+        Swal.fire({
+            title: "วิธีอัปโหลดวิธีดี",
+            html: `<div>
+                    <div  style="width: 640px; height: 480px; position: relative;">
+                        <iframe src=""   width="640" height="480" frameborder="0" scrolling="no" seamless="" allowfullscreen="allowfullscreen"></iframe>
+                        <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;"> </div>
+                    </div>
+                </div>`,
+            customClass: {
+            popup: 'popup-manual-video', // ปรับแต่งคลาส CSS ของ Popup
+            },
+        });
+    })
+
     let courseId = {!! json_encode($course->id) !!}
 
     let chkcate = document.querySelectorAll('#category');
@@ -176,13 +203,13 @@
             bottomIcon.classList.remove('hidden');
             // content_material[index].classList.remove('hidden');
             content_material[index].classList.remove('h-0');
-            content_material[index].classList.add('h-[370px]');
+            content_material[index].classList.add('h-[480px]');
             show = true; // เปลี่ยนเป็น true เมื่อคลิกเพื่อแสดงเนื้อหา
         } else {
             rightIcon.classList.remove('hidden');
             bottomIcon.classList.add('hidden');
             // content_material[index].classList.add('hidden');
-            content_material[index].classList.remove('h-[370px]');
+            content_material[index].classList.remove('h-[480px]');
             content_material[index].classList.add('h-0');
 
             show = false; // เปลี่ยนเป็น false เมื่อคลิกเพื่อซ่อนเนื้อหา

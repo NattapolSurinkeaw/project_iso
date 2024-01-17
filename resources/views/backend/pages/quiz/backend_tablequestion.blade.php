@@ -4,7 +4,7 @@
 @endsection
 @section('container')
     <div class="h-screen">
-        <div class="mx-10 my-4 flex justify-between items-center">
+        <div class="mx-10 my-4 flex justify-between items-center gap-4">
             <a href="/backend/coursedetail/{{$quiz_name->elerningcourse_id}}" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"">BACK</a>
             <h1 class="text-xl font-bold">Table Question of Quiz : {{ $quiz_name->quiz_name }}</h1>
             <button type="button" id="create-questions" onclick="createQuestion()" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
@@ -74,7 +74,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <button class="bg-yellow-500 p-2 rounded-lg text-white text-center"
-                                    data-id="{{ $question->id }}" id="editQuestion">รายละเอียด / แก้ไข</button>
+                                    data-id="{{ $question->id }}" id="editQuestion">แก้ไข</button>
                                 <button class="bg-red-600 p-2 rounded-lg text-white text-center"
                                     data-id="{{ $question->id }}" id="delQuestion">ลบ</button>
                             </td>

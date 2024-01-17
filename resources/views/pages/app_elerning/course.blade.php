@@ -159,7 +159,27 @@
     let videoFrame = document.getElementById('box-video');
 
     try {
-      axios.get(`/api/getvideomat/${videoId}`)
+      let display = null;
+      if(innerWidth >= 1536){
+        display = "2xl";
+      } else if (innerWidth >= 1280) {
+        display = "xl";
+      } else if (innerWidth >= 1024) {
+        display = "lg";
+      } else if (innerWidth >= 768) {
+        display = "md";
+      } else if (innerWidth >= 640) {
+        display = "sm";
+      } else {
+        display = "xs";
+      }
+      param = {
+        display : display
+      }
+      console.log(param);
+      // return false;
+      
+      axios.get(`/api/getvideomat/${videoId}`, { params: param })
         .then(response => {
           const url = response.data.data;
           console.log(url);
