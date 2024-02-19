@@ -26,7 +26,7 @@
               $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
             @endphp
           @endforeach
-          <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ {{ number_format($totalPrice, 2) }} THB</h1>
+          <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ  <span class="text-xl font-normal line-through text-gray-400">{{ number_format($totalPrice, 2) }}</span> {{ number_format((isset($cartList['discount']->code)) ? ($totalPrice - (($totalPrice * $cartList['discount']->discount) / 100)) : $totalPrice,2) }}  THB</h1>
         @else
           <h1 class="text-3xl text-center font-bold my-4">ยอดชำระ 0.00 THB</h1>
         @endif
@@ -158,9 +158,9 @@ let totalmoney = document.querySelectorAll('#totalmoney')
   });
 
 let btnsubmut = document.querySelector('#submit');
-// let user = {!! json_encode($user) !!};
 const userId = @json($user->id);
-console.log(userId);
+let sessionCart = @json($cartList);
+console.log(sessionCart['discount'].discount);
 
 let dataCourse = {!! json_encode($cartCourses) !!}
 let idCourse = [];
@@ -174,6 +174,8 @@ for (let i = 0; i < dataCourse.length; i++) {
 
     totalPrice += price;
 }
+
+totalPrice = totalPrice - ((totalPrice * sessionCart['discount'].discount) / 100 ) 
 
 const customertelEl = document.querySelector('#customer-tel'); 
 const banknumberEl = document.querySelector('#bank-number');
@@ -229,11 +231,6 @@ btnsubmut.addEventListener('click', () => {
   formData.append('bankcompany', bankcompany);
   formData.append('slippayment', imageFile);
   formData.append('user_id', userId);
-
-  // formData.forEach((value, key) => {
-  //     console.log(key + ': ' + value);
-  //   });
-  // return false;
 
   try {
     Swal.fire({

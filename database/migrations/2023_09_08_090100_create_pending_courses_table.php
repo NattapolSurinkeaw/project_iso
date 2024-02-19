@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('bankcustomer', 100);
             $table->string('bankcompany', 100);
             $table->string('payment_slip');
-            $table->timestamps('date_transfer');
+            $table->timestamp('date_transfer');
             $table->string('user_id', 10);
             $table->string('reading', 4);
             $table->string('comment')->nullable();

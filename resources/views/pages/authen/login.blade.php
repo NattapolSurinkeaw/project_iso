@@ -7,7 +7,7 @@
                 <img class="w-full h-full rounded-l-lg" src="/image/background/login.jpg" alt="">
             </div>
             <div class="w-full rounded-r-lg flex flex-col justify-center items-center gap-5">
-                <h1 class="m-4 text-xl font-normal leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                <h1 class="m-4 text-xl font-normal tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Sign in to your account
                 </h1>
                 <div class="w-10/12 flex flex-col">

@@ -18,20 +18,20 @@
             <div class="flex gap-4 mb-2">
                 <div class="w-full">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Company</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="company" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-company">กรุณากรอกข้อมูล company</p>
                 </div>
                 <div class="w-full">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Branch</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="branch" type="text" maxlength="5">
                     <p class="text-xs text-red-500 hidden" id="validate-branch">กรุณากรอกข้อมูล branch</p>
                 </div>
             </div>
             <div class="w-full mb-2">
                 <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="address">Address</label>
-                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                 id="address" type="text"></textarea>
                 <p class="text-xs text-red-500 hidden" id="validate-address">กรุณากรอกข้อมูล address</p>
             </div>
@@ -39,13 +39,13 @@
             <div class="flex gap-4 mb-3">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="tax-id">Contact</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white"
                         id="contact" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-contact">กรุณากรอกข้อมูล contact</p>
                 </div>
                 <div class="w-full md:w-1/2">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="position">Position</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="position" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-position">กรุณากรอกข้อมูล position</p>
                 </div>
@@ -56,21 +56,21 @@
             <div class="flex gap-4 mb-3">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="phone">Phone</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="phone" maxlength="10" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-phone">กรุณากรอกข้อมูล phone</p>
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="email">E-mail</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="email" type="email">
                     <p class="text-xs text-red-500 hidden" id="validate-email">กรุณากรอกข้อมูล E-mail</p>
                 </div>
 
                 <div class="w-full md:w-1/3 mb-4 md:mb-0">
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="fax">Fax</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="fax" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-fax">กรุณากรอกข้อมูล Fax</p>
                 </div>
@@ -89,20 +89,20 @@
             <div class="flex gap-4 mb-3 w-full">
                 <div class="w-full">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Company</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-company" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-company">กรุณากรอกข้อมูล Company</p>
                 </div>
                 <div class="w-full">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-branch">Branch</label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-branch" type="text" maxlength="5">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-branch">กรุณากรอกข้อมูล branch</p>
                 </div>
             </div>
             <div class="flex flex-col mb-4 w-full">
                 <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Address</label>
-                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500"
                     id="bil-address" type="text"></textarea>
                 <p class="text-xs text-red-500 hidden" id="validate-bil-address">กรุณากรอกข้อมูล Address</p>
             </div>
@@ -112,7 +112,7 @@
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="tax-id">
                         Tax ID
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white"
                         id="bil-tax-id" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-tax-id">กรุณากรอกข้อมูล Tex ID</p>
                 </div>
@@ -120,7 +120,7 @@
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-contact">
                         Contact
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-contact" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-contact">กรุณากรอกข้อมูล Contact</p>
                 </div>
@@ -128,7 +128,7 @@
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1"for="title">
                         Title
                     </label>
-                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-title" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-title">กรุณากรอกข้อมูล Title</p>
                 </div>
@@ -141,19 +141,19 @@
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-phone">
                         Phone
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="bil-phone" type="text" maxlength="10">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-phone">กรุณากรอกข้อมูล Tex ID</p>
                 </div>
                 <div class="w-full">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-email">E-mail</label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                     id="bil-email" type="email">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-email">กรุณากรอกข้อมูล E-mail</p>
                 </div>
                 <div class="w-full">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="bil-fax">Fax</label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                     id="bil-fax" name="bil-fax" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-bil-fax">กรุณากรอกข้อมูล Fax</p>
                 </div>
@@ -161,14 +161,14 @@
 
             <p class="text-gray-600 text-xl font-ligth mt-5">Request for training course : </p>
             <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
-            <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
                 id="training-reserve" type="text"  disabled>{{$course->name}}</textarea>
             <div class="flex items-center gap-4 mb-4 mt-4">
                 <div class="w-full md:w-1/2 mb-6 md:mb-0">
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="number-participants">
                         The number of participants
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white"
                         id="number-participants" name="number-participants" type="number">
                         <p class="text-xs text-red-500 hidden" id="validate-number-participants">กรุณากรอกข้อมูล number of participants</p>
                 </div>
@@ -178,7 +178,7 @@
                     </label>
                     @if(request('date'))
                     <input
-                        class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="date-reserve" name="date-reserve" type="date" value="{{ request('date') }}">
                         <p class="text-xs text-red-500 hidden" id="validate-date-reserve">กรุณากรอกข้อมูล reserve date</p>
                     @endif
@@ -201,7 +201,7 @@
                         course
                     </label>
                     <div class="relative">
-                        <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
+                        <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500" name="other-course" id="other-course">
                             <option value="">other course</option>
                             @foreach($courses as $rowcourse)
                                 @if($rowcourse->id != $course->id)
@@ -216,7 +216,7 @@
                         required date
                     </label>
                     @if(request('date'))
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 focus:outline-none focus:bg-white focus:border-gray-500"
                     id="other-date-reserve" value="{{ request('date') }}" type="date">
                     @endif
                 </div>
@@ -225,7 +225,7 @@
 
             <p class="text-gray-600 text-xl font-ligth mt-5">Special requisition : </p>
             <p class="text-gray-600 text-l mb-4">ข้อเสนอหรือความต้องการพิเศษใด ๆ </p>
-            <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
                 id="special-request" type="text"></textarea>
 
             <p class="text-gray-600 text-xl font-ligth mt-4">ลงนาม : </p>
@@ -234,7 +234,7 @@
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                         Name
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-name" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-reserve-name">กรุณากรอกข้อมูล name</p>
                 </div>
@@ -243,7 +243,7 @@
                     <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                         Position
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-position" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-reserve-position">กรุณากรอกข้อมูล Position</p>
                 </div>
@@ -251,7 +251,7 @@
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                         Mobile
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-tel" maxlength="10" type="text">
                     <p class="text-xs text-red-500 hidden" id="validate-reserve-tel">กรุณากรอกข้อมูล Tel</p>
                 </div>
@@ -260,7 +260,7 @@
                     <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                         E-mail
                     </label>
-                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                         id="reserve-email" type="email">
                     <p class="text-xs text-red-500 hidden" id="validate-reserve-email">กรุณากรอกข้อมูล E-mail</p>
                 </div>
@@ -481,7 +481,7 @@
 
         // สร้าง element ของ select element
         const select = document.createElement('select');
-        select.classList.add('block', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
+        select.classList.add('block', 'w-full', 'bg-gray-200', 'border', 'border-gray-200', 'text-gray-700', 'py-2', 'px-4', 'pr-8', 'rounded', ', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
         select.id = 'other-course';
         select.name = 'other-course';
         course.forEach(courseItem => {
@@ -511,7 +511,7 @@
 
         // สร้าง element ของ input date
         const dateInput = document.createElement('input');
-        dateInput.classList.add('block', 'w-full', 'bg-gray-200', 'text-gray-700', 'border', 'border-gray-200', 'rounded', 'py-2', 'px-2', 'leading-tight', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
+        dateInput.classList.add('block', 'w-full', 'bg-gray-200', 'text-gray-700', 'border', 'border-gray-200', 'rounded', 'py-2', 'px-2', ', 'focus:outline-none', 'focus:bg-white', 'focus:border-gray-500');
         dateInput.type = 'date';
         dateInput.id = 'other-date-reserve'
         dateInput.value = '{{ request('date') }}';

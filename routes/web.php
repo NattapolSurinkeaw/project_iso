@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\LeaveMessageController;
 
 use App\Http\Controllers\Frontend\api\ApiDashboradController;
 use App\Http\Controllers\Backend\api\ApiBackendController;
+use App\Http\Controllers\Backend\ManageDiscountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,7 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
 
   Route::get('/', [Controller::class, 'homePage'])->name('home');
   Route::get('/register', [Controller::class, 'registerPage'])->name('register');
-  Route::get('/login', [Controller::class, 'loginPage'])->name('login'); // เปลี่ยน YourLoginController เป็นชื่อ Controller ของคุณ
+  Route::get('/login', [Controller::class, 'loginPage'])->name('login');
 
   Route::get('/contact',[FrontendController::class,'contactPage']);
   Route::get('/training/{id?}', [TrainingController::class, 'tainingPage']);
@@ -73,7 +74,8 @@ use App\Http\Controllers\Backend\api\ApiBackendController;
   Route::get('/payment',[CartController::class,'paymentForm'])->middleware('checklogin');
   Route::post('/add-to-cart',[CartController::class,'addToCart'])->middleware('checklogin');
   Route::post('/remove-cart',[CartController::class,'removeCart'])->middleware('checklogin');
-
+  
+  Route::post('/apply-discount/{code}',[CartController::class,'applyDiscount'])->middleware('checklogin');
 
 Route::middleware('checklogin')->group(function () { 
   Route::get('/reserveday/{course_id}',[TrainingController::class,'calendarReserve']);
@@ -119,6 +121,7 @@ Route::prefix('backend')->middleware('checkadmin')->group(function () {
 
   Route::get('/webcontent',[WebContentController::class,'contentHome']);
   Route::get('/leavemessage',[LeaveMessageController::class,'manage_leavemessage']);
+  Route::get('/managediscount',[ManageDiscountController::class,'managediscount']);
 });
 
 
@@ -204,4 +207,9 @@ Route::prefix('api')->group(function (){
   Route::post('/backend/editbanner/{id}', [WebContentController::class, 'edit_banner']);
 
   Route::get('/backend/getmessage/{id}', [LeaveMessageController::class, 'getMessageById']);
+
+  Route::get('/backend/getdiscount/{id}', [ManageDiscountController::class, 'getDiscount']);
+  Route::post('/backend/creatediscount', [ManageDiscountController::class, 'create_discount']);
+  Route::put('/backend/editdiscount/{id}', [ManageDiscountController::class, 'edit_discount']);
+  Route::delete('/backend/deletediscount/{id}', [ManageDiscountController::class, 'delete_discount']);
 });

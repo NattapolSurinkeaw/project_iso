@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="min-h-[calc(100%-60px)] ">
-  <div class="mx-auto mt-4 2xl:max-w-[1536px] max-2xl:max-w-[90%] p-10 bg-gray-100 rounded-md">
+  <div class="mx-auto my-4 2xl:max-w-[1536px] max-2xl:max-w-[90%] p-10 bg-gray-100 rounded-md">
     <h1 class="text-3xl text-center mb-8">Contact</h1>
     <div class="flex max-2xl:flex-col justify-between gap-10">
       <div class="flex flex-col gap-10 w-full">
