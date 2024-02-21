@@ -21,6 +21,7 @@
             <a href="/backend/webcontent"><li>HOME</li></a>
         </ul>
         <a href="{{url('/backend/leavemessage')}}"><h1 class="my-4 text-white font-medium text-xl">Contact Message</h1></a>
+        <a href="{{url('/backend/managediscount')}}"><h1 class="my-4 text-white font-medium text-xl">โค้ดส่วนลด</h1></a>
         <a href="/image/manual.pdf" target="_bank"><h1 class="my-4 text-white font-medium text-xl">คู่มือ</h1></a>
     </div>
     <div class="flex flex-col gap-4">

@@ -2,7 +2,7 @@
 @section('title') CartPage @endsection
 @section('content')
   <div class="py-4">
-    <h1 class="text-3xl text-center font-medium">หลักสูตรในรถเข็น</h1>
+    <h2 class="text-3xl text-center font-medium">หลักสูตรในรถเข็น</h2>
 
     <div class="flex max-lg:flex-col max-lg:gap-5 p-10">
       <!-- detail cartProduct -->
@@ -14,7 +14,7 @@
             <img class="w-full h-full rounded-lg" src="{{ $course->img_course}}" alt="course">
           </div>
           <div class="px-10 max-xs:py-2 w-full flex flex-col gap-4">
-            <h1 class="text-2xl font-bold">Course : {{ $course->course_name }} </h1>
+            <h2 class="text-2xl font-bold">Course : {{ $course->course_name }} </h2>
             {{-- <p class="text-gray-400">{{ $course->description }}</p> --}}
             <p class="text-gray-400">{{ $course->user_name }}</p>
             {{-- <div class="flex gap-1">
@@ -29,8 +29,8 @@
             </div> --}}
             <div class="flex flex-row justify-between">
               <div class="flex gap-4">
-                <h1 class="text-xl font-bold" id="price">THB {{ number_format($course->price, 2) }}</h1>
-                {{-- <h1 class="text-xl text-gray-400 line-through" id="discout">THB 349</h1> --}}
+                <h2 class="text-xl font-bold" id="price">THB {{ number_format($course->price, 2) }}</h2>
+                {{-- <h2 class="text-xl text-gray-400 line-through" id="discout">THB 349</h2> --}}
               </div>
             <button data-id="{{ $course->id}}" id="remove-from-cart"><box-icon name='trash' color='#a80404'></box-icon></button>
             </div>
@@ -41,38 +41,43 @@
         @else
         <div class="w-full h-4/5 p-4 flex flex-col justify-center items-center">
           <img class=" h-full" src="/image/icon/empty.png" alt="">
-          <h1 class="text-gray-400 text-xl">cart empty...</h1>
+          <h2 class="text-gray-400 text-xl">cart empty...</h2>
         </div>
         @endif
 
       </div>
     
       <div class="w-full lg:max-w-[500px] xs:px-14 ">
-        <h1 class="text-xl text-gray-400 mb-5">ทั้งหมด</h1>
+        <h2 class="text-xl text-gray-400 mb-5">ทั้งหมด</h2>
         @if(count($cartCourses) > 0)
-        @php
-          $totalPrice = 0; // เก็บราคาทั้งหมด
-        @endphp
-        @foreach($cartCourses as $course)
-        @php
-          $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
-        @endphp
-        @endforeach
-          <div class="flex gap-2">
-            <h1 class="text-3xl font-medium">THB : </h1>
-            <h1 class="text-3xl font-medium" id="total-price">{{ number_format($totalPrice, 2) }}</h1>
+          @php
+            $totalPrice = 0; // เก็บราคาทั้งหมด
+          @endphp
+          @foreach($cartCourses as $course)
+          @php
+            $totalPrice += floatval($course->price); // เพิ่มราคาลงใน totalPrice
+          @endphp
+          @endforeach
+          <div class="flex items-end gap-2">
+            <h2 class="text-3xl font-medium">THB : </h2>
+            @if(isset($cartList['discount']))
+            <h2 class="text-xl font-normal text-gray-400 line-through" id="total-price">{{ number_format($totalPrice, 2) }}</h2>
+            @endif
+            <h2 class="text-3xl font-medium" id="total-price">
+              {{ number_format((isset($cartList['discount']->code)) ? ($totalPrice - (($totalPrice * $cartList['discount']->discount) / 100)) : $totalPrice,2) }}
+            </h2>
           </div>
         @else
-        <div class="flex gap-2">
-          <h1 class="text-3xl font-medium">THB : </h1>
-          <h1 class="text-3xl font-medium" id="total-price">0</h1>
-        </div>
+          <div class="flex gap-2">
+            <h2 class="text-3xl font-medium">THB : </h2>
+            <h2 class="text-3xl font-medium" id="total-price">0</h2>
+          </div>
         @endif
         <hr>
         <div class="flex flex-col gap-3 my-2">
-          {{-- <h1 class="text-xl">โปรโมชั่น</h1> --}}
+          {{-- <h2 class="text-xl">โปรโมชั่น</h2> --}}
           <div class="flex gap-2">
-            <input type="text" class="rounded-lg border-2 w-full py-1 px-4 shadow-md" id="inp-discount" placeholder="คูปองส่วนลด">
+            <input type="text" class="rounded-lg border-2 w-full py-1 px-4 shadow-md" id="inp-discount" value="{{ isset($cartList['discount'])? $cartList['discount']->code : "" }}" placeholder="คูปองส่วนลด">
             <button class="py-1 px-2 bg-green-500 text-white rounded-lg" onclick="getDiscount()">Apply</button>
           </div>
           <button id="payment" class="text-center font-medium text-white rounded-xl py-1">ชำระเงิน</button>
@@ -124,13 +129,13 @@
   }
 
   function getDiscount() {
-    let code = {
-      A1 : 50,
-      B2 : 70,
-      C3 : 80
-    }
+    
     let inpDiscount = document.querySelector('#inp-discount').value;
     let elprice = document.querySelector('#total-price');
+
+    axios.post(`/apply-discount/${inpDiscount}`).then((reponse) => {
+      console.log(reponse);
+    })
     
     if (code.hasOwnProperty(inpDiscount)) {
         const discountPercentage = code[inpDiscount];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CodeDiscount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -55,6 +56,11 @@ class CartController extends Controller
             $cartList['items'] = array_diff($cartList['items'], [$courseId]); // ลบคอร์สออกจากรายการ
             $cartList['amount'] = isset($cartList['amount']) ? max(0, $cartList['amount'] - 1) : 0;
             Session::put('cart_list', $cartList);
+            
+            if(!$cartList['items'] && $cartList['amount'] == 0) {
+                $this->removeAllCart();
+            }
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'Course removed from cart'
@@ -90,7 +96,7 @@ class CartController extends Controller
 
     // API Methods
     public function pendingPayment(Request $request) {
-        // dd($request->all());
+       
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'totalcourse' => 'required',
@@ -137,6 +143,39 @@ class CartController extends Controller
             'message' => ''
         ], 200);
 
+    }
+
+    public function applyDiscount($code) {
+        $cartList = Session::get('cart_list', []);
+        if(!$cartList['items']) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'cart product is empty'
+            ],200);
+            
+        }
+       
+        $discount = CodeDiscount::select('code', 'discount')
+            ->where('code', $code)
+            ->whereDate('date_start', '<=', now())  // ตรวจสอบว่าวันที่ query อยู่หลังจากหรือเท่ากับ date_start
+            ->whereDate('date_expire', '>=', now())  // ตรวจสอบว่าวันที่ query อยู่ก่อนหรือเท่ากับ date_expire
+            ->first();
+       
+        if(!$discount) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'code discount is not found',
+            ],404); 
+        }
+            
+        $cartList['discount'] = $discount;
+        Session::put('cart_list', $cartList);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'apply discount success fully',
+            'data' => $discount
+        ]);
+        
     }
 
     public function removeAllCart() {

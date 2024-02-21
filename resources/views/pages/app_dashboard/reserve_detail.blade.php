@@ -26,28 +26,28 @@
       <div class="flex gap-4">
         <div class="w-full mb-2">
             <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Company</label>
-            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="company" value="{{$pendingTraining->company}}" type="text">
+            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500" id="company" value="{{$pendingTraining->company}}" type="text">
         </div>
         <div class="w-full mb-2">
             <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Branch</label>
-            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="branch" value="{{$pendingTraining->branch}}" type="text">
+            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500" id="branch" value="{{$pendingTraining->branch}}" type="text">
         </div>
       </div>
       <div class="w-full mb-2">
           <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="address">Address</label>
-          <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4  focus:outline-none focus:bg-white focus:border-gray-500"
           id="address" type="text">{{$pendingTraining->address}}</textarea>
       </div>
   
       <div class="flex gap-4 mb-3">
           <div class="w-full md:w-1/2 mb-6 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="tax-id">Contact</label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white"
                   id="contact" value="{{$pendingTraining->contact}}" type="text">
           </div>
           <div class="w-full md:w-1/2">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="position">Position</label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="position" value="{{$pendingTraining->position}}" type="text">
           </div>
       </div>
@@ -57,19 +57,19 @@
       <div class="flex gap-4 mb-3">
           <div class="w-full md:w-1/3 mb-6 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="phone">Phone</label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="phone" value="{{$pendingTraining->phone}}" maxlength="10" type="text">
           </div>
   
           <div class="w-full md:w-1/3 mb-4 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="email">E-mail</label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="email" value="{{$pendingTraining->email}}" type="email">
           </div>
   
           <div class="w-full md:w-1/3 mb-4 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="fax">Fax</label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="fax" value="{{$pendingTraining->fax}}" type="text">
           </div>
       </div>
@@ -83,16 +83,16 @@
       <div class="flex gap-4">
         <div class="flex flex-col mb-3 w-full">
             <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Company</label>
-            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="bil-company" value="{{$pendingTraining->billingTo->bil_company}}" type="text">
+            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500" id="bil-company" value="{{$pendingTraining->billingTo->bil_company}}" type="text">
         </div>
         <div class="flex flex-col mb-3 w-full">
             <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-company">Branch</label>
-            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="bil-branch" value="{{$pendingTraining->billingTo->bil_branch}}" type="text">
+            <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500" id="bil-branch" value="{{$pendingTraining->billingTo->bil_branch}}" type="text">
         </div>
       </div>
       <div class="flex flex-col mb-4 w-full">
           <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="rep-address">Address</label>
-          <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
               id="bil-address" type=textarea>{{$pendingTraining->billingTo->bil_address}}</textarea>
       </div>
   
@@ -101,21 +101,21 @@
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="tax-id">
                   Tax ID
               </label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white"
                   id="bil-tax-id" value="{{$pendingTraining->billingTo->bil_tax_id}}" type="text">
           </div>
           <div class="w-full">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-contact">
                   Contact
               </label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="bil-contact" value="{{$pendingTraining->billingTo->bil_contact}}" type="text">
           </div>
           <div class="w-full">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1"for="title">
                   Title
               </label>
-              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="bil-title" value="{{$pendingTraining->billingTo->bil_title}}" type="text">
           </div>
       </div>
@@ -127,38 +127,38 @@
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-phone">
                   Phone
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="bil-phone" value="{{$pendingTraining->billingTo->bil_phone}}" type="text" maxlength="10">
           </div>
           <div class="w-full">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="rep-email">E-mail</label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="bil-email" value="{{$pendingTraining->billingTo->bil_email}}" type="email">
           </div>
           <div class="w-full">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-1" for="bil-fax">Fax</label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="bil-fax" value="{{$pendingTraining->billingTo->bil_fax}}" name="bil-fax" type="text">
           </div>
       </div>
   
       <p class="text-gray-600 text-xl font-ligth mt-5">Request for training course : </p>
       <p class="text-gray-600 text-l mb-4">ระบุหลักสูตรที่ต้องการ </p>
-      <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
           id="training-reserve" type="text"  disabled>{{$pendingTraining->training_reserve}}</textarea>
       <div class="flex gap-4 mb-4 mt-4">
           <div class="w-full md:w-1/2 mb-6 md:mb-0">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="number-participants">
                   The number of participants
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white"
                   id="number-participants" name="number-participants" value="{{$pendingTraining->number_participants}}" type="number">
           </div>
           <div class="w-full md:w-1/2 ">
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="date-reserve">
                   Requires date of training
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="date-reserve" name="date-reserve" type="date" value="{{$pendingTraining->date_reserve}}">
           </div>
       </div>
@@ -179,13 +179,13 @@
                         <label class="block tracking-wide text-gray-700 text-sm font-light mb-2" for="other-course">
                             course
                         </label>
-                        <input type="text" value="{{ $trainingCourseNames[$loop->index] }}" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        <input type="text" value="{{ $trainingCourseNames[$loop->index] }}" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white">
                     </div>
                     <div class="w-full md:w-[37%] mb-6 md:mb-0">
                         <label class="block tracking-wide text-gray-700 text-sm font-light mb-2">
                             required date
                         </label>
-                        <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="other-date-reserve" value="{{$otherTraining->other_date}}" type="date">
+                        <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 focus:outline-none focus:bg-white focus:border-gray-500" id="other-date-reserve" value="{{$otherTraining->other_date}}" type="date">
                     </div>
                 </div>
             @endforeach
@@ -194,7 +194,7 @@
 
       <p class="text-gray-600 text-xl font-ligth mt-5">Special requisition : </p>
       <p class="text-gray-600 text-l mb-4">ข้อเสนอหรือความต้องการพิเศษใด ๆ </p>
-      <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      <textarea class=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
           id="special-request" type="text">{{$pendingTraining->special_request}}</textarea>
   
       <p class="text-gray-600 text-xl font-ligth mt-4">ลงนาม : </p>
@@ -203,7 +203,7 @@
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                   Name
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="reserve-name" value="{{$pendingTraining->reserve_name}}" type="text">
           </div>
   
@@ -211,14 +211,14 @@
               <label class="block tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                   Position
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="reserve-position" value="{{$pendingTraining->reserve_position}}" type="text">
           </div>
           <div class="w-full md:w-1/2 md:mb-0">
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-city">
                   Mobile
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="reserve-tel" value="{{$pendingTraining->reserve_tel}}" maxlength="10" type="text">
           </div>
   
@@ -226,7 +226,7 @@
               <label class="block  tracking-wide text-gray-700 text-sm font-ligth mb-2" for="grid-state">
                   E-mail
               </label>
-              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              <input class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-gray-500"
                   id="reserve-email" value="{{$pendingTraining->reserve_email}}" type="email">
           </div>
       </div>
