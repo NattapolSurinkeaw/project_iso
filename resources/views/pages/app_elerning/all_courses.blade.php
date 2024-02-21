@@ -103,7 +103,7 @@
                                     <h2 class="text-lg text-gray-400">{{$elcourse->user_name}}</h2>
                                 </div>
                                 <div class="w-full flex gap-2 justify-end">
-                                    <a class="bg-blue-600 text-white rounded-md p-1 " href="/coursedetail/{{$elcourse->id}}">detail</a>
+                                    <a class="bg-blue-600 text-white rounded-md p-1 " href="/coursedetail/{{$elcourse->id}}">Detail</a>
                                     @if($user)
                                         @php
                                             $isAddedToCart = false; // สร้างตัวแปรเพื่อตรวจสอบว่ามีการเพิ่มลงในตะกร้าหรือไม่
@@ -124,7 +124,7 @@
                                             <button class="bg-red-500 text-white rounded-md p-1" id="add-to-cart" data-id="{{$elcourse->id}}">add cart</button>
                                         @endif
                                     @else
-                                        <a href="/login" class="bg-red-500 text-white rounded-md p-1">add cart</a>
+                                        <a href="/login" class="bg-red-500 text-white rounded-md p-1">Add Cart</a>
                                     @endif
                                 </div>
                             </div>

@@ -6,14 +6,14 @@
             <a href="/backend/"><li>HOME</li></a>
             <a href="/backend/member"><li>MEMBER</li>                 
             <a href="/backend/coruse"><li>ELEARNING</li></a>
-            <a href="/backend/training"><li>TRAINING</li></a>
+            <a href="/backend/training"><li>IN-HOUSE</li></a>
             <a href="/backend/newsevent"><li>NEWS AND EVENT</li></a>
         </ul>
 
         <h1 class="my-4 text-white font-medium text-xl">PENDING APPROVAL</h1>
         <ul class="flex flex-col items-center gap-4">
             <a href="/backend/pendingcourse"><li>ELEARNING</li></a>
-            <a href="/backend/pendingtraining"><li>TRAINING</li></a>
+            <a href="/backend/pendingtraining"><li>IN-HOUSE</li></a>
         </ul>
 
         <h1 class="my-4 text-white font-medium text-xl">WEB CONTENT</h1>

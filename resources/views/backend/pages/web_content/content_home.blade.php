@@ -30,12 +30,13 @@
 
         <div class="mx-10 bg-white p-4 border-t-4 border-yellow-500 overflow-hidden overflow-x-scroll rounded-lg">
             <h2 class="text-xl font-bold">HOME VIDEO</h2>
-            <div class="flex 2xl:justify-center gap-4">
+            <div class="flex flex-col 2xl:justify-center gap-4">
                 @foreach($homeVideos as $homeVideo)
-                <div class="w-64 flex flex-col justify-center items-center p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
+                <div class="w-full bg-[#f4f4f4] flex justify-between p-2 border hover:shadow-lg hover:shadow-red-300 rounded-lg ">
                     <div id="getVideo" video-id="{{$homeVideo->id}}" class="w-60 overflow-hidden rounded-lg">
                     <img class="w-60 h-40 duration-300 rounded-lg"src="{{$homeVideo->thumbnail}}" data-type={{$homeVideo->type_input}}>
                     </div>
+                    <button class="bg-green-600 text-white text-xl py-1 px-3 rounded-lg">แก้ไข</button>
                 </div>
                 @endforeach 
             </div>

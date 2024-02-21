@@ -30,13 +30,13 @@
       @foreach($newsEvents as $index => $news)
       <a class="px-4" href="/newsdetails/{{$news->id}}">
         <div class="flex items-center break-words truncate @if($index % 2 !== 0) bg-gray-200 @endif">
-          <div class="overflow-hidden rounded-lg">
-            <img class="w-96 h-40 border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
+          <div class="w-96 h-40 max-lg:w-40 overflow-hidden rounded-lg">
+            <img class="w-full h-full border duration-300 brightness-[0.9] hover:brightness-[0.6] hover:scale-125" src="{{$news->img_news_events}}" alt="">
           </div>
           <div class="overflow-hidden px-10 w-full flex flex-col justify-start @if($index % 2 !== 0) bg-gray-200 @endif">
             <h1 class="text-2xl text-gray-400 p-2 underline w-full">{{$news->name}}</h1>
             <p>{{$news->description}}</p>
-            <div class="lg:w-full max-md:hidden break-words h-[90px] overflow-hidden">{!!$news->content!!}</div>
+            <div class="lg:w-full whitespace-normal max-md:hidden break-words h-[90px] overflow-hidden max-xs:hidden">{!!$news->content!!}</div>
             <div class="flex gap-2 my-2">
               <span class="flex gap-1 item-certer text-gray-500">{{$news->view}} <box-icon name='show'></box-icon></span>
               {{-- <span>/</span>
