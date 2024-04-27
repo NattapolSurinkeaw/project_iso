@@ -4,7 +4,7 @@
 <hr>
 <p>ติดตั้งแพ็คเกจเสริงของ node module : </p>
 <b>npm install</b>่<hr>
-<p>สร้างฐานข้อมูลใน phpmyadmin และแก้ไขชื่อ (DB_DATABASE), ชื่อผู้ใช้ database (DB_USERNAME), รหัสผ่าน database (DB_PASSWORD)</p>
+<p>สร้างฐานข้อมูลใน phpmyadmin และแก้ไขชื่อ (DB_DATABASE), ชื่อผู้ใช้ database (DB_USERNAME), รหัสผ่าน database (DB_PASSWORD) ในไฟล์ .env</p>
 <hr>
 <p>สามารถทดสอบการทำงานของโปรเจคด้วยโดยการ รันคำสั่ง php artisan serve และ npm run dev พร้อมกัน 2 คำสั่ง</p>
 <b>php artisan serve</b>
